@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DE0FE2E61BF99C040010A8DB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */; };
+		DE76B2361BFA85D6002E6293 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2351BFA85D6002E6293 /* User.swift */; };
+		DE76B2381BFA85ED002E6293 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2371BFA85ED002E6293 /* Post.swift */; };
+		DE76B23A1BFA85F8002E6293 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2391BFA85F8002E6293 /* Comment.swift */; };
+		DE76B23C1BFA8601002E6293 /* Like.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B23B1BFA8601002E6293 /* Like.swift */; };
+		DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B23D1BFA8614002E6293 /* UserController.swift */; };
+		DE76B2401BFA861D002E6293 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B23F1BFA861D002E6293 /* PostController.swift */; };
+		DE76B2421BFA8626002E6293 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2411BFA8626002E6293 /* VideoController.swift */; };
+		DE76B2441BFA8637002E6293 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2431BFA8637002E6293 /* FirebaseController.swift */; };
 		DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1511BF9838B00009122 /* AppDelegate.swift */; };
 		DEE6A1541BF9838B00009122 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1531BF9838B00009122 /* ViewController.swift */; };
 		DEE6A1571BF9838B00009122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1551BF9838B00009122 /* Main.storyboard */; };
@@ -34,11 +43,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DE76B2351BFA85D6002E6293 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DE76B2371BFA85ED002E6293 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		DE76B2391BFA85F8002E6293 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		DE76B23B1BFA8601002E6293 /* Like.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Like.swift; sourceTree = "<group>"; };
+		DE76B23D1BFA8614002E6293 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		DE76B23F1BFA861D002E6293 /* PostController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
+		DE76B2411BFA8626002E6293 /* VideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		DE76B2431BFA8637002E6293 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		DEE6A14E1BF9838B00009122 /* ViBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DEE6A1531BF9838B00009122 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ViBlog/AppDelegate.swift; sourceTree = "<group>"; };
+		DEE6A1531BF9838B00009122 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ViBlog/ViewController.swift; sourceTree = "<group>"; };
 		DEE6A1561BF9838B00009122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DEE6A1581BF9838C00009122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DEE6A1581BF9838C00009122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ViBlog/Assets.xcassets; sourceTree = "<group>"; };
 		DEE6A15B1BF9838C00009122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEE6A15D1BF9838C00009122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEE6A1621BF9838C00009122 /* ViBlogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViBlogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE0FE2E61BF99C040010A8DB /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +93,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DE76B2321BFA85A5002E6293 /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				DE76B2351BFA85D6002E6293 /* User.swift */,
+				DE76B2371BFA85ED002E6293 /* Post.swift */,
+				DE76B2391BFA85F8002E6293 /* Comment.swift */,
+				DE76B23B1BFA8601002E6293 /* Like.swift */,
+				DEE6A1581BF9838C00009122 /* Assets.xcassets */,
+			);
+			name = Modal;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DE76B2331BFA85B1002E6293 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				DE76B23D1BFA8614002E6293 /* UserController.swift */,
+				DE76B23F1BFA861D002E6293 /* PostController.swift */,
+				DE76B2411BFA8626002E6293 /* VideoController.swift */,
+				DE76B2431BFA8637002E6293 /* FirebaseController.swift */,
+			);
+			name = Controllers;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DE76B2341BFA85BF002E6293 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DEE6A1511BF9838B00009122 /* AppDelegate.swift */,
+				DEE6A1531BF9838B00009122 /* ViewController.swift */,
+				DEE6A1551BF9838B00009122 /* Main.storyboard */,
+				DEE6A15A1BF9838C00009122 /* LaunchScreen.storyboard */,
+			);
+			name = Views;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DE76B2451BFA8651002E6293 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */,
+			);
+			name = Framework;
+			path = ..;
+			sourceTree = "<group>";
+		};
 		DEE6A1451BF9838B00009122 = {
 			isa = PBXGroup;
 			children = (
@@ -97,12 +162,11 @@
 		DEE6A1501BF9838B00009122 /* ViBlog */ = {
 			isa = PBXGroup;
 			children = (
-				DEE6A1511BF9838B00009122 /* AppDelegate.swift */,
-				DEE6A1531BF9838B00009122 /* ViewController.swift */,
-				DEE6A1551BF9838B00009122 /* Main.storyboard */,
-				DEE6A1581BF9838C00009122 /* Assets.xcassets */,
-				DEE6A15A1BF9838C00009122 /* LaunchScreen.storyboard */,
+				DE76B2321BFA85A5002E6293 /* Modal */,
+				DE76B2331BFA85B1002E6293 /* Controllers */,
+				DE76B2341BFA85BF002E6293 /* Views */,
 				DEE6A15D1BF9838C00009122 /* Info.plist */,
+				DE76B2451BFA8651002E6293 /* Framework */,
 			);
 			path = ViBlog;
 			sourceTree = "<group>";
@@ -256,8 +320,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE76B2441BFA8637002E6293 /* FirebaseController.swift in Sources */,
+				DE76B23C1BFA8601002E6293 /* Like.swift in Sources */,
+				DE76B2421BFA8626002E6293 /* VideoController.swift in Sources */,
+				DE76B2401BFA861D002E6293 /* PostController.swift in Sources */,
+				DE76B23A1BFA85F8002E6293 /* Comment.swift in Sources */,
 				DEE6A1541BF9838B00009122 /* ViewController.swift in Sources */,
 				DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */,
+				DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */,
+				DE76B2361BFA85D6002E6293 /* User.swift in Sources */,
+				DE76B2381BFA85ED002E6293 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +371,7 @@
 				DEE6A1561BF9838B00009122 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ViBlog;
 			sourceTree = "<group>";
 		};
 		DEE6A15A1BF9838C00009122 /* LaunchScreen.storyboard */ = {
@@ -307,6 +380,7 @@
 				DEE6A15B1BF9838C00009122 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ViBlog;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -482,6 +556,7 @@
 				DEE6A1781BF9838C00009122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DEE6A1791BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViBlogTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +565,7 @@
 				DEE6A17B1BF9838C00009122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DEE6A17C1BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViBlogUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +574,7 @@
 				DEE6A17E1BF9838C00009122 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

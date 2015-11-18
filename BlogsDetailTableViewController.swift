@@ -1,5 +1,5 @@
 //
-//  PostsTableViewController.swift
+//  BlogsDetailTableViewController.swift
 //  ViBlog
 //
 //  Created by Thang H Tong on 11/16/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PostsTableViewController: UITableViewController {
+class BlogsDetailTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

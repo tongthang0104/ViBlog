@@ -1,5 +1,5 @@
 //
-//  AddPostViewController.swift
+//  AddBlogViewController.swift
 //  ViBlog
 //
 //  Created by Thang H Tong on 11/16/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddPostViewController: UIViewController {
+class AddBlogViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

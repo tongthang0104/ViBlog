@@ -10,10 +10,31 @@ import UIKit
 
 class SignUpLoginViewController: UIViewController {
 
+    
+    enum ViewMode {
+        case Login
+        case Signup
+    }
+    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var emailTextField: UITextField!
+    
+    @IBOutlet weak var loginSignUpButton: UIButton!
+    
+    @IBOutlet weak var loginButton: UIBarButtonItem!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func loginSignupButtonTapped(sender: UIButton) {
+    }
+    
+    @IBAction func loginButtonTapped(sender: UIBarButtonItem) {
     }
 
     override func didReceiveMemoryWarning() {

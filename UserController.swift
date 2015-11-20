@@ -75,12 +75,12 @@ class UserController {
     
     // logout User
     
-    static func logouCurrentUser() {
+    static func logoutCurrentUser() {
         
     }
     
     // block User (add later)
-    static func blockUser(user1: User, user2: User, completion: (success: Bool) -> Void) {
+    static func blockUser(user1: User?, user2: User?, completion: (success: Bool) -> Void) {
     
     }
 }

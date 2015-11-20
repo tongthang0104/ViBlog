@@ -6,10 +6,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Add Blog View Controller-->
         <scene sceneID="isD-Ex-gdL">
             <objects>
-                <viewController id="we6-9h-zlv" sceneMemberID="viewController">
+                <viewController id="we6-9h-zlv" customClass="AddBlogViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gKL-Mz-zgf"/>
                         <viewControllerLayoutGuide type="bottom" id="XRz-Ot-OiG"/>
@@ -75,7 +75,7 @@
         <!--Name-->
         <scene sceneID="AbE-7u-9fO">
             <objects>
-                <viewController id="mog-dS-73A" sceneMemberID="viewController">
+                <viewController id="mog-dS-73A" customClass="BlogsDetailTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pTL-Ns-Xxa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -145,12 +145,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUn-pW-fdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="-775"/>
+            <point key="canvasLocation" x="-685" y="-983"/>
         </scene>
-        <!--View Controller-->
+        <!--Blogs Table View Controller-->
         <scene sceneID="KJZ-zL-kbO">
             <objects>
-                <viewController id="6KG-uI-kb2" sceneMemberID="viewController">
+                <viewController id="6KG-uI-kb2" customClass="BlogsTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="WUp-dN-d5b">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -210,11 +210,11 @@
                                     <constraint firstAttribute="trailing" secondItem="CkU-ak-Jhg" secondAttribute="trailing" constant="8" id="w5G-WA-Q5u"/>
                                 </constraints>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="50" id="Dxa-5D-Unv">
-                                <rect key="frame" x="0.0" y="146" width="600" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="218" id="Dxa-5D-Unv">
+                                <rect key="frame" x="0.0" y="146" width="600" height="218"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dxa-5D-Unv" id="PDL-ao-ob7">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="49.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="217.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <animations/>
                                 </tableViewCellContentView>
@@ -246,16 +246,17 @@
                         <segue destination="HWR-r5-dNI" kind="relationship" relationship="viewControllers" id="THI-ce-oxc"/>
                         <segue destination="Xs4-18-aON" kind="relationship" relationship="viewControllers" id="G5b-xn-hkl"/>
                         <segue destination="6B0-Ku-dNo" kind="relationship" relationship="viewControllers" id="NGs-dd-vjW"/>
+                        <segue destination="8VK-3n-12s" kind="presentation" id="RfK-zx-qLZ"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fUc-GR-koz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2861" y="-90"/>
+            <point key="canvasLocation" x="-3701" y="224"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up Login Picker View Controller-->
         <scene sceneID="LH1-Xp-EPn">
             <objects>
-                <viewController id="doq-Yw-bVp" sceneMemberID="viewController">
+                <viewController id="doq-Yw-bVp" customClass="SignUpLoginPickerViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ne6-pz-05O"/>
                         <viewControllerLayoutGuide type="bottom" id="xKM-G4-eFS"/>
@@ -280,7 +281,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <state key="normal" title="SignUp"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="854-6X-BYY"/>
+                                    <action selector="signUpButtonTapped:" destination="doq-Yw-bVp" eventType="touchUpInside" id="leF-qS-tTR"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toSignUpView" id="854-6X-BYY"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account yet? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxZ-aw-KZz">
@@ -303,7 +305,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="36"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="2Gm-Gk-BNM"/>
+                                    <action selector="loginButtonTapped:" destination="doq-Yw-bVp" eventType="touchUpInside" id="ZYt-q1-EyW"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="toLoginView" id="2Gm-Gk-BNM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -335,12 +338,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W0-TU-R2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3558" y="-800"/>
+            <point key="canvasLocation" x="-1398" y="-2248"/>
         </scene>
         <!--Title-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="SignUpLoginViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -374,13 +377,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My bloggy name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-e5-OQs">
-                                <rect key="frame" x="20" y="229" width="560" height="20.5"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgE-PH-P6a">
                                 <rect key="frame" x="20" y="309.5" width="560" height="20.5"/>
                                 <animations/>
@@ -409,9 +405,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
-                                    <segue destination="pLl-b5-cHx" kind="show" id="4H5-VE-Vye"/>
+                                    <action selector="loginSignupButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0Bf-zx-ILI"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My bloggy name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOf-e5-OQs">
+                                <rect key="frame" x="20" y="229" width="560" height="20.5"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -445,12 +448,24 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="rBr-13-F06">
-                        <barButtonItem key="rightBarButtonItem" title="Login" id="3UK-yS-BeI"/>
+                        <barButtonItem key="rightBarButtonItem" title="Login" id="3UK-yS-BeI">
+                            <connections>
+                                <action selector="loginButtonTapped:" destination="BYZ-38-t0r" id="d36-rG-ApK"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="emailLabel" destination="p6u-7t-y6d" id="IT9-C0-7xA"/>
+                        <outlet property="emailTextField" destination="xiS-us-IT8" id="Efu-Xu-bD4"/>
+                        <outlet property="loginButton" destination="3UK-yS-BeI" id="qbp-Fo-G94"/>
+                        <outlet property="loginSignUpButton" destination="fDs-Zz-W7v" id="eWg-mn-tZC"/>
+                        <outlet property="passwordTextField" destination="sfs-9i-2ed" id="ntF-bh-3gZ"/>
+                        <outlet property="usernameTextField" destination="RYc-Pu-umY" id="OWU-YI-08N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2853" y="-812"/>
+            <point key="canvasLocation" x="-685" y="-2248"/>
         </scene>
         <!--ViLog-->
         <scene sceneID="FVN-uD-0Kc">
@@ -495,7 +510,7 @@
         <!--Name-->
         <scene sceneID="eaQ-mG-0t1">
             <objects>
-                <viewController id="3mQ-sG-Lga" sceneMemberID="viewController">
+                <viewController id="3mQ-sG-Lga" customClass="ProfileViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="1cV-AC-uRT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -514,6 +529,20 @@
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="210" height="198"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lGz-26-iSY">
+                                            <rect key="frame" x="0.0" y="0.0" width="210" height="162"/>
+                                            <animations/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBQ-je-jgE">
+                                            <rect key="frame" x="0.0" y="170" width="210" height="28"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <animations/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -597,31 +626,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="otf-6g-tq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-730" y="-56"/>
+            <point key="canvasLocation" x="-1398" y="32"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="7dr-xy-skj">
-            <objects>
-                <viewController id="mcj-B3-b06" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6eT-nn-46K"/>
-                        <viewControllerLayoutGuide type="bottom" id="fbr-mG-avd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="hgu-iL-gdP">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tN4-G8-jh0" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2190" y="1348"/>
-        </scene>
-        <!--View Controller-->
+        <!--Friends Search Table View Controller-->
         <scene sceneID="nsr-qK-j0b">
             <objects>
-                <viewController id="bSE-5i-U3u" sceneMemberID="viewController">
+                <viewController id="bSE-5i-U3u" customClass="FriendsSearchTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="oUh-Za-O2o">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -706,7 +716,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dw1-kg-Wep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2190" y="690"/>
+            <point key="canvasLocation" x="-1408" y="762"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="NLT-2d-0NZ">
+            <objects>
+                <tableViewController id="OIf-Xz-haA" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="P3H-QX-Gd1">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="p68-gW-e6K">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p68-gW-e6K" id="yuv-PL-k3J">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <animations/>
+                                </tableViewCellContentView>
+                                <animations/>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OIf-Xz-haA" id="exo-gW-XMP"/>
+                            <outlet property="delegate" destination="OIf-Xz-haA" id="ESK-Nu-fJi"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wse-Ds-FEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1414" y="1437"/>
         </scene>
         <!--Friends-->
         <scene sceneID="OdT-IH-eHU">
@@ -726,7 +767,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcT-oA-jC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2861" y="690"/>
+            <point key="canvasLocation" x="-2101" y="762"/>
         </scene>
         <!--Chanel-->
         <scene sceneID="Zuz-Pv-El9">
@@ -746,7 +787,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QYT-kh-GKR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1408" y="-56"/>
+            <point key="canvasLocation" x="-2112" y="16"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bs9-8p-9Vg">
@@ -765,12 +806,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EhY-Ll-O9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4217" y="-800"/>
+            <point key="canvasLocation" x="-2126" y="-2248"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="854-6X-BYY"/>
-        <segue reference="NGs-dd-vjW"/>
+        <segue reference="2Gm-Gk-BNM"/>
+        <segue reference="u8T-dR-ecg"/>
         <segue reference="nFJ-QG-YdK"/>
     </inferredMetricsTieBreakers>
 </document>

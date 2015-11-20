@@ -10,12 +10,22 @@ import UIKit
 
 class SignUpLoginPickerViewController: UIViewController {
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func signUpButtonTapped(sender: UIButton) {
+        performSegueWithIdentifier("toSignUpView", sender: self)
+    }
+    
+    @IBAction func loginButtonTapped(sender: UIButton) {
+        performSegueWithIdentifier("toLoginView", sender: self)
+    }
+  
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

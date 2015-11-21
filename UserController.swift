@@ -42,7 +42,7 @@ class UserController {
     
     // create User
     
-    static func addUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
+    static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
         completion(user: currentUser.first, success: true)
     }
     

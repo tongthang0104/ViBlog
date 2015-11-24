@@ -11,7 +11,9 @@ import Foundation
 class UserController {
     
     static let shareController = UserController()
-    static var currentUser: [User] = UserController.mockUsers()
+    static var userArray: [User] = UserController.mockUsers()
+    var currentUser: User! = nil
+
     
     // mock User
     static func mockUsers() -> [User] {
@@ -26,30 +28,30 @@ class UserController {
     // user For Identifier
 
     static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
-        completion(user: currentUser.first)
+        completion(user: userArray.first)
     }
     
     // authenticate User
     static func authenticateUsers(username: String, password: String, completion: (user: User?, success: Bool) -> Void) {
-        completion(user: currentUser.first, success: true)
+        completion(user: userArray.first, success: true)
     }
     
     // fetch all Users
     
     static func fetchAllUsers(completion: (user: [User]) -> Void) {
-        completion(user: currentUser)
+        completion(user: userArray)
     }
     
     // create User
     
     static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
-        completion(user: currentUser.first, success: true)
+        completion(user: userArray.first, success: true)
     }
     
     // update User
     
     static func updateUser(user: User, username: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
-        completion(user: currentUser.first, success: true)
+        completion(user: userArray.first, success: true)
     }
     
     // follow User
@@ -60,7 +62,7 @@ class UserController {
     // followed by User
     
     static func followedByUser(user: User, completion: (user: [User]?) -> Void) {
-        completion(user: currentUser)
+        completion(user: userArray)
     }
     
     // User follow User

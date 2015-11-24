@@ -38,8 +38,8 @@ class UserController {
     
     // fetch all Users
     
-    static func fetchAllUsers(completion: (user: [User]) -> Void) {
-        completion(user: userArray)
+    static func fetchAllUsers(completion: (users: [User]) -> Void) {
+        completion(users: userArray)
     }
     
     // create User
@@ -61,8 +61,8 @@ class UserController {
     
     // followed by User
     
-    static func followedByUser(user: User, completion: (user: [User]?) -> Void) {
-        completion(user: userArray)
+    static func followedByUser(user: User, completion: (followers: [User]?) -> Void) {
+        completion(followers: userArray)
     }
     
     // User follow User

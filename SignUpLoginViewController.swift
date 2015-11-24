@@ -78,6 +78,7 @@ class SignUpLoginViewController: UIViewController {
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
                     } else {
                         self.alertNotification("Invalid Information", message: "Please check your information and try again")
+                                           
                     }
                 })
             }

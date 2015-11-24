@@ -10,6 +10,8 @@ import UIKit
 
 class BlogsTableViewController: UITableViewController {
 
+    let  blogs: [Blog] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +22,23 @@ class BlogsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        
+        // Check if there is User, if there is no user, go to SignUpLoginPickerView
+        if let currentUser = UserController.shareController.currentUser {
+            if blogs.count > 0 {
+                loadBlogChannels(currentUser)
+            }
+            
+        } else {
+            tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
+        }
+    }
+    
+    func loadBlogChannels(user: User) {
+        
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

@@ -10,7 +10,10 @@ import UIKit
 
 class FriendsTableViewCell: UITableViewCell {
     
+    // MARK: Properties
+    
     var user: User?
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selfImage: UIImageView!
     @IBOutlet weak var followButton: UIButton!
@@ -18,6 +21,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     
     
+    //MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
         followButton.setTitle("Follow", forState: .Normal)
@@ -37,13 +41,10 @@ class FriendsTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
     }
     
 }

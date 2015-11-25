@@ -14,8 +14,8 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     
     var searchController: UISearchController!
     var user: User?
-//    
-//    @IBOutlet weak var searchBar: UISearchBar!
+    var userDataSource: [User] = []
+
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     enum ViewMode: Int {
@@ -34,6 +34,12 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
                     completion(users: users)
                 })
             }
+        }
+    }
+    
+    var mode: ViewMode {
+        get {
+            return ViewMode(rawValue: segmentControl.selectedSegmentIndex)!
         }
     }
     
@@ -57,13 +63,8 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     }
     
     
-    var mode: ViewMode {
-        get {
-            return ViewMode(rawValue: segmentControl.selectedSegmentIndex)!
-        }
-    }
+ 
     
-    var userDataSource: [User] = []
     
     // MARK: Update With Function
     
@@ -89,22 +90,19 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+            }
     
     // MARK: - Table view data source
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return userDataSource.count
     }
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as! FriendsTableViewCell
         
+        let cell = tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as! FriendsTableViewCell
         let users = userDataSource[indexPath.row]
-    
         cell.updateWithUsers(users)
         
         return cell

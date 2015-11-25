@@ -10,7 +10,6 @@ import UIKit
 
 class UserSearchResultTableViewController: UITableViewController {
 
-    
     var filterUsers = [User] ()
     
     override func viewDidLoad() {
@@ -35,7 +34,6 @@ class UserSearchResultTableViewController: UITableViewController {
         return filterUsers.count
     }
 
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("userSearchCell", forIndexPath: indexPath) as! FriendsTableViewCell
@@ -45,7 +43,6 @@ class UserSearchResultTableViewController: UITableViewController {
         return cell
     }
     
-
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

@@ -47,12 +47,9 @@ class SignUpLoginViewController: UIViewController {
         }
     }
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateWithMode(mode)
-        // Do any additional setup after loading the view.
     }
     
     //MARK: Action
@@ -78,7 +75,6 @@ class SignUpLoginViewController: UIViewController {
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
                     } else {
                         self.alertNotification("Invalid Information", message: "Please check your information and try again")
-                                           
                     }
                 })
             }
@@ -97,7 +93,6 @@ class SignUpLoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     /*
     // MARK: - Navigation

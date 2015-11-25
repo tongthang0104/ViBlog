@@ -15,7 +15,7 @@ class User: Equatable {
     var username: String
     var password: String
     var email: String?
-    var image: String?
+    var imageEndpoint: String?
     var identifier: String?
     
     //MARK: Initializer
@@ -24,7 +24,7 @@ class User: Equatable {
         self.username = username
         self.password = password
         self.email = email
-        self.image = image
+        self.imageEndpoint = image
         self.identifier = identifier
     }
 }

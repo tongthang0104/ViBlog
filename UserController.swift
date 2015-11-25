@@ -12,7 +12,7 @@ class UserController {
     
     static let shareController = UserController()
     static var userArray: [User] = UserController.mockUsers()
-    var currentUser: User! = nil
+    var currentUser: User! = UserController.mockUsers().first
 
     
     // mock User

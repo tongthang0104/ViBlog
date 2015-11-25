@@ -25,6 +25,7 @@
 		DE76B25A1BFA95B6002E6293 /* UserSearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */; };
 		DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */; };
 		DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */; };
+		DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B031C03FD36001DEAD7 /* ImageController.swift */; };
 		DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1511BF9838B00009122 /* AppDelegate.swift */; };
 		DEE6A1571BF9838B00009122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1551BF9838B00009122 /* Main.storyboard */; };
 		DEE6A1591BF9838C00009122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1581BF9838C00009122 /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 		DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
 		DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
+		DEC22B031C03FD36001DEAD7 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		DEE6A14E1BF9838B00009122 /* ViBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE6A1561BF9838B00009122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				DE76B23D1BFA8614002E6293 /* UserController.swift */,
+				DEC22B031C03FD36001DEAD7 /* ImageController.swift */,
 				DE76B23F1BFA861D002E6293 /* BlogController.swift */,
 				DE76B2411BFA8626002E6293 /* VideoController.swift */,
 				DE76B2431BFA8637002E6293 /* FirebaseController.swift */,
@@ -396,6 +399,7 @@
 				DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */,
 				DE76B24F1BFA93B5002E6293 /* BlogsDetailTableViewController.swift in Sources */,
 				DE76B23A1BFA85F8002E6293 /* Comment.swift in Sources */,
+				DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */,
 				DE76B2471BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift in Sources */,
 				DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */,
 				DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */,

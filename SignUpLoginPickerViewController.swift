@@ -23,8 +23,6 @@ class SignUpLoginPickerViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

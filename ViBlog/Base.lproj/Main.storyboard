@@ -72,7 +72,7 @@
             </objects>
             <point key="canvasLocation" x="-1408" y="-775"/>
         </scene>
-        <!--Name-->
+        <!--Blogs Detail Table View Controller-->
         <scene sceneID="AbE-7u-9fO">
             <objects>
                 <viewController id="mog-dS-73A" customClass="BlogsDetailTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
@@ -141,7 +141,7 @@
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Name" id="NPI-z7-YTC"/>
+                    <navigationItem key="navigationItem" id="NPI-z7-YTC"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUn-pW-fdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -564,6 +564,7 @@
                                     <outlet property="followButton" destination="AUJ-qq-Enf" id="Qwt-tK-u6K"/>
                                     <outlet property="nameLabel" destination="Zhl-Tz-fI1" id="EdP-Us-nLM"/>
                                     <outlet property="selfImage" destination="4Z3-hg-aWw" id="aPT-gL-ir9"/>
+                                    <segue destination="6B0-Ku-dNo" kind="show" identifier="toProfileView" id="4dE-9n-tbt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -602,7 +603,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p68-gW-e6K" id="yuv-PL-k3J">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmu-AL-cOA">
@@ -729,10 +730,10 @@
             </objects>
             <point key="canvasLocation" x="-2126" y="-2248"/>
         </scene>
-        <!--Name-->
+        <!--Profile View Controller-->
         <scene sceneID="a3m-KY-uqd">
             <objects>
-                <viewController id="ZhL-0u-Wrd" sceneMemberID="viewController">
+                <viewController id="ZhL-0u-Wrd" customClass="ProfileViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3vw-J3-lqw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -771,7 +772,7 @@
                                 <animations/>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollectionView" id="Pg7-Sq-QKE">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollectionView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="64" width="600" height="189"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -821,9 +822,13 @@
                                                 <constraint firstAttribute="height" constant="30" id="vaI-NK-gw7"/>
                                             </constraints>
                                             <state key="normal" title="UnFollow"/>
+                                            <connections>
+                                                <action selector="followButtonTapped:" destination="Pg7-Sq-QKE" eventType="touchUpInside" id="MlI-H6-ktC"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <animations/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstItem="Tv2-eR-ubv" firstAttribute="leading" secondItem="MMA-fH-S2I" secondAttribute="leading" constant="253" id="czA-Vv-Vkf"/>
                                         <constraint firstAttribute="trailing" secondItem="Tv2-eR-ubv" secondAttribute="trailing" constant="253" id="yjd-zY-lpl"/>
@@ -831,19 +836,27 @@
                                 </stackView>
                             </subviews>
                             <animations/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="bottomMargin" secondItem="MMA-fH-S2I" secondAttribute="bottom" constant="-4" id="9ZA-VM-x5d"/>
                                 <constraint firstAttribute="leadingMargin" secondItem="MMA-fH-S2I" secondAttribute="leading" id="UEU-iU-Kgu"/>
                                 <constraint firstItem="MMA-fH-S2I" firstAttribute="top" secondItem="Pg7-Sq-QKE" secondAttribute="topMargin" constant="-3" id="uzr-o7-bXk"/>
                                 <constraint firstAttribute="trailingMargin" secondItem="MMA-fH-S2I" secondAttribute="trailing" id="xp5-6b-zgq"/>
                             </constraints>
+                            <connections>
+                                <outlet property="followButton" destination="dOW-yv-Joa" id="YaD-E9-sYz"/>
+                                <outlet property="followerLabel" destination="JGm-jF-goj" id="eVx-U4-PPS"/>
+                                <outlet property="followingLabel" destination="amC-yP-G2g" id="W6M-vE-7kX"/>
+                                <outlet property="nameLabel" destination="Em6-uo-U5L" id="gQy-Kg-KlQ"/>
+                                <outlet property="selfImage" destination="Tv2-eR-ubv" id="wW6-hJ-Dlu"/>
+                            </connections>
                         </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="ZhL-0u-Wrd" id="Enf-4d-jxo"/>
                             <outlet property="delegate" destination="ZhL-0u-Wrd" id="L0u-MS-fIi"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Name" id="fXh-aZ-0Li">
+                    <navigationItem key="navigationItem" id="fXh-aZ-0Li">
                         <barButtonItem key="rightBarButtonItem" title="···" id="o0g-Mn-Nqe"/>
                     </navigationItem>
                 </viewController>
@@ -853,7 +866,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="NGs-dd-vjW"/>
+        <segue reference="4dE-9n-tbt"/>
         <segue reference="2Gm-Gk-BNM"/>
     </inferredMetricsTieBreakers>
 </document>

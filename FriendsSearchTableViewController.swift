@@ -15,7 +15,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     var searchController: UISearchController!
     var user: User?
     var userDataSource: [User] = []
-
+    
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
     enum ViewMode: Int {
@@ -63,7 +63,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     }
     
     
- 
+    
     
     
     // MARK: Update With Function
@@ -90,7 +90,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-            }
+    }
     
     // MARK: - Table view data source
     
@@ -144,14 +144,31 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     }
     */
     
-    /*
+    
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        
+        let cell = sender as! UITableViewCell
+        var selectedUser: User?
+        
+        // Check to see if indexPath is from searchResultsController or not ?
+        if let indexPath = (searchController.searchResultsController as? UserSearchResultTableViewController)?.tableView.indexPathForCell(cell) {
+            
+            // IndexPath is from UserSearchResultTableVC
+            
+            if let filterUsers = (searchController.searchResultsController as? UserSearchResultTableViewController)?.filterUsers {
+                selectedUser = filterUsers[indexPath.row]
+            }
+        } else {
+            
+        // IndexPath from friendSearchTableViewController
+            if let indexPath = tableView.indexPathForCell(cell) {
+                selectedUser = self.userDataSource[indexPath.row]
+            }
+        }
+        if let profileDestionationViewController = segue.destinationViewController as? ProfileViewController {
+            profileDestionationViewController.user = selectedUser
+        }
     }
-    */
-    
 }

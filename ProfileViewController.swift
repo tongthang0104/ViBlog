@@ -8,29 +8,94 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate{
+    
+    // MARK: Properties
     var user: User?
+    var userBlogs: [Blog] = []
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    // UpdateWithUser
+    
+    func updateWithUser(user: User) {
+        self.user = user
+        self.title = user.username
+        
+        BlogController.blogsForUser(user.username) { (blogs) -> Void in
+            if let blogs = blogs {
+                self.userBlogs = blogs
+                self.collectionView.reloadData()
+            }
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(user)
     }
-
- 
     
+    
+    // MARK: -UICollectionDataSource
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return userBlogs.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
+        let blogs = userBlogs[indexPath.item]
+        item.updateWithBlogs(blogs)
+        
+        return item
+    }
+    
+    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+        
+        let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
+        view.delegate = self
+        if let user = self.user {
+            view.updateWithUsers(user)
+        }
+        
+        return view
+    }
+    
+    func followButtonTapped(sender: UIButton) {
+        
+        guard let user = self.user else {return}
+        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
+            if follows {
+                UserController.unfollowUser(user, completion: { (success) -> Void in
+                    self.updateWithUser(user)
+                })
+            } else {
+                UserController.followUser(user, completion: { (success) -> Void in
+                    self.updateWithUser(user)
+                })
+            }
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toDetailVideo" {
+            
+            let cell = sender as! UICollectionViewCell
+            if let selectedIndex = collectionView.indexPathForCell(cell)?.item {
+                
+                if let detailViewDestionation = segue.destinationViewController as? BlogsDetailTableViewController {
+                    _ = detailViewDestionation.view
+                    detailViewDestionation.updateWithBlog(userBlogs[selectedIndex])
+                }
+            }
+        }
     }
-    */
-
+    
+    
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		DE0FE2E61BF99C040010A8DB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */; };
+		DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */; };
 		DE76B2361BFA85D6002E6293 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2351BFA85D6002E6293 /* User.swift */; };
 		DE76B2381BFA85ED002E6293 /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2371BFA85ED002E6293 /* Blog.swift */; };
 		DE76B23A1BFA85F8002E6293 /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2391BFA85F8002E6293 /* Comment.swift */; };
@@ -54,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE76B2351BFA85D6002E6293 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE76B2371BFA85ED002E6293 /* Blog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		DE76B2391BFA85F8002E6293 /* Comment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */,
+				DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */,
 				DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */,
 			);
 			name = Profile;
@@ -390,6 +393,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */,
 				DE76B2491BFA8FD8002E6293 /* SignUpLoginViewController.swift in Sources */,
 				DE76B2441BFA8637002E6293 /* FirebaseController.swift in Sources */,
 				DE76B24D1BFA9015002E6293 /* BlogsTableViewController.swift in Sources */,

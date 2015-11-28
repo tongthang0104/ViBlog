@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserController {
     
@@ -44,7 +45,7 @@ class UserController {
     
     // create User
     
-    static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
+    static func createUser(username: String, password: String, email: String?, image: UIImage? = nil, completion: (user: User?, success: Bool) -> Void) {
         completion(user: userArray.first, success: true)
     }
     

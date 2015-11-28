@@ -587,7 +587,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dw1-kg-Wep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1303" y="743"/>
+            <point key="canvasLocation" x="-1370" y="762"/>
         </scene>
         <!--User Search Result Table View Controller-->
         <scene sceneID="NLT-2d-0NZ">
@@ -625,7 +625,7 @@
                                                 <constraint firstAttribute="height" constant="28" id="wwY-Ez-YQU"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xn-OW-bir">
@@ -669,7 +669,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wse-Ds-FEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1303" y="1405"/>
+            <point key="canvasLocation" x="-1370" y="1425"/>
         </scene>
         <!--Friends-->
         <scene sceneID="OdT-IH-eHU">
@@ -746,7 +746,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCollectionCell" id="hAe-a9-LuT">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViBlog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="253" width="210" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -770,9 +770,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <animations/>
+                                <connections>
+                                    <outlet property="captionLabel" destination="rO6-d5-5Zj" id="ts0-sd-doS"/>
+                                    <segue destination="mog-dS-73A" kind="show" identifier="toDetailVideo" id="MtC-EW-5dm"/>
+                                </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="headerCollectionView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="64" width="600" height="189"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -852,21 +856,25 @@
                             </connections>
                         </collectionReusableView>
                         <connections>
-                            <outlet property="dataSource" destination="ZhL-0u-Wrd" id="Enf-4d-jxo"/>
+                            <outlet property="dataSource" destination="ZhL-0u-Wrd" id="QRN-wP-5BE"/>
                             <outlet property="delegate" destination="ZhL-0u-Wrd" id="L0u-MS-fIi"/>
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="fXh-aZ-0Li">
                         <barButtonItem key="rightBarButtonItem" title="···" id="o0g-Mn-Nqe"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="3vw-J3-lqw" id="08H-An-Z2T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCb-oW-HLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1370" y="-4"/>
+            <point key="canvasLocation" x="-1428" y="-2"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4dE-9n-tbt"/>
         <segue reference="2Gm-Gk-BNM"/>
+        <segue reference="4dE-9n-tbt"/>
+        <segue reference="MtC-EW-5dm"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -17,10 +17,7 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selfImage: UIImageView!
     @IBOutlet weak var followButton: UIButton!
-    
-    
-    
-    
+ 
     //MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {

@@ -30,6 +30,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if user == nil {
+            user = UserController.shareController.currentUser
+        }
+       
     }
     
     

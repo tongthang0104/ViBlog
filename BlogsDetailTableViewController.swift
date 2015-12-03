@@ -25,6 +25,11 @@ class BlogsDetailTableViewController: UITableViewController {
    
     }
 
+    
+    
+    func updateWithBlog(blog: Blog) {
+        
+    }
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {

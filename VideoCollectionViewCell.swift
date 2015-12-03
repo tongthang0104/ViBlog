@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import AVFoundation
+
 
 class VideoCollectionViewCell: UICollectionViewCell {
     
     var blog: Blog?
-    
+    var video: AVPlayer?
     //TODO: Need to add Video Properties
     @IBOutlet weak var captionLabel: UILabel!
     
@@ -19,6 +21,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
         
         self.blog = blog
         self.captionLabel.text = blog.caption
+        
         
         //TODO: Update Video
         

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AVFoundation
 
 class BlogController {
     
@@ -19,7 +20,7 @@ class BlogController {
     }
 
     // create Blog
-    static func createBlog(videoEndPoint: String, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
+    static func createBlog(video: AVPlayer, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
         completion(blog: currentBlog.first, success: true)
     }
     // Blog From Identifier

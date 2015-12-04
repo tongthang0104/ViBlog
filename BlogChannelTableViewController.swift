@@ -1,27 +1,38 @@
 //
-//  BlogsTableViewController.swift
+//  BlogChannelTableViewController.swift
 //  ViBlog
 //
-//  Created by Thang H Tong on 11/16/15.
+//  Created by Thang H Tong on 12/3/15.
 //  Copyright © 2015 Thang. All rights reserved.
 //
 
 import UIKit
 
-class BlogsTableViewController: UITableViewController {
+class BlogChannelTableViewController: UITableViewController {
 
-    let  blogs: [Blog] = []
+    var  blogs: [Blog] = []
+    let users: [User] = []
+    
+    
+    
+    //    lazy var refreshControl: UIRefreshControl = {
+    //        let refreshControl = UIRefreshControl()
+    //        self.tableView.addSubview(refreshControl)
+    //
+    //        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: .ValueChanged)
+    //        return refreshControl
+    //    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        
     }
-
+    
+    @IBAction func userRefreshTableView(sender: UIRefreshControl) {
+        loadBlogChannels(UserController.shareController.currentUser)
+    }
+  
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
@@ -37,35 +48,39 @@ class BlogsTableViewController: UITableViewController {
     }
     
     func loadBlogChannels(user: User) {
-        
+        BlogController.fetchBlogsForUser(user) { (blog) -> Void in
+            if let blog = blog {
+                self.blogs = blog
+                
+                self.tableView.reloadData()
+                self.refreshControl?.endRefreshing()
+
+            }
+        }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return blogs.count
     }
 
-    /*
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("videoBlogCell", forIndexPath: indexPath) as! VideoBlogTableViewCell
+        
+        let blog = blogs[indexPath.row]
+        cell.updateWithBlogs(blog)
 
         return cell
     }
-    */
-
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

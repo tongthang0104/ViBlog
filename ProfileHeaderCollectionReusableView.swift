@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileHeaderCollectionReusableView: UICollectionReusableView {
+class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     
     // MARK: Properties
     
@@ -20,6 +20,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     var user: User?
     var delegate: ProfileHeaderCollectionReusableViewDelegate?
+
     
     // MARK: Action
     
@@ -30,15 +31,16 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     
     @IBAction func avatarButtonTapped(sender: AnyObject) {
-        self.delegate?.avatarButtonTapped(sender)
+      
     }
+   
     
     func updateWithUsers(user: User) {
         self.user = user
         self.nameLabel.text = user.username
-
         
-    
+        
+        
         // set followingLabel = "\(followering.count) followings"
         // set followersLabel = "\(followers.count) followers"
         if user == UserController.shareController.currentUser {
@@ -57,6 +59,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
 protocol ProfileHeaderCollectionReusableViewDelegate {
     func followButtonTapped(sender: UIButton)
-    func avatarButtonTapped(sender: AnyObject)
+    
 }
 

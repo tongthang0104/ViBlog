@@ -11,11 +11,12 @@ import UIKit
 class ProfileHeaderCollectionReusableView: UICollectionReusableView {
     
     // MARK: Properties
-    @IBOutlet weak var selfImage: UIImageView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var avatarButton: UIButton!
     
     var user: User?
     var delegate: ProfileHeaderCollectionReusableViewDelegate?
@@ -26,16 +27,18 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
         self.delegate?.followButtonTapped(sender)
     }
     
+    
+    
+    @IBAction func avatarButtonTapped(sender: AnyObject) {
+        self.delegate?.avatarButtonTapped(sender)
+    }
+    
     func updateWithUsers(user: User) {
         self.user = user
         self.nameLabel.text = user.username
-        self.selfImage = nil
+
         
-        if let selfImage = user.imageEndpoint {
-            ImageController.imageForIdentifier(selfImage) { (image) -> Void in
-                self.selfImage.image = image
-            }
-        }
+    
         // set followingLabel = "\(followering.count) followings"
         // set followersLabel = "\(followers.count) followers"
         if user == UserController.shareController.currentUser {
@@ -54,5 +57,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView {
 
 protocol ProfileHeaderCollectionReusableViewDelegate {
     func followButtonTapped(sender: UIButton)
+    func avatarButtonTapped(sender: AnyObject)
 }
 

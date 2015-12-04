@@ -1043,13 +1043,7 @@
                             <outlet property="delegate" destination="7jK-Sx-zuN" id="WAG-gN-9TM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Editting" id="hXS-Z2-Rvf">
-                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="TYn-Zf-H0C">
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="7jK-Sx-zuN" id="pCT-7O-SjA"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Editting" id="hXS-Z2-Rvf"/>
                     <connections>
                         <outlet property="avatarButton" destination="uKE-i1-vW3" id="16y-uU-Iwb"/>
                         <outlet property="companyTextField" destination="N9A-G7-pe8" id="ZaI-o3-JmD"/>

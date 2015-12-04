@@ -21,7 +21,7 @@ class UserController {
         
         let sampleImageIdentifier = "-K1l4125TYvKMc7rcp5e"
         
-        let user1 = User(username: "superman", password: "1234", email: "superman@yahoo.com")
+        let user1 = User(username: "superman", password: "1234", email: "superman@yahoo.com", identifier: "12312")
         let user2 = User(username: "batman", password: "2345", identifier: "12341424")
         let user3 = User(username: "catwoman", password: "4929", email: "catwoman@yahoo.com")
         let user4 = User(username: "robinhood", password: "23123", email: "robinhood@gmail.com", avatarEndPoint: sampleImageIdentifier, identifier: "31232")

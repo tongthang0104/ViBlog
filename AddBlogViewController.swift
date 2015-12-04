@@ -10,12 +10,18 @@ import UIKit
 
 class AddBlogViewController: UIViewController {
 
+    
+    @IBOutlet weak var captionTextField: UITextField!
+    @IBOutlet weak var videoView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func submitButtonTapped(sender: UIButton) {
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

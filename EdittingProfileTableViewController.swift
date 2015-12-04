@@ -29,7 +29,10 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     }
     
     //MARK: - Action
+    
     @IBAction func submitButtonTapped(sender: UIButton) {
+        
+        // Avatar Picker
         
         self.view.window?.endEditing(true)
         if let avatarImage = avatarImage {
@@ -37,17 +40,33 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
                 if success {
                     self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
-                    let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
-                    failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(failedAlert, animated: true, completion: nil)
+                    self.presentAlert("Failed to upload image", message: "Press OK to dismiss")
                 }
             })
         }
         
-        UserController.updateUser(<#T##user: User##User#>, username: <#T##String#>, email: <#T##String?#>, completion: <#T##(user: User?, success: Bool) -> Void#>)
+        // Edit Profile Information
+        
+        if let usernameTextField = self.usernameTextField.text {
+            UserController.updateUser(self.user!, username: usernameTextField, email: self.emailTextField.text) { (user, success) -> Void in
+                if success {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    self.presentAlert("Failed to updated", message: "Press OK to dismiss")
+                }
+            }
+        }
+        
+        if self.usernameTextField.text == "" || self.emailTextField.text == "" {
+            presentAlert("Missing Information", message: "Please enter a valid information and retry")
+        }
     }
-    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+    
+    // Alert
+    func presentAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func avatarButtonTapped(sender: UIButton) {

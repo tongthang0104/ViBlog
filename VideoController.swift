@@ -16,12 +16,15 @@ class VideoController {
     // upload Videos
     static func uploadVideo(video: AVPlayer, completion: (identifier: String?)-> Void) {
         
-        
+        completion(identifier: "-k12312492hfnasd")
     }
 
     // Video for ID
     static func videoForID(identifier: String, completion: (video: AVPlayer?) -> Void) {
         
+        let filePath = NSBundle.mainBundle().pathForResource("Sample", ofType: ".m4v", inDirectory: "")
+        let url = NSURL(fileURLWithPath: filePath!)
+        completion(video: AVPlayer(URL: url))
     }
     
 }

@@ -11,7 +11,7 @@ import UIKit
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate  {
     
     // MARK: Properties
-    var user: User?
+    var user: User!
     var userBlogs: [Blog] = []
         var avatarImage: UIImage?
     
@@ -23,6 +23,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         self.user = user
         self.title = user.username
         
+        if user != UserController.shareController.currentUser {
+            
+            // as of writing there is no system way to remove a bar button item
+            // disables and hides the button
+            
+            self.navigationItem.rightBarButtonItem?.enabled = false
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
+            
+            self.navigationItem.leftBarButtonItem?.enabled = false
+            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
+        }
+        
         BlogController.blogsForUser(user.username) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
@@ -32,16 +44,27 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-   
-        
-   
         if user == nil {
             user = UserController.shareController.currentUser
         }
        
+        
+        
+        
+        
     }
     
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let identifier = user.identifier {
+        UserController.userForIdentifier(identifier) { (user) -> Void in
+            self.updateWithUser(self.user!)
+            }
+        } else {
+            self.updateWithUser(self.user)
+        }
+    }
     // MARK: -UICollectionDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

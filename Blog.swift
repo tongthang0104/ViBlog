@@ -7,14 +7,16 @@
 //
 
 import Foundation
+import UIKit
 
 class Blog: Equatable {
     
     //MARK: Properties
     
     var videoEndPoint: String
+    
     var username: String
-    var image: String?
+    var avatarEndPoint: String?
     var caption: String?
     var comments: [Comment]
     var like: [Like]
@@ -23,16 +25,16 @@ class Blog: Equatable {
     
     //MARK: Initializer
     
-    init(videoEndPoint: String, username: String, image: String, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
+    init(videoEndPoint: String, username: String = UserController.shareController.currentUser.username, avatarEndPoint: String? = nil, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
         
         self.videoEndPoint = videoEndPoint
         self.username = username
-        self.image = image
         self.caption = caption
         self.comments = comments
         self.like = like
         self.identifier = identifier
         self.timeStamps = timeStamps
+        self.avatarEndPoint = avatarEndPoint
     }
 }
 

@@ -15,16 +15,16 @@ class User: Equatable {
     var username: String
     var password: String
     var email: String?
-    var imageEndpoint: String?
+    var avatarEndpoint: String?
     var identifier: String?
     
     //MARK: Initializer
     
-    init(username: String, password: String, email: String? = nil, image: String? = nil, identifier: String? = nil) {
+    init(username: String, password: String, email: String? = nil, avatarEndPoint: String? = nil, identifier: String? = nil) {
         self.username = username
         self.password = password
         self.email = email
-        self.imageEndpoint = image
+        self.avatarEndpoint = avatarEndPoint
         self.identifier = identifier
     }
 }

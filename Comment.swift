@@ -14,15 +14,15 @@ class Comment {
     
     var username: String
     var text: String
-    var postID: String?
+    var blogID: String?
     var identifier: String?
     
     //MARK: Initializer
     
-    init(username: String, text: String, postID: String? = nil, identifier: String? = nil) {
+    init(username: String, text: String, blogID: String? = nil, identifier: String? = nil) {
         self.username = username
         self.text = text
-        self.postID = postID
+        self.blogID = blogID
         self.identifier = identifier
     }
 }

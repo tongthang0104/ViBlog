@@ -29,13 +29,13 @@ class FriendsTableViewCell: UITableViewCell {
         self.nameLabel.text = user.username
         self.selfImage.image = nil
         
-        if let selfImage = user.imageEndpoint {
+        if let selfImage = user.avatarEndpoint{
             ImageController.imageForIdentifier(selfImage) { (image) -> Void in
                 self.selfImage.image = image
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

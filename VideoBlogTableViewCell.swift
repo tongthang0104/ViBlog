@@ -39,7 +39,7 @@ class VideoBlogTableViewCell: UITableViewCell {
             self.avatarButton.setBackgroundImage(UIImage(named: avatarImage), forState: UIControlState.Normal)
         }
         let playerController = AVPlayerViewController()
-      
+
         self.nameLabel.text = blog.username
         if self.caption == blog.caption {
             self.captionLabel.text = self.caption
@@ -48,6 +48,7 @@ class VideoBlogTableViewCell: UITableViewCell {
         VideoController.videoForID(blog.videoEndPoint) { (video) -> Void in
             playerController.player = video
             playerController.view = self.videoView
+            
         }
         self.likeLabel.text = "\(blog.like.count) likes"
     }

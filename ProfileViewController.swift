@@ -8,11 +8,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate{
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
     // MARK: Properties
     var user: User?
     var userBlogs: [Blog] = []
+    var avatarImage: UIImage?
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // UpdateWithUser
@@ -79,6 +81,43 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
     }
+    
+    
+    func avatarButtonTapped(sender: AnyObject) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let avatarAlert = UIAlertController(title: "Select avatar location", message: nil, preferredStyle: .Alert)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            avatarAlert.addAction(UIAlertAction(title: "Library", style: .Default, handler: { (_) -> Void in
+                imagePicker.sourceType = .PhotoLibrary
+                
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
+        }
+        
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) {
+            avatarAlert.addAction(UIAlertAction(title: "Camera", style: .Default, handler: { (_) -> Void in
+                imagePicker.sourceType = .Camera
+                self.presentViewController(imagePicker, animated: true, completion: nil)
+            }))
+        }
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        picker.dismissViewControllerAnimated(true) { () -> Void in
+            self.view.window?.endEditing(true)
+            if let avatarImage = self.avatarImage {
+                UserController.addAvatar(avatarImage, completion: { (user, success) -> Void in
+                    if success {
+                        
+                    }
+                })
+            }
+        }
+    }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

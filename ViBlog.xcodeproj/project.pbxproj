@@ -25,6 +25,7 @@
 		DE76B25A1BFA95B6002E6293 /* UserSearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */; };
 		DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */; };
 		DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */; };
+		DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */; };
 		DEB364D31C11257A001EBDBC /* Sample.m4v in Resources */ = {isa = PBXBuildFile; fileRef = DEB364D21C11257A001EBDBC /* Sample.m4v */; };
 		DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */; };
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
@@ -74,6 +75,7 @@
 		DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
 		DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBlogTableViewCell.swift; sourceTree = "<group>"; };
+		DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingProfileTableViewController.swift; sourceTree = "<group>"; };
 		DEB364D21C11257A001EBDBC /* Sample.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sample.m4v; sourceTree = "<group>"; };
 		DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogChannelTableViewController.swift; sourceTree = "<group>"; };
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */,
+				DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */,
 				DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */,
 				DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */,
 			);
@@ -416,6 +419,7 @@
 				DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */,
 				DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */,
+				DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */,
 				DE76B2471BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift in Sources */,
 				DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */,
 				DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */,

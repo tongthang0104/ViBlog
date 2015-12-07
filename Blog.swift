@@ -14,7 +14,7 @@ class Blog: Equatable {
     //MARK: Properties
     
     var videoEndPoint: String
-    
+    var videoSnapShot: String
     var username: String
     var avatarEndPoint: String?
     var caption: String?
@@ -25,7 +25,7 @@ class Blog: Equatable {
     
     //MARK: Initializer
     
-    init(videoEndPoint: String, username: String = UserController.shareController.currentUser.username, avatarEndPoint: String? = nil, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
+    init(videoEndPoint: String, videoSnapShot: String, username: String = UserController.shareController.currentUser.username, avatarEndPoint: String? = nil, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
         
         self.videoEndPoint = videoEndPoint
         self.username = username
@@ -35,6 +35,8 @@ class Blog: Equatable {
         self.identifier = identifier
         self.timeStamps = timeStamps
         self.avatarEndPoint = avatarEndPoint
+        self.videoSnapShot = videoSnapShot
+        
     }
 }
 

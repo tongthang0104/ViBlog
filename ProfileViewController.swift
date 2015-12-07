@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: Properties
     var user: User!
     var userBlogs: [Blog] = []
-        var avatarImage: UIImage?
+    var avatarImage: UIImage?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -47,25 +47,42 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         if user == nil {
             user = UserController.shareController.currentUser
         }
-       
-        
-        
-        
-        
+   
+        self.updateBaseOnUser()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
         if let identifier = user.identifier {
-        UserController.userForIdentifier(identifier) { (user) -> Void in
-            self.updateWithUser(self.user!)
+            UserController.userForIdentifier(identifier) { (user) -> Void in
+                self.updateWithUser(self.user!)
             }
         } else {
             self.updateWithUser(self.user)
         }
+        
     }
     // MARK: -UICollectionDataSource
+    
+    func updateBaseOnUser() {
+        guard let user = user else {return}
+        
+        self.title = user.username
+        
+        BlogController.fetchBlogsForUser(user) { (blog) -> Void in
+            if let blogs = blog {
+                self.userBlogs = blogs
+            } else {
+                self.userBlogs = []
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.collectionView.reloadData()
+            })
+        }
+    }
+    
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userBlogs.count
@@ -75,7 +92,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
         let blogs = userBlogs[indexPath.item]
-        item.updateWithBlogs(blogs)
+        item.updateWithBlogs(blogs.videoSnapShot)
         
         return item
     }

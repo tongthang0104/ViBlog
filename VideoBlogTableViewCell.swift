@@ -18,6 +18,7 @@ class VideoBlogTableViewCell: UITableViewCell {
     var caption: String?
     var blog: Blog?
     
+    @IBOutlet weak var videoThumbnailView: UIImageView!
     
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -38,18 +39,20 @@ class VideoBlogTableViewCell: UITableViewCell {
         if let avatarImage = blog.avatarEndPoint {
             self.avatarButton.setBackgroundImage(UIImage(named: avatarImage), forState: UIControlState.Normal)
         }
-        let playerController = AVPlayerViewController()
-
         self.nameLabel.text = blog.username
         if self.caption == blog.caption {
             self.captionLabel.text = self.caption
         }
         
-        VideoController.videoForID(blog.videoEndPoint) { (video) -> Void in
-            playerController.player = video
-            playerController.view = self.videoView
-            
+        self.videoThumbnailView.image = nil
+        
+        ImageController.imageForIdentifier(blog.videoSnapShot) { (image) -> Void in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.videoThumbnailView.image = image
+            })
         }
+//        self.videoThumbnailView.image = UIImage(named: blog.videoSnapShot)
+        
         self.likeLabel.text = "\(blog.like.count) likes"
     }
     

@@ -72,9 +72,9 @@ class BlogController {
         
         
         
-        let blog1 = Blog(videoEndPoint: sampleVideoEndPoint, caption: "hello", comments: [comment1, comment2], like: [like1])
-        let blog2 = Blog(videoEndPoint: sampleVideoEndPoint)
-        let blog3 = Blog(videoEndPoint: sampleVideoEndPoint, caption: "This is mine", comments: [comment2], like: [like1, like2, like3], identifier: "123214")
+        let blog1 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "123123", caption: "hello", comments: [comment1, comment2], like: [like1])
+        let blog2 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "41412")
+        let blog3 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "61233", caption: "This is mine", comments: [comment2], like: [like1, like2, like3], identifier: "123214")
         
         return [blog1, blog2, blog3]
     }

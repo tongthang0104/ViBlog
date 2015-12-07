@@ -10,6 +10,12 @@ import UIKit
 
 class BlogsDetailTableViewController: UITableViewController {
 
+    
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -38,9 +38,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     func updateWithUsers(user: User) {
         self.user = user
         self.nameLabel.text = user.username
-        
-        
-        
         // set followingLabel = "\(followering.count) followings"
         // set followersLabel = "\(followers.count) followers"
         if user == UserController.shareController.currentUser {

@@ -44,11 +44,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if user == nil {
             user = UserController.shareController.currentUser
         }
-   
-        self.updateBaseOnUser()
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,29 +60,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         } else {
             self.updateWithUser(self.user)
         }
-        
     }
-    // MARK: -UICollectionDataSource
-    
-    func updateBaseOnUser() {
-        guard let user = user else {return}
-        
-        self.title = user.username
-        
-        BlogController.fetchBlogsForUser(user) { (blog) -> Void in
-            if let blogs = blog {
-                self.userBlogs = blogs
-            } else {
-                self.userBlogs = []
-            }
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.collectionView.reloadData()
-            })
-        }
-    }
-    
-    
+  
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userBlogs.count
     }
@@ -123,12 +101,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             }
         }
     }
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     // MARK: - Navigation

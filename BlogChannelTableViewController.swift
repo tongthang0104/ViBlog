@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class BlogChannelTableViewController: UITableViewController {
 
@@ -25,6 +26,7 @@ class BlogChannelTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     @IBAction func userRefreshTableView(sender: UIRefreshControl) {

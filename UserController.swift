@@ -50,6 +50,17 @@ class UserController {
     
     static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
         completion(user: mockUsers().first, success: true)
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
     // add image to User
     

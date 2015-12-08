@@ -37,6 +37,7 @@
 		DEE6A15C1BF9838C00009122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A15A1BF9838C00009122 /* LaunchScreen.storyboard */; };
 		DEE6A1671BF9838C00009122 /* ViBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1661BF9838C00009122 /* ViBlogTests.swift */; };
 		DEE6A1721BF9838C00009122 /* ViBlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1711BF9838C00009122 /* ViBlogUITests.swift */; };
+		DEF36E1C1C16527C009C2122 /* BlogCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +94,7 @@
 		DEE6A16D1BF9838C00009122 /* ViBlogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViBlogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1711BF9838C00009122 /* ViBlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViBlogUITests.swift; sourceTree = "<group>"; };
 		DEE6A1731BF9838C00009122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCommentTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 				DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */,
 				DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */,
 				DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */,
+				DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */,
 			);
 			name = Blogs;
 			sourceTree = "<group>";
@@ -406,6 +409,7 @@
 				DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */,
 				DE76B2491BFA8FD8002E6293 /* SignUpLoginViewController.swift in Sources */,
 				DE76B2441BFA8637002E6293 /* FirebaseController.swift in Sources */,
+				DEF36E1C1C16527C009C2122 /* BlogCommentTableViewCell.swift in Sources */,
 				DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */,
 				DE76B2511BFA93E2002E6293 /* FriendsSearchTableViewController.swift in Sources */,
 				DE76B2531BFA942B002E6293 /* AddBlogViewController.swift in Sources */,

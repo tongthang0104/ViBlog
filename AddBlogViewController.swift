@@ -14,6 +14,8 @@ import AVFoundation
 
 class AddBlogViewController: UIViewController {
 
+    var caption: String?
+    var video: NSURL?
     
     @IBOutlet weak var captionTextField: UITextField!
     @IBOutlet weak var videoView: UIView!
@@ -21,8 +23,6 @@ class AddBlogViewController: UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
     }
     
     @IBAction func recordButtonTapped(sender: UIButton) {
@@ -42,16 +42,27 @@ class AddBlogViewController: UIViewController {
         presentViewController(cameraController, animated: true, completion: nil)
         return true
     }
-
+    
     @IBAction func submitButtonTapped(sender: UIButton) {
         
-        
+        self.view.window?.endEditing(true)
+        if let video = video {
+            BlogController.createBlog(video, caption: caption, completion: { (blog, success) -> Void in
+                if blog != nil {
+                    self.dismissViewControllerAnimated(true, completion: nil)
+                } else {
+                    let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
+                    failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(failedAlert, animated: true, completion: nil)
+                }
+            })
+        }
     }
-    
+
     func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
         var title = "Success"
         var message = "Video was saved"
-        if let saveError = error {
+        if let _ = error {
             title = "Error"
             message = "Video failed to save"
         }
@@ -59,23 +70,23 @@ class AddBlogViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
+    
     /*
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    // Get the new view controller using segue.destinationViewController.
+    // Pass the selected object to the new view controller.
     }
     */
-
+    
 }
 extension AddBlogViewController: UIImagePickerControllerDelegate {
     
@@ -91,7 +102,7 @@ extension AddBlogViewController: UIImagePickerControllerDelegate {
                     
                     let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL
                     let asset: AVAsset = AVAsset(URL: urlOfVideo!)
-
+                    
                     let duration: CMTime = asset.duration
                     let snapshot = CMTimeMake(duration.value / 2, duration.timescale)
                     
@@ -105,14 +116,14 @@ extension AddBlogViewController: UIImagePickerControllerDelegate {
                     
                     self.recordButton.setBackgroundImage(thumbnail, forState: .Normal)
                     self.recordButton.setTitle("", forState: .Normal)
-                   
+                    
                     //self.presentViewController(moviePlayers, animated: true, completion: nil)
                     
                 }
             }
         }
     }
-
+    
     
     
     

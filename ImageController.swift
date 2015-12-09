@@ -20,4 +20,6 @@ class ImageController {
         completion(image: UIImage(named: "defaultPhoto"))
     }
     
+//    static func userHasProfilePicture
+    
 }

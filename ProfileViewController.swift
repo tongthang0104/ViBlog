@@ -70,7 +70,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
         let blogs = userBlogs[indexPath.item]
-        item.updateWithBlogs(blogs.videoSnapShot)
+//        item.updateWithBlogs(blogs.videoSnapShot)
         
         return item
     }

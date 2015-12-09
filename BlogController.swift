@@ -16,7 +16,18 @@ class BlogController {
     
     // fetch all Blogs
     static func fetchBlogsForUser(user: User, completion: (blog: [Blog]?) -> Void) {
-        completion(blog: mockBlogs())
+        
+        let query = Blog.query()!
+        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            if error == nil {
+                if let object = objects as? [Blog] {
+                    completion(blog: object)
+                }
+            } else {
+                print(error?.localizedDescription)
+                completion(blog: nil)
+            }
+        }
     }
 
     // create Blog
@@ -60,26 +71,24 @@ class BlogController {
     }
     
 
-    static func mockBlogs() -> [Blog] {
-        
-        let sampleVideoEndPoint = "-k12312492hfnasd"
-        let like1 = Like(username: "superman", blogID: "1234")
-        let like2 = Like(username: "catwoman", blogID: "4566")
-        let like3 = Like(username: "robinhood", blogID: "43212")
-        
-        let comment1 = Comment(username: "robinhood", text: "hello there", blogID: "1234")
-        let comment2 = Comment(username: "catwoman", text: "hi everyone", blogID:  "4566")
-        
-        
-        
-        let blog1 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "123123", caption: "hello", comments: [comment1, comment2], like: [like1])
-        let blog2 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "41412")
-        let blog3 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "61233", caption: "This is mine", comments: [comment2], like: [like1, like2, like3], identifier: "123214")
-        
-        return [blog1, blog2, blog3]
-    }
-    
-    
+//    static func mockBlogs() -> [Blog] {
+//        
+//        let sampleVideoEndPoint = "-k12312492hfnasd"
+//        let like1 = Like(username: "superman", blogID: "1234")
+//        let like2 = Like(username: "catwoman", blogID: "4566")
+//        let like3 = Like(username: "robinhood", blogID: "43212")
+//        
+//        let comment1 = Comment(username: "robinhood", text: "hello there", blogID: "1234")
+//        let comment2 = Comment(username: "catwoman", text: "hi everyone", blogID:  "4566")
+//        
+//        
+////        
+//        let blog1 = Blog(image: <#T##PFFile#>, user: <#T##PFUser#>, caption: <#T##String?#>, comments: <#T##String?#>, like: <#T##String?#>, identifier: <#T##String?#>)
+//        let blog2 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "41412")
+//        let blog3 = Blog(videoEndPoint: sampleVideoEndPoint, videoSnapShot: "61233", caption: "This is mine", comments: [comment2], like: [like1, like2, like3], identifier: "123214")
+//        
+//        return [blog1, blog2, blog3]
+//    }
     
     
 }

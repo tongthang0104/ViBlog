@@ -13,6 +13,7 @@ class UserController {
     
     static let shareController = UserController()
     
+    var current = PFUser.currentUser()
     var currentUser: User! = nil
     static let user: User = User()
     
@@ -26,9 +27,9 @@ class UserController {
     
     static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         var query: PFQuery = PFQuery(className: "User")
-        query.findObjectsInBackgroundWithBlock { (<#[PFObject]?#>, <#NSError?#>) -> Void in
-            <#code#>
-        }
+//        query.findObjectsInBackgroundWithBlock { (<#[PFObject]?#>, <#NSError?#>) -> Void in
+//            <#code#>
+//        }
         user.objectId = identifier
         query.getObjectInBackgroundWithId(identifier, block: { (user, error) -> Void in
             if let error = error {

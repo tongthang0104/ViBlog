@@ -10,12 +10,18 @@ import Foundation
 import Parse
 
 class User: PFUser {
+  
     
-    //MARK: Properties
-    var users = PFUser()
-    
-    @NSManaged var avatarEndpoint: String?
+    @NSManaged var avatarEndpoint: PFFile?
 
+    init(avatarEndpoint: PFFile) {
+        super.init()
+        self.avatarEndpoint = avatarEndpoint
+    }
+    
+    override init() {
+        super.init()
+    }
     
     //MARK: Initializer
     class func initalize() {

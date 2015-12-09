@@ -23,11 +23,11 @@ class VideoCollectionViewCell: UICollectionViewCell {
         self.videoThumbnails.image = nil
         self.captionLabel.text = blog!.caption
         
-        ImageController.imageForIdentifier(identifier) { (image) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.videoThumbnails.image = image
-            })
-        }
+//        ImageController.imageForIdentifier(identifier) { (image) -> Void in
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                self.videoThumbnails.image = image
+//            })
+//        }
         
         //TODO: Update Video
         

@@ -25,7 +25,7 @@ class Blog: Equatable {
     
     //MARK: Initializer
     
-    init(videoEndPoint: String, videoSnapShot: String, username: String = UserController.shareController.currentUser.username, avatarEndPoint: String? = nil, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
+    init(videoEndPoint: String, videoSnapShot: String, username: String = UserController.shareController.currentUser.username!, avatarEndPoint: String? = nil, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
         
         self.videoEndPoint = videoEndPoint
         self.username = username

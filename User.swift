@@ -7,28 +7,27 @@
 //
 
 import Foundation
+import Parse
 
-class User: Equatable {
+class User: PFUser {
     
     //MARK: Properties
+    var users = PFUser()
     
-    var username: String
-    var password: String
-    var email: String?
-    var avatarEndpoint: String?
-    var identifier: String?
+    @NSManaged var avatarEndpoint: String?
+
     
     //MARK: Initializer
-    
-    init(username: String, password: String, email: String? = nil, avatarEndPoint: String? = nil, identifier: String? = nil) {
-        self.username = username
-        self.password = password
-        self.email = email
-        self.avatarEndpoint = avatarEndPoint
-        self.identifier = identifier
+    class func initalize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
     }
 }
 
-func ==(lhs: User, rhs: User) -> Bool{
-    return (lhs.identifier == rhs.identifier) && (lhs.username == rhs.username)
-}
+//func ==(lhs: User, rhs: User) -> Bool{
+//    return (lhs.identifier == rhs.identifier) && (lhs.username == rhs.username)
+//}

@@ -110,7 +110,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="sTk-dn-Tlt">
-                            <rect key="frame" x="0.0" y="64" width="600" height="375"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMn-gD-mzM">
@@ -164,7 +164,7 @@
                             </constraints>
                         </view>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lAF-oZ-tg5">
-                            <rect key="frame" x="0.0" y="511" width="600" height="65"/>
+                            <rect key="frame" x="0.0" y="447" width="600" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" title="Add Comments"/>
@@ -174,7 +174,7 @@
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="cfv-7d-1oF" customClass="BlogCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="403" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cfv-7d-1oF" id="dMa-Gw-Rla">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -322,9 +322,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W0-TU-R2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-586" y="-2248"/>
+            <point key="canvasLocation" x="-1418" y="-2960"/>
         </scene>
-        <!--Title-->
+        <!--Sign Up Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SignUpLoginViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
@@ -428,7 +428,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="RYc-Pu-umY" secondAttribute="trailing" id="uYx-8n-XJn"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="rBr-13-F06"/>
+                    <navigationItem key="navigationItem" id="rBr-13-F06"/>
                     <connections>
                         <outlet property="emailLabel" destination="p6u-7t-y6d" id="IT9-C0-7xA"/>
                         <outlet property="emailTextField" destination="xiS-us-IT8" id="Efu-Xu-bD4"/>
@@ -439,7 +439,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="127" y="-2248"/>
+            <point key="canvasLocation" x="-465" y="-2880"/>
         </scene>
         <!--Camera-->
         <scene sceneID="gcS-sL-ZG9">
@@ -678,7 +678,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EhY-Ll-O9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2126" y="-2248"/>
+            <point key="canvasLocation" x="-2374" y="-3000"/>
         </scene>
         <!--Blog Channel Table View Controller-->
         <scene sceneID="rxr-8m-Tmg">
@@ -818,7 +818,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="272" width="210" height="198"/>
+                                <rect key="frame" x="0.0" y="208" width="210" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="210" height="198"/>
@@ -872,7 +872,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="600" height="208"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="IDF-TO-6Lw">

@@ -58,7 +58,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         guard let searchTerm = searchController.searchBar.text?.lowercaseString else {return}
         let resultsViewController = searchController.searchResultsController as! UserSearchResultTableViewController
-        resultsViewController.filterUsers = UserController.mockUsers().filter({$0.username.lowercaseString.containsString(searchTerm)})
+        resultsViewController.filterUsers = self.userDataSource.filter({$0.username!.lowercaseString.containsString(searchTerm)})
         resultsViewController.tableView.reloadData()
     }
     

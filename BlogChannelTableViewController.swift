@@ -15,15 +15,6 @@ class BlogChannelTableViewController: UITableViewController {
     let users: [User] = []
     
     
-    
-    //    lazy var refreshControl: UIRefreshControl = {
-    //        let refreshControl = UIRefreshControl()
-    //        self.tableView.addSubview(refreshControl)
-    //
-    //        self.refreshControl?.addTarget(self, action: "handleRefresh:", forControlEvents: .ValueChanged)
-    //        return refreshControl
-    //    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,26 +28,29 @@ class BlogChannelTableViewController: UITableViewController {
         super.viewWillAppear(true)
         
         // Check if there is User, if there is no user, go to SignUpLoginPickerView
-        if let currentUser = UserController.shareController.currentUser {
-            if blogs.count > 0 {
+        if let currentUser = PFUser.currentUser() {
+            if currentUser.authenticated {
                 loadBlogChannels(currentUser)
             }
+//            if blogs.count > 0 {
+//                loadBlogChannels(currentUser)
+//            }
             
         } else {
             tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
         }
     }
     
-    func loadBlogChannels(user: User) {
-        BlogController.fetchBlogsForUser(user) { (blog) -> Void in
-            if let blog = blog {
-                self.blogs = blog
-                
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
-
-            }
-        }
+    func loadBlogChannels(user: PFUser) {
+//        BlogController.fetchBlogsForUser(user) { (blog) -> Void in
+//            if let blog = blog {
+//                self.blogs = blog
+//                
+//                self.tableView.reloadData()
+//                self.refreshControl?.endRefreshing()
+//
+//            }
+//        }
     }
     
     override func didReceiveMemoryWarning() {

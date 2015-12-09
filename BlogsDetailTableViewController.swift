@@ -66,15 +66,15 @@ class BlogsDetailTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return blog.comments.count
+        return 10
     }
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
 
-        let comment = blog.comments[indexPath.row]
-        cell.updateWithComment(comment)
+//        let comment = blog.comments![indexPath.row]
+        cell.textLabel?.text = blog.user.username
         return cell
     }
 

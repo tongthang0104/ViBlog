@@ -9,37 +9,54 @@
 import Foundation
 import UIKit
 
-class Blog: Equatable {
+class Blog: PFObject, PFSubclassing {
     
     //MARK: Properties
     
-    var videoEndPoint: String
-    var videoSnapShot: String
-    var username: String
-    var avatarEndPoint: String?
-    var caption: String?
-    var comments: [Comment]
-    var like: [Like]
-    var identifier: String?
-    var timeStamps: NSDate?
+//    @NSManaged var videoEndPoint: String
+    
+    @NSManaged var image: PFFile
+    @NSManaged var user: PFUser
+    @NSManaged var caption: String?
+    @NSManaged var comments: String?
+    @NSManaged var like: String?
+    @NSManaged var identifier: String?
+    @NSManaged var timeStamps: NSDate?
+    
+    override class func query() -> PFQuery? {
+        let query = PFQuery(className: Blog.parseClassName())
+        query.includeKey("user")
+        query.orderByAscending("createdAt")
+        return query
+    }
     
     //MARK: Initializer
     
-    init(videoEndPoint: String, videoSnapShot: String, username: String = UserController.shareController.currentUser.username!, avatarEndPoint: String? = nil, caption: String? = nil, comments: [Comment] = [], like: [Like] = [], identifier: String? = nil, timeStamps: NSDate? = nil) {
+    class func parseClassName() -> String {
+        return "Blog"
+    }
+    class func initalize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    init(image: PFFile, user: PFUser, caption: String?, comments: String?, like: String?, identifier: String?, timeStamps: NSDate? = nil) {
+        super.init()
         
-        self.videoEndPoint = videoEndPoint
-        self.username = username
+//        self.videoEndPoint = videoEndPoint
         self.caption = caption
         self.comments = comments
         self.like = like
         self.identifier = identifier
         self.timeStamps = timeStamps
-        self.avatarEndPoint = avatarEndPoint
-        self.videoSnapShot = videoSnapShot
-        
+        self.image = image
     }
-}
-
-func ==(lhs: Blog, rhs: Blog) -> Bool{
-    return (lhs.identifier == rhs.identifier) && (lhs.username == rhs.username)
+    
+    override init() {
+        super.init()
+    }
 }

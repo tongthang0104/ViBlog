@@ -36,24 +36,22 @@ class VideoBlogTableViewCell: UITableViewCell {
     func updateWithBlogs(blog: Blog) {
         self.blog = blog
         
-        if let avatarImage = blog.avatarEndPoint {
-            self.avatarButton.setBackgroundImage(UIImage(named: avatarImage), forState: UIControlState.Normal)
-        }
-        self.nameLabel.text = blog.username
+    
+        self.nameLabel.text = blog.user.username
         if self.caption == blog.caption {
             self.captionLabel.text = self.caption
         }
         
-        self.videoThumbnailView.image = nil
+//        self.videoThumbnailView.image = nil
         
-        ImageController.imageForIdentifier(blog.videoSnapShot) { (image) -> Void in
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.videoThumbnailView.image = image
-            })
-        }
+//        ImageController.imageForIdentifier(blog.videoSnapShot) { (image) -> Void in
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                self.videoThumbnailView.image = image
+//            })
+//        }
 //        self.videoThumbnailView.image = UIImage(named: blog.videoSnapShot)
         
-        self.likeLabel.text = "\(blog.like.count) likes"
+//        self.likeLabel.text = "\(blog.like!.count) likes"
     }
     
     override func awakeFromNib() {

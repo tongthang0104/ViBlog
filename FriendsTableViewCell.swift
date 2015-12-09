@@ -30,9 +30,9 @@ class FriendsTableViewCell: UITableViewCell {
         self.selfImage.image = nil
         
         if let selfImage = user.avatarEndpoint{
-            ImageController.imageForIdentifier(selfImage) { (image) -> Void in
-                self.selfImage.image = image
-            }
+//            ImageController.imageForIdentifier(selfImage) { (image) -> Void in
+//                self.selfImage.image = image
+//            }
         }
     }
 

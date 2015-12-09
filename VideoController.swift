@@ -14,7 +14,7 @@ class VideoController {
     
 
     // upload Videos
-    static func uploadVideo(video: AVPlayer, completion: (identifier: String?)-> Void) {
+    static func uploadVideo(video: PFFile, completion: (identifier: String?)-> Void) {
         
         completion(identifier: "-k12312492hfnasd")
     }

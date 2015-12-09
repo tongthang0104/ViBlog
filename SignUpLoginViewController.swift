@@ -27,9 +27,6 @@ class SignUpLoginViewController: UIViewController {
         case Signup
     }
     var mode: ViewMode = .Signup
-  
-    
-    
     
     var isValidOrNot: Bool {
         get {
@@ -128,4 +125,14 @@ class SignUpLoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
   
+}
+
+extension SignUpLoginViewController: UITextFieldDelegate {
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+     textField.resignFirstResponder()
+        return true
+        
+    }
 }

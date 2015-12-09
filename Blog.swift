@@ -13,15 +13,13 @@ class Blog: PFObject, PFSubclassing {
     
     //MARK: Properties
     
-//    @NSManaged var videoEndPoint: String
-    
-    @NSManaged var image: PFFile
+    @NSManaged var video: PFFile
     @NSManaged var user: PFUser
     @NSManaged var caption: String?
-    @NSManaged var comments: String?
-    @NSManaged var like: String?
-    @NSManaged var identifier: String?
-    @NSManaged var timeStamps: NSDate?
+//    @NSManaged var comments: String?
+//    @NSManaged var like: String?
+//    @NSManaged var identifier: String?
+//    @NSManaged var timeStamps: NSDate?
     
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Blog.parseClassName())
@@ -44,16 +42,17 @@ class Blog: PFObject, PFSubclassing {
         }
     }
     
-    init(image: PFFile, user: PFUser, caption: String?, comments: String?, like: String?, identifier: String?, timeStamps: NSDate? = nil) {
+    init(video: PFFile, user: PFUser, caption: String?) {
         super.init()
         
-//        self.videoEndPoint = videoEndPoint
+
+        self.video = video
         self.caption = caption
-        self.comments = comments
-        self.like = like
-        self.identifier = identifier
-        self.timeStamps = timeStamps
-        self.image = image
+//        self.comments = comments
+//        self.like = like
+//        self.identifier = identifier
+//        self.timeStamps = timeStamps
+//        self.image = image
     }
     
     override init() {

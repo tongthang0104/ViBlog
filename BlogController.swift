@@ -31,9 +31,19 @@ class BlogController {
     }
 
     // create Blog
-    static func createBlog(video: NSURL, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
-        completion(blog: currentBlog.first, success: true)
+    static func createBlog(video: PFFile, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
+      
+        let blog = Blog(video: video, user: PFUser.currentUser()!, caption: caption)
+        blog.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                completion(blog: blog, success: true)
+            } else {
+                print(error?.localizedDescription)
+                completion(blog: nil, success: false)
+            }
+        }
     }
+    
     // Blog From Identifier
     static func blogFromIdentifier(identifier: String, completion: (blog: Blog?) -> Void) {
         completion(blog: currentBlog.first)

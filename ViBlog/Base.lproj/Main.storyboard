@@ -345,19 +345,19 @@
                                 <rect key="frame" x="20" y="257.5" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your password here...." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sfs-9i-2ed">
                                 <rect key="frame" x="20" y="338" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="My Email is here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xiS-us-IT8">
                                 <rect key="frame" x="20" y="418" width="560" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgE-PH-P6a">
                                 <rect key="frame" x="20" y="309.5" width="560" height="20.5"/>
@@ -385,7 +385,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fDs-Zz-W7v">
-                                <rect key="frame" x="20" y="192" width="560" height="41"/>
+                                <rect key="frame" x="20" y="474" width="560" height="41"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <state key="normal" title="Button"/>
@@ -413,14 +413,14 @@
                             <constraint firstItem="sfs-9i-2ed" firstAttribute="height" secondItem="RYc-Pu-umY" secondAttribute="height" id="RxD-BR-pLc"/>
                             <constraint firstAttribute="leadingMargin" secondItem="qOf-e5-OQs" secondAttribute="leading" id="VNi-6i-bgS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qOf-e5-OQs" secondAttribute="trailing" id="VUL-4p-f23"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fDs-Zz-W7v" secondAttribute="bottom" constant="367" id="Xdb-cQ-3Gq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="fDs-Zz-W7v" secondAttribute="bottom" constant="85" id="Xdb-cQ-3Gq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="qgE-PH-P6a" secondAttribute="trailing" id="YY4-ga-uix"/>
                             <constraint firstAttribute="leadingMargin" secondItem="p6u-7t-y6d" secondAttribute="leading" id="aok-aK-UKT"/>
                             <constraint firstItem="XZs-e5-kRc" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="bIB-zW-U31"/>
                             <constraint firstItem="RYc-Pu-umY" firstAttribute="top" secondItem="qOf-e5-OQs" secondAttribute="bottom" constant="8" id="cIH-nW-Seu"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xiS-us-IT8" secondAttribute="trailing" id="hH1-Mj-hwq"/>
                             <constraint firstAttribute="leadingMargin" secondItem="sfs-9i-2ed" secondAttribute="leading" id="hnK-nX-Dgd"/>
-                            <constraint firstItem="fDs-Zz-W7v" firstAttribute="top" secondItem="XZs-e5-kRc" secondAttribute="bottom" constant="-9" id="kHp-MG-3NM"/>
+                            <constraint firstItem="fDs-Zz-W7v" firstAttribute="top" secondItem="XZs-e5-kRc" secondAttribute="bottom" constant="273" id="kHp-MG-3NM"/>
                             <constraint firstAttribute="trailingMargin" secondItem="p6u-7t-y6d" secondAttribute="trailing" id="rj5-NT-32a"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fDs-Zz-W7v" secondAttribute="trailing" id="sHo-mb-nIo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RYc-Pu-umY" secondAttribute="trailing" id="uYx-8n-XJn"/>

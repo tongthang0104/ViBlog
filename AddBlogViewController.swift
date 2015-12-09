@@ -18,6 +18,8 @@ class AddBlogViewController: UIViewController {
     var caption: String?
     var video: PFFile?
     
+    var videoOfUrl: NSURL?
+    
     @IBOutlet weak var captionTextField: UITextField!
     @IBOutlet weak var videoView: UIView!
     
@@ -45,35 +47,29 @@ class AddBlogViewController: UIViewController {
     }
     
     @IBAction func submitButtonTapped(sender: UIButton) {
-        //        let file = PFFile(name: "image", data: pictureData!)
-        //        file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-        //            if succeeded {
-        //                //2
-        //                self.saveWallPost(file)
-        //            } else if let error = error {
-        //                //3
-        //                self.showErrorView(error)
-        //            }
-        //            }, progressBlock: { percent in
-        //                //4
-        //                print("Uploaded: \(percent)%")
-        //        })
-        //    }
         
+        let file = PFFile(name: "Video", data: NSData(contentsOfURL: self.videoOfUrl!)!)
+        
+        file?.saveInBackgroundWithBlock({ (success, error) -> Void in
+            if success {
+                    BlogController.createBlog(file!, user: PFUser.currentUser()!,caption: self.captionTextField.text, completion: { (blog, success) -> Void in
+                        if blog != nil {
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        } else {
+                            let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
+                            failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                            self.presentViewController(failedAlert, animated: true, completion: nil)
+                        }
+                    })
+                
+            } else {
+                print(error?.localizedDescription)
+            }
+            
+            }, progressBlock: { percent in
+                print("Upload: \(percent)%")
+        })
         self.view.window?.endEditing(true)
-        
-        
-        if let video = video {
-            BlogController.createBlog(video, caption: caption, completion: { (blog, success) -> Void in
-                if blog != nil {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
-                    failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(failedAlert, animated: true, completion: nil)
-                }
-            })
-        }
     }
     
     func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
@@ -96,7 +92,7 @@ class AddBlogViewController: UIViewController {
     func playBackgroundMovie(url: NSURL){
         
         self.recordButton.setTitle("", forState: .Normal)
-//        self.recordButton.removeFromSuperview()
+        //        self.recordButton.removeFromSuperview()
         
         aPlayer = AVPlayer(URL: url)
         
@@ -129,6 +125,7 @@ class AddBlogViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+        
     }
     
     
@@ -155,8 +152,11 @@ extension AddBlogViewController: UIImagePickerControllerDelegate {
                     UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
                     
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
+                        self.videoOfUrl = urlOfVideo
                         let asset: AVAsset = AVAsset(URL: urlOfVideo)
+                        
                         self.playBackgroundMovie(urlOfVideo)
+                        
                         let duration: CMTime = asset.duration
                         let snapshot = CMTimeMake(duration.value / 2, duration.timescale)
                         

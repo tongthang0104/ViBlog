@@ -35,7 +35,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
         }
         
-        BlogController.blogsForUser(user.username) { (blogs) -> Void in
+        BlogController.blogsForUser(user.username!) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
                 self.collectionView.reloadData()
@@ -53,12 +53,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let identifier = user.identifier {
-            UserController.userForIdentifier(identifier) { (user) -> Void in
+//        if let identifier = user.objectId {
+            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
                 self.updateWithUser(self.user!)
-            }
-        } else {
-            self.updateWithUser(self.user)
+//            }
+//        } else {
+//            self.updateWithUser(self.user)
         }
     }
   

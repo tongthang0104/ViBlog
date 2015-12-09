@@ -32,7 +32,6 @@
 		DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B23D1BFA8614002E6293 /* UserController.swift */; };
 		DE76B2401BFA861D002E6293 /* BlogController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B23F1BFA861D002E6293 /* BlogController.swift */; };
 		DE76B2421BFA8626002E6293 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2411BFA8626002E6293 /* VideoController.swift */; };
-		DE76B2441BFA8637002E6293 /* FirebaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2431BFA8637002E6293 /* FirebaseController.swift */; };
 		DE76B2471BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2461BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift */; };
 		DE76B2491BFA8FD8002E6293 /* SignUpLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2481BFA8FD8002E6293 /* SignUpLoginViewController.swift */; };
 		DE76B24F1BFA93B5002E6293 /* BlogsDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */; };
@@ -90,6 +89,7 @@
 		DE086B7A1C178A0D0091E34F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		DE086B7C1C178A1A0091E34F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		DE086B801C179B160091E34F /* ViBlog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViBlog-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE76B2351BFA85D6002E6293 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -99,7 +99,6 @@
 		DE76B23D1BFA8614002E6293 /* UserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		DE76B23F1BFA861D002E6293 /* BlogController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogController.swift; sourceTree = "<group>"; wrapsLines = 1; };
 		DE76B2411BFA8626002E6293 /* VideoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
-		DE76B2431BFA8637002E6293 /* FirebaseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirebaseController.swift; sourceTree = "<group>"; };
 		DE76B2461BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpLoginPickerViewController.swift; sourceTree = "<group>"; };
 		DE76B2481BFA8FD8002E6293 /* SignUpLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpLoginViewController.swift; sourceTree = "<group>"; };
 		DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogsDetailTableViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +173,7 @@
 		DE086B5F1C1789820091E34F /* Framework */ = {
 			isa = PBXGroup;
 			children = (
+				DE086B801C179B160091E34F /* ViBlog-Bridging-Header.h */,
 				DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */,
 				DE086B7C1C178A1A0091E34F /* libz.tbd */,
 				DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */,
@@ -217,7 +217,6 @@
 				DEC22B031C03FD36001DEAD7 /* ImageController.swift */,
 				DE76B23F1BFA861D002E6293 /* BlogController.swift */,
 				DE76B2411BFA8626002E6293 /* VideoController.swift */,
-				DE76B2431BFA8637002E6293 /* FirebaseController.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -472,7 +471,6 @@
 			files = (
 				DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */,
 				DE76B2491BFA8FD8002E6293 /* SignUpLoginViewController.swift in Sources */,
-				DE76B2441BFA8637002E6293 /* FirebaseController.swift in Sources */,
 				DEF36E1C1C16527C009C2122 /* BlogCommentTableViewCell.swift in Sources */,
 				DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */,
 				DE76B2511BFA93E2002E6293 /* FriendsSearchTableViewController.swift in Sources */,
@@ -636,6 +634,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",
@@ -644,6 +643,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TaTo.ViBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ViBlog-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -651,6 +652,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",
@@ -659,6 +661,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TaTo.ViBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "ViBlog-Bridging-Header.h";
 			};
 			name = Release;
 		};

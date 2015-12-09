@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Parse
 
 class SignUpLoginViewController: UIViewController {
     
     //MARK: Properties
+    var user: PFUser?
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -24,6 +27,9 @@ class SignUpLoginViewController: UIViewController {
         case Signup
     }
     var mode: ViewMode = .Signup
+  
+    
+    
     
     var isValidOrNot: Bool {
         get {
@@ -49,27 +55,56 @@ class SignUpLoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.updateWithMode(mode)
-    }
+        }
     
     //MARK: Action
     
+
+
     @IBAction func loginSignupButtonTapped(sender: UIButton) {
+        
+        //Activity Indicator View
+        
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.activityIndicatorViewStyle = .Gray
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+
         if isValidOrNot {
             switch mode {
             case .Login:
                 UserController.authenticateUsers(usernameTextField.text!, password: passwordTextField.text!, completion: { (user, success) -> Void in
+                    
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    
                     if success {
+                        
+                        print("success")
                         self.dismissViewControllerAnimated(true, completion: nil)
+//                        self.performSegueWithIdentifier("showViBlog", sender: self)
+                        
                     } else {
                         self.alertNotification("Invalid Information", message: "Please check your information and try again")
                     }
                 })
             case .Signup:
+                
                 UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success) -> Void in
+                    
+                    self.activityIndicator.stopAnimating()
+                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                    
                     if success {
                         self.dismissViewControllerAnimated(true, completion: nil)
                         
+                       
+
                         // If success maybe lead user to Login Mode so he can login or automatically logging in
                     } else if (self.passwordTextField.text?.characters.count <= 5){
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")

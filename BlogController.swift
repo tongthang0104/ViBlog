@@ -31,9 +31,9 @@ class BlogController {
     }
 
     // create Blog
-    static func createBlog(video: PFFile, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
+    static func createBlog(video: PFFile, user: PFUser, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
       
-        let blog = Blog(video: video, user: PFUser.currentUser()!, caption: caption)
+        let blog = Blog(video: video, user: user, caption: caption)
         blog.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
                 completion(blog: blog, success: true)

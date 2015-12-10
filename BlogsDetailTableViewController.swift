@@ -45,10 +45,6 @@ class BlogsDetailTableViewController: UITableViewController {
 
     @IBAction func addCommentButtonTapped(sender: UIButton) {
         
-        
-        
-        
-        
     }
 
     

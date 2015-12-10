@@ -15,22 +15,56 @@ import Parse
 
 class AddBlogViewController: UIViewController {
     
-    var caption: String?
+    // MARK: - Properties
+    
     var video: PFFile?
-    
     var videoOfUrl: NSURL?
-    
     @IBOutlet weak var captionTextField: UITextField!
     @IBOutlet weak var videoView: UIView!
-    
     @IBOutlet weak var recordButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
+    // MARK: - Action
+    
     @IBAction func recordButtonTapped(sender: UIButton) {
         self.startCameraRecord(self, withDelegate: self)
     }
+    
+    @IBAction func submitButtonTapped(sender: UIButton) {
+        
+        if let videoOfUrl = self.videoOfUrl {
+            guard let data = NSData(contentsOfURL: videoOfUrl) else {return}
+            let file = PFFile(name: "Video", data: data)
+            
+            file?.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if success {
+                    guard let currentUser = UserController.shareController.current else {return}
+                    BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
+                        if blog != nil {
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        } else {
+                            let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
+                            failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                            self.presentViewController(failedAlert, animated: true, completion: nil)
+                        }
+                    })
+                    
+                } else {
+                    print(error?.localizedDescription)
+                }
+                }, progressBlock: { percent in
+                    print("Upload: \(percent)%")
+            })
+            self.view.window?.endEditing(true)
+        } else {
+            self.presentAlert("No video Added", message: "Record your video and share")
+        }
+    }
+    
+    // MARK: Video Record
     
     func startCameraRecord(view: UIViewController, withDelegate delegate: protocol<UIImagePickerControllerDelegate, UINavigationControllerDelegate>) -> Bool {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) == false {
@@ -46,32 +80,6 @@ class AddBlogViewController: UIViewController {
         return true
     }
     
-    @IBAction func submitButtonTapped(sender: UIButton) {
-        
-        let file = PFFile(name: "Video", data: NSData(contentsOfURL: self.videoOfUrl!)!)
-        
-        file?.saveInBackgroundWithBlock({ (success, error) -> Void in
-            if success {
-                    BlogController.createBlog(file!, user: PFUser.currentUser()!,caption: self.captionTextField.text, completion: { (blog, success) -> Void in
-                        if blog != nil {
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                        } else {
-                            let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
-                            failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                            self.presentViewController(failedAlert, animated: true, completion: nil)
-                        }
-                    })
-                
-            } else {
-                print(error?.localizedDescription)
-            }
-            
-            }, progressBlock: { percent in
-                print("Upload: \(percent)%")
-        })
-        self.view.window?.endEditing(true)
-    }
-    
     func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
         
         var title = "Success"
@@ -80,26 +88,30 @@ class AddBlogViewController: UIViewController {
             title = "Error"
             message = "Video failed to save"
         }
+        self.presentAlert(title, message: message)
+    }
+    
+    //MARK: - Present Alert
+    
+    func presentAlert(title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
         presentViewController(alert, animated: true, completion: nil)
     }
     
-    // MARK: -AVPlayerViewController
+    // MARK: - AVPlayerViewController
     
-    var aPlayer = AVPlayer()
+    var avPlayer = AVPlayer()
     
     func playBackgroundMovie(url: NSURL){
         
         self.recordButton.setTitle("", forState: .Normal)
-        //        self.recordButton.removeFromSuperview()
-        
-        aPlayer = AVPlayer(URL: url)
+        avPlayer = AVPlayer(URL: url)
         
         let moviePlayer = AVPlayerViewController()
         self.addChildViewController(moviePlayer)
         
-        moviePlayer.player = aPlayer
+        moviePlayer.player = avPlayer
         moviePlayer.view.bounds = self.videoView.bounds
         moviePlayer.view.center = self.videoView.center
         moviePlayer.view.frame = CGRectMake(0, 0, self.videoView.frame.size.width, self.videoView.frame.size.height)
@@ -107,27 +119,25 @@ class AddBlogViewController: UIViewController {
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
         
-        aPlayer.play()
+        avPlayer.play()
         videoView.addSubview(moviePlayer.view)
         
         NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "playerItemDidReachEnd",
+            selector: "playerReachedEnd",
             name: AVPlayerItemDidPlayToEndTimeNotification,
             object: nil)
     }
     
-    func playerItemDidReachEnd()
-    {
-        aPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
-        aPlayer.play()
+    func playerReachedEnd() {
+        avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
+        avPlayer.play()
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
         
     }
-    
     
     /*
     // MARK: - Navigation
@@ -138,9 +148,9 @@ class AddBlogViewController: UIViewController {
     // Pass the selected object to the new view controller.
     }
     */
-    
 }
-extension AddBlogViewController: UIImagePickerControllerDelegate {
+
+extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
@@ -149,25 +159,18 @@ extension AddBlogViewController: UIImagePickerControllerDelegate {
         if mediaType == kUTTypeMovie {
             if let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path {
                 if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
+                    
+                    // Save to Library
                     UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
                     
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
                         self.videoOfUrl = urlOfVideo
-                        let asset: AVAsset = AVAsset(URL: urlOfVideo)
                         
+                        // Play Video
                         self.playBackgroundMovie(urlOfVideo)
                         
-                        let duration: CMTime = asset.duration
-                        let snapshot = CMTimeMake(duration.value / 2, duration.timescale)
-                        
-                        let generator = AVAssetImageGenerator(asset: asset)
-                        let imageRef: CGImageRef = try! generator.copyCGImageAtTime(snapshot, actualTime: nil)
-                        
-                        let thumbnail: UIImage = UIImage(CGImage: imageRef)
-                        let data = UIImageJPEGRepresentation(thumbnail, 0.8)
-                        //let data = UIImagePNGRepresentation(thumbnail)
-                        let directory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
-                        data?.writeToFile(directory, atomically: true)
+                        // Take snapshot
+                       VideoController.takeSnapshot(urlOfVideo)
                     }
                 }
             }
@@ -175,6 +178,9 @@ extension AddBlogViewController: UIImagePickerControllerDelegate {
     }
 }
 
-extension AddBlogViewController: UINavigationControllerDelegate {
+extension AddBlogViewController: UITextFieldDelegate {
     
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
 }

@@ -15,17 +15,15 @@ class BlogController {
     static var currentBlog: [Blog] = []
     
     // fetch all Blogs
-    static func fetchBlogsForUser(user: User, completion: (blog: [Blog]?) -> Void) {
+    static func fetchBlogsForUser(user: PFUser, completion: (blog: [Blog]?) -> Void) {
         
         let query = Blog.query()!
-        query.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
-            if error == nil {
-                if let object = objects as? [Blog] {
-                    completion(blog: object)
-                }
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let object = object as? [Blog] {
+                completion(blog: object)
             } else {
-                print(error?.localizedDescription)
                 completion(blog: nil)
+                print(error?.localizedDescription)
             }
         }
     }
@@ -71,7 +69,6 @@ class BlogController {
             }
         })
     }
-    
     
     // remove Blog
     static func removeBlog(blog: Blog?, completion: (success: Bool) -> Void) {

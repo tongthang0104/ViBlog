@@ -47,25 +47,34 @@ class BlogController {
     // Blog From Identifier
     static func blogFromIdentifier(identifier: String, completion: (blog: Blog?) -> Void) {
         
-        
-        
-        
-        
-        
-        
-        completion(blog: currentBlog.first)
-    }
+        let blogQuery = Blog.query()
+        blogQuery?.getObjectInBackgroundWithId(identifier, block: { (object, error) -> Void in
+            if let object = object as? Blog {
+                
+                completion(blog: object)
+            } else {
+                completion(blog: nil)
+                print(error?.localizedDescription)
+            }
+        })
+}
     
-    static func blogsForUser(username: String, completion: (blogs: [Blog]?) -> Void) {
-        completion(blogs: currentBlog)
+    static func blogsForUser(userID: String, completion: (blogs: [Blog]?) -> Void) {
+        
+        let query = PFUser.query()
+        query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+            if let object = object as? [Blog] {
+                completion(blogs: object)
+            } else {
+                completion(blogs: nil)
+                print(error?.localizedDescription)
+            }
+        })
     }
     
     
     // remove Blog
     static func removeBlog(blog: Blog?, completion: (success: Bool) -> Void) {
-        
-        
-        
         
         completion(success: true)
     }
@@ -74,7 +83,6 @@ class BlogController {
     static func addCommentToBlog(text: String, blog: Blog, completion: (blog: Blog?, success: Bool) -> Void) {
         completion(blog: currentBlog.first, success: true)
     }
-    
     
     // like Blogs
     

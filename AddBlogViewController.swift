@@ -44,6 +44,7 @@ class AddBlogViewController: UIViewController {
                     guard let currentUser = UserController.shareController.current else {return}
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
+                            
                             self.dismissViewControllerAnimated(true, completion: nil)
                         } else {
                             let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)

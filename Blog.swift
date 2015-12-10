@@ -48,6 +48,9 @@ class Blog: PFObject, PFSubclassing {
 
         self.video = video
         self.caption = caption
+        self.user = user
+        
+        
 //        self.comments = comments
 //        self.like = like
 //        self.identifier = identifier

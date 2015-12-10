@@ -34,7 +34,7 @@ class SignUpLoginViewController: UIViewController {
             case .Login:
                 return !((usernameTextField.text == "") || (passwordTextField.text == ""))
             case .Signup:
-                return !((usernameTextField.text == "") || (passwordTextField.text == ""))
+                return !((usernameTextField.text == "") || (passwordTextField.text == "") || (emailTextField.text == ""))
             }
         }
     }
@@ -69,10 +69,13 @@ class SignUpLoginViewController: UIViewController {
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.activityIndicatorViewStyle = .Gray
         self.view.addSubview(self.activityIndicator)
-        self.activityIndicator.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+     
 
         if isValidOrNot {
+            
+            self.activityIndicator.startAnimating()
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            
             switch mode {
             case .Login:
                 UserController.authenticateUsers(usernameTextField.text!, password: passwordTextField.text!, completion: { (user, success) -> Void in
@@ -110,7 +113,10 @@ class SignUpLoginViewController: UIViewController {
                 })
             }
         } else {
-            self.alertNotification("Missing Information", message: "Please check your information and try again")
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.alertNotification("Missing Information", message: "Please check your information and try again")
+            })
+            
         }
     }
     

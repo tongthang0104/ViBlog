@@ -76,6 +76,7 @@ class AddBlogViewController: UIViewController {
         cameraController.mediaTypes = [kUTTypeMovie as String]
         cameraController.allowsEditing = false
         cameraController.delegate = delegate
+        cameraController.videoMaximumDuration = 30
         
         presentViewController(cameraController, animated: true, completion: nil)
         return true

@@ -17,29 +17,15 @@ class UserController {
     var currentUser: User! = nil
     static let user: User = User()
     
-    //    static var user: PFUser?
-    //
-    
-    // mock User
-    
-    
     // user For Identifier
     
-    static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
-        var query: PFQuery = PFQuery(className: "User")
-//        query.findObjectsInBackgroundWithBlock { (<#[PFObject]?#>, <#NSError?#>) -> Void in
-//            <#code#>
-//        }
-        user.objectId = identifier
-        query.getObjectInBackgroundWithId(identifier, block: { (user, error) -> Void in
-            if let error = error {
-                print(error.localizedDescription)
-                completion(user: nil)
-            } else {
-                completion(user: self.user)
+    static func userForIdentifier(identifier: String, completion: (user: PFUser) -> Void) {
+        
+        let query = PFUser.query()
+        query?.getObjectInBackgroundWithId(identifier, block: { (object, error) -> Void in
+            if let user = object as? PFUser {
+                completion(user: user)
             }
-            
-            
         })
     }
     
@@ -65,7 +51,6 @@ class UserController {
     // create User
     
     static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
-        
         
         user.username = username
         user.password = password
@@ -106,6 +91,13 @@ class UserController {
     
     // User follow User
     static func userFollowUser(follower: User, followee: User, completion: (follows: Bool) -> Void) {
+        
+        
+        
+        
+        
+        
+        
         completion(follows: true)
     }
     
@@ -117,6 +109,7 @@ class UserController {
     // logout User
     
     static func logoutCurrentUser() {
+        PFUser.logOut()
         
     }
     

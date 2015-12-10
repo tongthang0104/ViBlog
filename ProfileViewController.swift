@@ -11,19 +11,20 @@ import UIKit
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate  {
     
     // MARK: Properties
-    var user: User!
+    var user: PFUser?
     var userBlogs: [Blog] = []
     var avatarImage: UIImage?
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     // UpdateWithUser
     
-    func updateWithUser(user: User) {
-        self.user = user
+    func updateWithUser(user: PFUser) {
+//        self.user = user
         self.title = user.username
         
-        if user != UserController.shareController.currentUser {
+        if user != UserController.shareController.current {
             
             // as of writing there is no system way to remove a bar button item
             // disables and hides the button
@@ -33,9 +34,14 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
             self.navigationItem.leftBarButtonItem?.enabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
+            
+            self.navigationItem.leftBarButtonItem?.enabled = false
+            self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clearColor()
+            
+            self.navigationItem.leftBarButtonItem?.enabled = false
+            self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clearColor()
         }
-        
-        BlogController.blogsForUser(user.username!) { (blogs) -> Void in
+        BlogController.blogsForUser(user.objectId!) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
                 self.collectionView.reloadData()
@@ -44,18 +50,29 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if user == nil {
-            user = UserController.shareController.currentUser
-        }
+//        
+//        if user == nil {
+//            user = UserController.shareController.current
+//        }
     }
     
+    @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
+        
+        UserController.logoutCurrentUser()
+       tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
+    }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-//        if let identifier = user.objectId {
-            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
-                self.updateWithUser(self.user!)
+        guard let user = self.user else {return}
+        if let identifier = user.objectId {
+        UserController.userForIdentifier(identifier) { (user) -> Void in
+            self.updateWithUser(user)
+        }
+            
+            //        if let identifier = user.objectId {
+//            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
+//                self.updateWithUser(self.user!)
 //            }
 //        } else {
 //            self.updateWithUser(self.user)
@@ -80,7 +97,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
         view.delegate = self
         if let user = self.user {
-            view.updateWithUsers(user)
+        view.updateWithUsers(user)
         }
         
         return view
@@ -88,18 +105,17 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     func followButtonTapped(sender: UIButton) {
         
-        guard let user = self.user else {return}
-        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
-            if follows {
-                UserController.unfollowUser(user, completion: { (success) -> Void in
-                    self.updateWithUser(user)
-                })
-            } else {
-                UserController.followUser(user, completion: { (success) -> Void in
-                    self.updateWithUser(user)
-                })
-            }
-        }
+//        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
+//            if follows {
+//                UserController.unfollowUser(user, completion: { (success) -> Void in
+//                    self.updateWithUser(user)
+//                })
+//            } else {
+//                UserController.followUser(user, completion: { (success) -> Void in
+//                    self.updateWithUser(user)
+//                })
+//            }
+//        }
     }
 
     override func didReceiveMemoryWarning() {

@@ -18,7 +18,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var avatarButton: UIButton!
     
-    var user: User?
+    var user: PFUser?
     var delegate: ProfileHeaderCollectionReusableViewDelegate?
 
     
@@ -35,21 +35,22 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     }
    
     
-    func updateWithUsers(user: User) {
+    func updateWithUsers(user: PFUser) {
         self.user = user
         self.nameLabel.text = user.username
         // set followingLabel = "\(followering.count) followings"
         // set followersLabel = "\(followers.count) followers"
-        if user == UserController.shareController.currentUser {
+        if user == UserController.shareController.current {
             followButton.removeFromSuperview()
         } else {
-            UserController.userFollowUser(UserController.shareController.currentUser, followee: user, completion: { (follows) -> Void in
-                if follows {
-                    self.followButton.setTitle("Unfollow", forState: .Normal)
-                } else {
-                    self.followButton.setTitle("Follow", forState: .Normal)
-                }
-            })
+            print("Need to implement")
+//            UserController.userFollowUser(UserController.shareController.currentUser, followee: user, completion: { (follows) -> Void in
+//                if follows {
+//                    self.followButton.setTitle("Unfollow", forState: .Normal)
+//                } else {
+//                    self.followButton.setTitle("Follow", forState: .Normal)
+//                }
+//            })
         }
     }
 }

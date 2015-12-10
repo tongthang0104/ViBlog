@@ -982,6 +982,11 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="fXh-aZ-0Li">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="wNJ-c9-zb1">
+                            <connections>
+                                <action selector="logoutButtonTapped:" destination="ZhL-0u-Wrd" id="QqP-Cx-j6B"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="o0g-Mn-Nqe">
                             <connections>
                                 <segue destination="7jK-Sx-zuN" kind="show" id="MWe-Pk-Gz6"/>
@@ -990,6 +995,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="3vw-J3-lqw" id="08H-An-Z2T"/>
+                        <outlet property="logoutButton" destination="wNJ-c9-zb1" id="FGe-V9-Qfg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCb-oW-HLK" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -41,10 +41,12 @@ class AddBlogViewController: UIViewController {
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.activityIndicatorViewStyle = .WhiteLarge
         self.view.addSubview(self.activityIndicator)
-        self.activityIndicator.startAnimating()
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         
         if let videoOfUrl = self.videoOfUrl {
+            
+            self.activityIndicator.startAnimating()
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+
             guard let data = NSData(contentsOfURL: videoOfUrl) else {return}
             let file = PFFile(name: "Video", data: data)
             
@@ -79,7 +81,13 @@ class AddBlogViewController: UIViewController {
             })
             self.view.window?.endEditing(true)
         } else {
-            self.presentAlert("No video Added", message: "Record your video and share")
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                 self.presentAlert("No video Added", message: "Record your video and share")
+            })
         }
     }
     
@@ -159,7 +167,9 @@ class AddBlogViewController: UIViewController {
     
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
-        avPlayer.play()
+        avPlayer.pause()
+        
+        
     }
 
     override func didReceiveMemoryWarning() {

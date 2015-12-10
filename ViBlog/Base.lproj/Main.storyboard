@@ -62,7 +62,7 @@
                                     <constraint firstAttribute="width" constant="565" id="Dgb-2l-xaK"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="34"/>
-                                <state key="normal" title="RECORD YOUR VB!!"/>
+                                <state key="normal" title="Record"/>
                                 <connections>
                                     <action selector="recordButtonTapped:" destination="we6-9h-zlv" eventType="touchUpInside" id="zQB-Zh-2v7"/>
                                 </connections>

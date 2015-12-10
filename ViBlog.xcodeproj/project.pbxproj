@@ -405,6 +405,7 @@
 				TargetAttributes = {
 					DEE6A14D1BF9838B00009122 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = WHJ2JK5E8R;
 					};
 					DEE6A1611BF9838C00009122 = {
 						CreatedOnToolsVersion = 7.1.1;
@@ -635,6 +636,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",
@@ -653,6 +655,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",

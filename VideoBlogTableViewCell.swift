@@ -36,11 +36,14 @@ class VideoBlogTableViewCell: UITableViewCell {
     func updateWithBlogs(blog: Blog) {
         self.blog = blog
         
-    
         self.nameLabel.text = blog.user.username
         if self.caption == blog.caption {
             self.captionLabel.text = self.caption
         }
+        self.captionLabel.text = blog.caption
+        self.videoThumbnailView.image = nil
+        
+        
         
 //        self.videoThumbnailView.image = nil
         

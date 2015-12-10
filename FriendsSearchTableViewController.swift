@@ -79,8 +79,8 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        updateBaseOnMode()
+//        
+//        updateBaseOnMode()
         setUpSearchController()
     }
     
@@ -128,7 +128,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
                 }
             }
             if let profileDestionationViewController = segue.destinationViewController as? ProfileViewController {
-                profileDestionationViewController.user = selectedUser
+                profileDestionationViewController.user = selectedUser!
             }
         }
     }

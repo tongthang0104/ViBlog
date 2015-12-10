@@ -18,14 +18,16 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     @IBOutlet weak var emailTextField: UITextField!
     
     var avatarImage: UIImage?
-    var user: User?
+    var user: PFUser?
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.avatarButton.imageView?.contentMode = .ScaleAspectFill
-        self.updateWithUser(UserController.shareController.currentUser)
+        if let currentUser = UserController.shareController.current {
+        self.updateWithUser(currentUser)
+        }
     }
     
     //MARK: - Action
@@ -48,13 +50,13 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         // Edit Profile Information
         
         if let usernameTextField = self.usernameTextField.text {
-            UserController.updateUser(self.user!, username: usernameTextField, email: self.emailTextField.text) { (user, success) -> Void in
-                if success {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    self.presentAlert("Failed to updated", message: "Press OK to dismiss")
-                }
-            }
+//            UserController.updateUser(self.user!, username: usernameTextField, email: self.emailTextField.text) { (user, success) -> Void in
+//                if success {
+//                    self.dismissViewControllerAnimated(true, completion: nil)
+//                } else {
+//                    self.presentAlert("Failed to updated", message: "Press OK to dismiss")
+//                }
+//            }
         }
         
         if self.usernameTextField.text == "" || self.emailTextField.text == "" {
@@ -128,7 +130,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         }
     }
     
-    func updateWithUser(user: User) {
+    func updateWithUser(user: PFUser) {
         self.user = user
         self.usernameTextField.text = user.username
 //        self.companyTextField.text = user.username

@@ -19,6 +19,7 @@ class AddBlogViewController: UIViewController {
     
     var video: PFFile?
     var videoOfUrl: NSURL?
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
     @IBOutlet weak var captionTextField: UITextField!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var recordButton: UIButton!
@@ -35,17 +36,34 @@ class AddBlogViewController: UIViewController {
     
     @IBAction func submitButtonTapped(sender: UIButton) {
         
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.activityIndicatorViewStyle = .WhiteLarge
+        self.view.addSubview(self.activityIndicator)
+        self.activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
         if let videoOfUrl = self.videoOfUrl {
             guard let data = NSData(contentsOfURL: videoOfUrl) else {return}
             let file = PFFile(name: "Video", data: data)
             
             file?.saveInBackgroundWithBlock({ (success, error) -> Void in
+                
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                
                 if success {
                     guard let currentUser = UserController.shareController.current else {return}
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
                             
                             self.dismissViewControllerAnimated(true, completion: nil)
+                            self.presentAlert("Yo! Upload Completed", message: "")
+                            self.cleanWall()
+                            self.recordButton.setTitle("Record", forState: .Normal)
+                    
+                        
                         } else {
                             let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
                             failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -62,6 +80,15 @@ class AddBlogViewController: UIViewController {
             self.view.window?.endEditing(true)
         } else {
             self.presentAlert("No video Added", message: "Record your video and share")
+        }
+    }
+    
+    func cleanWall()
+    {
+        for viewToRemove in videoView.subviews {
+            if let viewToRemove = viewToRemove as? UIView {
+                viewToRemove.removeFromSuperview()
+            }
         }
     }
     
@@ -85,7 +112,7 @@ class AddBlogViewController: UIViewController {
     func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
         
         var title = "Success"
-        var message = "Video was saved"
+        var message = "Video was saved to library"
         if let _ = error {
             title = "Error"
             message = "Video failed to save"

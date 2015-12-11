@@ -13,7 +13,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     // MARK: Properties
     
     var searchController: UISearchController!
-    var user: User?
+//    var user: User?
     var userDataSource: [User] = []
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -26,10 +26,12 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
             
             switch self {
             case .Friends:
-                UserController.followedByUser(UserController.shareController.currentUser, completion: { (followers) -> Void in
-                    completion(users: followers)
-                })
+                print("Friends")
+//                UserController.followedByUser(UserController.shareController.currentUser, completion: { (followers) -> Void in
+//                    completion(users: followers)
+//                })
             case .AllChannels:
+//                print("all")
                 UserController.fetchAllUsers({ (users) -> Void in
                     completion(users: users)
                 })
@@ -64,7 +66,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     
     // MARK: Update With Function
     
-    func updateBaseOnMode() {
+    func updateBaseOnMode(mode: ViewMode) {
         mode.users { (users) -> Void in
             if let users = users {
                 self.userDataSource = users
@@ -80,8 +82,11 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     override func viewDidLoad() {
         super.viewDidLoad()
 //        
-//        updateBaseOnMode()
+        updateBaseOnMode(mode)
         setUpSearchController()
+    }
+    @IBAction func selectIndexChanged(sender: UISegmentedControl) {
+        updateBaseOnMode(mode)
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,10 +114,15 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toProfileView" {
+            
+            
+            
+            
             guard let cell = sender as? UITableViewCell else {return}
             var selectedUser: User?
             
             // Check to see if indexPath is from searchResultsController or not ?
+            
             if let indexPath = (searchController.searchResultsController as? UserSearchResultTableViewController)?.tableView.indexPathForCell(cell) {
                 
                 // IndexPath is from UserSearchResultTableVC
@@ -129,6 +139,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
             }
             if let profileDestionationViewController = segue.destinationViewController as? ProfileViewController {
                 profileDestionationViewController.user = selectedUser!
+             
             }
         }
     }

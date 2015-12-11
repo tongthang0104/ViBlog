@@ -7,11 +7,13 @@
 //
 
 import UIKit
+//import BTNavigationDropdownMenu
+
 
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate  {
     
     // MARK: Properties
-    var user: PFUser?
+    var user: User?
     var userBlogs: [Blog] = []
     var avatarImage: UIImage?
     
@@ -20,8 +22,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBOutlet weak var logoutButton: UIBarButtonItem!
     // UpdateWithUser
     
-    func updateWithUser(user: PFUser) {
-//        self.user = user
+    func updateWithUser(user: User) {
+        //        self.user = user
         self.title = user.username
         
         if user != UserController.shareController.current {
@@ -50,35 +52,49 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
+        
 //        if user == nil {
-//            user = UserController.shareController.current
-//        }
+//                    user = PFUser.currentUser()
+//                }
+        
+        //        tabBarController?.tabBar(<#T##tabBar: UITabBar##UITabBar#>, didSelectItem: self.tabBarItem) {
+        
+        
     }
     
-    @IBAction func logoutButtonTapped(sender: UIBarButtonItem) {
+    @IBAction func moreOptionButtonTapped(sender: UIBarButtonItem) {
+        let moreOptionAlert = UIAlertController(title: "Select your option", message: "", preferredStyle: .ActionSheet)
+        moreOptionAlert.addAction(UIAlertAction(title: "Edit Profile", style: .Default, handler: { (_) -> Void in
+            self.performSegueWithIdentifier("editProfile", sender: self)
+        }))
         
-        UserController.logoutCurrentUser()
-       tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
+        moreOptionAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (_) -> Void in
+            UserController.logoutCurrentUser()
+            self.tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
+        }))
+        
+        moreOptionAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        presentViewController(moreOptionAlert, animated: true, completion: nil)
     }
+    
+    
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        guard let user = self.user else {return}
-        if let identifier = user.objectId {
-        UserController.userForIdentifier(identifier) { (user) -> Void in
-            self.updateWithUser(user)
-        }
+        if let user = user {
             
-            //        if let identifier = user.objectId {
-//            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
-//                self.updateWithUser(self.user!)
-//            }
-//        } else {
-//            self.updateWithUser(self.user)
+            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
+                if let user = user {
+                self.user = user
+                self.updateWithUser(user)
+                }
+            }
+        
         }
+        
     }
-  
+    
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userBlogs.count
     }
@@ -87,7 +103,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
         let blogs = userBlogs[indexPath.item]
-//        item.updateWithBlogs(blogs.videoSnapShot)
+        //        item.updateWithBlogs(blogs.videoSnapShot)
         
         return item
     }
@@ -97,27 +113,30 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
         view.delegate = self
         if let user = self.user {
-        view.updateWithUsers(user)
+            view.updateWithUsers(user)
         }
         
         return view
     }
     
+    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     func followButtonTapped(sender: UIButton) {
         
-//        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
-//            if follows {
-//                UserController.unfollowUser(user, completion: { (success) -> Void in
-//                    self.updateWithUser(user)
-//                })
-//            } else {
-//                UserController.followUser(user, completion: { (success) -> Void in
-//                    self.updateWithUser(user)
-//                })
-//            }
-//        }
+        //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
+        //            if follows {
+        //                UserController.unfollowUser(user, completion: { (success) -> Void in
+        //                    self.updateWithUser(user)
+        //                })
+        //            } else {
+        //                UserController.followUser(user, completion: { (success) -> Void in
+        //                    self.updateWithUser(user)
+        //                })
+        //            }
+        //        }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

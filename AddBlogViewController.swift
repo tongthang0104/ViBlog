@@ -95,6 +95,7 @@ class AddBlogViewController: UIViewController {
     {
         for viewToRemove in videoView.subviews {
             if let viewToRemove = viewToRemove as? UIView {
+                videoOfUrl = nil
                 viewToRemove.removeFromSuperview()
             }
         }

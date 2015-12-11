@@ -12,7 +12,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
-    var user: User?
+    var user: PFUser?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selfImage: UIImageView!
@@ -24,16 +24,16 @@ class FriendsTableViewCell: UITableViewCell {
         followButton.setTitle("Follow", forState: .Normal)
     }
     
-    func updateWithUsers(user: User) {
+    func updateWithUsers(user: PFUser) {
         self.user = user
         self.nameLabel.text = user.username
         self.selfImage.image = nil
         
-        if let selfImage = user.avatarEndpoint{
+//        if let selfImage = user.avatarEndpoint{
 //            ImageController.imageForIdentifier(selfImage) { (image) -> Void in
 //                self.selfImage.image = image
 //            }
-        }
+//        }
     }
 
     override func awakeFromNib() {

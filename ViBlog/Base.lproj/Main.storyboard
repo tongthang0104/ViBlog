@@ -111,7 +111,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="sTk-dn-Tlt">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="375"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SMn-gD-mzM">
@@ -165,7 +165,7 @@
                             </constraints>
                         </view>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lAF-oZ-tg5">
-                            <rect key="frame" x="0.0" y="447" width="600" height="65"/>
+                            <rect key="frame" x="0.0" y="511" width="600" height="65"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" title="Add Comments"/>
@@ -175,7 +175,7 @@
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="cfv-7d-1oF" customClass="BlogCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="403" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="467" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cfv-7d-1oF" id="dMa-Gw-Rla">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -540,7 +540,7 @@
                                     <outlet property="followButton" destination="AUJ-qq-Enf" id="Qwt-tK-u6K"/>
                                     <outlet property="nameLabel" destination="Zhl-Tz-fI1" id="EdP-Us-nLM"/>
                                     <outlet property="selfImage" destination="4Z3-hg-aWw" id="aPT-gL-ir9"/>
-                                    <segue destination="ZhL-0u-Wrd" kind="show" identifier="toProfileView" id="FL8-Wo-rv1"/>
+                                    <segue destination="Xk4-7P-lu8" kind="presentation" identifier="toProfileView" id="yTh-yr-LSr"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -559,6 +559,9 @@
                                 <segment title="Following"/>
                                 <segment title="All Channels"/>
                             </segments>
+                            <connections>
+                                <action selector="selectIndexChanged:" destination="bSE-5i-U3u" eventType="valueChanged" id="1gu-2a-uez"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
@@ -567,7 +570,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dw1-kg-Wep" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1370" y="762"/>
+            <point key="canvasLocation" x="-2047" y="870"/>
         </scene>
         <!--User Search Result Table View Controller-->
         <scene sceneID="NLT-2d-0NZ">
@@ -649,7 +652,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wse-Ds-FEm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1370" y="1425"/>
+            <point key="canvasLocation" x="-1946" y="1601"/>
         </scene>
         <!--Friends-->
         <scene sceneID="OdT-IH-eHU">
@@ -669,7 +672,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AcT-oA-jC8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2101" y="838"/>
+            <point key="canvasLocation" x="-2741" y="870"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="bs9-8p-9Vg">
@@ -828,7 +831,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="208" width="210" height="198"/>
+                                <rect key="frame" x="0.0" y="272" width="210" height="198"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="210" height="198"/>
@@ -882,7 +885,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
+                            <rect key="frame" x="0.0" y="64" width="600" height="208"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="IDF-TO-6Lw">
@@ -982,25 +985,25 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="fXh-aZ-0Li">
-                        <barButtonItem key="leftBarButtonItem" title="Logout" id="wNJ-c9-zb1">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="1bt-0i-3Z2">
                             <connections>
-                                <action selector="logoutButtonTapped:" destination="ZhL-0u-Wrd" id="QqP-Cx-j6B"/>
+                                <action selector="doneButtonTapped:" destination="ZhL-0u-Wrd" id="ov1-hZ-2ni"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Edit" id="o0g-Mn-Nqe">
+                        <barButtonItem key="rightBarButtonItem" title="....." id="o0g-Mn-Nqe">
                             <connections>
-                                <segue destination="7jK-Sx-zuN" kind="show" id="MWe-Pk-Gz6"/>
+                                <action selector="moreOptionButtonTapped:" destination="ZhL-0u-Wrd" id="KhS-uX-6xn"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="3vw-J3-lqw" id="08H-An-Z2T"/>
-                        <outlet property="logoutButton" destination="wNJ-c9-zb1" id="FGe-V9-Qfg"/>
+                        <segue destination="VS7-gY-z07" kind="presentation" identifier="editProfile" id="RXc-NJ-eLa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCb-oW-HLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1384" y="-75"/>
+            <point key="canvasLocation" x="-1797" y="110"/>
         </scene>
         <!--Editting-->
         <scene sceneID="kqZ-Ra-XFW">
@@ -1012,7 +1015,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UyZ-Mq-M1p">
-                            <rect key="frame" x="0.0" y="317" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="381" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <animations/>
                             <state key="normal" title="Submit"/>
@@ -1024,7 +1027,7 @@
                             <tableViewSection headerTitle="Section-1" id="hOH-1t-1dq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="Su4-E9-t1Z">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="137"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Su4-E9-t1Z" id="Vmr-Du-BBf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="136.5"/>
@@ -1064,7 +1067,7 @@
                             <tableViewSection headerTitle="Section-2" id="RoB-e8-dKL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="mCz-Op-8kG">
-                                        <rect key="frame" x="0.0" y="193" width="600" height="124"/>
+                                        <rect key="frame" x="0.0" y="257" width="600" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mCz-Op-8kG" id="opY-3s-M2A">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
@@ -1153,7 +1156,13 @@
                             <outlet property="delegate" destination="7jK-Sx-zuN" id="WAG-gN-9TM"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Editting" id="hXS-Z2-Rvf"/>
+                    <navigationItem key="navigationItem" title="Editting" id="hXS-Z2-Rvf">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="uQ8-Hq-X0R">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="7jK-Sx-zuN" id="2og-Pg-ENx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="avatarButton" destination="uKE-i1-vW3" id="16y-uU-Iwb"/>
                         <outlet property="companyTextField" destination="N9A-G7-pe8" id="ZaI-o3-JmD"/>
@@ -1163,7 +1172,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WAF-ut-nLS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-628" y="-84"/>
+            <point key="canvasLocation" x="27" y="133"/>
         </scene>
         <!--Channels-->
         <scene sceneID="McJ-EA-IVQ">
@@ -1205,12 +1214,32 @@
             </objects>
             <point key="canvasLocation" x="-1810" y="-1600"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ray-N8-Rzl">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="VS7-gY-z07" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f8F-UQ-Id5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="7jK-Sx-zuN" kind="relationship" relationship="rootViewController" id="sV2-Zp-qps"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="THE-Jm-D17" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-785" y="133"/>
+        </scene>
     </scenes>
     <resources>
         <image name="defaultPhoto" width="540" height="540"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="yTh-yr-LSr"/>
+        <segue reference="0Jr-Hq-HvG"/>
         <segue reference="2Gm-Gk-BNM"/>
-        <segue reference="WIs-oF-pkc"/>
     </inferredMetricsTieBreakers>
 </document>

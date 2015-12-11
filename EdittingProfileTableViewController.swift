@@ -32,6 +32,9 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     
     //MARK: - Action
     
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     @IBAction func submitButtonTapped(sender: UIButton) {
         
         // Avatar Picker

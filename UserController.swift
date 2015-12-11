@@ -19,12 +19,16 @@ class UserController {
     
     // user For Identifier
     
-    static func userForIdentifier(identifier: String, completion: (user: PFUser) -> Void) {
+    static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         
-        let query = PFUser.query()
+        let query = User.query()
+//        query?.getObjectInBackgroundWithId(<#T##objectId: String##String#>, block: <#T##((PFObject?, NSError?) -> Void)?##((PFObject?, NSError?) -> Void)?##(PFObject?, NSError?) -> Void#>)
         query?.getObjectInBackgroundWithId(identifier, block: { (object, error) -> Void in
-            if let user = object as? PFUser {
+            if let user = object as? User {
                 completion(user: user)
+            } else {
+                completion(user: nil)
+                print(error?.localizedDescription)
             }
         })
     }
@@ -44,8 +48,16 @@ class UserController {
     
     // fetch all Users
     
-    static func fetchAllUsers(completion: (users: [User]) -> Void) {
-        
+    static func fetchAllUsers(completion: (users: [User]?) -> Void) {
+        let query = User.query()!
+        query.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+            if let users = object as? [User] {
+                completion(users: users)
+            } else {
+                completion(users: [])
+                print(error?.localizedDescription)
+            }
+        })
     }
     
     // create User
@@ -69,6 +81,7 @@ class UserController {
     // add image to User
     
     static func addAvatar(image: UIImage, completion: (user: User?, success: Bool) -> Void) {
+        
         
     }
     

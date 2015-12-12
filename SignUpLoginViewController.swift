@@ -77,6 +77,9 @@ class SignUpLoginViewController: UIViewController {
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
             
             switch mode {
+                
+                //Login
+                
             case .Login:
                 UserController.authenticateUsers(usernameTextField.text!, password: passwordTextField.text!, completion: { (user, success) -> Void in
                     
@@ -85,13 +88,16 @@ class SignUpLoginViewController: UIViewController {
                     
                     if success {
                         
-                        print("success")
+                        UserController.shareController.current = PFUser.currentUser()
                         self.dismissViewControllerAnimated(true, completion: nil)
                         
                     } else {
                         self.alertNotification("Invalid Information", message: "Please check your information and try again")
                     }
                 })
+                
+                // Signup
+                
             case .Signup:
                 
                 UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success) -> Void in
@@ -100,11 +106,10 @@ class SignUpLoginViewController: UIViewController {
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     
                     if success {
-                        self.dismissViewControllerAnimated(true, completion: nil)
                         
-                       
-
-                        // If success maybe lead user to Login Mode so he can login or automatically logging in
+                        UserController.shareController.current = PFUser.currentUser()
+                        self.dismissViewControllerAnimated(true, completion: nil)
+            
                     } else if (self.passwordTextField.text?.characters.count <= 5){
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
                     } else {

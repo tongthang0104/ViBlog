@@ -18,7 +18,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     @IBOutlet weak var emailTextField: UITextField!
     
     var avatarImage: UIImage?
-    var user: PFUser?
+
     
     
     
@@ -30,6 +30,13 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        self.avatarButton.imageView?.contentMode = .ScaleAspectFill
+        if let currentUser = UserController.shareController.current {
+            self.updateWithUser(currentUser)
+        }
+    }
     //MARK: - Action
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -134,7 +141,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     }
     
     func updateWithUser(user: PFUser) {
-        self.user = user
+//        self.user = user
         self.usernameTextField.text = user.username
 //        self.companyTextField.text = user.username
         self.emailTextField.text = user.email

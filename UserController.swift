@@ -22,7 +22,6 @@ class UserController {
     static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         
         let query = User.query()
-//        query?.getObjectInBackgroundWithId(<#T##objectId: String##String#>, block: <#T##((PFObject?, NSError?) -> Void)?##((PFObject?, NSError?) -> Void)?##(PFObject?, NSError?) -> Void#>)
         query?.getObjectInBackgroundWithId(identifier, block: { (object, error) -> Void in
             if let user = object as? User {
                 completion(user: user)
@@ -123,7 +122,7 @@ class UserController {
     
     static func logoutCurrentUser() {
         PFUser.logOut()
-        
+        UserController.shareController.current = PFUser.currentUser()
     }
     
     // block User (add later)

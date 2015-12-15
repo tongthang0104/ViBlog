@@ -83,9 +83,23 @@ class UserController {
     }
     // add image to User
     
-    static func addAvatar(image: UIImage, completion: (user: User?, success: Bool) -> Void) {
+    static func addAvatar(image: UIImage, completion: (success: Bool) -> Void) {
         
+        let imageData: NSData = UIImageJPEGRepresentation(image, 0.5)!
+        let imageFile: PFFile = PFFile(name: "image.jpg", data: imageData)!
         
+        do {
+            try imageFile.save()
+        } catch {
+            
+        }
+        
+        UserController.shareController.current?.setObject(imageFile, forKey: "avatar")
+        UserController.shareController.current?.saveInBackgroundWithBlock({ (success, error) -> Void in
+          
+                completion(success: success)
+                
+        })
     }
     
     // update User

@@ -21,7 +21,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     var like: [Like] = []
     var caption: String?
     var blog: Blog!
-    
+    var videoOfUrl: NSURL?
     
 //    @IBOutlet weak var videoThumbnailView: UIImageView!
     
@@ -38,12 +38,12 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     }
     
     func likeButtonTapped(sender: UIButton) {
-        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
-            if let blog = blog {
-                self.updateWithBlogs(blog)
-             
-            }
-        }
+//        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
+//            if let blog = blog {
+//                self.updateWithBlogs(blog)
+//             
+//            }
+//        }
     }
     //TODO: load Like status
     //TODO: load Unfollow function
@@ -53,13 +53,38 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         self.blog = blog
         
         self.nameLabel.text = blog.user.username
-        if self.caption == blog.caption {
+        
+        if let caption = blog.caption {
+        if self.caption == caption {
             self.captionLabel.text = self.caption
+        }
+        } else {
+            self.captionLabel.text = ""
         }
         self.captionLabel.text = blog.caption
 //        self.videoThumbnailView.image = nil
         
+        if let avatar = blog.user["avatar"] as? PFFile {
+            ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.avatarButton.setBackgroundImage(image, forState: .Normal)
+                })
+            })
+        } else {
+            self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
+        }
         
+        if let video = blog.video as? PFFile {
+            VideoController.fetchImageAtURL(NSURL(string: video.url!)!, completion: { (video) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.videoOfUrl = video
+                    self.playBackgroundMovie(video)
+                })
+            })
+        }
+//        ImageController.fetchImageAtURL(<#T##url: NSURL##NSURL#>, completion: <#T##(image: UIImage) -> ()#>)
+        
+//     image =   blog.video.url
         
 //        VideoController.videoForID(<#T##identifier: String##String#>) { (video) -> Void in
 //            self.playBackgroundMovie(<#T##url: NSURL##NSURL#>)
@@ -106,7 +131,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
-        avPlayer.pause()
+        avPlayer.play()
         
     }
     

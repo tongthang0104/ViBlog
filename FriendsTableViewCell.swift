@@ -17,7 +17,7 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selfImage: UIImageView!
     @IBOutlet weak var followButton: UIButton!
- 
+    
     //MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
@@ -51,12 +51,20 @@ class FriendsTableViewCell: UITableViewCell {
     }
     
     func updateWithUsers(user: User) {
+        
         self.user = user
         self.nameLabel.text = user.username
         self.selfImage.image = nil
         
         guard let currentUser = UserController.shareController.current else {return}
-        if let user = self.user {
+        
+        if self.user == currentUser {
+            
+            self.followButton.enabled = false
+            self.followButton.setTitle("", forState: .Normal)
+            
+        } else if let user = self.user {
+            
             UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
                 if follows {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -69,16 +77,21 @@ class FriendsTableViewCell: UITableViewCell {
                     })
                 }
             })
+            
         }
-
         
-//        if let selfImage = user.avatarEndpoint{
-//            ImageController.imageForIdentifier(selfImage) { (image) -> Void in
-//                self.selfImage.image = image
-//            }
-//        }
+        
+        if let avatar = user["avatar"] as? PFFile {
+            ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.selfImage.image = image
+                })
+            })
+        } else {
+            self.selfImage.image = ImageController.defaultImage
+        }
     }
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }

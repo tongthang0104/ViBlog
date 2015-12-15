@@ -28,13 +28,11 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
             case .Friends:
                 print("Friends")
             UserController.followedByUser(UserController.shareController.current!, completion: { (followed) -> Void in
-                
+               
                 if let followed = followed{
 
                     completion(users: followed)
                 }
-                
-                
             })
             case .AllChannels:
                 UserController.fetchAllUsers({ (users) -> Void in

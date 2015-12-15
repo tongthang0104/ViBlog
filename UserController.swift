@@ -101,8 +101,9 @@ class UserController {
             let follow = PFObject(className: User.kFollowActivity)
             
             follow.setObject(currentUser.objectId!, forKey: ParseHelper.kFollowFromUser)
-            follow.setObject(user.objectId!, forKey: ParseHelper.kFollowToUser)
+            follow.setObject(user, forKey: ParseHelper.kFollowToUser)
             follow.setObject(user.username!, forKey: ParseHelper.kUsername)
+            follow.fetchIfNeededInBackground()
             
             follow.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if success {
@@ -122,11 +123,18 @@ class UserController {
         
         let query = PFQuery(className: ParseHelper.parseFollowClass)
         query.whereKey(ParseHelper.kFollowFromUser, equalTo: user.objectId!)
-
+        query.includeKey("toUser")
 //        query.selectKeys([ParseHelper.kFollowFromUser, ParseHelper.kFollowToUser])
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
-            if let users = object as? [User] {
-                completion(followed: users)
+            var userArray: [User] = []
+            if let objects = object {
+                for follows in objects {
+                    if let user = follows["toUser"] {
+                    userArray.append(user as! User)
+                    }
+                }
+                    completion(followed: userArray)
+                
             } else {
                 completion(followed: [])
             }
@@ -138,7 +146,7 @@ class UserController {
         
         let query = PFQuery(className: User.kFollowActivity)
         query.whereKey(User.kActivityFromUser, equalTo: user.objectId!)
-        query.whereKey(User.kActivityToUser, equalTo: followee.objectId!)
+        query.whereKey(User.kActivityToUser, equalTo: followee)
         
         query.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if let user = object {
@@ -158,7 +166,7 @@ class UserController {
         let query = PFQuery(className: User.kFollowActivity)
         query.whereKey(User.kActivityFromUser, equalTo: UserController.shareController.current!)
         //        query.whereKey(User.kActivityToUser, containedIn: user)
-        query.whereKey(User.kActivityToUser, equalTo: user.objectId!)
+        query.whereKey(User.kActivityToUser, equalTo: user)
         query.whereKey(User.kUsername, equalTo: user.username!)
         
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in

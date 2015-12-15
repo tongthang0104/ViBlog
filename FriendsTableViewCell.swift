@@ -12,7 +12,7 @@ class FriendsTableViewCell: UITableViewCell {
     
     // MARK: Properties
     
-    var user: PFUser?
+    var user: User?
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var selfImage: UIImageView!
@@ -21,13 +21,56 @@ class FriendsTableViewCell: UITableViewCell {
     //MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
-        followButton.setTitle("Follow", forState: .Normal)
+        guard let currentUser = UserController.shareController.current else {return}
+        
+        if let user = user {
+            
+            UserController.userFollowUser(currentUser, followee: user) { (follows) -> Void in
+                if follows {
+                    
+                    UserController.unfollowUser(user, completion: { (success) -> Void in
+                        
+                        var followingUser = ProfileViewController.following?.filter(){ $0 != user }
+                        ProfileViewController.following = followingUser
+                        
+                        print("unfollowed")
+                    })
+                } else {
+                    UserController.followUser(user, completion: { (success, error) -> Void in
+                        
+                        if success {
+                            ProfileViewController.following?.append(user)
+                            self.updateWithUsers(user)
+                        } else {
+                            print(error?.localizedDescription)
+                        }
+                    })
+                }
+            }
+        }
     }
     
-    func updateWithUsers(user: PFUser) {
+    func updateWithUsers(user: User) {
         self.user = user
         self.nameLabel.text = user.username
         self.selfImage.image = nil
+        
+        guard let currentUser = UserController.shareController.current else {return}
+        if let user = self.user {
+            UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
+                if follows {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.followButton.setTitle("UnFollow", forState: .Normal)
+                    })
+                    
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.followButton.setTitle("Follow", forState: .Normal)
+                    })
+                }
+            })
+        }
+
         
 //        if let selfImage = user.avatarEndpoint{
 //            ImageController.imageForIdentifier(selfImage) { (image) -> Void in

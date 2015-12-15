@@ -14,9 +14,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: Properties
     var user: User?
-    var following: [User]? {
+    static var following: [User]? {
         didSet {
-            self.collectionView.reloadData()
+//            collectionView.reloadData()
         }
     }
     
@@ -40,14 +40,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationItem.rightBarButtonItem?.enabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
             
-            self.navigationItem.leftBarButtonItem?.enabled = false
-            self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
-            
-            self.navigationItem.leftBarButtonItem?.enabled = false
-            self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clearColor()
-            
-            self.navigationItem.leftBarButtonItem?.enabled = false
-            self.navigationItem.leftBarButtonItem?.tintColor = UIColor.clearColor()
         }
         BlogController.blogsForUser(user.objectId!) { (blogs) -> Void in
             if let blogs = blogs {
@@ -136,7 +128,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-        dismissViewControllerAnimated(true, completion: nil)
+      
     }
     
     func followButtonTapped(sender: UIButton) {
@@ -150,16 +142,18 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                     
                     UserController.unfollowUser(user, completion: { (success) -> Void in
                         
-                        var followingUser = self.following?.filter(){ $0 != user }
-                        self.following = followingUser
+                        if var followingUsers = ProfileViewController.following {
+                        followingUsers.removeObject(user, fromArray: followingUsers)
+                        ProfileViewController.following = followingUsers
+                        print("unfollow")
+                        }
                         
-                        print("unfollowed")
                     })
                 } else {
                     UserController.followUser(user, completion: { (success, error) -> Void in
                         
                         if success {
-                            self.following?.append(user)
+                            ProfileViewController.following?.append(user)
                             self.updateWithUser(user)
                         } else {
                             print(error?.localizedDescription)

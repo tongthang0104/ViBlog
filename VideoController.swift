@@ -9,7 +9,7 @@
 import Foundation
 import AVFoundation
 import UIKit
-
+import Parse
 class VideoController {
         
     // upload Videos
@@ -35,11 +35,20 @@ class VideoController {
     }
     
     // Video for ID
-    static func videoForID(identifier: String, completion: (video: AVPlayer?) -> Void) {
+    static func videoForID(identifier: String, completion: (video: NSURL) -> Void) {
         
+        let blogQuery = Blog.query()!
+        
+        blogQuery.getObjectInBackgroundWithId(identifier) { (object, error) -> Void in
+            if let object = object {
+                
+            }
+        }
         let filePath = NSBundle.mainBundle().pathForResource("Sample", ofType: ".m4v", inDirectory: "")
         let url = NSURL(fileURLWithPath: filePath!)
-        completion(video: AVPlayer(URL: url))
+      completion(video: url)
     }
+    
+    
     
 }

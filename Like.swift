@@ -7,24 +7,49 @@
 //
 
 import Foundation
+import Parse
 
-class Like {
+class Like: PFObject, PFSubclassing {
     
     //MARK: Properties
     
-    var username: String
-    var blogID: String
-    var identifier: String?
+    @NSManaged var username: String
+    @NSManaged var blogID: String
+
     
+    override class func query() -> PFQuery? {
+        let query = PFQuery(className: Like.parseClassName())
+        query.includeKey("user")
+        query.orderByDescending("createdAt")
+        
+        return query
+    }
+    
+    class func initalize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    class func parseClassName() -> String {
+        return "Like"
+    }
+
     //MARK: Initializer
     
-    init(username: String, blogID: String, identifier: String? = nil) {
+    init(username: String, blogID: String) {
+        super.init()
+        
         self.username = username
         self.blogID = blogID
-        self.identifier = identifier
+   
+    }
+    
+    override init() {
+        super.init()
     }
 }
 
-func ==(lhs: Like, rhs: Like) -> Bool{
-    return (lhs.identifier == rhs.identifier) && (lhs.username == rhs.username)
-}

@@ -12,13 +12,20 @@ import Parse
 class BlogChannelTableViewController: UITableViewController {
     
     var  blogs: [Blog] = []
-//    let users: [User] = []
-    
+    var blog: Blog!
+    //    let users: [User] = []
+    var delegate: BlogChannelTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
+    
+    @IBAction func likeButtonTapped(sender: UIButton) {
+        self.delegate?.likeButtonTapped(sender)
+    }
+    
+    
     
     @IBAction func userRefreshTableView(sender: UIRefreshControl) {
         loadBlogChannels(UserController.shareController.current!)
@@ -47,6 +54,8 @@ class BlogChannelTableViewController: UITableViewController {
             }
         }
     }
+  
+
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -66,6 +75,7 @@ class BlogChannelTableViewController: UITableViewController {
         
         let blog = blogs[indexPath.row]
         cell.updateWithBlogs(blog)
+        self.delegate = cell
         
         return cell
     }
@@ -115,4 +125,8 @@ class BlogChannelTableViewController: UITableViewController {
     }
     */
     
+}
+
+protocol BlogChannelTableViewControllerDelegate {
+    func likeButtonTapped (sender: UIButton)
 }

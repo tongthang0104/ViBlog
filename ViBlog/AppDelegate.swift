@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         User.registerSubclass()
         Blog.registerSubclass()
-      
+        Like.registerSubclass()
    
         // Initialize Parse.
         Parse.setApplicationId("TlqAHwrEgqbunzpIZwrpL7JAiTwPws2WxDdnohE2",

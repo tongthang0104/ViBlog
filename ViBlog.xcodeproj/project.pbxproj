@@ -47,6 +47,7 @@
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
 		DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */; };
 		DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B031C03FD36001DEAD7 /* ImageController.swift */; };
+		DEC397771C1FF6300001A1B5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC397761C1FF6300001A1B5 /* Array.swift */; };
 		DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1511BF9838B00009122 /* AppDelegate.swift */; };
 		DEE6A1571BF9838B00009122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1551BF9838B00009122 /* Main.storyboard */; };
 		DEE6A1591BF9838C00009122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1581BF9838C00009122 /* Assets.xcassets */; };
@@ -115,6 +116,7 @@
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		DEC22B031C03FD36001DEAD7 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		DEC397761C1FF6300001A1B5 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		DED2248A1C1B6D0D007826BF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; };
 		DEE6A14E1BF9838B00009122 /* ViBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -283,6 +285,7 @@
 			isa = PBXGroup;
 			children = (
 				DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */,
+				DEC397761C1FF6300001A1B5 /* Array.swift */,
 				DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */,
 				DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */,
 				DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */,
@@ -496,6 +499,7 @@
 				DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */,
 				DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */,
 				DE76B2361BFA85D6002E6293 /* User.swift in Sources */,
+				DEC397771C1FF6300001A1B5 /* Array.swift in Sources */,
 				DE76B2381BFA85ED002E6293 /* Blog.swift in Sources */,
 				DE76B25A1BFA95B6002E6293 /* UserSearchResultTableViewController.swift in Sources */,
 				DE8FF3BF1C1FA44C00F6BAA7 /* ParseHelper.swift in Sources */,

@@ -83,20 +83,34 @@ class BlogController {
     
     // like Blogs
     
-    static func likeBlogs(user: PFUser, blog: Blog, completion: (success: Bool) -> Void) {
+    static func likeBlogs(blog: Blog, completion: (success: Bool, blog: Blog?) -> Void) {
         
-        let likeObject = PFObject(className: ParseHelper.ParseLikeClass)
-        likeObject[ParseHelper.kLikeFromUser] = user
-        likeObject[ParseHelper.kLikeToPost] = blog
-        
-        likeObject.saveInBackgroundWithBlock { (success, error) -> Void in
-            if success {
-                completion(success: true)
-            } else {
-                completion(success: false)
-                print(error?.localizedDescription)
-            }
+        if let blogID = blog.objectId {
+            var like = Like(username: UserController.shareController.current!.username!, blogID: blogID)
+            like.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if success {
+                    BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in
+                        completion(success: true, blog: blog)
+                    }
+                  
+                }
+            })
+            
         }
+        
+        
+//        let likeObject = PFObject(className: ParseHelper.ParseLikeClass)
+////        likeObject[ParseHelper.kLikeFromUser] = user
+//        likeObject[ParseHelper.kLikeToPost] = blog
+//        
+//        likeObject.saveInBackgroundWithBlock { (success, error) -> Void in
+//            if success {
+//                completion(success: true)
+//            } else {
+//                completion(success: false)
+//                print(error?.localizedDescription)
+//            }
+//        }
     }
     
     static func unlikeBlog(user: PFUser, blog: Blog, completion: (blog: Blog?, success: Bool) -> Void) {

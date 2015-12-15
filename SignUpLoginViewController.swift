@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class SignUpLoginViewController: UIViewController {
+class SignUpLoginViewController: UITableViewController {
     
     //MARK: Properties
     var user: PFUser?
@@ -43,8 +43,8 @@ class SignUpLoginViewController: UIViewController {
         switch mode {
         case .Login:
             emailTextField.removeFromSuperview()
-            emailLabel.removeFromSuperview()
             loginSignUpButton.setTitle("Login", forState: .Normal)
+            
         case .Signup:
             loginSignUpButton.setTitle("Signup", forState: .Normal)
         }
@@ -54,12 +54,12 @@ class SignUpLoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.updateWithMode(mode)
-        }
+    }
     
     //MARK: Action
     
-
-
+    
+    
     @IBAction func loginSignupButtonTapped(sender: UIButton) {
         
         //Activity Indicator View
@@ -69,8 +69,8 @@ class SignUpLoginViewController: UIViewController {
         self.activityIndicator.hidesWhenStopped = true
         self.activityIndicator.activityIndicatorViewStyle = .Gray
         self.view.addSubview(self.activityIndicator)
-     
-
+        
+        
         if isValidOrNot {
             
             self.activityIndicator.startAnimating()
@@ -109,7 +109,7 @@ class SignUpLoginViewController: UIViewController {
                         
                         UserController.shareController.current = PFUser.currentUser()
                         self.dismissViewControllerAnimated(true, completion: nil)
-            
+                        
                     } else if (self.passwordTextField.text?.characters.count <= 5){
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
                     } else {
@@ -131,18 +131,43 @@ class SignUpLoginViewController: UIViewController {
         presentViewController(failedAlert, animated: true, completion: nil)
     }
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        if mode == .Login {
+            return 2
+        } else {
+            return 3
+        }
+        
+    }
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 1
+        default:
+            if mode == .Login {
+                return 0
+            } else {
+                return 1
+            }
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
+    
 }
 
 extension SignUpLoginViewController: UITextFieldDelegate {
     
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-     textField.resignFirstResponder()
+        textField.resignFirstResponder()
         return true
         
     }

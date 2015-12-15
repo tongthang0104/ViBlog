@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FriendsSearchTableViewController.swift"
-            timestampString = "471832898.809831"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471857243.56698"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "users(_:)"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "followButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FriendsSearchTableViewController.swift"
-            timestampString = "471838692.66851"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471857108.959394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "users(_:)"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "followButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,125 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "FriendsSearchTableViewController.swift"
-            timestampString = "471838700.167637"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471857257.518959"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "34"
-            endingLineNumber = "34"
-            landmarkName = "users(_:)"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "followButtonTapped(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471857281.896604"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "followButtonTapped(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ViBlog.ProfileViewController.followButtonTapped (ViBlog.ProfileViewController)(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "ViBlog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
+                  timestampString = "471860556.445188"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "136"
+                  endingLineNumber = "136"
+                  offsetFromSymbolStart = "19">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "protocol witness for ViBlog.ProfileHeaderCollectionReusableViewDelegate.followButtonTapped &lt;A where A: ViBlog.ProfileHeaderCollectionReusableViewDelegate&gt; (A)(__ObjC.UIButton) -&gt; () in conformance ViBlog.ProfileViewController : ViBlog.ProfileHeaderCollectionReusableViewDelegate in ViBlog"
+                  moduleName = "ViBlog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
+                  timestampString = "471860556.445344"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EdittingProfileTableViewController.swift"
+            timestampString = "471860089.067763"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "submitButtonTapped(_:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ViBlog.EdittingProfileTableViewController.submitButtonTapped (ViBlog.EdittingProfileTableViewController)(__ObjC.UIButton) -&gt; ()"
+                  moduleName = "ViBlog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/EdittingProfileTableViewController.swift"
+                  timestampString = "471860556.44645"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "452">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ViBlog.EdittingProfileTableViewController.(submitButtonTapped (ViBlog.EdittingProfileTableViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
+                  moduleName = "ViBlog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/EdittingProfileTableViewController.swift"
+                  timestampString = "471860556.446604"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "53"
+                  endingLineNumber = "53"
+                  offsetFromSymbolStart = "30">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "EdittingProfileTableViewController.swift"
+            timestampString = "471860555.418735"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
+            landmarkName = "submitButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

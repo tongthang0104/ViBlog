@@ -14,6 +14,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     // MARK: Properties
     var user: User?
+    var following: [User]? {
+        didSet {
+            self.collectionView.reloadData()
+        }
+    }
+    
     var userBlogs: [Blog] = []
     var avatarImage: UIImage?
     
@@ -53,13 +59,23 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if user == nil {
-//                    user = PFUser.currentUser()
-//                }
+        if user == nil {
+            user = UserController.shareController.current as? User
+        }
         
         //        tabBarController?.tabBar(<#T##tabBar: UITabBar##UITabBar#>, didSelectItem: self.tabBarItem) {
         
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(true)
+        
+        if let user = self.user {
+            UserController.userForIdentifier((user.objectId)!) { (user) -> Void in
+                self.updateWithUser(user!)
+            }
+        }
     }
     
     @IBAction func moreOptionButtonTapped(sender: UIBarButtonItem) {
@@ -86,11 +102,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
             UserController.userForIdentifier(user.objectId!) { (user) -> Void in
                 if let user = user {
-                self.user = user
-                self.updateWithUser(user)
+                    self.user = user
+                    self.updateWithUser(user)
                 }
             }
-        
+            
         }
         
     }
@@ -122,7 +138,36 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     func followButtonTapped(sender: UIButton) {
+        
+        guard let currentUser = UserController.shareController.current else {return}
+        
+        if let user = user {
+            
+            UserController.userFollowUser(currentUser, followee: user) { (follows) -> Void in
+                if follows {
+                    
+                    UserController.unfollowUser(user, completion: { (success) -> Void in
+                        
+                        var followingUser = self.following?.filter(){ $0 != user }
+                        self.following = followingUser
+                        
+                        print("unfollowed")
+                    })
+                } else {
+                    UserController.followUser(user, completion: { (success, error) -> Void in
+                        
+                        if success {
+                            self.following?.append(user)
+                            self.updateWithUser(user)
+                        } else {
+                            print(error?.localizedDescription)
+                        }
+                    })
+                }
+            }
+        }
         
         //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
         //            if follows {

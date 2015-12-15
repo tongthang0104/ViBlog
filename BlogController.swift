@@ -83,15 +83,47 @@ class BlogController {
     
     // like Blogs
     
-    static func likeBlogs(blog: Blog, completion: (blog: Blog?, success: Bool) -> Void) {
-        completion(blog: currentBlog.first, success: true)
+    static func likeBlogs(user: PFUser, blog: Blog, completion: (success: Bool) -> Void) {
+        
+        let likeObject = PFObject(className: ParseHelper.ParseLikeClass)
+        likeObject[ParseHelper.kLikeFromUser] = user
+        likeObject[ParseHelper.kLikeToPost] = blog
+        
+        likeObject.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                completion(success: true)
+            } else {
+                completion(success: false)
+                print(error?.localizedDescription)
+            }
+        }
     }
     
-    static func unlikeBlog(like: Like, completion: (blog: Blog?, success: Bool) -> Void) {
+    static func unlikeBlog(user: PFUser, blog: Blog, completion: (blog: Blog?, success: Bool) -> Void) {
+        let query = PFQuery(className: ParseHelper.ParseLikeClass)
+        query.whereKey(ParseHelper.kLikeFromUser, equalTo: user)
+        query.whereKey(ParseHelper.kLikeToPost, equalTo: blog)
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let result = object {
+                for likes in result {
+                    likes.deleteInBackgroundWithBlock(nil)
+                }
+            }
+         }
         
     }
-
-    static func orderBlogs(blogs: [Blog]) -> [Blog] {
-        return currentBlog
+    
+    static func likeForBlog (blog: Blog, completion: (blog: [Blog]?) -> Void) {
+        let query = PFQuery(className: ParseHelper.ParseLikeClass)
+         query.whereKey(ParseHelper.kLikeToPost, equalTo: blog)
+        query.includeKey(ParseHelper.kLikeFromUser)
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let blogs = object as? [Blog] {
+                completion(blog: blogs)
+            } else {
+                completion(blog: [])
+                print(error?.localizedDescription)
+            }
+        }
     }
 }

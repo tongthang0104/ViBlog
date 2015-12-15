@@ -22,16 +22,21 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         case Friends = 0
         case AllChannels = 1
         
-        func users(completion: (users: [User]?) -> Void) {
+   func users(completion: (users: [User]?) -> Void) {
             
             switch self {
             case .Friends:
                 print("Friends")
-//                UserController.followedByUser(UserController.shareController.currentUser, completion: { (followers) -> Void in
-//                    completion(users: followers)
-//                })
+            UserController.followedByUser(UserController.shareController.current!, completion: { (followed) -> Void in
+                
+                if let followed = followed{
+
+                    completion(users: followed)
+                }
+                
+                
+            })
             case .AllChannels:
-//                print("all")
                 UserController.fetchAllUsers({ (users) -> Void in
                     completion(users: users)
                 })
@@ -115,9 +120,6 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         
         if segue.identifier == "toProfileView" {
             
-            
-            
-            
             guard let cell = sender as? UITableViewCell else {return}
             var selectedUser: User?
             
@@ -139,7 +141,9 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
             }
             if let profileDestionationViewController = segue.destinationViewController as? ProfileViewController {
                 profileDestionationViewController.user = selectedUser!
-             
+                
+                
+                
             }
         }
     }

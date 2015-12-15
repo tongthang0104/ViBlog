@@ -83,10 +83,10 @@ class BlogController {
     
     // like Blogs
     
-    static func likeBlogs(blog: Blog, completion: (success: Bool, blog: Blog?) -> Void) {
+    static func likeBlogs(blog: Blog, user: PFUser , completion: (success: Bool, blog: Blog?) -> Void) {
         
         if let blogID = blog.objectId {
-            var like = Like(username: UserController.shareController.current!.username!, blogID: blogID)
+            var like = Like(username: UserController.shareController.current!.username!, blogID: blogID, user: user as! User)
             like.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if success {
                     BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in

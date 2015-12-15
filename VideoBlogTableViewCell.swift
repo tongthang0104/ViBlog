@@ -38,7 +38,12 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     }
     
     func likeButtonTapped(sender: UIButton) {
-//        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
+        BlogController.likeBlogs(self.blog, user: UserController.shareController.current!) { (success, blog) -> Void in
+            if let blog = blog {
+                self.updateWithBlogs(blog)
+            }
+        }
+        //        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
 //            if let blog = blog {
 //                self.updateWithBlogs(blog)
 //             
@@ -103,6 +108,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     var avPlayer = AVPlayer()
     
+    
     func playBackgroundMovie(url: NSURL){
         
         avPlayer = AVPlayer(URL: url)
@@ -117,7 +123,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         moviePlayer.view.sizeToFit()
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
-        
+
         avPlayer.play()
         videoView.addSubview(moviePlayer.view)
         

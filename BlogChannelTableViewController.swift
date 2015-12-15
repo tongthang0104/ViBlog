@@ -19,6 +19,8 @@ class BlogChannelTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+         loadBlogChannels(UserController.shareController.current!)
+        
     }
     
     @IBAction func likeButtonTapped(sender: UIButton) {
@@ -74,7 +76,11 @@ class BlogChannelTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("videoBlogCell", forIndexPath: indexPath) as! VideoBlogTableViewCell
         
         let blog = blogs[indexPath.row]
-        cell.updateWithBlogs(blog)
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            cell.updateWithBlogs(blog)
+        })
+        
+      
         self.delegate = cell
         
         return cell

@@ -15,6 +15,7 @@ class Like: PFObject, PFSubclassing {
     
     @NSManaged var username: String
     @NSManaged var blogID: String
+    @NSManaged var user: PFUser
 
     
     override class func query() -> PFQuery? {
@@ -40,11 +41,12 @@ class Like: PFObject, PFSubclassing {
 
     //MARK: Initializer
     
-    init(username: String, blogID: String) {
+    init(username: String, blogID: String, user: User) {
         super.init()
         
         self.username = username
         self.blogID = blogID
+        self.user = user
    
     }
     

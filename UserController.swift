@@ -9,18 +9,22 @@
 import Foundation
 import UIKit
 import Parse
+import Bolts
+
 class UserController {
     
     static let shareController = UserController()
     
+    
+    var following: [PFUser] = []
     var current = PFUser.currentUser()
     var currentUser: User! = nil
     static let user: User = User()
     
+    
     // user For Identifier
     
     static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
-        
         let query = User.query()
         query?.getObjectInBackgroundWithId(identifier, block: { (object, error) -> Void in
             if let user = object as? User {
@@ -34,7 +38,7 @@ class UserController {
     
     // authenticate User
     static func authenticateUsers(username: String, password: String, completion: (user: User?, success: Bool) -> Void) {
-       
+        
         PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) -> Void in
             if user != nil {
                 completion(user: self.user, success: true)
@@ -91,31 +95,86 @@ class UserController {
     }
     
     // follow User
-    static func followUser(user: User, completion: (success: Bool) -> Void) {
+    static func followUser(user: PFUser, completion: (success: Bool, error: NSError?) -> Void) {
         
+        if let currentUser = UserController.shareController.current {
+            let follow = PFObject(className: User.kFollowActivity)
+            
+            follow.setObject(currentUser.objectId!, forKey: ParseHelper.kFollowFromUser)
+            follow.setObject(user.objectId!, forKey: ParseHelper.kFollowToUser)
+            follow.setObject(user.username!, forKey: ParseHelper.kUsername)
+            
+            follow.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if success {
+                    completion(success: true, error: nil)
+                } else {
+                    completion(success: false, error: error)
+                    print(error?.localizedDescription)
+                }
+            })
+            
+        }
     }
     
     // followed by User
     
-    static func followedByUser(user: User, completion: (followers: [User]?) -> Void) {
+    static func followedByUser(user: PFUser, completion: (followed: [User]?) -> Void) {
         
+        let query = PFQuery(className: ParseHelper.parseFollowClass)
+        query.whereKey(ParseHelper.kFollowFromUser, equalTo: user.objectId!)
+
+//        query.selectKeys([ParseHelper.kFollowFromUser, ParseHelper.kFollowToUser])
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let users = object as? [User] {
+                completion(followed: users)
+            } else {
+                completion(followed: [])
+            }
+        }
     }
     
     // User follow User
-    static func userFollowUser(follower: User, followee: User, completion: (follows: Bool) -> Void) {
+    static func userFollowUser(user: PFUser, followee: PFUser, completion: (follows: Bool) -> Void) {
         
+        let query = PFQuery(className: User.kFollowActivity)
+        query.whereKey(User.kActivityFromUser, equalTo: user.objectId!)
+        query.whereKey(User.kActivityToUser, equalTo: followee.objectId!)
         
+        query.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+            if let user = object {
+                if user.count > 0 {
+                    completion(follows: true)
+                } else {
+                    completion(follows: false)
+                }
+                
+            }
+        })
         
-        
-        
-        
-        
-        completion(follows: true)
     }
     
     // Unfollow User
     static func unfollowUser(user: User, completion: (success: Bool) -> Void) {
-        completion(success: true)
+        let query = PFQuery(className: User.kFollowActivity)
+        query.whereKey(User.kActivityFromUser, equalTo: UserController.shareController.current!)
+        //        query.whereKey(User.kActivityToUser, containedIn: user)
+        query.whereKey(User.kActivityToUser, equalTo: user.objectId!)
+        query.whereKey(User.kUsername, equalTo: user.username!)
+        
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            
+            if error == nil {
+                let users = object as? [PFUser] ?? []
+                
+                for follow in users {
+                    follow.deleteEventually()
+                }
+                completion(success: true)
+            } else {
+                completion(success: false)
+                print("failed to unfollow")
+            }
+        }
     }
     
     // logout User

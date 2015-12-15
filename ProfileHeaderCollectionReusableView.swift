@@ -43,14 +43,18 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
         if user == UserController.shareController.current {
             followButton.removeFromSuperview()
         } else {
-            print("Need to implement")
-//            UserController.userFollowUser(UserController.shareController.currentUser, followee: user, completion: { (follows) -> Void in
-//                if follows {
-//                    self.followButton.setTitle("Unfollow", forState: .Normal)
-//                } else {
-//                    self.followButton.setTitle("Follow", forState: .Normal)
-//                }
-//            })
+            print("Changing")
+            
+            guard let currentUser = UserController.shareController.current else {return}
+            if let user = self.user {
+            UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
+                if follows {
+                    self.followButton.setTitle("UnFollow", forState: .Normal)
+                } else {
+                    self.followButton.setTitle("Follow", forState: .Normal)
+                }
+            })
+        }
         }
     }
 }

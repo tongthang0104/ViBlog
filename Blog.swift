@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Parse
 
 class Blog: PFObject, PFSubclassing {
     
@@ -21,10 +22,13 @@ class Blog: PFObject, PFSubclassing {
 //    @NSManaged var identifier: String?
 //    @NSManaged var timeStamps: NSDate?
     
+//    var likes: Observable<[PFUser]?> = Observable(nil)
+    
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Blog.parseClassName())
         query.includeKey("user")
-        query.orderByAscending("createdAt")
+        query.orderByDescending("createdAt")
+
         return query
     }
     

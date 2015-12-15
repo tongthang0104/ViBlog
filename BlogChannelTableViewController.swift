@@ -12,7 +12,7 @@ import Parse
 class BlogChannelTableViewController: UITableViewController {
     
     var  blogs: [Blog] = []
-    let users: [User] = []
+//    let users: [User] = []
     
     
     override func viewDidLoad() {

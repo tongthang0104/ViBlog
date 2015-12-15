@@ -49,17 +49,10 @@ class Blog: PFObject, PFSubclassing {
     init(video: PFFile, user: PFUser, caption: String?) {
         super.init()
         
-
         self.video = video
         self.caption = caption
         self.user = user
-        
-        
-//        self.comments = comments
-//        self.like = like
-//        self.identifier = identifier
-//        self.timeStamps = timeStamps
-//        self.image = image
+
     }
     
     override init() {

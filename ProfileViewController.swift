@@ -55,10 +55,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             user = UserController.shareController.current as? User
         }
         
+        UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
+            ProfileViewController.following = followed
+        }
+        
         //        tabBarController?.tabBar(<#T##tabBar: UITabBar##UITabBar#>, didSelectItem: self.tabBarItem) {
         
         
     }
+   
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
@@ -96,6 +101,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 if let user = user {
                     self.user = user
                     self.updateWithUser(user)
+                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                        self.collectionView.reloadData()
+                    })
                 }
             }
             
@@ -121,7 +129,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
         view.delegate = self
         if let user = self.user {
-            view.updateWithUsers(user)
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                view.updateWithUsers(user)
+                 self.collectionView.reloadData()
+            })
+           
         }
         
         return view
@@ -141,12 +154,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
                 if follows {
                     
                     UserController.unfollowUser(user, completion: { (success) -> Void in
-                        
-                        if var followingUsers = ProfileViewController.following {
-                        followingUsers.removeObject(user, fromArray: followingUsers)
-                        ProfileViewController.following = followingUsers
+                        print( ProfileViewController.following?.count)
+                        ProfileViewController.following?.removeObject(user, fromArray: ProfileViewController.following!)
+//                        removeObject(user, fromArray: followingUsers)
+//                        ProfileViewController.following = followingUsers
                         print("unfollow")
-                        }
+                        
                         
                     })
                 } else {

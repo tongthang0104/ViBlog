@@ -12,40 +12,21 @@ import UIKit
 
 class ImageController {
     
-    static func uploadImage (image: UIImage, completion: (identifier: String?) -> Void) {
-        
-        
-        
+    static func fetchImageAtURL(url: NSURL, completion: (image: UIImage) -> ()) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            if (data != nil) {
+                let image = UIImage(data: data!)
+                completion(image: image!)
+            } else {
+                completion(image: UIImage())
+            }
+            }
+            .resume()
+    }
     
-//        
-//        
-////        
-////        if let data = data as? String {
-////            let image = UIImage(base64: data)
-////            completion(image: image)
-////        }
-//        let file = PFFile(name: "image", data: data)
-//        //        file.saveInBackgroundWithBlock({ (succeeded, error) -> Void in
-//        //            if succeeded {
-//        //                //2
-//        //                self.saveWallPost(file)
-//        //            } else if let error = error {
-//        //                //3
-//        //                self.showErrorView(error)
-//        //            }
-//        //            }, progressBlock: { percent in
-//        //                //4
-//        //                print("Uploaded: \(percent)%")
-//        //        })
-//        completion(identifier: "-K1l4125TYvKMc7rcp5e")
-//    }
-//    static func imageForIdentifier(identifer: String, completion: (image: UIImage?) -> Void) {
-//        completion(image: UIImage(named: "defaultPhoto"))
-//    }
-//    
-//    //    static func userHasProfilePicture
+    static let defaultImage = UIImage(named: "defaultPhoto")
     
-}
+
 }
 
 extension UIImage {

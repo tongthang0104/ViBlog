@@ -10,11 +10,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProfileViewController.swift"
-            timestampString = "471857243.56698"
+            timestampString = "471896837.413126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "followButtonTapped(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Array.swift"
+            timestampString = "471892382.646482"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "removeObject(_:fromArray:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471896837.413126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "followButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,43 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ProfileViewController.swift"
-            timestampString = "471857108.959394"
+            timestampString = "471896837.413126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "followButtonTapped(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "471857257.518959"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "145"
-            endingLineNumber = "145"
-            landmarkName = "followButtonTapped(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "471857281.896604"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
             landmarkName = "followButtonTapped(_:)"
             landmarkType = "5">
             <Locations>
@@ -70,31 +70,31 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.ProfileViewController.followButtonTapped (ViBlog.ProfileViewController)(__ObjC.UIButton) -&gt; ()"
+                  symbolName = "ViBlog.ProfileViewController.(followButtonTapped (ViBlog.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
                   moduleName = "ViBlog"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
-                  timestampString = "471860556.445188"
+                  timestampString = "471896316.15725"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "19">
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "124">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "protocol witness for ViBlog.ProfileHeaderCollectionReusableViewDelegate.followButtonTapped &lt;A where A: ViBlog.ProfileHeaderCollectionReusableViewDelegate&gt; (A)(__ObjC.UIButton) -&gt; () in conformance ViBlog.ProfileViewController : ViBlog.ProfileHeaderCollectionReusableViewDelegate in ViBlog"
+                  symbolName = "ViBlog.ProfileViewController.(followButtonTapped (ViBlog.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
                   moduleName = "ViBlog"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
-                  timestampString = "471860556.445344"
+                  timestampString = "471896316.157425"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "134"
-                  endingLineNumber = "134"
-                  offsetFromSymbolStart = "4">
+                  startingLineNumber = "159"
+                  endingLineNumber = "159"
+                  offsetFromSymbolStart = "706">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -105,44 +105,60 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EdittingProfileTableViewController.swift"
-            timestampString = "471860089.067763"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471896837.413126"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "submitButtonTapped(_:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "followButtonTapped(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ProfileViewController.swift"
+            timestampString = "471896837.413126"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "156"
+            endingLineNumber = "156"
+            landmarkName = "followButtonTapped(_:)"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.EdittingProfileTableViewController.submitButtonTapped (ViBlog.EdittingProfileTableViewController)(__ObjC.UIButton) -&gt; ()"
+                  symbolName = "ViBlog.ProfileViewController.(followButtonTapped (ViBlog.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
                   moduleName = "ViBlog"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/EdittingProfileTableViewController.swift"
-                  timestampString = "471860556.44645"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
+                  timestampString = "471896449.515379"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "452">
+                  startingLineNumber = "151"
+                  endingLineNumber = "151"
+                  offsetFromSymbolStart = "41">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.EdittingProfileTableViewController.(submitButtonTapped (ViBlog.EdittingProfileTableViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
+                  symbolName = "ViBlog.ProfileViewController.(followButtonTapped (ViBlog.ProfileViewController) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
                   moduleName = "ViBlog"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/EdittingProfileTableViewController.swift"
-                  timestampString = "471860556.446604"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
+                  timestampString = "471896449.515571"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "53"
-                  endingLineNumber = "53"
-                  offsetFromSymbolStart = "30">
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "28">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -153,14 +169,78 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EdittingProfileTableViewController.swift"
-            timestampString = "471860555.418735"
+            filePath = "UserController.swift"
+            timestampString = "471896463.618438"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55"
-            landmarkName = "submitButtonTapped(_:)"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "unfollowUser(_:completion:)"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UserController.swift"
+            timestampString = "471896464.797649"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "unfollowUser(_:completion:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "UserController.swift"
+            timestampString = "471896467.859172"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "unfollowUser(_:completion:)"
+            landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ViBlog.UserController.unfollowUser (ViBlog.UserController.Type)(ViBlog.User, completion : (success : Swift.Bool) -&gt; ()) -&gt; ()"
+                  moduleName = "ViBlog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/UserController.swift"
+                  timestampString = "471896467.861647"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "1175">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "static ViBlog.UserController.(unfollowUser (ViBlog.UserController.Type) -&gt; (ViBlog.User, completion : (success : Swift.Bool) -&gt; ()) -&gt; ()).(closure #1)"
+                  moduleName = "ViBlog"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/UserController.swift"
+                  timestampString = "471896467.861833"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "188"
+                  endingLineNumber = "188"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -48,13 +48,21 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         
         self.view.window?.endEditing(true)
         if let avatarImage = avatarImage {
-            UserController.addAvatar(avatarImage, completion: { (user, success) -> Void in
-                if success {
-                    self.dismissViewControllerAnimated(true, completion: nil)
-                } else {
-                    self.presentAlert("Failed to upload image", message: "Press OK to dismiss")
-                }
-            })
+            
+          UserController.addAvatar(avatarImage, completion: { (success) -> Void in
+            if success {
+                self.dismissViewControllerAnimated(true, completion: nil)
+            } else {
+                self.presentAlert("Failed to upload image", message: "Press OK to dismiss")
+            }
+          })
+//            UserController.addAvatar(avatarImage, completion: { (user, success) -> Void in
+//                if success {
+//                    self.dismissViewControllerAnimated(true, completion: nil)
+//                } else {
+//                    self.presentAlert("Failed to upload image", message: "Press OK to dismiss")
+//                }
+//            })
         }
         
         // Edit Profile Information

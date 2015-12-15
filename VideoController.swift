@@ -13,6 +13,21 @@ import Parse
 class VideoController {
         
     // upload Videos
+    
+    
+    static func fetchImageAtURL(url: NSURL, completion: (video: NSURL) -> ()) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            if let data = data {
+                let video = NSURL(dataRepresentation: data, relativeToURL: url)
+                completion(video: video)
+            } else {
+                completion(video: url)
+            }
+            }
+            .resume()
+    }
+
+    
     static func uploadVideo(video: PFFile, completion: (identifier: String?)-> Void) {
         
         completion(identifier: "-k12312492hfnasd")

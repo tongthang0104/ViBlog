@@ -18,6 +18,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     @IBOutlet weak var followButton: UIButton!
     @IBOutlet weak var avatarButton: UIButton!
     
+    @IBOutlet weak var avatarImage: UIImageView!
     var user: PFUser?
     var delegate: ProfileHeaderCollectionReusableViewDelegate?
 
@@ -38,6 +39,17 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     func updateWithUsers(user: PFUser) {
         self.user = user
         self.nameLabel.text = user.username
+        
+        if let avatar = user["avatar"] as? PFFile {
+            ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.avatarImage.image = image
+            })
+           })
+        } else {
+            avatarImage.image = ImageController.defaultImage
+        }
+        
         // set followingLabel = "\(followering.count) followings"
         // set followersLabel = "\(followers.count) followers"
         if user == UserController.shareController.current {

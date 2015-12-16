@@ -69,11 +69,14 @@ class FriendsTableViewCell: UITableViewCell {
                 if follows {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setTitle("UnFollow", forState: .Normal)
+                        self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
+                        
                     })
                     
                 } else {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setTitle("Follow", forState: .Normal)
+                        self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
                     })
                 }
             })

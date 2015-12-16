@@ -53,9 +53,12 @@ extension UIColor {
 class Color {
     
     static func setupAppearanceColor() {
-        UINavigationBar.appearance().tintColor = UIColor.darkBlue()
-        UITabBar.appearance().tintColor = UIColor.myRedColor()
-        UINavigationBar.appearance().backgroundColor = UIColor.darkBlue()
+        UINavigationBar.appearance().tintColor = UIColor.myWhiteColor()
+        UITabBar.appearance().tintColor = UIColor.myDarkBrown()
+//        UINavigationBar.appearance().backgroundColor = UIColor.myDarkBrown()
+     UINavigationBar.appearance().setBackgroundImage(UIImage(named: "backgroundTabBar"), forBarMetrics: .Default)
+        UITabBar.appearance().backgroundImage = UIImage(named: "backgroundTabBar")
+        
         
     }
     static func blurEffect(view: UIView, image: UIImage) {

@@ -56,7 +56,7 @@ class Color {
         UINavigationBar.appearance().tintColor = UIColor.myWhiteColor()
         UITabBar.appearance().tintColor = UIColor.myDarkBrown()
 //        UINavigationBar.appearance().backgroundColor = UIColor.myDarkBrown()
-     UINavigationBar.appearance().setBackgroundImage(UIImage(named: "backgroundTabBar"), forBarMetrics: .Default)
+     UINavigationBar.appearance().setBackgroundImage(UIImage(named: "backgroundNavigationBar"), forBarMetrics: .Default)
         UITabBar.appearance().backgroundImage = UIImage(named: "backgroundTabBar")
         
         

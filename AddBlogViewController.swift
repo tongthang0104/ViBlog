@@ -122,13 +122,15 @@ class AddBlogViewController: UIViewController {
     
     func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
         
-        var title = "Success"
-        var message = "Video was saved to library"
+    
+//        var title = "Success"
+//        var message = "Video was saved to library"
         if let _ = error {
-            title = "Error"
-            message = "Video failed to save"
+            print("successfully saved to library")
+//            title = "Error"
+//            message = "Video failed to save"
         }
-        self.presentAlert(title, message: message)
+//        self.presentAlert(title, message: message)
     }
     
     //MARK: - Present Alert

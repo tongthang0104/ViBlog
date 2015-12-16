@@ -27,6 +27,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         self.avatarButton.imageView?.contentMode = .ScaleAspectFill
         if let currentUser = UserController.shareController.current {
         self.updateWithUser(currentUser)
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.myWhiteColor()]
         }
     }
     

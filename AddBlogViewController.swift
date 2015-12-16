@@ -49,7 +49,7 @@ class AddBlogViewController: UIViewController {
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
 
             guard let data = NSData(contentsOfURL: videoOfUrl) else {return}
-            let file = PFFile(name: "Video", data: data)
+            let file = PFFile(name: "video.mov", data: data)
             
             file?.saveInBackgroundWithBlock({ (success, error) -> Void in
                 

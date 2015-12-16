@@ -120,16 +120,23 @@ class BlogChannelTableViewController: UITableViewController {
     }
     */
     
-    /*
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toVideoDetail" {
+            if let videoDetailViewDestination = segue.destinationViewController as? BlogsDetailTableViewController {
+                _ = videoDetailViewDestination.view
+                
+                if let indexPath = tableView.indexPathForSelectedRow {
+                    let blog = self.blogs[indexPath.row]
+                    videoDetailViewDestination.updateWithBlog(blog)
+                }
+            }
+        }
     }
-    */
-    
 }
 
 protocol BlogChannelTableViewControllerDelegate {

@@ -18,17 +18,20 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     //MARK: Properties
     var user: User?
-    var like: [Like] = []
+    
+    var like: Like?
+    var likeArray: [Like] = []
     var caption: String?
     var blog: Blog!
     var videoOfUrl: NSURL?
     
-//    @IBOutlet weak var videoThumbnailView: UIImageView!
+    @IBOutlet weak var likeButton: UIButton!
+    //    @IBOutlet weak var videoThumbnailView: UIImageView!
     
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-
+    
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var likeLabel: UILabel!
     
@@ -38,17 +41,23 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     }
     
     func likeButtonTapped(sender: UIButton) {
-        BlogController.likeBlogs(self.blog, user: UserController.shareController.current!) { (success, blog) -> Void in
+      
+        //TODO: NEED REVIEW --> This is wrong
+        if let like = self.like {
+        BlogController.likeBlogs(like, blog: self.blog, user: UserController.shareController.current!) { (success, blog) -> Void in
             if let blog = blog {
                 self.updateWithBlogs(blog)
+                self.likeArray.append(like)
+                self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
             }
         }
+        }
         //        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
-//            if let blog = blog {
-//                self.updateWithBlogs(blog)
-//             
-//            }
-//        }
+        //            if let blog = blog {
+        //                self.updateWithBlogs(blog)
+        //
+        //            }
+        //        }
     }
     //TODO: load Like status
     //TODO: load Unfollow function
@@ -60,14 +69,14 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         self.nameLabel.text = blog.user.username
         
         if let caption = blog.caption {
-        if self.caption == caption {
-            self.captionLabel.text = self.caption
-        }
+            if self.caption == caption {
+                self.captionLabel.text = self.caption
+            }
         } else {
             self.captionLabel.text = ""
         }
         self.captionLabel.text = blog.caption
-//        self.videoThumbnailView.image = nil
+        //        self.videoThumbnailView.image = nil
         
         if let avatar = blog.user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
@@ -78,32 +87,31 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         } else {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
-        
-        if let video = blog.video as? PFFile {
-            VideoController.fetchImageAtURL(NSURL(string: video.url!)!, completion: { (video) -> () in
+       
+            VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.videoOfUrl = video
                     self.playBackgroundMovie(video)
                 })
             })
-        }
-//        ImageController.fetchImageAtURL(<#T##url: NSURL##NSURL#>, completion: <#T##(image: UIImage) -> ()#>)
         
-//     image =   blog.video.url
+        //        ImageController.fetchImageAtURL(<#T##url: NSURL##NSURL#>, completion: <#T##(image: UIImage) -> ()#>)
         
-//        VideoController.videoForID(<#T##identifier: String##String#>) { (video) -> Void in
-//            self.playBackgroundMovie(<#T##url: NSURL##NSURL#>)
-//        }
-//        self.videoThumbnailView.image = nil
+        //     image =   blog.video.url
         
-//        ImageController.imageForIdentifier(blog.videoSnapShot) { (image) -> Void in
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.videoThumbnailView.image = image
-//            })
-//        }
-//        self.videoThumbnailView.image = UIImage(named: blog.videoSnapShot)
+        //        VideoController.videoForID(<#T##identifier: String##String#>) { (video) -> Void in
+        //            self.playBackgroundMovie(<#T##url: NSURL##NSURL#>)
+        //        }
+        //        self.videoThumbnailView.image = nil
         
-        self.likeLabel.text = "\(like.count) likes"
+        //        ImageController.imageForIdentifier(blog.videoSnapShot) { (image) -> Void in
+        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //                self.videoThumbnailView.image = image
+        //            })
+        //        }
+        //        self.videoThumbnailView.image = UIImage(named: blog.videoSnapShot)
+        
+        self.likeLabel.text = "\(likeArray.count) likes"
     }
     
     var avPlayer = AVPlayer()
@@ -114,7 +122,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         avPlayer = AVPlayer(URL: url)
         
         let moviePlayer = AVPlayerViewController()
-//        self.addChildViewController(moviePlayer)
+        //        self.addChildViewController(moviePlayer)
         
         moviePlayer.player = avPlayer
         moviePlayer.view.bounds = self.videoView.bounds
@@ -123,7 +131,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         moviePlayer.view.sizeToFit()
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
-
+        
         avPlayer.play()
         videoView.addSubview(moviePlayer.view)
         

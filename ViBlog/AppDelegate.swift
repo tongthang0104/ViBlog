@@ -32,6 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // [Optional] Track statistics around application opens.
         PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
+        // COlor
+        Color.setupAppearanceColor()
+        
         return true
     }
 

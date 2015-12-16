@@ -26,6 +26,7 @@ class AddBlogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+      
     }
     
     // MARK: - Action
@@ -63,7 +64,8 @@ class AddBlogViewController: UIViewController {
                             self.dismissViewControllerAnimated(true, completion: nil)
                             self.presentAlert("Yo! Upload Completed", message: "")
                             self.cleanWall()
-                            self.recordButton.setTitle("Record", forState: .Normal)
+                            
+                            self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)
                     
                         
                         } else {
@@ -143,7 +145,9 @@ class AddBlogViewController: UIViewController {
     
     func playBackgroundMovie(url: NSURL){
         
-        self.recordButton.setTitle("", forState: .Normal)
+        self.recordButton.setBackgroundImage(nil, forState: .Normal)
+
+  
         avPlayer = AVPlayer(URL: url)
         
         let moviePlayer = AVPlayerViewController()
@@ -194,11 +198,13 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! NSString
+        
         dismissViewControllerAnimated(true, completion: nil)
         
         if mediaType == kUTTypeMovie {
             if let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path {
                 if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
+                    
                     
                     // Save to Library
                     UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)

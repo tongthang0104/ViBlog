@@ -19,7 +19,7 @@ class BlogChannelTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         loadBlogChannels(UserController.shareController.current!)
+//         loadBlogChannels(UserController.shareController.current!)
         
     }
     
@@ -33,11 +33,10 @@ class BlogChannelTableViewController: UITableViewController {
         loadBlogChannels(UserController.shareController.current!)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidAppear(animated: Bool) {
         
         // Check if there is User, if there is no user, go to SignUpLoginPickerView
-        if let currentUser = PFUser.currentUser() {
+        if let currentUser = UserController.shareController.current {
             if blogs.count > 0 {
                 loadBlogChannels(currentUser)
             }

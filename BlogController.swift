@@ -83,7 +83,7 @@ class BlogController {
     
     // like Blogs
     
-    static func likeBlogs(blog: Blog, user: PFUser , completion: (success: Bool, blog: Blog?) -> Void) {
+    static func likeBlogs(like: Like, blog: Blog, user: PFUser , completion: (success: Bool, blog: Blog?) -> Void) {
         
         if let blogID = blog.objectId {
             var like = Like(username: UserController.shareController.current!.username!, blogID: blogID, user: user as! User)

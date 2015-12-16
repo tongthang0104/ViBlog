@@ -106,11 +106,22 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as! FriendsTableViewCell
+//        cell.backgroundView = UIImageView(image: UIImage(named: "friendBackground"))
         let users = userDataSource[indexPath.row]
+        
         cell.updateWithUsers(users)
         
         return cell
     }
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if cell.backgroundView == nil {
+            let cellBackgroundView = UIImageView()
+            cellBackgroundView.image = UIImage(named: "friendBackground")
+            cell.backgroundView = cellBackgroundView
+        }
+            }
     
     // MARK: - Navigation
     

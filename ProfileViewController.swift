@@ -13,7 +13,7 @@ import UIKit
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate  {
     
     // MARK: Properties
-    var user: User?
+    var user: User!
     static var following: [User]? {
         didSet {
 //            collectionView.reloadData()
@@ -44,7 +44,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         BlogController.blogsForUser(user.objectId!) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
-                self.collectionView.reloadData()
+//                self.collectionView.reloadData()
             }
         }
     }
@@ -67,12 +67,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        
-        if let user = self.user {
-            UserController.userForIdentifier((user.objectId)!) { (user) -> Void in
-                self.updateWithUser(user!)
-            }
-        }
+//        
+//       
+        self.collectionView.reloadData()
     }
     
     @IBAction func moreOptionButtonTapped(sender: UIBarButtonItem) {
@@ -95,17 +92,19 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        if let user = user {
+        if let user = user{
             
-            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
-                if let user = user {
-                    self.user = user
-                    self.updateWithUser(user)
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.collectionView.reloadData()
-                    })
-                }
-            }
+            self.updateWithUser(user)
+            self.collectionView.reloadData()
+//            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
+//                if let user = user {
+//                    self.user = user
+//                    self.updateWithUser(user)
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                        self.collectionView.reloadData()
+//                    })
+//                }
+//            }
             
         }
         
@@ -128,14 +127,21 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
         view.delegate = self
-        if let user = self.user {
-            
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                view.updateWithUsers(user)
-                 self.collectionView.reloadData()
-            })
-           
-        }
+
+        view.updateWithUsers(user)
+        
+//        var token: dispatch_once_t = 0
+//        dispatch_once(&token) { () -> Void in
+//            self.collectionView.reloadData()
+//        }
+      
+        
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                
+//                 self.collectionView.reloadData()
+//            })
+//           0x000000014f5641e0
+        
         
         return view
     }

@@ -15,6 +15,7 @@ class SignUpLoginViewController: UITableViewController {
     var user: PFUser?
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
     
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
@@ -54,6 +55,9 @@ class SignUpLoginViewController: UITableViewController {
         super.viewDidLoad()
         
         self.updateWithMode(mode)
+//        Color.blurEffect(self.tableView.backgroundView, image: UIImage(named: "lens")!)
+        
+        
     }
     
     //MARK: Action

@@ -36,9 +36,10 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     }
    
     
-    func updateWithUsers(user: PFUser) {
+    func updateWithUsers(user: User) {
+        print("successfully updated")
         self.user = user
-        self.nameLabel.text = user.username
+
         
         if let avatar = user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
@@ -50,20 +51,27 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             avatarImage.image = ImageController.defaultImage
         }
         
-        // set followingLabel = "\(followering.count) followings"
-        // set followersLabel = "\(followers.count) followers"
+//         set followingLabel = "\(followering.count) followings"
+//         set followersLabel = "\(followers.count) followers"
+        
         if user == UserController.shareController.current {
-            followButton.removeFromSuperview()
+            followButton.setTitle(user.username, forState: .Normal)
+            followButton.enabled = false
+            followButton.backgroundColor = UIColor.myRedColor()
         } else {
-            print("Changing")
+            print("changing status")
             
             guard let currentUser = UserController.shareController.current else {return}
             if let user = self.user {
             UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
                 if follows {
                     self.followButton.setTitle("UnFollow", forState: .Normal)
+                    self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
+                    print("Already followed")
                 } else {
                     self.followButton.setTitle("Follow", forState: .Normal)
+                     self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
+                    print("Not followed yet")
                 }
             })
         }

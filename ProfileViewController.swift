@@ -10,7 +10,7 @@ import UIKit
 //import BTNavigationDropdownMenu
 
 
-class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate , ProfileHeaderCollectionReusableViewDelegate  {
+class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
     // MARK: Properties
     var user: User!
@@ -130,22 +130,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
-        view.delegate = self
+//        view.delegate = self
 
         view.updateWithUsers(user)
-        
-//        var token: dispatch_once_t = 0
-//        dispatch_once(&token) { () -> Void in
-//            self.collectionView.reloadData()
-//        }
-      
-        
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                
-//                 self.collectionView.reloadData()
-//            })
-//           0x000000014f5641e0
-        
         
         return view
     }
@@ -154,50 +141,22 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
       
     }
     
-    func followButtonTapped(sender: UIButton) {
-        
-        guard let currentUser = UserController.shareController.current else {return}
-        
-        if let user = user {
-            
-            UserController.userFollowUser(currentUser, followee: user) { (follows) -> Void in
-                if follows {
-                    
-                    UserController.unfollowUser(user, completion: { (success) -> Void in
-                        print( ProfileViewController.following?.count)
-                        ProfileViewController.following?.removeObject(user, fromArray: ProfileViewController.following!)
-//                        removeObject(user, fromArray: followingUsers)
-//                        ProfileViewController.following = followingUsers
-                        print("unfollow")
-                        
-                        
-                    })
-                } else {
-                    UserController.followUser(user, completion: { (success, error) -> Void in
-                        
-                        if success {
-                            ProfileViewController.following?.append(user)
-                            self.updateWithUser(user)
-                        } else {
-                            print(error?.localizedDescription)
-                        }
-                    })
-                }
-            }
-        }
-        
-        //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
-        //            if follows {
-        //                UserController.unfollowUser(user, completion: { (success) -> Void in
-        //                    self.updateWithUser(user)
-        //                })
-        //            } else {
-        //                UserController.followUser(user, completion: { (success) -> Void in
-        //                    self.updateWithUser(user)
-        //                })
-        //            }
-        //        }
-    }
+//    func followButtonTapped(sender: UIButton) {
+//        
+//      
+//        
+//        //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
+//        //            if follows {
+//        //                UserController.unfollowUser(user, completion: { (success) -> Void in
+//        //                    self.updateWithUser(user)
+//        //                })
+//        //            } else {
+//        //                UserController.followUser(user, completion: { (success) -> Void in
+//        //                    self.updateWithUser(user)
+//        //                })
+//        //            }
+//        //        }
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

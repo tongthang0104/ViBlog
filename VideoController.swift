@@ -35,9 +35,9 @@ class VideoController {
     
     static func fetchImageAtURL(url: NSURL, completion: (video: NSURL) -> ()) {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            if let data = data {
+            if let _ = data {
                 let video = NSURL(string: "\(url)")
-                let videoFile = NSBundle.mainBundle().pathForResource("\(video)", ofType: "mov")
+//                let videoFile = NSBundle.mainBundle().pathForResource("\(video)", ofType: "mov")
 //                NSURL(fileURLWithPath: url)
                 completion(video: video!)
             } else {
@@ -63,19 +63,19 @@ class VideoController {
     }
     
     // Video for ID
-    static func videoForID(identifier: String, completion: (video: NSURL) -> Void) {
-        
-        let blogQuery = Blog.query()!
-        
-        blogQuery.getObjectInBackgroundWithId(identifier) { (object, error) -> Void in
-            if let object = object {
-                
-            }
-        }
-        let filePath = NSBundle.mainBundle().pathForResource("Sample", ofType: ".m4v", inDirectory: "")
-        let url = NSURL(fileURLWithPath: filePath!)
-      completion(video: url)
-    }
+//    static func videoForID(identifier: String, completion: (video: NSURL) -> Void) {
+//        
+//        let blogQuery = Blog.query()!
+//        
+//        blogQuery.getObjectInBackgroundWithId(identifier) { (object, error) -> Void in
+//            if let object = object {
+//                
+//            }
+//        }
+//        let filePath = NSBundle.mainBundle().pathForResource("Sample", ofType: ".m4v", inDirectory: "")
+//        let url = NSURL(fileURLWithPath: filePath!)
+//      completion(video: url)
+//    }
     
     
     

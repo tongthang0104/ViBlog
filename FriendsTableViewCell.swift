@@ -30,7 +30,7 @@ class FriendsTableViewCell: UITableViewCell {
                     
                     UserController.unfollowUser(user, completion: { (success) -> Void in
                         
-                        var followingUser = ProfileViewController.following?.filter(){ $0 != user }
+                        let followingUser = ProfileViewController.following?.filter(){$0 != user }
                         ProfileViewController.following = followingUser
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateWithUsers(user)
@@ -71,9 +71,6 @@ class FriendsTableViewCell: UITableViewCell {
 //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setTitle("UnFollow", forState: .Normal)
                         self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
-                        
-                  
-                    
                 } else {
 //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setTitle("Follow", forState: .Normal)
@@ -81,9 +78,7 @@ class FriendsTableViewCell: UITableViewCell {
 //                    })
                 }
             })
-            
         }
-        
         
         if let avatar = user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in

@@ -19,28 +19,49 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     @IBOutlet weak var avatarButton: UIButton!
     
     @IBOutlet weak var avatarImage: UIImageView!
-    var user: PFUser?
-    var delegate: ProfileHeaderCollectionReusableViewDelegate?
+    var user: User?
+//    var delegate: ProfileHeaderCollectionReusableViewDelegate?
 
     
     // MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
-        self.delegate?.followButtonTapped(sender)
+//        self.delegate?.followButtonTapped(sender)
+        guard let currentUser = UserController.shareController.current else {return}
+        
+        if let user = user {
+            
+            UserController.userFollowUser(currentUser, followee: user) { (follows) -> Void in
+                if follows {
+                    
+                    UserController.unfollowUser(user, completion: { (success) -> Void in
+                        
+                        let followingUser = ProfileViewController.following?.filter(){ $0 != user }
+                        ProfileViewController.following = followingUser
+                        self.updateWithUsers(user)
+                    })
+                } else {
+                    UserController.followUser(user, completion: { (success, error) -> Void in
+                        
+                        if success {
+                            ProfileViewController.following?.append(user)
+                            self.updateWithUsers(user)
+                        } else {
+                            print(error?.localizedDescription)
+                        }
+                    })
+                }
+            }
+        }
     }
     
     
-    
-    @IBAction func avatarButtonTapped(sender: AnyObject) {
-      
-    }
-   
+ 
     
     func updateWithUsers(user: User) {
-        print("successfully updated")
+        
         self.user = user
 
-        
         if let avatar = user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -59,8 +80,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             followButton.enabled = false
             followButton.backgroundColor = UIColor.myRedColor()
         } else {
-            print("changing status")
-            
             guard let currentUser = UserController.shareController.current else {return}
             if let user = self.user {
             UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
@@ -79,8 +98,8 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     }
 }
 
-protocol ProfileHeaderCollectionReusableViewDelegate {
-    func followButtonTapped(sender: UIButton)
-    
-}
+//protocol ProfileHeaderCollectionReusableViewDelegate {
+//    func followButtonTapped(sender: UIButton)
+//    
+//}
 

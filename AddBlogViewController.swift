@@ -46,7 +46,7 @@ class AddBlogViewController: UIViewController {
             
             self.activityIndicator.startAnimating()
             UIApplication.sharedApplication().beginIgnoringInteractionEvents()
-
+            
             guard let data = NSData(contentsOfURL: videoOfUrl) else {return}
             let file = PFFile(name: "video.mov", data: data)
             
@@ -65,8 +65,8 @@ class AddBlogViewController: UIViewController {
                             self.cleanWall()
                             
                             self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)
-                    
-                        
+                            
+                            
                         } else {
                             let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
                             failedAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
@@ -87,17 +87,17 @@ class AddBlogViewController: UIViewController {
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
             
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                 self.presentAlert("No video Added", message: "Record your video and share")
+                self.presentAlert("No video Added", message: "Record your video and share")
             })
         }
     }
     
     func cleanWall() {
         for viewToRemove in videoView.subviews {
-            if let viewToRemove = viewToRemove as? UIView {
-                videoOfUrl = nil
-                viewToRemove.removeFromSuperview()
-            }
+            
+            videoOfUrl = nil
+            viewToRemove.removeFromSuperview()
+            
         }
     }
     
@@ -120,15 +120,15 @@ class AddBlogViewController: UIViewController {
     
     func video(videoPath: NSString, didFinishSavingWithError error: NSError?, contextInfo info: AnyObject) {
         
-    
-//        var title = "Success"
-//        var message = "Video was saved to library"
+        
+        //        var title = "Success"
+        //        var message = "Video was saved to library"
         if let _ = error {
             print("successfully saved to library")
-//            title = "Error"
-//            message = "Video failed to save"
+            //            title = "Error"
+            //            message = "Video failed to save"
         }
-//        self.presentAlert(title, message: message)
+        //        self.presentAlert(title, message: message)
     }
     
     //MARK: - Present Alert
@@ -146,8 +146,8 @@ class AddBlogViewController: UIViewController {
     func playBackgroundMovie(url: NSURL){
         
         self.recordButton.setBackgroundImage(nil, forState: .Normal)
-
-  
+        
+        
         avPlayer = AVPlayer(URL: url)
         
         let moviePlayer = AVPlayerViewController()
@@ -174,7 +174,7 @@ class AddBlogViewController: UIViewController {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
         avPlayer.pause()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -209,7 +209,7 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
                         print("urlOfVideo is : \(urlOfVideo)")
                         self.videoOfUrl = urlOfVideo
-                    
+                        
                         // Play Video
                         self.playBackgroundMovie(urlOfVideo)
                     }

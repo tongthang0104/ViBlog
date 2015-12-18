@@ -9,7 +9,6 @@
 import Foundation
 import UIKit
 
-
 class ImageController {
     
     static func fetchImageAtURL(url: NSURL, completion: (image: UIImage) -> ()) {
@@ -25,8 +24,6 @@ class ImageController {
     }
     
     static let defaultImage = UIImage(named: "defaultPhoto")
-    
-
 }
 
 extension UIImage {

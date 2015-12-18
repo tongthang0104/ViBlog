@@ -26,7 +26,6 @@ class AddBlogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
     }
     
     // MARK: - Action
@@ -93,8 +92,7 @@ class AddBlogViewController: UIViewController {
         }
     }
     
-    func cleanWall()
-    {
+    func cleanWall() {
         for viewToRemove in videoView.subviews {
             if let viewToRemove = viewToRemove as? UIView {
                 videoOfUrl = nil
@@ -175,14 +173,11 @@ class AddBlogViewController: UIViewController {
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
         avPlayer.pause()
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        
     }
     
     /*
@@ -214,12 +209,9 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
                         print("urlOfVideo is : \(urlOfVideo)")
                         self.videoOfUrl = urlOfVideo
-                        
+                    
                         // Play Video
                         self.playBackgroundMovie(urlOfVideo)
-                        
-                        // Take snapshot
-                       VideoController.takeSnapshot(urlOfVideo)
                     }
                 }
             }

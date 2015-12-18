@@ -20,7 +20,7 @@ class BlogCommentTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
     func updateWithComment(comment: Comment) {
         
     }

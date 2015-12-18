@@ -10,6 +10,7 @@ import Foundation
 import AVFoundation 
 import UIKit
 import Parse
+
 class VideoController {
         
     // download videos

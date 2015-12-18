@@ -13,7 +13,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     // MARK: Properties
     
     var searchController: UISearchController!
-//    var user: User?
+    //    var user: User?
     var userDataSource: [User] = []
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
@@ -22,18 +22,18 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         case Friends = 0
         case AllChannels = 1
         
-   func users(completion: (users: [User]?) -> Void) {
+        func users(completion: (users: [User]?) -> Void) {
             
             switch self {
             case .Friends:
                 print("Friends")
-            UserController.followedByUser(UserController.shareController.current!, completion: { (followed) -> Void in
-               
-                if let followed = followed{
-
-                    completion(users: followed)
-                }
-            })
+                UserController.followedByUser(UserController.shareController.current!, completion: { (followed) -> Void in
+                    
+                    if let followed = followed{
+                        
+                        completion(users: followed)
+                    }
+                })
             case .AllChannels:
                 UserController.fetchAllUsers({ (users) -> Void in
                     completion(users: users)
@@ -84,10 +84,17 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        
+        //
         updateBaseOnMode(mode)
         setUpSearchController()
+        self.tableView.reloadData()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(false)
+        self.tableView.reloadData()
+    }
+    
     @IBAction func selectIndexChanged(sender: UISegmentedControl) {
         updateBaseOnMode(mode)
     }
@@ -106,11 +113,12 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as! FriendsTableViewCell
-//        cell.backgroundView = UIImageView(image: UIImage(named: "friendBackground"))
+        //        cell.backgroundView = UIImageView(image: UIImage(named: "friendBackground"))
         let users = userDataSource[indexPath.row]
         
-        cell.updateWithUsers(users)
-        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            cell.updateWithUsers(users)
+        })
         return cell
     }
     
@@ -121,7 +129,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
             cellBackgroundView.image = UIImage(named: "friendBackground")
             cell.backgroundView = cellBackgroundView
         }
-            }
+    }
     
     // MARK: - Navigation
     
@@ -150,9 +158,6 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
             }
             if let profileDestionationViewController = segue.destinationViewController as? ProfileViewController {
                 profileDestionationViewController.user = selectedUser!
-                
-                
-                
             }
         }
     }

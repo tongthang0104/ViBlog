@@ -20,7 +20,6 @@ class BlogChannelTableViewController: UITableViewController {
         super.viewDidLoad()
         
 //         loadBlogChannels(UserController.shareController.current!)
-        
     }
     
     @IBAction func likeButtonTapped(sender: UIButton) {
@@ -38,7 +37,7 @@ class BlogChannelTableViewController: UITableViewController {
         // Check if there is User, if there is no user, go to SignUpLoginPickerView
         if let currentUser = UserController.shareController.current {
             if blogs.count > 0 {
-                loadBlogChannels(currentUser)
+//                loadBlogChannels(currentUser)
             }
         } else {
             tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
@@ -49,7 +48,6 @@ class BlogChannelTableViewController: UITableViewController {
         BlogController.fetchBlogsForUser(user) { (blog) -> Void in
             if let blog = blog {
                 self.blogs = blog
-                
                 self.tableView.reloadData()
                 self.refreshControl?.endRefreshing()
             }

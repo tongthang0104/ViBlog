@@ -19,7 +19,6 @@ class VideoController {
         
         blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if let object = object {
-                
                 for videoObject in object {
                     let theVideo = videoObject.objectForKey("video")
                     theVideo?.getDataInBackgroundWithBlock({ (data, error) -> Void in

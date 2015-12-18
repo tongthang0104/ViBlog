@@ -442,7 +442,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-If-0fg">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-If-0fg">
                                                     <rect key="frame" x="44" y="8" width="512" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -452,6 +452,12 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="2xj-If-0fg" firstAttribute="leading" secondItem="AZB-p8-Ml6" secondAttribute="leadingMargin" constant="36" id="1oa-pr-O8W"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="2xj-If-0fg" secondAttribute="bottom" constant="-1.5" id="3OJ-PR-rin"/>
+                                                <constraint firstAttribute="topMargin" secondItem="2xj-If-0fg" secondAttribute="top" id="hJo-OQ-4Pg"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="2xj-If-0fg" secondAttribute="trailing" constant="36" id="wZ8-LI-zjx"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.34901960780000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
@@ -466,7 +472,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-Gp-JUt">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-Gp-JUt">
                                                     <rect key="frame" x="44" y="8" width="513" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -476,6 +482,12 @@
                                                     </connections>
                                                 </textField>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="fcC-Gp-JUt" secondAttribute="bottom" constant="-1.5" id="76e-bt-rKf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="fcC-Gp-JUt" secondAttribute="trailing" constant="35" id="D6A-Z8-E3B"/>
+                                                <constraint firstAttribute="topMargin" secondItem="fcC-Gp-JUt" secondAttribute="top" id="TI5-eT-2CC"/>
+                                                <constraint firstItem="fcC-Gp-JUt" firstAttribute="leading" secondItem="BWy-Af-cyM" secondAttribute="leadingMargin" constant="36" id="o3G-PM-hjk"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.34901960780000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>

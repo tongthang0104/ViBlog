@@ -135,27 +135,18 @@ class SignUpLoginViewController: UITableViewController {
         presentViewController(failedAlert, animated: true, completion: nil)
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        if mode == .Login {
-            return 2
-        } else {
-            return 3
-        }
-        
-    }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
             return 1
         case 1:
-            return 1
-        default:
             if mode == .Login {
                 return 0
             } else {
                 return 1
             }
+        default:
+           return 1
         }
     }
     

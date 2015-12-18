@@ -15,38 +15,37 @@ class VideoController {
         
     // download videos
     
-    static func getVideo(url: NSURL, completion: (video: NSURL) -> ()) {
-        let blogQuery = Blog.query()
-        
-        blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
-            if let object = object {
-                for videoObject in object {
-                    let theVideo = videoObject.objectForKey("video")
-                    theVideo?.getDataInBackgroundWithBlock({ (data, error) -> Void in
-                        if let data = data {
-                            let video = NSURL(string:  "\(url)")
-                            completion(video: video!)
-                        }
-                    })
-                }
-            }
-        })
-    }
-    
-//    static func fetchImageAtURL(url: NSURL, completion: (video: NSURL) -> ()) {
-//        NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-//            if let data = data {
-//                let video = NSURL(dataRepresentation: data, relativeToURL: url)
-//                
-//                let videoFile = NSBundle.mainBundle().pathForResource("\(video)", ofType: ".mov")
-////                NSURL(fileURLWithPath: url)
-//                completion(video: video)
-//            } else {
-//                completion(video: url)
+//    static func getVideo(url: NSURL, completion: (video: NSURL) -> ()) {
+//        let blogQuery = Blog.query()
+//        
+//        blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+//            if let object = object {
+//                for videoObject in object {
+//                    let theVideo = videoObject.objectForKey("video")
+//                    theVideo?.getDataInBackgroundWithBlock({ (data, error) -> Void in
+//                        if let data = data {
+//                            let video = NSURL(string:  "\(url)")
+//                            completion(video: video!)
+//                        }
+//                    })
+//                }
 //            }
-//            }
-//            .resume()
+//        })
 //    }
+    
+    static func fetchImageAtURL(url: NSURL, completion: (video: NSURL) -> ()) {
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            if let data = data {
+                let video = NSURL(string: "\(url)")
+                let videoFile = NSBundle.mainBundle().pathForResource("\(video)", ofType: "mov")
+//                NSURL(fileURLWithPath: url)
+                completion(video: video!)
+            } else {
+                completion(video: url)
+            }
+            }
+            .resume()
+    }
 
     static func takeSnapshot(url: NSURL) {
         let asset: AVAsset = AVAsset(URL: url)

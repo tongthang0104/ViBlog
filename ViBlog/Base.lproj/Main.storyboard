@@ -553,9 +553,9 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-qq-Enf">
-                                            <rect key="frame" x="525" y="6" width="67" height="29.5"/>
+                                            <rect key="frame" x="525" y="6" width="68" height="29.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="67" id="5ws-5m-tDo"/>
+                                                <constraint firstAttribute="width" constant="68" id="5ws-5m-tDo"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <state key="normal" title="Unfollow">
@@ -576,7 +576,7 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="AUJ-qq-Enf" secondAttribute="trailing" id="6dp-jK-GTL"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="AUJ-qq-Enf" secondAttribute="trailing" constant="-1" id="6dp-jK-GTL"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="4Z3-hg-aWw" secondAttribute="leading" id="9kH-wt-hhy"/>
                                         <constraint firstItem="Zhl-Tz-fI1" firstAttribute="leading" secondItem="4Z3-hg-aWw" secondAttribute="trailing" constant="8" id="Ngp-YR-V76"/>
                                         <constraint firstItem="AUJ-qq-Enf" firstAttribute="leading" secondItem="Zhl-Tz-fI1" secondAttribute="trailing" constant="8" id="Qgh-c4-Fqp"/>
@@ -643,16 +643,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmu-AL-cOA">
-                                            <rect key="frame" x="516" y="-1" width="76" height="45"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="76" id="aKL-3j-oog"/>
-                                            </constraints>
-                                            <state key="normal" title="Unfollow"/>
-                                            <connections>
-                                                <action selector="followButtonTapped:" destination="p68-gW-e6K" eventType="touchUpInside" id="VM5-7m-Lch"/>
-                                            </connections>
-                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-VL-qaB">
                                             <rect key="frame" x="64" y="8" width="453" height="28"/>
                                             <constraints>
@@ -670,17 +660,29 @@
                                                 <constraint firstAttribute="height" constant="44" id="SjB-1v-Zpj"/>
                                             </constraints>
                                         </imageView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmu-AL-cOA">
+                                            <rect key="frame" x="525" y="6" width="68" height="29.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="68" id="aKL-3j-oog"/>
+                                            </constraints>
+                                            <state key="normal" title="Unfollow">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="followButtonTapped:" destination="p68-gW-e6K" eventType="touchUpInside" id="VM5-7m-Lch"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="vH0-VL-qaB" firstAttribute="leading" secondItem="5xn-OW-bir" secondAttribute="trailing" constant="7" id="Esz-UV-0Gz"/>
-                                        <constraint firstItem="mmu-AL-cOA" firstAttribute="leading" secondItem="vH0-VL-qaB" secondAttribute="trailing" constant="-1" id="O1L-ka-9zN"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="mmu-AL-cOA" secondAttribute="trailing" id="gwf-HB-FiS"/>
+                                        <constraint firstItem="mmu-AL-cOA" firstAttribute="leading" secondItem="vH0-VL-qaB" secondAttribute="trailing" constant="8" id="O1L-ka-9zN"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mmu-AL-cOA" secondAttribute="trailing" constant="-1" id="gwf-HB-FiS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstItem="5xn-OW-bir" firstAttribute="leading" secondItem="p68-gW-e6K" secondAttribute="leading" constant="8" id="Bgu-c4-PQG"/>
-                                    <constraint firstAttribute="bottom" secondItem="mmu-AL-cOA" secondAttribute="bottom" id="C8W-fs-TsU"/>
-                                    <constraint firstItem="mmu-AL-cOA" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="-1" id="Eqa-TQ-goh"/>
+                                    <constraint firstAttribute="bottom" secondItem="mmu-AL-cOA" secondAttribute="bottom" constant="8.5" id="C8W-fs-TsU"/>
+                                    <constraint firstItem="mmu-AL-cOA" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="6" id="Eqa-TQ-goh"/>
                                     <constraint firstItem="5xn-OW-bir" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="-1" id="dl2-Ft-aQ0"/>
                                     <constraint firstAttribute="bottom" secondItem="vH0-VL-qaB" secondAttribute="bottom" constant="8" id="gOb-D8-VlO"/>
                                     <constraint firstItem="vH0-VL-qaB" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="8" id="hyS-qM-4Pi"/>
@@ -1273,8 +1275,8 @@
         <image name="unlikeButton" width="56" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SGI-7r-IEs"/>
+        <segue reference="baw-w6-etn"/>
         <segue reference="Jko-Fw-MiY"/>
-        <segue reference="WIs-oF-pkc"/>
+        <segue reference="SGI-7r-IEs"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,11 +12,15 @@ import AVFoundation
 
 class VideoCollectionViewCell: UICollectionViewCell {
     
+    //MARK: - Properties
+    
     @IBOutlet weak var videoThumbnails: UIImageView!
     var blog: Blog?
     var video: NSURL?
     //TODO: Need to add Video Properties
     @IBOutlet weak var captionLabel: UILabel!
+    
+    //MARK: - UpdateWithBlog
     
     func updateWithBlogs(identifier: String) {
    

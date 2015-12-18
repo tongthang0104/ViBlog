@@ -15,14 +15,12 @@ class UserController {
     
     static let shareController = UserController()
     
-    
     var following: [PFUser] = []
     var current = PFUser.currentUser()
     var currentUser: User! = nil
     static let user: User = User()
     
-    
-    // user For Identifier
+    // User For Identifier
     
     static func userForIdentifier(identifier: String, completion: (user: User?) -> Void) {
         let query = User.query()
@@ -36,7 +34,7 @@ class UserController {
         })
     }
     
-    // authenticate User
+    // Authenticate User
     static func authenticateUsers(username: String, password: String, completion: (user: User?, success: Bool) -> Void) {
         
         PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) -> Void in
@@ -49,7 +47,7 @@ class UserController {
         }
     }
     
-    // fetch all Users
+    // Fetch all Users
     
     static func fetchAllUsers(completion: (users: [User]?) -> Void) {
         let query = User.query()!
@@ -63,7 +61,7 @@ class UserController {
         })
     }
     
-    // create User
+    // Create User
     
     static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool) -> Void) {
         
@@ -81,24 +79,21 @@ class UserController {
             }
         })
     }
-    // add image to User
+    
+    // Add Profile Picture to User
     
     static func addAvatar(image: UIImage, completion: (success: Bool) -> Void) {
         
         let imageData: NSData = UIImageJPEGRepresentation(image, 0.5)!
         let imageFile: PFFile = PFFile(name: "image.jpg", data: imageData)!
-        
         do {
             try imageFile.save()
         } catch {
-            
+           
         }
-        
         UserController.shareController.current?.setObject(imageFile, forKey: "avatar")
         UserController.shareController.current?.saveInBackgroundWithBlock({ (success, error) -> Void in
-          
                 completion(success: success)
-                
         })
     }
     

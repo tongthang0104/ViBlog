@@ -94,9 +94,7 @@ class BlogController {
                     }
                 }
             })
-            
         }
-        
         
 //        let likeObject = PFObject(className: ParseHelper.ParseLikeClass)
 ////        likeObject[ParseHelper.kLikeFromUser] = user
@@ -112,6 +110,7 @@ class BlogController {
 //        }
     }
     
+    // Unlike Blog
     static func unlikeBlog(user: PFUser, blog: Blog, completion: (blog: Blog?, success: Bool) -> Void) {
         let query = PFQuery(className: ParseHelper.ParseLikeClass)
         query.whereKey(ParseHelper.kLikeFromUser, equalTo: user)

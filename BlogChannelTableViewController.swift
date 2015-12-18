@@ -13,20 +13,20 @@ class BlogChannelTableViewController: UITableViewController {
     
     var  blogs: [Blog] = []
     var blog: Blog!
-    //    let users: [User] = []
+    //let users: [User] = []
     var delegate: BlogChannelTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//         loadBlogChannels(UserController.shareController.current!)
+        //loadBlogChannels(UserController.shareController.current!)
     }
+    
+    //MARK: - Action
     
     @IBAction func likeButtonTapped(sender: UIButton) {
         self.delegate?.likeButtonTapped(sender)
     }
-    
-    
     
     @IBAction func userRefreshTableView(sender: UIRefreshControl) {
         loadBlogChannels(UserController.shareController.current!)
@@ -37,7 +37,7 @@ class BlogChannelTableViewController: UITableViewController {
         // Check if there is User, if there is no user, go to SignUpLoginPickerView
         if let currentUser = UserController.shareController.current {
             if blogs.count > 0 {
-//                loadBlogChannels(currentUser)
+                // loadBlogChannels(currentUser)
             }
         } else {
             tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
@@ -53,8 +53,6 @@ class BlogChannelTableViewController: UITableViewController {
             }
         }
     }
-  
-
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -82,45 +80,8 @@ class BlogChannelTableViewController: UITableViewController {
         return cell
     }
     
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the specified item to be editable.
-    return true
-    }
-    */
-    
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-    if editingStyle == .Delete {
-    // Delete the row from the data source
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-    } else if editingStyle == .Insert {
-    // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }
-    }
-    */
-    
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    
-    }
-    */
-    
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    // Return false if you do not want the item to be re-orderable.
-    return true
-    }
-    */
-    
-    
     // MARK: - Navigation
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "toVideoDetail" {

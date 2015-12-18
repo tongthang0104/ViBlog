@@ -13,10 +13,11 @@ import UIKit
 class ProfileViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate  {
     
     // MARK: Properties
+    
     var user: User!
     static var following: [User]? {
         didSet {
-//            collectionView.reloadData()
+            //            collectionView.reloadData()
         }
     }
     
@@ -24,9 +25,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var avatarImage: UIImage?
     
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var logoutButton: UIBarButtonItem!
-    // UpdateWithUser
+    
+    //MARK: UpdateWithUser
     
     func updateWithUser(user: User) {
         //        self.user = user
@@ -45,13 +46,36 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
             
         }
+        
         BlogController.blogsForUser(user.objectId!) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
-//                self.collectionView.reloadData()
+                //                self.collectionView.reloadData()
             }
         }
     }
+    
+    //MARK: ViewController Cycle
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let user = user{
+            
+            self.updateWithUser(user)
+            self.collectionView.reloadData()
+            //            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
+            //                if let user = user {
+            //                    self.user = user
+            //                    self.updateWithUser(user)
+            //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            //                        self.collectionView.reloadData()
+            //                    })
+            //                }
+            //            }
+        }
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -62,19 +86,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
             ProfileViewController.following = followed
         }
-        
         //        tabBarController?.tabBar(<#T##tabBar: UITabBar##UITabBar#>, didSelectItem: self.tabBarItem) {
-        
-        
     }
-   
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-//        
-//       
         self.collectionView.reloadData()
     }
+    
+    
+    //MARK: - Action:
     
     @IBAction func moreOptionButtonTapped(sender: UIBarButtonItem) {
         let moreOptionAlert = UIAlertController(title: "Select your option", message: "", preferredStyle: .ActionSheet)
@@ -91,28 +112,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         presentViewController(moreOptionAlert, animated: true, completion: nil)
     }
     
-    
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if let user = user{
-            
-            self.updateWithUser(user)
-            self.collectionView.reloadData()
-//            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
-//                if let user = user {
-//                    self.user = user
-//                    self.updateWithUser(user)
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                        self.collectionView.reloadData()
-//                    })
-//                }
-//            }
-            
-        }
-        
-    }
+    //MARK: - CollectionViewDataSource
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return userBlogs.count
@@ -123,40 +123,35 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
         let blogs = userBlogs[indexPath.item]
         //        item.updateWithBlogs(blogs.videoSnapShot)
-        
         return item
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
-//        view.delegate = self
-
+        //        view.delegate = self
+        
         view.updateWithUsers(user)
         
         return view
     }
     
-    @IBAction func doneButtonTapped(sender: UIBarButtonItem) {
-      
-    }
-    
-//    func followButtonTapped(sender: UIButton) {
-//        
-//      
-//        
-//        //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
-//        //            if follows {
-//        //                UserController.unfollowUser(user, completion: { (success) -> Void in
-//        //                    self.updateWithUser(user)
-//        //                })
-//        //            } else {
-//        //                UserController.followUser(user, completion: { (success) -> Void in
-//        //                    self.updateWithUser(user)
-//        //                })
-//        //            }
-//        //        }
-//    }
+    //    func followButtonTapped(sender: UIButton) {
+    //
+    //
+    //
+    //        //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
+    //        //            if follows {
+    //        //                UserController.unfollowUser(user, completion: { (success) -> Void in
+    //        //                    self.updateWithUser(user)
+    //        //                })
+    //        //            } else {
+    //        //                UserController.followUser(user, completion: { (success) -> Void in
+    //        //                    self.updateWithUser(user)
+    //        //                })
+    //        //            }
+    //        //        }
+    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

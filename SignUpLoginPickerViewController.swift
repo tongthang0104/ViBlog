@@ -18,14 +18,13 @@ class SignUpLoginPickerViewController: UIViewController {
         view.tintColor = UIColor.myBlueColor()
         Color.blurEffect(self.backgroundImage, image: UIImage(named: "lens")!)
 //        UINavigationBar.appearance().hidden = true
-        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - Navigatio
+    // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let destinationController = segue.destinationViewController as? SignUpLoginViewController {

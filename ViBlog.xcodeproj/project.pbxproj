@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		90470ECD6D4CFA695CF16673 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADA76725CCA4F0FAB2194F2D /* Pods.framework */; };
 		DE086B661C1789930091E34F /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B601C1789930091E34F /* Bolts.framework */; };
 		DE086B671C1789930091E34F /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B611C1789930091E34F /* Parse.framework */; };
 		DE086B681C1789930091E34F /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B621C1789930091E34F /* ParseFacebookUtils.framework */; };
@@ -43,7 +44,6 @@
 		DE8FF3BF1C1FA44C00F6BAA7 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */; };
 		DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */; };
 		DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */; };
-		DEB364D31C11257A001EBDBC /* Sample.m4v in Resources */ = {isa = PBXBuildFile; fileRef = DEB364D21C11257A001EBDBC /* Sample.m4v */; };
 		DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */; };
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
 		DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF46A41C220DE3003FD06E /* AVKit.framework */; };
@@ -77,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4194CA6F6506AEFA8BB2B4A2 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		ADA76725CCA4F0FAB2194F2D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE086B601C1789930091E34F /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		DE086B611C1789930091E34F /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		DE086B621C1789930091E34F /* ParseFacebookUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseFacebookUtils.framework; sourceTree = "<group>"; };
@@ -110,11 +112,10 @@
 		DE76B2521BFA942B002E6293 /* AddBlogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBlogViewController.swift; sourceTree = "<group>"; };
 		DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
 		DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		DE8603371C20DCF000C36FEB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DE8603371C20DCF000C36FEB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ViBlog/Color.swift; sourceTree = "<group>"; };
 		DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBlogTableViewCell.swift; sourceTree = "<group>"; };
 		DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingProfileTableViewController.swift; sourceTree = "<group>"; };
-		DEB364D21C11257A001EBDBC /* Sample.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sample.m4v; sourceTree = "<group>"; };
 		DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogChannelTableViewController.swift; sourceTree = "<group>"; };
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEBF46A41C220DE3003FD06E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -125,7 +126,7 @@
 		DEE6A14E1BF9838B00009122 /* ViBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE6A1561BF9838B00009122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		DEE6A1581BF9838C00009122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ViBlog/Assets.xcassets; sourceTree = "<group>"; };
+		DEE6A1581BF9838C00009122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEE6A15B1BF9838C00009122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DEE6A15D1BF9838C00009122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEE6A1621BF9838C00009122 /* ViBlogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViBlogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,6 +136,7 @@
 		DEE6A1711BF9838C00009122 /* ViBlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViBlogUITests.swift; sourceTree = "<group>"; };
 		DEE6A1731BF9838C00009122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCommentTableViewCell.swift; sourceTree = "<group>"; };
+		FEB7829BF06C7DEA394DC420 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +162,7 @@
 				DE086B661C1789930091E34F /* Bolts.framework in Frameworks */,
 				DE086B6A1C1789930091E34F /* ParseTwitterUtils.framework in Frameworks */,
 				DE086B691C1789930091E34F /* ParseFacebookUtilsV4.framework in Frameworks */,
+				90470ECD6D4CFA695CF16673 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -180,6 +183,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8423F5CA0ABD20CEA4D0CF9D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FEB7829BF06C7DEA394DC420 /* Pods.debug.xcconfig */,
+				4194CA6F6506AEFA8BB2B4A2 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9445FEE50E55A3EBCD42D15E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADA76725CCA4F0FAB2194F2D /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE086B5F1C1789820091E34F /* Framework */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,8 +235,7 @@
 				DE76B2391BFA85F8002E6293 /* Comment.swift */,
 				DE76B23B1BFA8601002E6293 /* Like.swift */,
 				DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */,
-				DEE6A1581BF9838C00009122 /* Assets.xcassets */,
-				DEB364D21C11257A001EBDBC /* Sample.m4v */,
+				DE8603371C20DCF000C36FEB /* Color.swift */,
 			);
 			name = Modal;
 			path = ..;
@@ -307,6 +326,8 @@
 				DEE6A1651BF9838C00009122 /* ViBlogTests */,
 				DEE6A1701BF9838C00009122 /* ViBlogUITests */,
 				DEE6A14F1BF9838B00009122 /* Products */,
+				8423F5CA0ABD20CEA4D0CF9D /* Pods */,
+				9445FEE50E55A3EBCD42D15E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -324,9 +345,9 @@
 			isa = PBXGroup;
 			children = (
 				DEE6A1511BF9838B00009122 /* AppDelegate.swift */,
-				DE8603371C20DCF000C36FEB /* Color.swift */,
 				DEE6A15D1BF9838C00009122 /* Info.plist */,
 				DED2248A1C1B6D0D007826BF /* Podfile */,
+				DEE6A1581BF9838C00009122 /* Assets.xcassets */,
 				DE76B2321BFA85A5002E6293 /* Modal */,
 				DE76B2331BFA85B1002E6293 /* Controllers */,
 				DE76B2341BFA85BF002E6293 /* Views */,
@@ -359,9 +380,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEE6A1761BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViBlog" */;
 			buildPhases = (
+				0A3EC80E1B44E7207C080536 /* Check Pods Manifest.lock */,
 				DEE6A14A1BF9838B00009122 /* Sources */,
 				DEE6A14B1BF9838B00009122 /* Frameworks */,
 				DEE6A14C1BF9838B00009122 /* Resources */,
+				204807985BAE74C8EB53CF16 /* Embed Pods Frameworks */,
+				D0F81204A2C1C87D699631F8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -458,7 +482,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE6A15C1BF9838C00009122 /* LaunchScreen.storyboard in Resources */,
-				DEB364D31C11257A001EBDBC /* Sample.m4v in Resources */,
 				DEE6A1591BF9838C00009122 /* Assets.xcassets in Resources */,
 				DEE6A1571BF9838B00009122 /* Main.storyboard in Resources */,
 			);
@@ -479,6 +502,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A3EC80E1B44E7207C080536 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		204807985BAE74C8EB53CF16 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0F81204A2C1C87D699631F8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DEE6A14A1BF9838B00009122 /* Sources */ = {
@@ -651,10 +722,12 @@
 		};
 		DEE6A1771BF9838C00009122 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FEB7829BF06C7DEA394DC420 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",
@@ -670,10 +743,12 @@
 		};
 		DEE6A1781BF9838C00009122 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4194CA6F6506AEFA8BB2B4A2 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",

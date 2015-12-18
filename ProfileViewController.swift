@@ -36,7 +36,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.myWhiteColor()]
         
-        
         if user != UserController.shareController.current {
             
             // as of writing there is no system way to remove a bar button item

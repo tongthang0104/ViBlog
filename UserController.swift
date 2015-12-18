@@ -172,24 +172,21 @@ class UserController {
                 
             }
         })
-        
     }
     
     // Unfollow User
     static func unfollowUser(user: User, completion: (success: Bool) -> Void) {
         let query = PFQuery(className: User.kFollowActivity)
-        query.whereKey(User.kActivityFromUser, equalTo: UserController.shareController.current!)
+        query.whereKey(User.kActivityFromUser, equalTo: UserController.shareController.current!.objectId!)
         //        query.whereKey(User.kActivityToUser, containedIn: user)
         query.whereKey(User.kActivityToUser, equalTo: user)
-        query.whereKey(User.kUsername, equalTo: user.username!)
+//        query.whereKey(User.kUsername, equalTo: user.username!)
         
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
-            
+            print(object)
             if error == nil {
-                let users = object as? [PFUser] ?? []
-                
-                for follow in users {
-                    follow.deleteEventually()
+                if let users = object?.first {
+                        users.deleteInBackground()
                 }
                 completion(success: true)
             } else {

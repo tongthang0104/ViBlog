@@ -32,8 +32,9 @@ class FriendsTableViewCell: UITableViewCell {
                         
                         var followingUser = ProfileViewController.following?.filter(){ $0 != user }
                         ProfileViewController.following = followingUser
-                        
-                        print("unfollowed")
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.updateWithUsers(user)
+                        })
                     })
                 } else {
                     UserController.followUser(user, completion: { (success, error) -> Void in
@@ -67,17 +68,17 @@ class FriendsTableViewCell: UITableViewCell {
             
             UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
                 if follows {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setTitle("UnFollow", forState: .Normal)
                         self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
                         
-                    })
+                  
                     
                 } else {
-                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setTitle("Follow", forState: .Normal)
                         self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
-                    })
+//                    })
                 }
             })
             

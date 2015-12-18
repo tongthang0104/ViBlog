@@ -92,7 +92,6 @@ class BlogController {
                     BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in
                         completion(success: true, blog: blog)
                     }
-                  
                 }
             })
             

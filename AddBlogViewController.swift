@@ -212,6 +212,7 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                     UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
                     
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
+                        print("urlOfVideo is : \(urlOfVideo)")
                         self.videoOfUrl = urlOfVideo
                         
                         // Play Video

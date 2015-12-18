@@ -79,7 +79,6 @@ class BlogChannelTableViewController: UITableViewController {
             cell.updateWithBlogs(blog)
         })
         
-      
         self.delegate = cell
         
         return cell

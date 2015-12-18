@@ -41,12 +41,12 @@ class BlogsDetailTableViewController: UITableViewController {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
         
-        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+        VideoController.getVideo(NSURL(string: blog.video.url!)!) { (video) -> () in
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.videoOfUrl = video
-                self.playBackgroundMovie(self.videoOfUrl!)
+                self.playBackgroundMovie(video)
             })
-        })
+        }
     }
     
     var avPlayer = AVPlayer()
@@ -66,10 +66,21 @@ class BlogsDetailTableViewController: UITableViewController {
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
         
-        avPlayer.play()
+        
         self.videoView.addSubview(moviePlayer.view)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self,
+            selector: "playerReachedEnd",
+            name: AVPlayerItemDidPlayToEndTimeNotification,
+            object: nil)
     }
 
+    
+    func playerReachedEnd() {
+        avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
+        avPlayer.pause()
+        
+    }
     @IBAction func avatarButtonTapped(sender: UIButton) {
         
     }

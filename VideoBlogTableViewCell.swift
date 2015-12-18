@@ -122,7 +122,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
         
-        avPlayer.play()
+  
         videoView.addSubview(moviePlayer.view)
         
         NSNotificationCenter.defaultCenter().addObserver(self,
@@ -135,7 +135,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
-        avPlayer.play()
+        avPlayer.pause()
         
     }
     

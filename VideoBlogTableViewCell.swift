@@ -88,28 +88,18 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
        
-            VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.videoOfUrl = video
-                    self.playBackgroundMovie(video)
-                })
+        VideoController.getVideo(NSURL(string: blog.video.url!)!) { (video) -> () in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.videoOfUrl = video
+                self.playBackgroundMovie(video)
             })
-        
-        //        ImageController.fetchImageAtURL(<#T##url: NSURL##NSURL#>, completion: <#T##(image: UIImage) -> ()#>)
-        
-        //     image =   blog.video.url
-        
-        //        VideoController.videoForID(<#T##identifier: String##String#>) { (video) -> Void in
-        //            self.playBackgroundMovie(<#T##url: NSURL##NSURL#>)
-        //        }
-        //        self.videoThumbnailView.image = nil
-        
-        //        ImageController.imageForIdentifier(blog.videoSnapShot) { (image) -> Void in
-        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        //                self.videoThumbnailView.image = image
-        //            })
-        //        }
-        //        self.videoThumbnailView.image = UIImage(named: blog.videoSnapShot)
+        }
+//            VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+//                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                    self.videoOfUrl = video
+//                    self.playBackgroundMovie(self.videoOfUrl!)
+//                })
+//            })
         
         self.likeLabel.text = "\(likeArray.count) likes"
     }

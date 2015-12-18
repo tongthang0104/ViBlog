@@ -7,16 +7,17 @@
 //
 
 import UIKit
+import AVKit
+import AVFoundation
+
 
 class BlogsDetailTableViewController: UITableViewController {
 
+    
+    var videoOfUrl: NSURL?
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
-    
-
-    
     @IBOutlet weak var captionLabel: UILabel!
-    
     @IBOutlet weak var avatarButton: UIButton!
     
     
@@ -28,9 +29,47 @@ class BlogsDetailTableViewController: UITableViewController {
     
     func updateWithBlog(blog: Blog){
         
+        self.blog = blog
+        self.captionLabel.text = blog.caption
+        if let avatar = blog.user["avatar"] as? PFFile {
+            ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.avatarButton.setBackgroundImage(image, forState: .Normal)
+                })
+            })
+        } else {
+            self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
+        }
+        
+        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.videoOfUrl = video
+                self.playBackgroundMovie(self.videoOfUrl!)
+            })
+        })
     }
     
+    var avPlayer = AVPlayer()
     
+    
+    func playBackgroundMovie(url: NSURL){
+        
+        avPlayer = AVPlayer(URL: url)
+        
+        let moviePlayer = AVPlayerViewController()
+        self.addChildViewController(moviePlayer)
+        moviePlayer.player = avPlayer
+        moviePlayer.view.bounds = self.videoView.bounds
+        moviePlayer.view.center = self.videoView.center
+        moviePlayer.view.frame = CGRectMake(0, 0, self.videoView.frame.size.width, self.videoView.frame.size.height)
+        moviePlayer.view.sizeToFit()
+        moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
+        moviePlayer.showsPlaybackControls = true
+        
+        avPlayer.play()
+        self.videoView.addSubview(moviePlayer.view)
+    }
+
     @IBAction func avatarButtonTapped(sender: UIButton) {
         
     }

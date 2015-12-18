@@ -12,6 +12,7 @@ import Parse
 class SignUpLoginViewController: UITableViewController {
     
     //MARK: Properties
+    
     var user: PFUser?
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
     
@@ -22,6 +23,8 @@ class SignUpLoginViewController: UITableViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loginSignUpButton: UIButton!
     @IBOutlet weak var loginButton: UIBarButtonItem!
+    
+    //MARK: - ViewMode
     
     enum ViewMode {
         case Login
@@ -61,9 +64,7 @@ class SignUpLoginViewController: UITableViewController {
     }
     
     //MARK: Action
-    
-    
-    
+  
     @IBAction func loginSignupButtonTapped(sender: UIButton) {
         
         //Activity Indicator View
@@ -135,6 +136,8 @@ class SignUpLoginViewController: UITableViewController {
         presentViewController(failedAlert, animated: true, completion: nil)
     }
     
+    // MARK: - TableViewDataSource
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
@@ -150,7 +153,6 @@ class SignUpLoginViewController: UITableViewController {
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -159,7 +161,6 @@ class SignUpLoginViewController: UITableViewController {
 }
 
 extension SignUpLoginViewController: UITextFieldDelegate {
-    
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()

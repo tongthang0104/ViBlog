@@ -10,17 +10,25 @@ import UIKit
 
 class EdittingProfileTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBOutlet weak var avatarButton: UIButton!
+    //MARK: Properties
     
+    @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
-    
     @IBOutlet weak var emailTextField: UITextField!
     
     var avatarImage: UIImage?
 
+    //MARK: ViewController Cycle
     
-    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(false)
+        
+        self.avatarButton.imageView?.contentMode = .ScaleAspectFill
+        if let currentUser = UserController.shareController.current {
+            self.updateWithUser(currentUser)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,13 +39,6 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(true)
-        self.avatarButton.imageView?.contentMode = .ScaleAspectFill
-        if let currentUser = UserController.shareController.current {
-            self.updateWithUser(currentUser)
-        }
-    }
     //MARK: - Action
     
     @IBAction func cancelButtonTapped(sender: UIBarButtonItem) {
@@ -46,7 +47,6 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     @IBAction func submitButtonTapped(sender: UIButton) {
         
         // Avatar Picker
-        
         self.view.window?.endEditing(true)
         if let avatarImage = avatarImage {
             
@@ -119,6 +119,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     }
     
     //MARK: - UIImagePickerControllerDelegate
+    
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         picker.dismissViewControllerAnimated(true, completion: nil)
@@ -129,7 +130,6 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
     
     // MARK: - Table view data source
@@ -149,26 +149,21 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         }
     }
     
+    //MARK: - Update With User
+    
     func updateWithUser(user: PFUser) {
 //        self.user = user
         self.usernameTextField.text = user.username
 //        self.companyTextField.text = user.username
         self.emailTextField.text = user.email
-        
     }
-    
-    // MARK: - Navigation
-    
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
+ 
 }
 
-//extension EdittingProfileTableViewController: UITextFieldDelegate {
-//    
-//    func textFieldShouldReturn(textField: UITextField) -> Bool {
-//        <#code#>
-//    }
-//}
+extension EdittingProfileTableViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}

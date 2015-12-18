@@ -19,14 +19,9 @@ class ParseHelper  {
     static let kFollowToUser = "toUser"
     static let kFollowedByCurrentUser = "isFollowedByCurrentUser"
     
-    
     // Like Relation
     
     static let ParseLikeClass = "Like"
     static let kLikeToPost = "toPost"
     static let kLikeFromUser = "fromUser"
-    
-    
-    
-
 }

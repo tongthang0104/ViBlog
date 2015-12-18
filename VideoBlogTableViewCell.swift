@@ -17,8 +17,8 @@ import Parse
 class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDelegate {
     
     //MARK: Properties
-    var user: User?
     
+    var user: User?
     var like: Like?
     var likeArray: [Like] = []
     var caption: String?
@@ -26,12 +26,9 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     var videoOfUrl: NSURL?
     
     @IBOutlet weak var likeButton: UIButton!
-    //    @IBOutlet weak var videoThumbnailView: UIImageView!
-    
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var likeLabel: UILabel!
     
@@ -60,8 +57,8 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         //        }
     }
     //TODO: load Like status
-    //TODO: load Unfollow function
-    
+  
+    //MARK: - Update Blog
     
     func updateWithBlogs(blog: Blog) {
         self.blog = blog
@@ -105,16 +102,15 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         self.likeLabel.text = "\(likeArray.count) likes"
     }
     
+    //MARK: - AV Player
+    
     var avPlayer = AVPlayer()
-    
-    
     func playBackgroundMovie(url: NSURL){
         
         avPlayer = AVPlayer(URL: url)
         
         let moviePlayer = AVPlayerViewController()
-        //        self.addChildViewController(moviePlayer)
-        
+        //self.addChildViewController(moviePlayer)
         moviePlayer.player = avPlayer
         moviePlayer.view.bounds = self.videoView.bounds
         moviePlayer.view.center = self.videoView.center
@@ -123,7 +119,6 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
         
-  
         videoView.addSubview(moviePlayer.view)
         
         NSNotificationCenter.defaultCenter().addObserver(self,
@@ -132,12 +127,9 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
             object: nil)
     }
     
-    
-    
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
         avPlayer.pause()
-        
     }
     
     override func awakeFromNib() {

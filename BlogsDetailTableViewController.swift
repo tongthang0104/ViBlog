@@ -13,19 +13,15 @@ import AVFoundation
 
 class BlogsDetailTableViewController: UITableViewController {
 
+    //MARK: - Properties
     
     var videoOfUrl: NSURL?
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
-    
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
+  
+    //MARK: - Update With Blog
     
     func updateWithBlog(blog: Blog){
         
@@ -55,9 +51,9 @@ class BlogsDetailTableViewController: UITableViewController {
         })
     }
     
+    //MARK: AV Player
+    
     var avPlayer = AVPlayer()
-    
-    
     func playBackgroundMovie(url: NSURL){
         
         avPlayer = AVPlayer(URL: url)
@@ -81,12 +77,17 @@ class BlogsDetailTableViewController: UITableViewController {
             object: nil)
     }
 
-    
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
         avPlayer.pause()
-        
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    //MARK: - Action
+    
     @IBAction func avatarButtonTapped(sender: UIButton) {
         
     }
@@ -114,14 +115,12 @@ class BlogsDetailTableViewController: UITableViewController {
    
     
     // MARK: - Table view data source
-
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return 10
     }
-
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
 
@@ -130,7 +129,6 @@ class BlogsDetailTableViewController: UITableViewController {
         return cell
     }
 
-
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         return "Comments"
@@ -138,7 +136,6 @@ class BlogsDetailTableViewController: UITableViewController {
 
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.

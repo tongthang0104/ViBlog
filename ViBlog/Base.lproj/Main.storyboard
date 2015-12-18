@@ -160,7 +160,7 @@
                             </constraints>
                         </view>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lAF-oZ-tg5">
-                            <rect key="frame" x="0.0" y="511" width="600" height="65"/>
+                            <rect key="frame" x="0.0" y="511" width="600" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Add Comments"/>
                             <connections>
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUn-pW-fdw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410" y="-1024"/>
+            <point key="canvasLocation" x="-474" y="-1864"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="I9d-O2-rGO">
@@ -396,7 +396,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your username here..." textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-Xa-Pg0">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-Xa-Pg0">
                                                     <rect key="frame" x="43" y="6" width="513" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -426,24 +426,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter a password more than 5 characters..." textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-Gp-JUt">
-                                                    <rect key="frame" x="44" y="6" width="513" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-If-0fg">
+                                                    <rect key="frame" x="44" y="8" width="512" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="UT5-yp-J7i" id="pwr-Se-ORV"/>
+                                                        <outlet property="delegate" destination="UT5-yp-J7i" id="Kt0-HL-xVT"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.34901960780000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="fcC-Gp-JUt" secondAttribute="trailing" constant="43" id="Ck2-1F-6rv"/>
-                                            <constraint firstItem="fcC-Gp-JUt" firstAttribute="leading" secondItem="1ed-qF-M8u" secondAttribute="leading" constant="44" id="ZI4-2c-e31"/>
-                                            <constraint firstItem="fcC-Gp-JUt" firstAttribute="top" secondItem="1ed-qF-M8u" secondAttribute="top" constant="6" id="dny-Vf-ix3"/>
-                                            <constraint firstAttribute="bottom" secondItem="fcC-Gp-JUt" secondAttribute="bottom" constant="9" id="ocT-UW-vzi"/>
-                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -456,24 +450,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter your Email address here..." textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-If-0fg">
-                                                    <rect key="frame" x="44" y="6" width="512" height="30"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-Gp-JUt">
+                                                    <rect key="frame" x="44" y="8" width="513" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                     <connections>
-                                                        <outlet property="delegate" destination="UT5-yp-J7i" id="Kt0-HL-xVT"/>
+                                                        <outlet property="delegate" destination="UT5-yp-J7i" id="pwr-Se-ORV"/>
                                                     </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.80000000000000004" green="0.34901960780000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstItem="2xj-If-0fg" firstAttribute="leading" secondItem="rZp-BN-Wu3" secondAttribute="leading" constant="44" id="0Ut-fE-xip"/>
-                                            <constraint firstAttribute="trailing" secondItem="2xj-If-0fg" secondAttribute="trailing" constant="44" id="0gE-fI-lSL"/>
-                                            <constraint firstAttribute="bottom" secondItem="2xj-If-0fg" secondAttribute="bottom" constant="9" id="fZh-ip-h6w"/>
-                                            <constraint firstItem="2xj-If-0fg" firstAttribute="top" secondItem="rZp-BN-Wu3" secondAttribute="top" constant="6" id="mi6-ii-Iuj"/>
-                                        </constraints>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -537,10 +525,11 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AUJ-qq-Enf">
-                                            <rect key="frame" x="516" y="0.0" width="76" height="43.5"/>
+                                            <rect key="frame" x="525" y="6" width="67" height="29.5"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="76" id="5ws-5m-tDo"/>
+                                                <constraint firstAttribute="width" constant="67" id="5ws-5m-tDo"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                             <state key="normal" title="Unfollow">
                                                 <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
@@ -562,18 +551,18 @@
                                         <constraint firstAttribute="trailingMargin" secondItem="AUJ-qq-Enf" secondAttribute="trailing" id="6dp-jK-GTL"/>
                                         <constraint firstAttribute="leadingMargin" secondItem="4Z3-hg-aWw" secondAttribute="leading" id="9kH-wt-hhy"/>
                                         <constraint firstItem="Zhl-Tz-fI1" firstAttribute="leading" secondItem="4Z3-hg-aWw" secondAttribute="trailing" constant="8" id="Ngp-YR-V76"/>
-                                        <constraint firstItem="AUJ-qq-Enf" firstAttribute="leading" secondItem="Zhl-Tz-fI1" secondAttribute="trailing" constant="-1" id="Qgh-c4-Fqp"/>
+                                        <constraint firstItem="AUJ-qq-Enf" firstAttribute="leading" secondItem="Zhl-Tz-fI1" secondAttribute="trailing" constant="8" id="Qgh-c4-Fqp"/>
                                         <constraint firstItem="Zhl-Tz-fI1" firstAttribute="leading" secondItem="4Z3-hg-aWw" secondAttribute="trailing" constant="8" id="TfB-Qg-ZkY"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="4Z3-hg-aWw" secondAttribute="bottom" constant="1" id="800-MX-wAu"/>
-                                    <constraint firstAttribute="bottom" secondItem="AUJ-qq-Enf" secondAttribute="bottom" constant="0.5" id="L1y-Ur-hbV"/>
+                                    <constraint firstAttribute="bottom" secondItem="AUJ-qq-Enf" secondAttribute="bottom" constant="8.5" id="L1y-Ur-hbV"/>
                                     <constraint firstItem="Zhl-Tz-fI1" firstAttribute="top" secondItem="Jv0-42-HGO" secondAttribute="top" constant="8" id="R3U-s9-8qg"/>
                                     <constraint firstItem="Zhl-Tz-fI1" firstAttribute="centerX" secondItem="Jv0-42-HGO" secondAttribute="centerX" constant="-9" id="UBY-OT-AtL"/>
                                     <constraint firstAttribute="bottom" secondItem="Zhl-Tz-fI1" secondAttribute="bottom" constant="8.5" id="YUY-6L-yod"/>
                                     <constraint firstItem="4Z3-hg-aWw" firstAttribute="top" secondItem="Jv0-42-HGO" secondAttribute="top" constant="-1" id="qeZ-Jb-Z9y"/>
-                                    <constraint firstItem="AUJ-qq-Enf" firstAttribute="top" secondItem="Jv0-42-HGO" secondAttribute="top" id="ygj-0I-yG9"/>
+                                    <constraint firstItem="AUJ-qq-Enf" firstAttribute="top" secondItem="Jv0-42-HGO" secondAttribute="top" constant="6" id="ygj-0I-yG9"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="followButton" destination="AUJ-qq-Enf" id="Qwt-tK-u6K"/>
@@ -772,6 +761,12 @@
                                                 <constraint firstAttribute="height" constant="70" id="ACB-Qq-b2F"/>
                                                 <constraint firstAttribute="width" constant="70" id="cOS-O2-gII"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="35"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="avatarButtonTapped:" destination="T25-Xy-BCq" eventType="touchUpInside" id="nlJ-T3-HiH"/>
                                             </connections>
@@ -812,6 +807,7 @@
                                     <outlet property="likeLabel" destination="25Y-o1-iLY" id="Mwk-78-us6"/>
                                     <outlet property="nameLabel" destination="hDs-lq-6Bn" id="p5F-r0-3Rg"/>
                                     <outlet property="videoView" destination="8Jd-yE-HCm" id="EN5-Vl-boZ"/>
+                                    <segue destination="mog-dS-73A" kind="show" identifier="toVideoDetail" id="SGI-7r-IEs"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -909,6 +905,12 @@
                                                 <constraint firstAttribute="width" secondItem="WVb-lK-4vB" secondAttribute="height" multiplier="1:1" id="eWe-aZ-wR1"/>
                                                 <constraint firstAttribute="width" constant="80" id="f1m-l6-GDN"/>
                                             </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="20"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                            </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mHl-AY-klN">
                                             <rect key="frame" x="92" y="106" width="400" height="17"/>
@@ -936,13 +938,14 @@
                                                 <constraint firstAttribute="width" constant="400" id="wmZ-eL-HMi"/>
                                             </constraints>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOW-yv-Joa">
-                                            <rect key="frame" x="260" y="149" width="64" height="43"/>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOW-yv-Joa">
+                                            <rect key="frame" x="264" y="149" width="56" height="43"/>
                                             <color key="backgroundColor" red="0.0" green="0.55263157890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="118" id="enZ-eX-xMb"/>
                                                 <constraint firstAttribute="height" constant="30" id="vaI-NK-gw7"/>
                                             </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <state key="normal" title="UnFollow"/>
                                             <userDefinedRuntimeAttributes>
@@ -1242,7 +1245,8 @@
         <image name="unlikeButton" width="56" height="22"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="baw-w6-etn"/>
+        <segue reference="SGI-7r-IEs"/>
         <segue reference="Jko-Fw-MiY"/>
+        <segue reference="WIs-oF-pkc"/>
     </inferredMetricsTieBreakers>
 </document>

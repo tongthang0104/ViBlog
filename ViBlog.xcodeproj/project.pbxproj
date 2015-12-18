@@ -46,6 +46,7 @@
 		DEB364D31C11257A001EBDBC /* Sample.m4v in Resources */ = {isa = PBXBuildFile; fileRef = DEB364D21C11257A001EBDBC /* Sample.m4v */; };
 		DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */; };
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
+		DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF46A41C220DE3003FD06E /* AVKit.framework */; };
 		DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */; };
 		DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B031C03FD36001DEAD7 /* ImageController.swift */; };
 		DEC397771C1FF6300001A1B5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC397761C1FF6300001A1B5 /* Array.swift */; };
@@ -116,6 +117,7 @@
 		DEB364D21C11257A001EBDBC /* Sample.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = Sample.m4v; sourceTree = "<group>"; };
 		DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogChannelTableViewController.swift; sourceTree = "<group>"; };
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		DEBF46A41C220DE3003FD06E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		DEC22B031C03FD36001DEAD7 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		DEC397761C1FF6300001A1B5 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */,
 				DE086B7F1C178A2B0091E34F /* libsqlite3.tbd in Frameworks */,
 				DE086B7D1C178A1A0091E34F /* libz.tbd in Frameworks */,
 				DE086B7B1C178A0D0091E34F /* SystemConfiguration.framework in Frameworks */,
@@ -183,6 +186,7 @@
 				DE086B801C179B160091E34F /* ViBlog-Bridging-Header.h */,
 				DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */,
 				DE086B7C1C178A1A0091E34F /* libz.tbd */,
+				DEBF46A41C220DE3003FD06E /* AVKit.framework */,
 				DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */,
 				DE086B7A1C178A0D0091E34F /* SystemConfiguration.framework */,
 				DE086B781C178A040091E34F /* StoreKit.framework */,

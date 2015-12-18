@@ -7,18 +7,40 @@
 //
 
 import Foundation
-import AVFoundation
+import AVFoundation 
 import UIKit
 import Parse
 class VideoController {
         
     // upload Videos
     
+    static func getVideo(url: NSURL, completion: (video: NSURL) -> ()) {
+        let blogQuery = Blog.query()
+        
+        
+//        blogQuery?.whereKey("video", equa)
+        blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+            if let object = object {
+                for videoObject in object {
+                    let theVideo = videoObject.objectForKey("videoFile")
+                    theVideo?.getDataInBackgroundWithBlock({ (data, error) -> Void in
+                        if let data = data {
+                            let video = NSURL(dataRepresentation: data, relativeToURL: url)
+                            completion(video: video)
+                        }
+                    })
+                }
+            }
+        })
+        
+    }
     
     static func fetchImageAtURL(url: NSURL, completion: (video: NSURL) -> ()) {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             if let data = data {
                 let video = NSURL(dataRepresentation: data, relativeToURL: url)
+                let videoFile = NSBundle.mainBundle().pathForResource("\(video)", ofType: "mov")
+//                NSURL(fileURLWithPath: url)
                 completion(video: video)
             } else {
                 completion(video: url)

@@ -17,6 +17,7 @@ class AddBlogViewController: UIViewController {
     
     // MARK: - Properties
     
+    var thumbnail: UIImage?
     var video: PFFile?
     var videoOfUrl: NSURL?
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
@@ -26,6 +27,7 @@ class AddBlogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       
     }
     
     // MARK: - Action
@@ -59,22 +61,22 @@ class AddBlogViewController: UIViewController {
                     guard let currentUser = UserController.shareController.current else {return}
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
-//                            self.presentAlert("Yo! Upload Completed", message: "")
-                            if let video = self.videoOfUrl {
+                            self.presentAlert("Yo! Upload Completed", message: "")
+
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                                    VideoController.takeSnapshot(video, completion: { (thumbnails) -> Void in
-                                        ImageController.createThumbnails(thumbnails, blog: blog!, completion: { (success, error) -> Void in
+                                    guard let thumbnail = self.thumbnail else {return}
+                                    ImageController.createThumbnails(thumbnail, blog: blog!, completion: { (success, error) -> Void in
                                             if success {
-                                                self.presentAlert("Yo! Upload Completed", message: "")
+//                                                self.presentAlert("Yo! Upload Completed", message: "")
                                                 print("successfully save")
                                             } else {
                                                 print(error?.localizedDescription)
                                             }
                                         })
-                                    })
+
                                 })
                               
-                            }
+                            
                             
                             self.cleanWall()
                             
@@ -105,6 +107,8 @@ class AddBlogViewController: UIViewController {
             })
         }
     }
+    
+    
     
     func cleanWall() {
         for viewToRemove in videoView.subviews {
@@ -226,6 +230,10 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                         
                         // Play Video
                         self.playBackgroundMovie(urlOfVideo)
+                        let thumbnails: UIImage =  VideoController.takeSnapshot(urlOfVideo)
+                       
+                        self.thumbnail = thumbnails
+                        
                     }
                 }
             }

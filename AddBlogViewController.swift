@@ -59,9 +59,23 @@ class AddBlogViewController: UIViewController {
                     guard let currentUser = UserController.shareController.current else {return}
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
+//                            self.presentAlert("Yo! Upload Completed", message: "")
+                            if let video = self.videoOfUrl {
+                                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                    VideoController.takeSnapshot(video, completion: { (thumbnails) -> Void in
+                                        ImageController.createThumbnails(thumbnails, blog: blog!, completion: { (success, error) -> Void in
+                                            if success {
+                                                self.presentAlert("Yo! Upload Completed", message: "")
+                                                print("successfully save")
+                                            } else {
+                                                print(error?.localizedDescription)
+                                            }
+                                        })
+                                    })
+                                })
+                              
+                            }
                             
-                            self.dismissViewControllerAnimated(true, completion: nil)
-                            self.presentAlert("Yo! Upload Completed", message: "")
                             self.cleanWall()
                             
                             self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)

@@ -1,10 +1,8 @@
-//
 //  ProfileViewController.swift
 //  ViBlog
-//
 //  Created by Thang H Tong on 11/16/15.
 //  Copyright © 2015 Thang. All rights reserved.
-//
+
 
 import UIKit
 //import BTNavigationDropdownMenu
@@ -47,17 +45,17 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
         }
         
-        BlogController.blogsForUser(user.objectId!) { (blogs) -> Void in
+        BlogController.blogsForUser(user) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
-                //                self.collectionView.reloadData()
+                self.collectionView.reloadData()
             }
         }
     }
     
     //MARK: ViewController Cycle
     override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+        super.viewWillAppear(false)
         
         if let user = user{
             
@@ -73,7 +71,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             //                }
             //            }
         }
-        
     }
     
     override func viewDidLoad() {
@@ -82,18 +79,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         if user == nil {
             user = UserController.shareController.current as? User
         }
-        
         UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
             ProfileViewController.following = followed
         }
-        //        tabBarController?.tabBar(<#T##tabBar: UITabBar##UITabBar#>, didSelectItem: self.tabBarItem) {
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
         self.collectionView.reloadData()
     }
-    
     
     //MARK: - Action:
     
@@ -122,17 +116,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
         let blogs = userBlogs[indexPath.item]
-        //        item.updateWithBlogs(blogs.videoSnapShot)
+        item.updateWithBlogs(blogs)
         return item
     }
     
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
-        //        view.delegate = self
         
         view.updateWithUsers(user)
-        
         return view
     }
     

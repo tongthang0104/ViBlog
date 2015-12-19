@@ -8,6 +8,7 @@
 
 import UIKit
 import AVFoundation
+import Parse
 
 
 class VideoCollectionViewCell: UICollectionViewCell {
@@ -22,19 +23,20 @@ class VideoCollectionViewCell: UICollectionViewCell {
     
     //MARK: - UpdateWithBlog
     
-    func updateWithBlogs(identifier: String) {
-   
-        self.videoThumbnails.image = nil
-        self.captionLabel.text = blog!.caption
+    func updateWithBlogs(blog: Blog) {
         
-//        ImageController.imageForIdentifier(identifier) { (image) -> Void in
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.videoThumbnails.image = image
-//            })
-//        }
+        self.blog = blog
+        self.videoThumbnails.image = nil
+        self.captionLabel.text = blog.caption
+        
+        if let thumbnails = blog["thumbnails"] as? PFFile {
+            ImageController.fetchImageAtURL(NSURL(string: thumbnails.url!)!, completion: { (image) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.videoThumbnails.image = image
+                })
+            })
+        }
         
         //TODO: Update Video
-        
-        
     }
 }

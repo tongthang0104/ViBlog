@@ -7,25 +7,52 @@
 //
 
 import Foundation
+import Parse
 
-class Comment {
+class Comment: PFObject, PFSubclassing {
     
     //MARK: Properties
     
-    var username: String
-    var text: String
-    var blogID: String?
-    var identifier: String?
+    @NSManaged var username: String
+    @NSManaged var blogID: String
+    @NSManaged var user: PFUser
+    @NSManaged var text: String
+    
+    //MARK: Initializer
+    override class func query() -> PFQuery? {
+        let query = PFQuery(className: Comment.parseClassName())
+        query.includeKey("user")
+        query.orderByDescending("createdAt")
+        query.includeKey("blogID")
+        
+        return query
+    }
+    
+    class func initalize() {
+        struct Static {
+            static var onceToken : dispatch_once_t = 0
+        }
+        dispatch_once(&Static.onceToken) {
+            self.registerSubclass()
+        }
+    }
+    
+    class func parseClassName() -> String {
+        return "Comment"
+    }
     
     //MARK: Initializer
     
-    init(username: String, text: String, blogID: String? = nil, identifier: String? = nil) {
+    init(username: String, blogID: String, user: User, text: String) {
+        super.init()
+        
         self.username = username
-        self.text = text
         self.blogID = blogID
-        self.identifier = identifier
+        self.user = user
+        self.text = text
     }
-}
-func ==(lhs: Comment, rhs: Comment) -> Bool{
-    return (lhs.identifier == rhs.identifier) && (lhs.username == rhs.username)
+    
+    override init() {
+        super.init()
+    }
 }

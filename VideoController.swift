@@ -47,19 +47,19 @@ class VideoController {
             .resume()
     }
 
-    static func takeSnapshot(url: NSURL) {
+    static func takeSnapshot(url: NSURL, completion: (thumbnails: UIImage) -> Void){
         let asset: AVAsset = AVAsset(URL: url)
         let duration: CMTime = asset.duration
         let snapshot = CMTimeMake(duration.value / 2, duration.timescale)
-        
         let generator = AVAssetImageGenerator(asset: asset)
         let imageRef: CGImageRef = try! generator.copyCGImageAtTime(snapshot, actualTime: nil)
-        
         let thumbnail: UIImage = UIImage(CGImage: imageRef)
         let data = UIImageJPEGRepresentation(thumbnail, 0.8)
         //let data = UIImagePNGRepresentation(thumbnail)
         let directory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
         data?.writeToFile(directory, atomically: true)
+        
+       completion(thumbnails: thumbnail)
     }
     
     // Video for ID

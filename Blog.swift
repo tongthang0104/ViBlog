@@ -22,8 +22,6 @@ class Blog: PFObject, PFSubclassing {
 //    @NSManaged var identifier: String?
 //    @NSManaged var timeStamps: NSDate?
     
-//    var likes: Observable<[PFUser]?> = Observable(nil)
-    
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Blog.parseClassName())
         query.includeKey("user")

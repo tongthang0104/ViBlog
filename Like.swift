@@ -22,6 +22,7 @@ class Like: PFObject, PFSubclassing {
         let query = PFQuery(className: Like.parseClassName())
         query.includeKey("user")
         query.orderByDescending("createdAt")
+        query.includeKey("blogID")
         
         return query
     }

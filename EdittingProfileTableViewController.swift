@@ -123,8 +123,11 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         
         picker.dismissViewControllerAnimated(true, completion: nil)
-        avatarImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        avatarButton.setBackgroundImage(avatarImage, forState: .Normal)
+        self.avatarImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.avatarButton.setBackgroundImage(self.avatarImage, forState: .Normal)
+        })
+        
         avatarButton.setTitle("", forState: .Normal)
     }
   

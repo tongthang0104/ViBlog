@@ -22,8 +22,40 @@ class ImageController {
             }
             .resume()
     }
-    
+
     static let defaultImage = UIImage(named: "defaultPhoto")
+    
+    // TODO: Not finish
+    static func createThumbnails(thumbnails: UIImage, blog: Blog, completion: (success: Bool, error: NSError?) -> Void) {
+        
+        let imageData = UIImageJPEGRepresentation(thumbnails, 0.5)
+        let imageFile = PFFile(name: "image.jpg", data: imageData!)
+        
+        do {
+            try imageFile?.save()
+        } catch {
+            
+        }
+        
+        guard let imageFiles = imageFile else {return}
+        blog.setObject(imageFiles, forKey: "thumbnails")
+        blog.saveInBackgroundWithBlock { (success, error) -> Void in
+            if success {
+                completion(success: success, error: nil)
+            } else {
+                completion(success: false, error: error)    
+                print(error?.localizedDescription)
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 
 extension UIImage {

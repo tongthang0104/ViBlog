@@ -57,10 +57,13 @@ class BlogController {
         })
 }
     
-    static func blogsForUser(userID: String, completion: (blogs: [Blog]?) -> Void) {
+    static func blogsForUser(user: User, completion: (blogs: [Blog]?) -> Void) {
         
-        let query = PFUser.query()
-        query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+        let blogQuery = Blog.query()
+
+        blogQuery?.whereKey("user", equalTo: user)
+        blogQuery?.includeKey("user")
+        blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if let object = object as? [Blog] {
                 completion(blogs: object)
             } else {

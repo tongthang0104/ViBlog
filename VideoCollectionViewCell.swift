@@ -27,7 +27,11 @@ class VideoCollectionViewCell: UICollectionViewCell {
         
         self.blog = blog
         self.videoThumbnails.image = nil
-        self.captionLabel.text = blog.caption
+        if let caption = blog.caption {
+            self.captionLabel.text = caption
+        }else {
+            self.captionLabel.text = " "
+        }
         
         if let thumbnails = blog["thumbnails"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: thumbnails.url!)!, completion: { (image) -> () in

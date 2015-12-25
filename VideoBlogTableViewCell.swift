@@ -20,7 +20,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     var user: User?
     var like: Like?
-    var likeArray: [Like] = []
+//    var likeArray: [Like] = []
     var caption: String?
     var blog: Blog!
     var videoOfUrl: NSURL?
@@ -35,16 +35,18 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     //MARK: Action
     
     @IBAction func avatarButtonTapped(sender: AnyObject) {
+        
+        
+        
     }
     
     func likeButtonTapped(sender: UIButton) {
       
         //TODO: NEED REVIEW --> This is wrong
-        if let like = self.like {
-        BlogController.likeBlogs(like, blog: self.blog, user: UserController.shareController.current!) { (success, blog) -> Void in
+        BlogController.likeBlogs(self.blog, user: UserController.shareController.current!) { (success, blog) -> Void in
             if let blog = blog {
                 self.updateWithBlogs(blog)
-                self.likeArray.append(like)
+//                self.likeArray.append(like)
                 self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
             }
         }
@@ -55,7 +57,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         //
         //            }
         //        }
-    }
+    
     //TODO: load Like status
   
     //MARK: - Update Blog
@@ -70,7 +72,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
                 self.captionLabel.text = self.caption
             }
         } else {
-            self.captionLabel.text = ""
+            self.captionLabel.text = " "
         }
         self.captionLabel.text = blog.caption
         //        self.videoThumbnailView.image = nil
@@ -99,7 +101,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
                 })
             })
         
-        self.likeLabel.text = "\(likeArray.count) likes"
+//        self.likeLabel.text = "\(likeArray.count) likes"
     }
     
     //MARK: - AV Player
@@ -139,10 +141,8 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        
         // Configure the view for the selected state
     }
-    
 }
 
 

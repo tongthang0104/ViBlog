@@ -23,14 +23,10 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         case AllChannels = 1
         
         func users(completion: (users: [User]?) -> Void) {
-            
             switch self {
             case .Friends:
-                print("Friends")
                 UserController.followedByUser(UserController.shareController.current!, completion: { (followed) -> Void in
-                    
                     if let followed = followed{
-                        
                         completion(users: followed)
                     }
                 })
@@ -113,9 +109,8 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("friendsCell", forIndexPath: indexPath) as! FriendsTableViewCell
-        //        cell.backgroundView = UIImageView(image: UIImage(named: "friendBackground"))
+        // cell.backgroundView = UIImageView(image: UIImage(named: "friendBackground"))
         let users = userDataSource[indexPath.row]
-        
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             cell.updateWithUsers(users)
         })
@@ -123,7 +118,6 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     }
     
     override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
         if cell.backgroundView == nil {
             let cellBackgroundView = UIImageView()
             cellBackgroundView.image = UIImage(named: "friendBackground")

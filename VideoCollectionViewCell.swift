@@ -10,7 +10,6 @@ import UIKit
 import AVFoundation
 import Parse
 
-
 class VideoCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Properties
@@ -33,6 +32,7 @@ class VideoCollectionViewCell: UICollectionViewCell {
             self.captionLabel.text = " "
         }
         
+        // Display thumbnails
         if let thumbnails = blog["thumbnails"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: thumbnails.url!)!, completion: { (image) -> () in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -40,7 +40,5 @@ class VideoCollectionViewCell: UICollectionViewCell {
                 })
             })
         }
-        
-        //TODO: Update Video
     }
 }

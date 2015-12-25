@@ -15,7 +15,6 @@ class ParseHelper  {
     static let parseFollowClass = "Follows"
     static let kUsername = "followingUsername"
     static let kFollowFromUser = "fromUser"
-    
     static let kFollowToUser = "toUser"
     static let kFollowedByCurrentUser = "isFollowedByCurrentUser"
     

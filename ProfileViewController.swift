@@ -13,9 +13,11 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     // MARK: Properties
     
     var user: User!
-    static var following: [User]? {
+    
+    static let shareController = ProfileViewController()
+    var following: [User]? {
         didSet {
-            //            collectionView.reloadData()
+            self.collectionView.reloadData()
         }
     }
     
@@ -42,7 +44,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
             self.navigationItem.rightBarButtonItem?.enabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
-            
         }
         
         BlogController.blogsForUser(user) { (blogs) -> Void in
@@ -80,7 +81,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             user = UserController.shareController.current as? User
         }
         UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
-            ProfileViewController.following = followed
+            self.following = followed
         }
     }
     

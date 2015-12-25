@@ -18,6 +18,7 @@ class FriendsTableViewCell: UITableViewCell {
     @IBOutlet weak var selfImage: UIImageView!
     @IBOutlet weak var followButton: UIButton!
     
+    
     //MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
@@ -30,8 +31,10 @@ class FriendsTableViewCell: UITableViewCell {
                     
                     UserController.unfollowUser(user, completion: { (success) -> Void in
                         
-                        let followingUser = ProfileViewController.following?.filter(){$0 != user }
-                        ProfileViewController.following = followingUser
+                        if let followingUser = ProfileViewController.shareController.following{
+                            // followingUser.filter(){$0 != user }
+                            ProfileViewController.shareController.following = followingUser
+                        }
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateWithUsers(user)
                         })
@@ -40,8 +43,12 @@ class FriendsTableViewCell: UITableViewCell {
                     UserController.followUser(user, completion: { (success, error) -> Void in
                         
                         if success {
-                            ProfileViewController.following?.append(user)
-                            self.updateWithUsers(user)
+                            if var followingUser = ProfileViewController.shareController.following {
+                                followingUser.append(user)
+                            }
+                            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                                self.updateWithUsers(user)
+                            })
                         } else {
                             print(error?.localizedDescription)
                         }
@@ -68,14 +75,14 @@ class FriendsTableViewCell: UITableViewCell {
             
             UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
                 if follows {
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.followButton.setTitle("UnFollow", forState: .Normal)
-                        self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
+                    //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.followButton.setTitle("UnFollow", forState: .Normal)
+                    self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
                 } else {
-//                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                        self.followButton.setTitle("Follow", forState: .Normal)
-                        self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
-//                    })
+                    //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.followButton.setTitle("Follow", forState: .Normal)
+                    self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
+                    //                    })
                 }
             })
         }

@@ -13,12 +13,10 @@ class BlogChannelTableViewController: UITableViewController {
     
     var  blogs: [Blog] = []
     var blog: Blog!
-    //let users: [User] = []
     var delegate: BlogChannelTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         //loadBlogChannels(UserController.shareController.current!)
     }
     
@@ -48,8 +46,10 @@ class BlogChannelTableViewController: UITableViewController {
         BlogController.fetchBlogsForUser(user) { (blog) -> Void in
             if let blog = blog {
                 self.blogs = blog
-                self.tableView.reloadData()
-                self.refreshControl?.endRefreshing()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.tableView.reloadData()
+                    self.refreshControl?.endRefreshing()
+                })
             }
         }
     }
@@ -65,7 +65,7 @@ class BlogChannelTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return blogs.count
     }
-    
+
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("videoBlogCell", forIndexPath: indexPath) as! VideoBlogTableViewCell
@@ -74,9 +74,7 @@ class BlogChannelTableViewController: UITableViewController {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             cell.updateWithBlogs(blog)
         })
-        
         self.delegate = cell
-        
         return cell
     }
     

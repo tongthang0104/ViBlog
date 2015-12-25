@@ -67,8 +67,6 @@ class BlogsDetailTableViewController: UITableViewController {
         moviePlayer.view.sizeToFit()
         moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
         moviePlayer.showsPlaybackControls = true
-        
-        
         self.videoView.addSubview(moviePlayer.view)
         
         NSNotificationCenter.defaultCenter().addObserver(self,
@@ -93,11 +91,7 @@ class BlogsDetailTableViewController: UITableViewController {
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
-        
-        
-        
-        
-        
+
     }
 
     @IBAction func addCommentButtonTapped(sender: UIButton) {

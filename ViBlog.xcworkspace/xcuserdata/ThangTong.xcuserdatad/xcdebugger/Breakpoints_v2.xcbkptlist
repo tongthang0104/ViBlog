@@ -9,13 +9,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224661.648075"
+            filePath = "BlogController.swift"
+            timestampString = "472591814.341737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "likeBlogs(_:user:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -25,13 +25,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224661.648075"
+            filePath = "BlogController.swift"
+            timestampString = "472591814.933402"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "118"
-            endingLineNumber = "118"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "likeBlogs(_:user:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -41,13 +41,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224661.648075"
+            filePath = "BlogController.swift"
+            timestampString = "472591816.387832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "likeBlogs(_:user:completion:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -57,60 +57,44 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VideoCollectionViewCell.swift"
-            timestampString = "472223200.056965"
+            filePath = "VideoBlogTableViewCell.swift"
+            timestampString = "472592524.914462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "updateWithBlogs(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VideoCollectionViewCell.swift"
-            timestampString = "472223200.669746"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "updateWithBlogs(_:)"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
+            landmarkName = "likeButtonTapped(_:)"
             landmarkType = "5">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.VideoCollectionViewCell.updateWithBlogs (ViBlog.VideoCollectionViewCell)(ViBlog.Blog) -&gt; ()"
+                  symbolName = "ViBlog.VideoBlogTableViewCell.likeButtonTapped (ViBlog.VideoBlogTableViewCell)(__ObjC.UIButton) -&gt; ()"
                   moduleName = "ViBlog"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/VideoCollectionViewCell.swift"
-                  timestampString = "472224662.678269"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/VideoBlogTableViewCell.swift"
+                  timestampString = "472592525.938159"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "33"
-                  endingLineNumber = "33"
-                  offsetFromSymbolStart = "952">
+                  startingLineNumber = "46"
+                  endingLineNumber = "46"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.VideoCollectionViewCell.(updateWithBlogs (ViBlog.VideoCollectionViewCell) -&gt; (ViBlog.Blog) -&gt; ()).(closure #1)"
+                  symbolName = "ViBlog.VideoBlogTableViewCell.(likeButtonTapped (ViBlog.VideoBlogTableViewCell) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
                   moduleName = "ViBlog"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/VideoCollectionViewCell.swift"
-                  timestampString = "472224662.678433"
+                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/VideoBlogTableViewCell.swift"
+                  timestampString = "472592525.938363"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "34"
-                  endingLineNumber = "34"
-                  offsetFromSymbolStart = "48">
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "27">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -121,269 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VideoCollectionViewCell.swift"
-            timestampString = "472223203.75921"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
-            landmarkName = "updateWithBlogs(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224661.648075"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224661.648075"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "111"
-            endingLineNumber = "111"
-            landmarkName = "collectionView(_:numberOfItemsInSection:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472223507.098721"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
-            landmarkName = "updateWithUser(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.ProfileViewController.updateWithUser (ViBlog.ProfileViewController)(ViBlog.User) -&gt; ()"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
-                  timestampString = "472224662.681319"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "1472">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.ProfileViewController.(updateWithUser (ViBlog.ProfileViewController) -&gt; (ViBlog.User) -&gt; ()).(closure #1)"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
-                  timestampString = "472224662.681476"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472223507.870563"
+            filePath = "VideoBlogTableViewCell.swift"
+            timestampString = "472592524.914462"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "50"
             endingLineNumber = "50"
-            landmarkName = "updateWithUser(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BlogController.swift"
-            timestampString = "472224794.727242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "blogsForUser(_:completion:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static ViBlog.BlogController.blogsForUser (ViBlog.BlogController.Type)(Swift.String, completion : (blogs : Swift.Optional&lt;Swift.Array&lt;ViBlog.Blog&gt;&gt;) -&gt; ()) -&gt; ()"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/BlogController.swift"
-                  timestampString = "472224662.682907"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "65"
-                  endingLineNumber = "65"
-                  offsetFromSymbolStart = "272">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static ViBlog.BlogController.(blogsForUser (ViBlog.BlogController.Type) -&gt; (Swift.String, completion : (blogs : Swift.Optional&lt;Swift.Array&lt;ViBlog.Blog&gt;&gt;) -&gt; ()) -&gt; ()).(closure #1)"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/BlogController.swift"
-                  timestampString = "472224662.683055"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "66"
-                  endingLineNumber = "66"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BlogController.swift"
-            timestampString = "472224794.727242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "blogsForUser(_:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224116.648543"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224216.353881"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
-            landmarkName = "viewWillAppear(_:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ProfileViewController.swift"
-            timestampString = "472224239.961976"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "updateWithUser(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.ProfileViewController.updateWithUser (ViBlog.ProfileViewController)(ViBlog.User) -&gt; ()"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
-                  timestampString = "472224662.685439"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "48"
-                  endingLineNumber = "48"
-                  offsetFromSymbolStart = "1472">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.ProfileViewController.(updateWithUser (ViBlog.ProfileViewController) -&gt; (ViBlog.User) -&gt; ()).(closure #1)"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/ProfileViewController.swift"
-                  timestampString = "472224662.685559"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "49"
-                  endingLineNumber = "49"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BlogController.swift"
-            timestampString = "472224794.727242"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
-            landmarkName = "blogsForUser(_:completion:)"
+            landmarkName = "likeButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

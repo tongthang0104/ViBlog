@@ -22,7 +22,7 @@ class ImageController {
             }
             .resume()
     }
-
+    
     static let defaultImage = UIImage(named: "defaultPhoto")
     
     // TODO: Not finish
@@ -36,14 +36,13 @@ class ImageController {
         } catch {
             
         }
-        
         guard let imageFiles = imageFile else {return}
         blog.setObject(imageFiles, forKey: "thumbnails")
         blog.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
                 completion(success: success, error: nil)
             } else {
-                completion(success: false, error: error)    
+                completion(success: false, error: error)
                 print(error?.localizedDescription)
             }
         }

@@ -47,19 +47,15 @@ extension UIColor {
     static func myYellow() -> UIColor {
         return UIColor(red:0.89, green:0.87, blue:0, alpha:1)
     }
-    
-    }
+}
 
 class Color {
     
     static func setupAppearanceColor() {
         UINavigationBar.appearance().tintColor = UIColor.myWhiteColor()
         UITabBar.appearance().tintColor = UIColor.myDarkBrown()
-//        UINavigationBar.appearance().backgroundColor = UIColor.myDarkBrown()
-     UINavigationBar.appearance().setBackgroundImage(UIImage(named: "backgroundNavigationBar"), forBarMetrics: .Default)
+        UINavigationBar.appearance().setBackgroundImage(UIImage(named: "backgroundNavigationBar"), forBarMetrics: .Default)
         UITabBar.appearance().backgroundImage = UIImage(named: "backgroundTabBar")
-        
-        
     }
     static func blurEffect(view: UIView, image: UIImage) {
         view.backgroundColor = UIColor(patternImage: image)
@@ -69,5 +65,5 @@ class Color {
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight] // for supporting device rotation
         view.addSubview(blurEffectView)
     }
-
+    
 }

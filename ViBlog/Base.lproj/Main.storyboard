@@ -110,7 +110,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="sTk-dn-Tlt">
-                            <rect key="frame" x="0.0" y="64" width="600" height="375"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-my-ilT">
@@ -184,7 +184,7 @@
                             </constraints>
                         </view>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lAF-oZ-tg5">
-                            <rect key="frame" x="0.0" y="511" width="600" height="40"/>
+                            <rect key="frame" x="0.0" y="447" width="600" height="40"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <state key="normal" title="Add Comments"/>
                             <connections>
@@ -193,7 +193,7 @@
                         </button>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" id="cfv-7d-1oF" customClass="BlogCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="403" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cfv-7d-1oF" id="dMa-Gw-Rla">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -873,7 +873,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="272" width="130" height="154"/>
+                                <rect key="frame" x="0.0" y="208" width="130" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="130" height="154"/>
@@ -925,7 +925,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="600" height="208"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="26" translatesAutoresizingMaskIntoConstraints="NO" id="IDF-TO-6Lw">

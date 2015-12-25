@@ -47,6 +47,8 @@ class VideoController {
             .resume()
     }
 
+    // Take snapshot
+    
     static func takeSnapshot(url: NSURL) -> UIImage {
         let asset: AVAsset = AVAsset(URL: url)
         let duration: CMTime = asset.duration
@@ -64,7 +66,6 @@ class VideoController {
         //let data = UIImagePNGRepresentation(thumbnail)
 //        let directory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
 //        data?.writeToFile(directory, atomically: true)
-        
        return thumbnail
     }
     
@@ -75,7 +76,6 @@ class VideoController {
 //        
 //        blogQuery.getObjectInBackgroundWithId(identifier) { (object, error) -> Void in
 //            if let object = object {
-//                
 //            }
 //        }
 //        let filePath = NSBundle.mainBundle().pathForResource("Sample", ofType: ".m4v", inDirectory: "")

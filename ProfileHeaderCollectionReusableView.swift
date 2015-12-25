@@ -21,7 +21,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     
     var user: User?
     
-    
     // MARK: - Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
@@ -32,18 +31,17 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             
             UserController.userFollowUser(currentUser, followee: user) { (follows) -> Void in
                 if follows {
-                    
                     UserController.unfollowUser(user, completion: { (success) -> Void in
-                        
-                        let followingUser = ProfileViewController.following?.filter(){ $0 != user }
-                        ProfileViewController.following = followingUser
+                        // let followingUser = ProfileViewController.shareController.following?.filter(){ $0 != user }
+                        // ProfileViewController.shareController.following = followingUser
                         self.updateWithUsers(user)
                     })
                 } else {
                     UserController.followUser(user, completion: { (success, error) -> Void in
-                        
                         if success {
-                            ProfileViewController.following?.append(user)
+                            if var followingUser = ProfileViewController.shareController.following {
+                                followingUser.append(user)
+                            }
                             self.updateWithUsers(user)
                         } else {
                             print(error?.localizedDescription)
@@ -53,7 +51,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             }
         }
     }
- 
+    
     //MARK: - UpdateWithUser
     
     func updateWithUsers(user: User) {

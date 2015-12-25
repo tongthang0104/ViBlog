@@ -127,7 +127,6 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             self.avatarButton.setBackgroundImage(self.avatarImage, forState: .Normal)
         })
-        
         avatarButton.setTitle("", forState: .Normal)
     }
   
@@ -138,12 +137,10 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
             return 1
@@ -160,11 +157,9 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
 //        self.companyTextField.text = user.username
         self.emailTextField.text = user.email
     }
- 
 }
 
 extension EdittingProfileTableViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

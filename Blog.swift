@@ -18,10 +18,7 @@ class Blog: PFObject, PFSubclassing {
     @NSManaged var user: PFUser
     @NSManaged var caption: String?
 //    @NSManaged var comments: String?
-//    @NSManaged var like: String?
-//    @NSManaged var identifier: String?
-//    @NSManaged var timeStamps: NSDate?
-    
+
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Blog.parseClassName())
         query.includeKey("user")

@@ -13,13 +13,13 @@ class Like: PFObject, PFSubclassing {
     
     //MARK: Properties
     
-    @NSManaged var username: String
+    @NSManaged var fromUser: User
     @NSManaged var blog: Blog
-    @NSManaged var user: PFUser
+//    @NSManaged var user: PFUser
 
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Like.parseClassName())
-        query.includeKey("user")
+        query.includeKey("fromUser")
         query.orderByDescending("createdAt")
         query.includeKey("blog")
         
@@ -41,12 +41,11 @@ class Like: PFObject, PFSubclassing {
 
     //MARK: Initializer
     
-    init(username: String, blog: Blog, user: User) {
+    init(fromUser: User, blog: Blog) {
         super.init()
         
-        self.username = username
+        self.fromUser = fromUser
         self.blog = blog
-        self.user = user
    
     }
     

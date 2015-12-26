@@ -149,13 +149,14 @@ class UserController {
             }
         }
     }
-    
+//    
+  
     // User follow User
     static func userFollowUser(user: PFUser, followee: PFUser, completion: (follows: Bool) -> Void) {
         
         let query = PFQuery(className: User.kFollowActivity)
-        query.whereKey(User.kActivityFromUser, equalTo: user.objectId!)
-        query.whereKey(User.kActivityToUser, equalTo: followee)
+        query.whereKey(ParseHelper.kActivityFromUser, equalTo: user.objectId!)
+        query.whereKey(ParseHelper.kActivityToUser, equalTo: followee)
         
         query.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
             if let user = object {
@@ -172,9 +173,9 @@ class UserController {
     // Unfollow User
     static func unfollowUser(user: User, completion: (success: Bool) -> Void) {
         let query = PFQuery(className: User.kFollowActivity)
-        query.whereKey(User.kActivityFromUser, equalTo: UserController.shareController.current!.objectId!)
+        query.whereKey(ParseHelper.kActivityFromUser, equalTo: UserController.shareController.current!.objectId!)
         //        query.whereKey(User.kActivityToUser, containedIn: user)
-        query.whereKey(User.kActivityToUser, equalTo: user)
+        query.whereKey(ParseHelper.kActivityToUser, equalTo: user)
 //        query.whereKey(User.kUsername, equalTo: user.username!)
         
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in

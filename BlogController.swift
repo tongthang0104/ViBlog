@@ -81,17 +81,21 @@ class BlogController {
     
     // like Blogs
     
-    static func likeBlogs(blog: Blog, user: PFUser , completion: (success: Bool, blog: Blog?) -> Void) {
-        let like = Like(username: UserController.shareController.current!.username!, blog: blog, user: user as! User)
+    static func likeBlogs(blog: Blog, completion: (success: Bool, blog: Blog?) -> Void) {
+  
+        let like = Like(fromUser: UserController.shareController.current! as! User, blog: blog)
         like.saveInBackgroundWithBlock({ (success, error) -> Void in
             if success {
-                BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in
-                    completion(success: true, blog: blog)
-                }
+             completion(success: true, blog: blog)
             }else {
                 completion(success: false, blog: nil)
             }
+            
         })
+        
+        BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in
+            completion(success: true, blog: blog)
+        }
         
         
         //        let likeObject = PFObject(className: ParseHelper.ParseLikeClass)
@@ -108,16 +112,40 @@ class BlogController {
         //        }
     }
     
-    // Unlike Blog
-    static func unlikeBlog(user: PFUser, blog: Blog, completion: (blog: Blog?, success: Bool) -> Void) {
-        let query = PFQuery(className: ParseHelper.ParseLikeClass)
-        query.whereKey(ParseHelper.kLikeFromUser, equalTo: user)
-        query.whereKey(ParseHelper.kLikeToPost, equalTo: blog)
-        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
-            if let result = object {
-                for likes in result {
-                    likes.deleteInBackgroundWithBlock(nil)
+    
+    // Check Liked Blog
+    
+    static func userLikeBlog(user: PFUser, blog: Blog, completion: (liked: Bool) -> Void) {
+        let query = Like.query()
+        query?.whereKey(ParseHelper.kActivityFromUser, equalTo: user)
+        query?.whereKey("blog", equalTo: blog)
+        
+        query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+            if let object = object {
+                if object.count > 0 {
+                    completion(liked: true)
+                } else {
+                    completion(liked: false)
                 }
+            }
+        })
+    }
+    
+  
+    // Unlike Blog
+    static func unlikeBlog(user: PFUser, blog: Blog, completion: (success: Bool) -> Void) {
+        let query = Like.query()
+        query?.whereKey(ParseHelper.kActivityFromUser, equalTo: user)
+        query?.whereKey("blog", equalTo: blog)
+        query?.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if error == nil {
+                if let like = object?.first {
+                    like.deleteInBackground()
+                }
+                completion(success: true)
+            } else {
+                completion(success: false)
+                print(error?.localizedDescription)
             }
         }
     }

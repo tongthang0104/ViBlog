@@ -11,9 +11,9 @@ import Parse
 
 class User: PFUser {
  
-    static let kActivityFromUser = "fromUser"
+   
     static let kUsername = "followingUsername"
-    static let kActivityToUser = "toUser"
+ 
     static let kFollowActivity = "Follows"
     static let kFollowedByCurrentUser = "isFollowedByCurrentUser"
     

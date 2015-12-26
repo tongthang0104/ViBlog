@@ -20,7 +20,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     var user: User?
     var like: Like?
-//    var likeArray: [Like] = []
+    //    var likeArray: [Like] = []
     var caption: String?
     var blog: Blog!
     var videoOfUrl: NSURL?
@@ -41,25 +41,45 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     }
     
     func likeButtonTapped(sender: UIButton) {
-      
+        
         //TODO: NEED REVIEW --> This is wrong
-        BlogController.likeBlogs(self.blog, user: UserController.shareController.current!) { (success, blog) -> Void in
-            if let blog = blog {
-                self.updateWithBlogs(blog)
-//                self.likeArray.append(like)
-                self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
+        
+        guard let currentUser = UserController.shareController.current else {return}
+        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+            if liked {
+                print("already liked")
+                if let blog = self.blog {
+                    self.updateWithBlogs(blog)
+                }
+                
+                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success) -> Void in
+                    if success {
+                        self.updateWithBlogs(self.blog)
+                    } else {
+                        print("failed to unlike")
+                    }
+                })
+            } else {
+                BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
+                    if let blog = blog {
+                        self.updateWithBlogs(blog)
+                        // self.likeArray.append(like)
+//                        self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
+                    }
+                }
             }
         }
-        }
-        //        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
-        //            if let blog = blog {
-        //                self.updateWithBlogs(blog)
-        //
-        //            }
-        //        }
+        
+    }
+    //        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
+    //            if let blog = blog {
+    //                self.updateWithBlogs(blog)
+    //
+    //            }
+    //        }
     
     //TODO: load Like status
-  
+    
     //MARK: - Update Blog
     
     func updateWithBlogs(blog: Blog) {
@@ -86,22 +106,31 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         } else {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
-       
-//        VideoController.getVideo(NSURL(string: blog.video.url!)!) { (video) -> () in
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.videoOfUrl = video
-//                self.playBackgroundMovie(video)
-//            })
-//        }
-            VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-                
-                self.videoOfUrl = video
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                    self.playBackgroundMovie(self.videoOfUrl!)
-                })
-            })
         
-//        self.likeLabel.text = "\(likeArray.count) likes"
+        //        VideoController.getVideo(NSURL(string: blog.video.url!)!) { (video) -> () in
+        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //                self.videoOfUrl = video
+        //                self.playBackgroundMovie(video)
+        //            })
+        //        }
+        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+            
+            self.videoOfUrl = video
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.playBackgroundMovie(self.videoOfUrl!)
+            })
+        })
+        
+        guard let currentUser = UserController.shareController.current else {return}
+        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+            if liked {
+                self.likeButton.setBackgroundImage(UIImage(named: "unlikeButton"), forState: .Normal)
+            } else {
+                self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
+            }
+        }
+        
+        //        self.likeLabel.text = "\(likeArray.count) likes"
     }
     
     //MARK: - AV Player

@@ -23,4 +23,8 @@ class ParseHelper  {
     static let ParseLikeClass = "Like"
     static let kLikeToPost = "toPost"
     static let kLikeFromUser = "fromUser"
+    
+    
+    static let kActivityFromUser = "fromUser"
+    static let kActivityToUser = "toUser"
 }

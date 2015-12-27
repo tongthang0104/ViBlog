@@ -89,11 +89,11 @@ class UserController {
         do {
             try imageFile.save()
         } catch {
-           
+            
         }
         UserController.shareController.current?.setObject(imageFile, forKey: "avatar")
         UserController.shareController.current?.saveInBackgroundWithBlock({ (success, error) -> Void in
-                completion(success: success)
+            completion(success: success)
         })
     }
     
@@ -107,8 +107,7 @@ class UserController {
     static func followUser(user: PFUser, completion: (success: Bool, error: NSError?) -> Void) {
         
         if let currentUser = UserController.shareController.current {
-            let follow = PFObject(className: User.kFollowActivity)
-            
+            let follow = PFObject(className: ParseHelper.kFollowActivity)
             follow.setObject(currentUser.objectId!, forKey: ParseHelper.kFollowFromUser)
             follow.setObject(user, forKey: ParseHelper.kFollowToUser)
             follow.setObject(user.username!, forKey: ParseHelper.kUsername)
@@ -122,7 +121,6 @@ class UserController {
                     print(error?.localizedDescription)
                 }
             })
-            
         }
     }
     
@@ -130,31 +128,29 @@ class UserController {
     
     static func followedByUser(user: PFUser, completion: (followed: [User]?) -> Void) {
         
-        let query = PFQuery(className: ParseHelper.parseFollowClass)
+        let query = PFQuery(className: ParseHelper.kFollowActivity)
         query.whereKey(ParseHelper.kFollowFromUser, equalTo: user.objectId!)
         query.includeKey("toUser")
-//        query.selectKeys([ParseHelper.kFollowFromUser, ParseHelper.kFollowToUser])
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             var userArray: [User] = []
             if let objects = object {
                 for follows in objects {
                     if let user = follows["toUser"] {
-                    userArray.append(user as! User)
+                        userArray.append(user as! User)
                     }
                 }
-                    completion(followed: userArray)
-                
+                completion(followed: userArray)
             } else {
                 completion(followed: [])
             }
         }
     }
-//    
-  
+
     // User follow User
+    
     static func userFollowUser(user: PFUser, followee: PFUser, completion: (follows: Bool) -> Void) {
         
-        let query = PFQuery(className: User.kFollowActivity)
+        let query = PFQuery(className: ParseHelper.kFollowActivity)
         query.whereKey(ParseHelper.kActivityFromUser, equalTo: user.objectId!)
         query.whereKey(ParseHelper.kActivityToUser, equalTo: followee)
         
@@ -165,24 +161,22 @@ class UserController {
                 } else {
                     completion(follows: false)
                 }
-                
             }
         })
     }
     
     // Unfollow User
+    
     static func unfollowUser(user: User, completion: (success: Bool) -> Void) {
-        let query = PFQuery(className: User.kFollowActivity)
-        query.whereKey(ParseHelper.kActivityFromUser, equalTo: UserController.shareController.current!.objectId!)
-        //        query.whereKey(User.kActivityToUser, containedIn: user)
-        query.whereKey(ParseHelper.kActivityToUser, equalTo: user)
-//        query.whereKey(User.kUsername, equalTo: user.username!)
         
+        let query = PFQuery(className: ParseHelper.kFollowActivity)
+        query.whereKey(ParseHelper.kActivityFromUser, equalTo: UserController.shareController.current!.objectId!)
+        query.whereKey(ParseHelper.kActivityToUser, equalTo: user)
         query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             print(object)
             if error == nil {
                 if let users = object?.first {
-                        users.deleteInBackground()
+                    users.deleteInBackground()
                 }
                 completion(success: true)
             } else {

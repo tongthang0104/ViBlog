@@ -17,12 +17,16 @@ class Blog: PFObject, PFSubclassing {
     @NSManaged var video: PFFile
     @NSManaged var user: PFUser
     @NSManaged var caption: String?
-//    @NSManaged var comments: String?
+//    @NSManaged var like: [Like]
+//    @NSManaged var comment: [Comment]
+
 
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Blog.parseClassName())
         query.includeKey("user")
         query.orderByDescending("createdAt")
+//        query.includeKey("comment")
+//        query.includeKey("like")
 
         return query
     }
@@ -47,7 +51,8 @@ class Blog: PFObject, PFSubclassing {
         self.video = video
         self.caption = caption
         self.user = user
-
+//        self.comment = comment
+//        self.like = like
     }
     
     override init() {

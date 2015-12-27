@@ -67,22 +67,5 @@ class VideoController {
 //        let directory = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)[0] as String
 //        data?.writeToFile(directory, atomically: true)
        return thumbnail
-    }
-    
-    // Video for ID
-//    static func videoForID(identifier: String, completion: (video: NSURL) -> Void) {
-//        
-//        let blogQuery = Blog.query()!
-//        
-//        blogQuery.getObjectInBackgroundWithId(identifier) { (object, error) -> Void in
-//            if let object = object {
-//            }
-//        }
-//        let filePath = NSBundle.mainBundle().pathForResource("Sample", ofType: ".m4v", inDirectory: "")
-//        let url = NSURL(fileURLWithPath: filePath!)
-//      completion(video: url)
-//    }
-    
-    
-    
+    }  
 }

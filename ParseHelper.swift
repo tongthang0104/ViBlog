@@ -12,7 +12,7 @@ class ParseHelper  {
     
     // Following Relation
     
-    static let parseFollowClass = "Follows"
+    static let kFollowActivity = "Follows"
     static let kUsername = "followingUsername"
     static let kFollowFromUser = "fromUser"
     static let kFollowToUser = "toUser"

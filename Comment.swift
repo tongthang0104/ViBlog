@@ -13,17 +13,17 @@ class Comment: PFObject, PFSubclassing {
     
     //MARK: Properties
     
-    @NSManaged var username: String
-    @NSManaged var blogID: String
+    @NSManaged var fromUser: User
+    @NSManaged var blog: Blog
     @NSManaged var user: PFUser
     @NSManaged var text: String
     
     //MARK: Initializer
     override class func query() -> PFQuery? {
         let query = PFQuery(className: Comment.parseClassName())
-        query.includeKey("user")
+        query.includeKey("fromUser")
         query.orderByDescending("createdAt")
-        query.includeKey("blogID")
+        query.includeKey("blog")
         
         return query
     }
@@ -43,12 +43,11 @@ class Comment: PFObject, PFSubclassing {
     
     //MARK: Initializer
     
-    init(username: String, blogID: String, user: User, text: String) {
+    init(fromUser: User, blog: Blog, text: String) {
         super.init()
         
-        self.username = username
-        self.blogID = blogID
-        self.user = user
+        self.fromUser = fromUser
+        self.blog = blog
         self.text = text
     }
     

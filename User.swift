@@ -11,12 +11,6 @@ import Parse
 
 class User: PFUser {
  
-   
-    static let kUsername = "followingUsername"
- 
-    static let kFollowActivity = "Follows"
-    static let kFollowedByCurrentUser = "isFollowedByCurrentUser"
-    
     @NSManaged var avatarEndpoint: PFFile?
 
     //MARK: Initializer
@@ -40,7 +34,3 @@ class User: PFUser {
         }
     }
 }
-
-//func ==(lhs: User, rhs: User) -> Bool{
-//    return (lhs.identifier == rhs.identifier) && (lhs.username == rhs.username)
-//}

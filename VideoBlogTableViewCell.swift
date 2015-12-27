@@ -20,7 +20,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     var user: User?
     var like: Like?
-    //    var likeArray: [Like] = []
+        var likeArray: [Like] = []
     var caption: String?
     var blog: Blog!
     var videoOfUrl: NSURL?
@@ -42,8 +42,6 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     func likeButtonTapped(sender: UIButton) {
         
-        //TODO: NEED REVIEW --> This is wrong
-        
         guard let currentUser = UserController.shareController.current else {return}
         BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
             if liked {
@@ -64,21 +62,12 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
                     if let blog = blog {
                         self.updateWithBlogs(blog)
                         // self.likeArray.append(like)
-//                        self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
                     }
                 }
             }
         }
         
     }
-    //        BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
-    //            if let blog = blog {
-    //                self.updateWithBlogs(blog)
-    //
-    //            }
-    //        }
-    
-    //TODO: load Like status
     
     //MARK: - Update Blog
     
@@ -95,8 +84,6 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
             self.captionLabel.text = " "
         }
         self.captionLabel.text = blog.caption
-        //        self.videoThumbnailView.image = nil
-        
         if let avatar = blog.user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -106,13 +93,6 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         } else {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
-        
-        //        VideoController.getVideo(NSURL(string: blog.video.url!)!) { (video) -> () in
-        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-        //                self.videoOfUrl = video
-        //                self.playBackgroundMovie(video)
-        //            })
-        //        }
         VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
             
             self.videoOfUrl = video
@@ -130,7 +110,17 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
             }
         }
         
-        //        self.likeLabel.text = "\(likeArray.count) likes"
+        self.likeLabel.text = "\(likeArray.count) likes"
+
+//        if let  like = BlogChannelTableViewController.shareController.like {
+//        self.likeLabel.text = "\(like.count) likes"
+//        } else {
+//            BlogChannelTableViewController.shareController.like = []
+//        }
+
+            BlogController.likeForBlog(blog) { (like) -> Void in
+               self.likeArray = like
+            }
     }
     
     //MARK: - AV Player

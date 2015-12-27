@@ -14,11 +14,21 @@ class BlogChannelTableViewController: UITableViewController {
     var  blogs: [Blog] = []
     var blog: Blog!
     var delegate: BlogChannelTableViewControllerDelegate?
+    static let shareController = BlogChannelTableViewController()
+//    var like: [Like]? {
+//        didSet {
+//          self.tableView.reloadData()
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         //loadBlogChannels(UserController.shareController.current!)
+        
+        
     }
+
     
     //MARK: - Action
     
@@ -36,6 +46,8 @@ class BlogChannelTableViewController: UITableViewController {
         if let currentUser = UserController.shareController.current {
             if blogs.count > 0 {
                 // loadBlogChannels(currentUser)
+                
+                
             }
         } else {
             tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
@@ -65,7 +77,7 @@ class BlogChannelTableViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return blogs.count
     }
-
+    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("videoBlogCell", forIndexPath: indexPath) as! VideoBlogTableViewCell

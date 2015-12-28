@@ -12,7 +12,6 @@ import AVKit
 import MobileCoreServices
 import AVFoundation
 import Parse
-import Bond
 
 
 
@@ -25,28 +24,16 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     var like: Like?
     var likeArray: [Like] = []
     var caption: String?
-    var blog: Blog! 
-//        didSet {
-//            // free memory of image stored with post that is no longer displayed
-//            if let oldValue = oldValue where oldValue != blog {
-////                likeBond.unbindAll()
-//                videoView.designatedBond.unbindAll()
-//                postImageView.designatedBond.unbindAll()
-//                if (oldValue.image.bonds.count == 0) {
-//                    oldValue.image.value = nil
-//                }
-//            }
-//            
-//            if let post = post {
-//                // bind the image of the post to the 'postImage' view
-//                post.image ->> postImageView
-//                
-//                // bind the likeBond that we defined earlier, to update like label and button when likes change
-//                post.likes ->> likeBond
-//            }
-//        }
-//
-//    }
+    var blog: Blog! {
+        didSet {
+            // free memory of image stored with post that is no longer displayed
+            if let oldValue = oldValue where oldValue != blog {
+//                oldValue.video.de
+            }
+            
+        }
+        
+    }
     var videoOfUrl: NSURL?
     
     @IBOutlet weak var likeButton: UIButton!

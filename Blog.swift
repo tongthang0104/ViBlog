@@ -27,7 +27,6 @@ class Blog: PFObject, PFSubclassing {
         query.orderByDescending("createdAt")
 //        query.includeKey("comment")
 //        query.includeKey("like")
-
         return query
     }
     

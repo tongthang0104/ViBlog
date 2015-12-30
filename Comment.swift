@@ -49,6 +49,7 @@ class Comment: PFObject, PFSubclassing {
         self.fromUser = fromUser
         self.blog = blog
         self.text = text
+        
     }
     
     override init() {

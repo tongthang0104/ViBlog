@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import iAd
 
 class BlogChannelTableViewController: UITableViewController {
     
@@ -26,7 +27,7 @@ class BlogChannelTableViewController: UITableViewController {
         
         //loadBlogChannels(UserController.shareController.current!)
         
-        
+        self.canDisplayBannerAds = true
     }
 
     
@@ -83,13 +84,22 @@ class BlogChannelTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("videoBlogCell", forIndexPath: indexPath) as! VideoBlogTableViewCell
         
         let blog = blogs[indexPath.row]
+
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
             cell.updateWithBlogs(blog)
         })
+        
         self.delegate = cell
         return cell
     }
     
+  
+    
+//    func doneButtonAction()
+//    {
+//        self.textViewDescription.resignFirstResponder()
+//        self.textViewDescription.resignFirstResponder()
+//    }
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -109,4 +119,5 @@ class BlogChannelTableViewController: UITableViewController {
 
 protocol BlogChannelTableViewControllerDelegate {
     func likeButtonTapped (sender: UIButton)
+    
 }

@@ -11,14 +11,10 @@ import Parse
 
 class User: PFUser {
  
-    @NSManaged var avatarEndpoint: PFFile?
 
     //MARK: Initializer
     
-    init(avatarEndpoint: PFFile) {
-        super.init()
-        self.avatarEndpoint = avatarEndpoint
-    }
+
     
     override init() {
         super.init()

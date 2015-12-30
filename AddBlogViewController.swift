@@ -73,7 +73,6 @@ class AddBlogViewController: UIViewController {
                                                 print(error?.localizedDescription)
                                             }
                                         })
-
                                 })
                             self.cleanWall()
                             self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)
@@ -110,7 +109,6 @@ class AddBlogViewController: UIViewController {
             
             videoOfUrl = nil
             viewToRemove.removeFromSuperview()
-            
         }
     }
     
@@ -210,7 +208,7 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                     UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
                     
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
-                        print("urlOfVideo is : \(urlOfVideo)")
+
                         self.videoOfUrl = urlOfVideo
                         
                         // Play Video
@@ -218,7 +216,6 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                         let thumbnails: UIImage =  VideoController.takeSnapshot(urlOfVideo)
                        
                         self.thumbnail = thumbnails
-                        
                     }
                 }
             }

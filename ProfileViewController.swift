@@ -17,7 +17,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     static let shareController = ProfileViewController()
     var following: [User]? {
         didSet {
-            self.collectionView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.collectionView.reloadData()
+            })
         }
     }
     
@@ -83,6 +85,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
             self.following = followed
         }
+        self.canDisplayBannerAds = true
     }
     
     override func viewDidAppear(animated: Bool) {

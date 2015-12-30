@@ -24,6 +24,7 @@
 		DE086B7B1C178A0D0091E34F /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B7A1C178A0D0091E34F /* SystemConfiguration.framework */; };
 		DE086B7D1C178A1A0091E34F /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B7C1C178A1A0091E34F /* libz.tbd */; };
 		DE086B7F1C178A2B0091E34F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */; };
+		DE0DF0631C346427002AF9B0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0DF0621C346427002AF9B0 /* iAd.framework */; };
 		DE0FE2E61BF99C040010A8DB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */; };
 		DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */; };
 		DE76B2361BFA85D6002E6293 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2351BFA85D6002E6293 /* User.swift */; };
@@ -40,6 +41,7 @@
 		DE76B2531BFA942B002E6293 /* AddBlogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2521BFA942B002E6293 /* AddBlogViewController.swift */; };
 		DE76B25A1BFA95B6002E6293 /* UserSearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */; };
 		DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */; };
+		DE7915ED1C320C7400E4B729 /* AddCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */; };
 		DE8603381C20DCF000C36FEB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8603371C20DCF000C36FEB /* Color.swift */; };
 		DE8FF3BF1C1FA44C00F6BAA7 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */; };
 		DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */; };
@@ -96,6 +98,7 @@
 		DE086B7C1C178A1A0091E34F /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		DE086B801C179B160091E34F /* ViBlog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViBlog-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		DE0DF0621C346427002AF9B0 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE76B2351BFA85D6002E6293 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -112,6 +115,7 @@
 		DE76B2521BFA942B002E6293 /* AddBlogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddBlogViewController.swift; sourceTree = "<group>"; };
 		DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
 		DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentTableViewCell.swift; sourceTree = "<group>"; };
 		DE8603371C20DCF000C36FEB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ViBlog/Color.swift; sourceTree = "<group>"; };
 		DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBlogTableViewCell.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE0DF0631C346427002AF9B0 /* iAd.framework in Frameworks */,
 				DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */,
 				DE086B7F1C178A2B0091E34F /* libsqlite3.tbd in Frameworks */,
 				DE086B7D1C178A1A0091E34F /* libz.tbd in Frameworks */,
@@ -195,6 +200,7 @@
 		9445FEE50E55A3EBCD42D15E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DE0DF0621C346427002AF9B0 /* iAd.framework */,
 				ADA76725CCA4F0FAB2194F2D /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -275,6 +281,7 @@
 				DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */,
 				DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */,
 				DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */,
+				DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */,
 			);
 			name = Blogs;
 			sourceTree = "<group>";
@@ -563,6 +570,7 @@
 				DE76B2511BFA93E2002E6293 /* FriendsSearchTableViewController.swift in Sources */,
 				DE76B2531BFA942B002E6293 /* AddBlogViewController.swift in Sources */,
 				DE76B23C1BFA8601002E6293 /* Like.swift in Sources */,
+				DE7915ED1C320C7400E4B729 /* AddCommentTableViewCell.swift in Sources */,
 				DE76B2421BFA8626002E6293 /* VideoController.swift in Sources */,
 				DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */,
 				DE76B2401BFA861D002E6293 /* BlogController.swift in Sources */,
@@ -727,6 +735,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -737,6 +746,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TaTo.ViBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ViBlog-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -749,6 +759,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 10;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -759,6 +770,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.TaTo.ViBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ViBlog-Bridging-Header.h";
 			};
 			name = Release;

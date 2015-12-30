@@ -31,9 +31,11 @@ class BlogController {
     
     // create Blog
     static func createBlog(video: PFFile, user: PFUser, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
+        
         let blog = Blog(video: video, user: user, caption: caption)
         blog.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
+                
                 completion(blog: blog, success: true)
             } else {
                 print(error?.localizedDescription)
@@ -81,21 +83,26 @@ class BlogController {
     }
     
     // like Blogs
+
     
-    static func likeBlogs(blog: Blog, completion: (success: Bool, blog: Blog?) -> Void) {
+    static func likeBlogs(blog: Blog, completion: (success: Bool, blog: Blog?, like: [Like]) -> Void) {
         
         let like = Like(fromUser: UserController.shareController.current! as! User, blog: blog)
         like.saveInBackgroundWithBlock({ (success, error) -> Void in
             if success {
-                completion(success: true, blog: blog)
+                var likeArray: [PFObject] = []
+                likeArray.append(like.fromUser)
+                blog.setObject(likeArray, forKey: "likeFromUser")
+                blog.saveInBackground()
+               completion(success: true, blog: blog, like: blog.likeFromUser)
             }else {
-                completion(success: false, blog: nil)
+                completion(success: false, blog: nil, like: [])
             }
         })
         
-        BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in
-            completion(success: true, blog: blog)
-        }
+        //        BlogController.blogFromIdentifier(blog.objectId!) { (blog) -> Void in
+        //             completion(success: true, blog: blog, like: likeArray)
+        //        }
     }
     //fetch like
     
@@ -110,7 +117,7 @@ class BlogController {
                 completion(like: [])
             }
         })
-       
+        
     }
     
     //TODO: Needto review
@@ -125,7 +132,7 @@ class BlogController {
             }
         })
     }
- 
+    
     // Check Liked Blog
     
     static func userLikeBlog(user: PFUser, blog: Blog, completion: (liked: Bool) -> Void) {
@@ -146,18 +153,47 @@ class BlogController {
     
     // Unlike Blog
     
-    static func unlikeBlog(user: PFUser, blog: Blog, completion: (success: Bool) -> Void) {
+    static func unlikeBlog(user: PFUser, blog: Blog, completion: (success: Bool, like: [Like]) -> Void) {
+        
         let query = Like.query()
         query?.whereKey(ParseHelper.kActivityFromUser, equalTo: user)
-        query?.whereKey("blog", equalTo: blog)
         query?.findObjectsInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
-                if let like = object?.first {
+                if let like = object?.first as? Like{
+              
+                    blog.removeObject(like.fromUser, forKey: "likeFromUser")
+                    blog.saveInBackground()
+                    blog.fetchIfNeededInBackground()
+//                    let blogQuery = Blog.query()
+//                    blogQuery?.whereKey("likeFromUser", equalTo: blog.likeFromUser)
+//                    blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+//                        if let like = object  {
+//                            if like.contains(UserController.shareController.current?.objectId) {
+//                                like.re
+//                                
+//                            }
+//                        }
+//                    })
+//                   like.removeObjectsInArray(likeArray, forKey: "like")
+//                    blog.removeObjectsInArray(likeArray, forKey: "likes")
+//                    blog.setObject(likeArray, forKey: "like")
+//                    like.saveInBackground()
+//                    let blogQuery = Blog.query()
+//                    
+//               
+//                    blogQuery?.whereKey("like", equalTo: like.objectId!)
+//                    blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+//                        if let likes = object {
+//                            likes.removeObject(like, fromArray: likes)
+//                            
+//                        }
+//                    })
+                    
                     like.deleteInBackground()
                 }
-                completion(success: true)
+                completion(success: true, like: blog.likeFromUser)
             } else {
-                completion(success: false)
+                completion(success: false, like: [])
                 print(error?.localizedDescription)
             }
         }
@@ -179,14 +215,21 @@ class BlogController {
     
     // Add comment
     
-    static func addComment (blog: Blog, text: String, completion: (success: Bool, blog: Blog?) -> Void) {
+    static func addComment (blog: Blog, text: String, completion: (success: Bool, comment: [Comment]) -> Void) {
         
         let comment = Comment(fromUser: UserController.shareController.current! as! User, blog: blog, text: text)
+
+        comment.fetchIfNeededInBackground()
+        
         comment.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                completion(success: true, blog: blog)
+                var commentArray = blog.comment
+                commentArray.insert(comment, atIndex: 0)
+                blog.setObject(commentArray, forKey: "comment")
+                blog.saveInBackground()
+                completion(success: true, comment: commentArray)
+                
             } else {
-                completion(success: false, blog: nil)
                 print(error?.localizedDescription)
             }
         }

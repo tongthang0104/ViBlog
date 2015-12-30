@@ -78,6 +78,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         }
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //

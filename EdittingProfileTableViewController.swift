@@ -121,7 +121,6 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     //MARK: - UIImagePickerControllerDelegate
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
         picker.dismissViewControllerAnimated(true, completion: nil)
         self.avatarImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         dispatch_async(dispatch_get_main_queue(), { () -> Void in

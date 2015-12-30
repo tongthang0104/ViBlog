@@ -71,21 +71,28 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
         //         set followersLabel = "\(followers.count) followers"
         
         if user == UserController.shareController.current {
-            followButton.setTitle(user.username, forState: .Normal)
-            followButton.enabled = false
-            followButton.backgroundColor = UIColor.myRedColor()
+            
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.followButton.setTitle(user.username, forState: .Normal)
+                self.followButton.enabled = false
+                self.followButton.backgroundColor = UIColor.myRedColor()
+            })
+        
         } else {
             guard let currentUser = UserController.shareController.current else {return}
             if let user = self.user {
                 UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
                     if follows {
-                        self.followButton.setTitle("UnFollow", forState: .Normal)
-                        self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
-                        print("Already followed")
+                        self.followButton.setTitle("is following", forState: .Normal)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
+                        })
+                        
                     } else {
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
+                        })
                         self.followButton.setTitle("Follow", forState: .Normal)
-                        self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)
-                        print("Not followed yet")
                     }
                 })
             }

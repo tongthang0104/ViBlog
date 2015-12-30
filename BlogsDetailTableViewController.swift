@@ -12,15 +12,17 @@ import AVFoundation
 
 
 class BlogsDetailTableViewController: UITableViewController {
-
+    
     //MARK: - Properties
     
     var videoOfUrl: NSURL?
+    var delegate: BlogsDetailTableViewControllerDelegate?
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
-  
+    
+    @IBOutlet weak var nameLabel: UILabel!
     //MARK: - Update With Blog
     
     func updateWithBlog(blog: Blog){
@@ -36,22 +38,16 @@ class BlogsDetailTableViewController: UITableViewController {
         } else {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
-        
-//        VideoController.getVideo(NSURL(string: blog.video.url!)!) { (video) -> () in
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.videoOfUrl = video
-//                self.playBackgroundMovie(video)
-//            })
-//        }
         VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+            self.videoOfUrl = video
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.videoOfUrl = video
                 self.playBackgroundMovie(self.videoOfUrl!)
             })
         })
     }
     
-    //MARK: AV Player
+   
+    //MARK: - AV Player
     
     var avPlayer = AVPlayer()
     func playBackgroundMovie(url: NSURL){
@@ -74,66 +70,124 @@ class BlogsDetailTableViewController: UITableViewController {
             name: AVPlayerItemDidPlayToEndTimeNotification,
             object: nil)
     }
-
+    
     func playerReachedEnd() {
         avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
         avPlayer.pause()
     }
     
+    //MARK: - ViewController cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
     }
+    
+    func reloadCommentTableView () {
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            self.tableView.reloadData()
+        })
+    }
+    
+    
     
     //MARK: - Action
     
     @IBAction func avatarButtonTapped(sender: UIButton) {
-        
     }
     
     @IBAction func likeButtonTapped(sender: AnyObject) {
-
     }
-
-    @IBAction func addCommentButtonTapped(sender: UIButton) {
-        
-    }
-
-    
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-   
-    }
-
-    
-   
     
     // MARK: - Table view data source
     
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        switch section {
+        case 0:
+            return 1
+        default:
+            return blog.comment.count
+        }
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("addComment", forIndexPath: indexPath) as! AddCommentTableViewCell
+            let user = UserController.shareController.current! as! User
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                cell.updateWithUser(self.blog, user: user)
+            })
+            self.delegate = cell
+            self.nameLabel.text = user.username
 
-//        let comment = blog.comments![indexPath.row]
-        cell.textLabel?.text = blog.user.username
-        return cell
-    }
-
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+            return cell
+            
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
+            
+            let comment = blog.comment[indexPath.row]
+     
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                cell.updateWithComment(comment)
+            })
+            
+            
+            
+            return cell
+        }
         
-        return "Comments"
+        //        if let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as?BlogCommentTableViewCell {
+        //
+        ////        let comment = blog.comments![indexPath.row]
+        //        cell.textLabel?.text = blog.user.username
+        //        return cell
+        //        } else if let cell = tableView.dequeueReusableCellWithIdentifier("addComment") as? AddCommentTableViewCell {
+        //            return cell
+        //        }
+        
     }
-
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Add your comments"
+        default:
+            return "Comments"
+        }
+    }
+    
     // MARK: - Navigation
-
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+}
 
+protocol BlogsDetailTableViewControllerDelegate {
+    func addComment()
+    func addDoneButtonOnKeyboard()
+}
+
+extension BlogsDetailTableViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        self.delegate?.addDoneButtonOnKeyboard()
+    }
+   
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

@@ -24,16 +24,16 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     var like: Like?
     var likeArray: [Like] = []
     var caption: String?
-    var blog: Blog! {
-        didSet {
-            // free memory of image stored with post that is no longer displayed
-            if let oldValue = oldValue where oldValue != blog {
-//                oldValue.video.de
-            }
-            
-        }
-        
-    }
+    var blog: Blog! 
+//        didSet {
+//            // free memory of image stored with post that is no longer displayed
+//            if let oldValue = oldValue where oldValue != blog {
+//                oldValue.video.
+//            }
+//            
+//        }
+//        
+//    }
     var videoOfUrl: NSURL?
     
     @IBOutlet weak var likeButton: UIButton!
@@ -47,8 +47,6 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     @IBAction func avatarButtonTapped(sender: AnyObject) {
         
-        
-        
     }
     
     func likeButtonTapped(sender: UIButton) {
@@ -61,20 +59,21 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
                     self.updateWithBlogs(blog)
                 }
                 
-                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success) -> Void in
+                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
                     if success {
                         self.updateWithBlogs(self.blog)
+                        self.blog.likeFromUser = like
                     } else {
                         print("failed to unlike")
                     }
                 })
             } else {
-                BlogController.likeBlogs(self.blog) { (success, blog) -> Void in
+                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
                     if let blog = blog {
                         self.updateWithBlogs(blog)
-                        // self.likeArray.append(like)
+                        blog.likeFromUser = like
                     }
-                }
+                })
             }
         }
         
@@ -105,11 +104,12 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
         VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-            
+           
             self.videoOfUrl = video
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.playBackgroundMovie(self.videoOfUrl!)
             })
+            
         })
         
         guard let currentUser = UserController.shareController.current else {return}
@@ -121,7 +121,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
             }
         }
         
-        self.likeLabel.text = "\(likeArray.count) likes"
+        self.likeLabel.text = "\(blog.likeFromUser.count) likes"
         
         //        if let  like = BlogChannelTableViewController.shareController.like {
         //        self.likeLabel.text = "\(like.count) likes"
@@ -129,9 +129,9 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         //            BlogChannelTableViewController.shareController.like = []
         //        }
         
-        BlogController.likeForBlog(blog) { (like) -> Void in
-            self.likeArray = like
-        }
+//        BlogController.likeForBlog(blog) { (like) -> Void in
+//            self.likeArray = like
+//        }
     }
     
     //MARK: - AV Player

@@ -10,16 +10,39 @@ import UIKit
 import Parse
 import iAd
 
-class BlogChannelTableViewController: UITableViewController {
+class BlogChannelTableViewController: UITableViewController, ADBannerViewDelegate {
     
+  
+    
+    var adBannerView: ADBannerView = ADBannerView()
+    var isAdsDisplayed = false
     var  blogs: [Blog] = []
     var blog: Blog!
     var delegate: BlogChannelTableViewControllerDelegate?
-    static let shareController = BlogChannelTableViewController()
-//    var like: [Like]? {
-//        didSet {
-//          self.tableView.reloadData()
-//        }
+
+    
+  
+    
+
+    override func viewWillDisappear(animated: Bool) {
+        adBannerView.delegate = nil
+        adBannerView.removeFromSuperview()
+    }
+    
+//
+//    func bannerViewDidLoadAd(banner: ADBannerView!) {
+//        UIView.beginAnimations(nil, context: nil)
+//        UIView.setAnimationDuration(1)
+//        adBannerView.alpha = 1
+//        UIView.commitAnimations()
+//    }
+//    
+//
+//    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+//        UIView.beginAnimations(nil, context: nil)
+//        UIView.setAnimationDuration(0)
+//        adBannerView.alpha = 1
+//        UIView.commitAnimations()
 //    }
     
     override func viewDidLoad() {
@@ -27,9 +50,25 @@ class BlogChannelTableViewController: UITableViewController {
         
         //loadBlogChannels(UserController.shareController.current!)
         
-        self.canDisplayBannerAds = true
+//        self.canDisplayBannerAds = true
+        adBannerView = ADBannerView(adType: ADAdType.Banner)
+        adBannerView.delegate = self
+    
+        interstitialPresentationPolicy = .Manual
+        UIViewController.prepareInterstitialAds()
+        
+        let timer = NSTimer(fireDate: NSDate(timeIntervalSinceNow: 10), interval: 0, target: self, selector: "displayAds", userInfo: nil, repeats: false)
+        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        
     }
 
+    func displayAds() {
+        if displayingBannerAd {
+            canDisplayBannerAds = false
+        }
+        requestInterstitialAdPresentation()
+        canDisplayBannerAds = true
+    }
     
     //MARK: - Action
     
@@ -93,7 +132,34 @@ class BlogChannelTableViewController: UITableViewController {
         return cell
     }
     
-  
+    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return adBannerView
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if isAdsDisplayed {
+            return adBannerView.frame.size.height
+        }
+        
+        return 0
+    }
+
+    func bannerViewDidLoadAd(banner: ADBannerView!) {
+        
+        isAdsDisplayed = true
+        // Reload table section to show the banner ad
+        let indexSet = NSIndexSet(index: 0)
+        tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
+    }
+    
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        isAdsDisplayed = false
+        // Reload table section to hide the banner ad
+        let indexSet = NSIndexSet(index: 0)
+        tableView.reloadSections(indexSet, withRowAnimation: .Automatic)
+    }
+    
+    
     
 //    func doneButtonAction()
 //    {

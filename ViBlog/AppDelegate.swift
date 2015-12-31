@@ -9,22 +9,29 @@
 import UIKit
 import Parse
 import Bolts
+import iAd
 
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        
+        
+        
         // Override point for customization after application launch.
         Parse.enableLocalDatastore()
-        
         User.registerSubclass()
         Blog.registerSubclass()
         Like.registerSubclass()
         Comment.registerSubclass()
+        
+        
    
         // Initialize Parse.
         Parse.setApplicationId("TlqAHwrEgqbunzpIZwrpL7JAiTwPws2WxDdnohE2",
@@ -35,6 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // COlor
         Color.setupAppearanceColor()
+        
         
         return true
     }

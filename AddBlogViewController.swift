@@ -12,8 +12,8 @@ import AVKit
 import MobileCoreServices
 import AVFoundation
 import Parse
-
-class AddBlogViewController: UIViewController {
+import iAd
+class AddBlogViewController: UITableViewController {
     
     // MARK: - Properties
     
@@ -27,6 +27,7 @@ class AddBlogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.canDisplayBannerAds = true
        
     }
     
@@ -189,6 +190,13 @@ class AddBlogViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 }
 

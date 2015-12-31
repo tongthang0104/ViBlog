@@ -9,12 +9,15 @@
 import UIKit
 import AVKit
 import AVFoundation
+import iAd
 
 
-class BlogsDetailTableViewController: UITableViewController {
+class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegate {
     
     //MARK: - Properties
     
+    var adBannerView: ADBannerView = ADBannerView()
+    var isAdsDisplayed = false
     var videoOfUrl: NSURL?
     var delegate: BlogsDetailTableViewControllerDelegate?
     var blog: Blog!
@@ -80,7 +83,9 @@ class BlogsDetailTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
+        self.canDisplayBannerAds = true
+        adBannerView.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
     }
     
@@ -132,25 +137,15 @@ class BlogsDetailTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
             
             let comment = blog.comment[indexPath.row]
-     
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                cell.updateWithComment(comment)
-            })
-            
+            cell.updateWithComment(comment)
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                
+//            })
+//            
             
             
             return cell
         }
-        
-        //        if let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as?BlogCommentTableViewCell {
-        //
-        ////        let comment = blog.comments![indexPath.row]
-        //        cell.textLabel?.text = blog.user.username
-        //        return cell
-        //        } else if let cell = tableView.dequeueReusableCellWithIdentifier("addComment") as? AddCommentTableViewCell {
-        //            return cell
-        //        }
-        
     }
     
     override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
@@ -160,6 +155,11 @@ class BlogsDetailTableViewController: UITableViewController {
         default:
             return "Comments"
         }
+    }
+    
+
+    func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
+        isAdsDisplayed = false
     }
     
     // MARK: - Navigation

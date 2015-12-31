@@ -9,54 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "VideoBlogTableViewCell.swift"
-            timestampString = "473193732.192899"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "71"
-            endingLineNumber = "71"
-            landmarkName = "likeButtonTapped(_:)"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.VideoBlogTableViewCell.(likeButtonTapped (ViBlog.VideoBlogTableViewCell) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/VideoBlogTableViewCell.swift"
-                  timestampString = "473193922.641091"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "71"
-                  endingLineNumber = "71"
-                  offsetFromSymbolStart = "596">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "ViBlog.VideoBlogTableViewCell.(likeButtonTapped (ViBlog.VideoBlogTableViewCell) -&gt; (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #2)"
-                  moduleName = "ViBlog"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/ThangTong/Desktop/IOS%20Development/IOS%20Learning/Capstone%20Project/ViBlog/VideoBlogTableViewCell.swift"
-                  timestampString = "473193922.641243"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "72"
-                  endingLineNumber = "72"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "BlogController.swift"
             timestampString = "473193741.509538"
             startingColumnNumber = "9223372036854775807"
@@ -96,22 +48,6 @@
             startingLineNumber = "96"
             endingLineNumber = "96"
             landmarkName = "likeBlogs(_:completion:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VideoBlogTableViewCell.swift"
-            timestampString = "473193766.341522"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "likeButtonTapped(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

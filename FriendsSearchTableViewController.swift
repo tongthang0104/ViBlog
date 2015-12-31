@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import iAd
 
 class FriendsSearchTableViewController: UITableViewController, UISearchResultsUpdating {
     
@@ -82,6 +83,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     override func viewDidLoad() {
         super.viewDidLoad()
         //
+        self.canDisplayBannerAds = true
         updateBaseOnMode(mode)
         setUpSearchController()
         self.tableView.reloadData()

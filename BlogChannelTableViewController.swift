@@ -20,6 +20,7 @@ class BlogChannelTableViewController: UITableViewController, ADBannerViewDelegat
     var blog: Blog!
     var delegate: BlogChannelTableViewControllerDelegate?
 
+
     
   
     

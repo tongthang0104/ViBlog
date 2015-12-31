@@ -20,6 +20,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     
     //MARK: Properties
     
+    @IBOutlet weak var thumbnailsView: UIImageView!
     var user: User?
     var like: Like?
     var likeArray: [Like] = []
@@ -94,25 +95,33 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
         } else {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
-        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-           
-            self.videoOfUrl = video
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.playBackgroundMovie(self.videoOfUrl!)
-            })
-            
-        })
+//        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+//           
+//            self.videoOfUrl = video
+//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//                self.playBackgroundMovie(self.videoOfUrl!)
+//            })
+//            
+//        })
         
         guard let currentUser = UserController.shareController.current else {return}
         BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
             if liked {
-                self.likeButton.setBackgroundImage(UIImage(named: "unlikeButton"), forState: .Normal)
+                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
             } else {
-                self.likeButton.setBackgroundImage(UIImage(named: "likeButton"), forState: .Normal)
+                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
             }
         }
         
         self.likeLabel.text = "\(blog.likeFromUser.count) likes"
+        
+        if let thumbnails = blog["thumbnails"] as? PFFile {
+            ImageController.fetchImageAtURL(NSURL(string: thumbnails.url!)!, completion: { (image) -> () in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.thumbnailsView.image = image
+                })
+            })
+        }
         
         //        if let  like = BlogChannelTableViewController.shareController.like {
         //        self.likeLabel.text = "\(like.count) likes"

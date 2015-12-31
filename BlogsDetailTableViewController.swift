@@ -137,7 +137,8 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
             
             let comment = blog.comment[indexPath.row]
-            cell.updateWithComment(comment)
+            cell.updateWithComment(comment, nameLabel: self.nameLabel)
+            
 //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
 //                
 //            })

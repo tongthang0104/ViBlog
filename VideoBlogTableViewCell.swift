@@ -25,15 +25,6 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     var likeArray: [Like] = []
     var caption: String?
     var blog: Blog! 
-//        didSet {
-//            // free memory of image stored with post that is no longer displayed
-//            if let oldValue = oldValue where oldValue != blog {
-//                oldValue.video.
-//            }
-//            
-//        }
-//        
-//    }
     var videoOfUrl: NSURL?
     
     @IBOutlet weak var likeButton: UIButton!

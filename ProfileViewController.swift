@@ -5,6 +5,7 @@
 
 
 import UIKit
+import iAd
 //import BTNavigationDropdownMenu
 
 
@@ -85,6 +86,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
             self.following = followed
         }
+        
         self.canDisplayBannerAds = true
     }
     

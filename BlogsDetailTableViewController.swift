@@ -101,6 +101,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
         self.canDisplayBannerAds = true
         adBannerView.delegate = self
+       
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
         
 //        self.likeDelegate = self
@@ -113,8 +114,6 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             self.tableView.reloadData()
         })
     }
-    
-    
     
     //MARK: - Action
     

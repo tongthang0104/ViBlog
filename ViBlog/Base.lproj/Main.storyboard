@@ -268,7 +268,7 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addComment" id="1YP-eN-o6V" customClass="AddCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addComment" rowHeight="44" id="1YP-eN-o6V" customClass="AddCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="467" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YP-eN-o6V" id="ipO-40-DPe">
@@ -287,7 +287,7 @@
                                                 <outlet property="delegate" destination="mog-dS-73A" id="t11-A2-mkR"/>
                                             </connections>
                                         </textField>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hwO-RI-LY0">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="hwO-RI-LY0">
                                             <rect key="frame" x="8" y="5" width="34" height="34"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="34" id="Px4-fv-835"/>
@@ -316,8 +316,15 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="7u0-rH-rt4">
+                                            <rect key="frame" x="8" y="5" width="34" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="34" id="Qyf-vF-yzN"/>
+                                                <constraint firstAttribute="height" constant="34" id="lFY-o3-ix9"/>
+                                            </constraints>
+                                        </imageView>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v60-9r-c8t">
-                                            <rect key="frame" x="50" y="5" width="542" height="105"/>
+                                            <rect key="frame" x="50" y="5" width="542" height="189"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <accessibility key="accessibilityConfiguration">
                                                 <accessibilityTraits key="traits" notEnabled="YES"/>
@@ -328,13 +335,6 @@
                                             <attributedString key="attributedText"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7u0-rH-rt4">
-                                            <rect key="frame" x="8" y="5" width="34" height="34"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="34" id="Qyf-vF-yzN"/>
-                                                <constraint firstAttribute="height" constant="34" id="lFY-o3-ix9"/>
-                                            </constraints>
-                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="67.5" id="31u-zJ-m7b"/>
@@ -343,7 +343,7 @@
                                         <constraint firstItem="v60-9r-c8t" firstAttribute="leading" secondItem="7u0-rH-rt4" secondAttribute="trailing" constant="8" id="MXX-Yu-Q7h"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="v60-9r-c8t" secondAttribute="trailing" id="Owm-1A-ZZL"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="-3.5" id="PXJ-tC-zRt"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="v60-9r-c8t" secondAttribute="bottom" constant="-3.5" id="XeW-xc-adb"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="v60-9r-c8t" secondAttribute="bottom" constant="-87.5" id="XeW-xc-adb"/>
                                         <constraint firstItem="7u0-rH-rt4" firstAttribute="top" secondItem="xTz-D5-rn5" secondAttribute="topMargin" constant="-3" id="gkT-Lr-wkf"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="67.5" id="xD6-lF-59G"/>
                                     </constraints>

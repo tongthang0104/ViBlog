@@ -39,7 +39,7 @@ class VideoBlogTableViewCell: UITableViewCell {
     @IBAction func avatarButtonTapped(sender: AnyObject) {
         
     }
-//    
+   
 //    func likeButtonTapped(sender: UIButton) {
 //        
 //        guard let currentUser = UserController.shareController.current else {return}
@@ -66,8 +66,7 @@ class VideoBlogTableViewCell: UITableViewCell {
 //                    }
 //                })
 //            }
-//        }
-//        
+//        } 
 //    }
     
     //MARK: - Update Blog

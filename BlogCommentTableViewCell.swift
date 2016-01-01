@@ -24,7 +24,7 @@ class BlogCommentTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateWithComment(comment: Comment, nameLabel: UILabel) {
+    func updateWithComment(comment: Comment) {
         let query = Comment.query()
         query?.includeKey("fromUser")
       
@@ -36,7 +36,6 @@ class BlogCommentTableViewCell: UITableViewCell {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.avatarImage.image = image
                             self.commentTextView.text = comment.text
-                            nameLabel.text = comment.fromUser.username
                             
                         })
                     }

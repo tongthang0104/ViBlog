@@ -90,9 +90,12 @@ class BlogController {
         let like = Like(fromUser: UserController.shareController.current! as! User, blog: blog)
         like.saveInBackgroundWithBlock({ (success, error) -> Void in
             if success {
-                var likeArray: [PFObject] = []
-                likeArray.append(like.fromUser)
-                blog.setObject(likeArray, forKey: "likeFromUser")
+//                var likeArray: [PFObject] = []
+//                likeArray.append(like.fromUser)
+//                blog.likeFromUser.append(like)
+                blog.addUniqueObject(like, forKey: "likeFromUser")
+                blog.setObject(blog.likeFromUser, forKey: "likeFromUser")
+                blog.fetchIfNeededInBackground()
                 blog.saveInBackground()
                completion(success: true, blog: blog, like: blog.likeFromUser)
             }else {
@@ -104,35 +107,38 @@ class BlogController {
         //             completion(success: true, blog: blog, like: likeArray)
         //        }
     }
+    
     //fetch like
     
-    static func likeForBlog(blog: Blog, completion: (like: [Like]) -> Void) {
-        let query = Like.query()
-        query?.whereKey("blog", equalTo: blog)
-        query?.includeKey(ParseHelper.kActivityFromUser)
-        query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
-            if let like = object as? [Like] {
-                completion(like: like)
+    static func likeForBlog (blog: Blog, completion: (blog: [Blog]?) -> Void) {
+        let query = PFQuery(className: ParseHelper.ParseLikeClass)
+        query.whereKey(ParseHelper.kLikeToPost, equalTo: blog)
+        query.includeKey(ParseHelper.kLikeFromUser)
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let blogs = object as? [Blog] {
+                completion(blog: blogs)
             } else {
-                completion(like: [])
-            }
-        })
-        
-    }
-    
-    //TODO: Needto review
-    static func countLike(blog: Blog, completion: (like: Int32)-> Void ) {
-        let query = Like.query()
-        query?.whereKey("blog", equalTo: blog)
-        query?.countObjectsInBackgroundWithBlock({ (likeNumber, error) -> Void in
-            if error == nil {
-                completion(like: likeNumber)
-            } else {
+                completion(blog: [])
                 print(error?.localizedDescription)
             }
-        })
+        }
     }
     
+    //count Like
+    
+//    static func countLike(blog: Blog, completion: (like: [Like]) -> Void) {
+//        let query = Like.query()
+//        query?.whereKey("blog", equalTo: blog)
+//        query?.includeKey(ParseHelper.kActivityFromUser)
+//        query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+//            if let like = object as? [Like] {
+//                completion(like: like)
+//            } else {
+//                completion(like: [])
+//            }
+//        })
+//    }
+
     // Check Liked Blog
     
     static func userLikeBlog(user: PFUser, blog: Blog, completion: (liked: Bool) -> Void) {
@@ -154,64 +160,53 @@ class BlogController {
     // Unlike Blog
     
     static func unlikeBlog(user: PFUser, blog: Blog, completion: (success: Bool, like: [Like]) -> Void) {
-        
-        let query = Like.query()
-        query?.whereKey(ParseHelper.kActivityFromUser, equalTo: user)
-        query?.findObjectsInBackgroundWithBlock { (object, error) -> Void in
-            if error == nil {
-                if let like = object?.first as? Like{
-              
-                    blog.removeObject(like.fromUser, forKey: "likeFromUser")
-                    blog.saveInBackground()
-                    blog.fetchIfNeededInBackground()
-//                    let blogQuery = Blog.query()
-//                    blogQuery?.whereKey("likeFromUser", equalTo: blog.likeFromUser)
-//                    blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
-//                        if let like = object  {
-//                            if like.contains(UserController.shareController.current?.objectId) {
-//                                like.re
-//                                
-//                            }
-//                        }
-//                    })
-//                   like.removeObjectsInArray(likeArray, forKey: "like")
-//                    blog.removeObjectsInArray(likeArray, forKey: "likes")
-//                    blog.setObject(likeArray, forKey: "like")
-//                    like.saveInBackground()
-//                    let blogQuery = Blog.query()
+      
+        print("delete")
+//        let query = Like.query()
+//        query?.whereKey(ParseHelper.kActivityFromUser, equalTo: user)
+//        query?.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+//            if error == nil {
+//                if let like = object?.first as? Like{
+//              
+//                    blog.removeObject(like.fromUser, forKey: "likeFromUser")
+//                    blog.saveInBackground()
+//                    blog.fetchIfNeededInBackground()
 //                    
-//               
-//                    blogQuery?.whereKey("like", equalTo: like.objectId!)
-//                    blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
-//                        if let likes = object {
-//                            likes.removeObject(like, fromArray: likes)
-//                            
-//                        }
-//                    })
-                    
-                    like.deleteInBackground()
-                }
-                completion(success: true, like: blog.likeFromUser)
-            } else {
-                completion(success: false, like: [])
-                print(error?.localizedDescription)
-            }
-        }
+////                    let blogQuery = Blog.query()
+////                    blogQuery?.whereKey("likeFromUser", equalTo: blog.likeFromUser)
+////                    blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+////                        if let like = object  {
+////                            if like.contains(UserController.shareController.current?.objectId) {
+////                                like.re
+////                                
+////                            }
+////                        }
+////                    })
+////                   like.removeObjectsInArray(likeArray, forKey: "like")
+////                    blog.removeObjectsInArray(likeArray, forKey: "likes")
+////                    blog.setObject(likeArray, forKey: "like")
+////                    like.saveInBackground()
+////                    let blogQuery = Blog.query()
+////                    
+////               
+////                    blogQuery?.whereKey("like", equalTo: like.objectId!)
+////                    blogQuery?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+////                        if let likes = object {
+////                            likes.removeObject(like, fromArray: likes)
+////                            
+////                        }
+////                    })
+//                    
+//                    like.deleteInBackground()
+//                }
+//                completion(success: true, like: blog.likeFromUser)
+//            } else {
+//                completion(success: false, like: [])
+//                print(error?.localizedDescription)
+//            }
+//        }
     }
-    
-    static func likeForBlog (blog: Blog, completion: (blog: [Blog]?) -> Void) {
-        let query = PFQuery(className: ParseHelper.ParseLikeClass)
-        query.whereKey(ParseHelper.kLikeToPost, equalTo: blog)
-        query.includeKey(ParseHelper.kLikeFromUser)
-        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
-            if let blogs = object as? [Blog] {
-                completion(blog: blogs)
-            } else {
-                completion(blog: [])
-                print(error?.localizedDescription)
-            }
-        }
-    }
+
     
     // Add comment
     

@@ -77,6 +77,7 @@ class AddBlogViewController: UITableViewController {
                                 })
                             self.cleanWall()
                             self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)
+                            self.tableView.reloadData()
 
                         } else {
                             let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
@@ -180,6 +181,7 @@ class AddBlogViewController: UITableViewController {
             selector: "playerReachedEnd",
             name: AVPlayerItemDidPlayToEndTimeNotification,
             object: nil)
+        self.tableView.reloadData()
     }
     
     func playerReachedEnd() {
@@ -224,6 +226,7 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                         let thumbnails: UIImage =  VideoController.takeSnapshot(urlOfVideo)
                        
                         self.thumbnail = thumbnails
+                        self.tableView.reloadData()
                     }
                 }
             }

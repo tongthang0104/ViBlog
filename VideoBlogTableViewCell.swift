@@ -16,7 +16,7 @@ import Parse
 
 
 
-class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDelegate {
+class VideoBlogTableViewCell: UITableViewCell {
     
     //MARK: Properties
     
@@ -27,8 +27,7 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     var caption: String?
     var blog: Blog! 
     var videoOfUrl: NSURL?
-    
-    @IBOutlet weak var likeButton: UIButton!
+
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
@@ -40,36 +39,36 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
     @IBAction func avatarButtonTapped(sender: AnyObject) {
         
     }
-    
-    func likeButtonTapped(sender: UIButton) {
-        
-        guard let currentUser = UserController.shareController.current else {return}
-        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-            if liked {
-                print("already liked")
-                if let blog = self.blog {
-                    self.updateWithBlogs(blog)
-                }
-                
-                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
-                    if success {
-                        self.updateWithBlogs(self.blog)
-                        self.blog.likeFromUser = like
-                    } else {
-                        print("failed to unlike")
-                    }
-                })
-            } else {
-                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
-                    if let blog = blog {
-                        self.updateWithBlogs(blog)
-                        blog.likeFromUser = like
-                    }
-                })
-            }
-        }
-        
-    }
+//    
+//    func likeButtonTapped(sender: UIButton) {
+//        
+//        guard let currentUser = UserController.shareController.current else {return}
+//        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+//            if liked {
+//                print("already liked")
+//                if let blog = self.blog {
+//                    self.updateWithBlogs(blog)
+//                }
+//                
+//                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
+//                    if success {
+//                        self.updateWithBlogs(self.blog)
+////                        self.blog.likeFromUser = like
+//                    } else {
+//                        print("failed to unlike")
+//                    }
+//                })
+//            } else {
+//                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
+//                    if let blog = blog {
+//                        self.updateWithBlogs(blog)
+////                        blog.likeFromUser = like
+//                    }
+//                })
+//            }
+//        }
+//        
+//    }
     
     //MARK: - Update Blog
     
@@ -104,14 +103,14 @@ class VideoBlogTableViewCell: UITableViewCell, BlogChannelTableViewControllerDel
 //            
 //        })
         
-        guard let currentUser = UserController.shareController.current else {return}
-        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-            if liked {
-                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
-            } else {
-                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
-            }
-        }
+//        guard let currentUser = UserController.shareController.current else {return}
+//        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+//            if liked {
+//                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
+//            } else {
+//                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
+//            }
+//        }
         
         self.likeLabel.text = "\(blog.likeFromUser.count) likes"
         

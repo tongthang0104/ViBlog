@@ -20,12 +20,15 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     var isAdsDisplayed = false
     var videoOfUrl: NSURL?
     var delegate: BlogsDetailTableViewControllerDelegate?
+
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
     
+    @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var likeButton: UIButton!
     //MARK: - Update With Blog
     
     func updateWithBlog(blog: Blog){
@@ -47,6 +50,18 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 self.playBackgroundMovie(self.videoOfUrl!)
             })
         })
+        
+        // Like update
+        guard let currentUser = UserController.shareController.current else {return}
+                BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+                    if liked {
+                        self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
+                    } else {
+                        self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
+                    }
+                }
+        
+        self.likeCountLabel.text =  "\(blog.likeFromUser.count)  likes"
     }
     
    
@@ -87,6 +102,10 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         self.canDisplayBannerAds = true
         adBannerView.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
+        
+//        self.likeDelegate = self
+        
+        
     }
     
     func reloadCommentTableView () {
@@ -102,9 +121,36 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     @IBAction func avatarButtonTapped(sender: UIButton) {
     }
     
-    @IBAction func likeButtonTapped(sender: AnyObject) {
-    }
+    // Like Button
     
+    @IBAction func likeButtonTapped(sender: AnyObject) {
+        guard let currentUser = UserController.shareController.current else {return}
+        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+            if liked {
+                print("already liked")
+                if let blog = self.blog {
+                    self.updateWithBlog(blog)
+                }
+                
+                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
+                    if success {
+                        self.updateWithBlog(self.blog)
+                        //                        self.blog.likeFromUser = like
+                    } else {
+                        print("failed to unlike")
+                    }
+                })
+            } else {
+                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
+                    if let blog = blog {
+                        self.updateWithBlog(blog)
+                        //                        blog.likeFromUser = like
+                    }
+                })
+            }
+        }
+    }
+
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -122,29 +168,28 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCellWithIdentifier("addComment", forIndexPath: indexPath) as! AddCommentTableViewCell
             let user = UserController.shareController.current! as! User
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 cell.updateWithUser(self.blog, user: user)
+                
             })
+            self.nameLabel.text = self.blog.user.username
             self.delegate = cell
-            self.nameLabel.text = user.username
+           
 
+       cell.backgroundView = UIView(frame: cell.bounds)
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
             
             let comment = blog.comment[indexPath.row]
-            cell.updateWithComment(comment, nameLabel: self.nameLabel)
-            
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                
-//            })
-//            
-            
-            
+            cell.updateWithComment(comment)
+         
+            cell.backgroundView = UIView(frame: cell.bounds)
             return cell
         }
     }
@@ -179,7 +224,9 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
 protocol BlogsDetailTableViewControllerDelegate {
     func addComment()
     func addDoneButtonOnKeyboard()
+    
 }
+
 
 extension BlogsDetailTableViewController: UITextFieldDelegate {
     
@@ -192,3 +239,5 @@ extension BlogsDetailTableViewController: UITextFieldDelegate {
         return true
     }
 }
+
+

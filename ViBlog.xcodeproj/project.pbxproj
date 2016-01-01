@@ -42,11 +42,11 @@
 		DE76B25A1BFA95B6002E6293 /* UserSearchResultTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */; };
 		DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */; };
 		DE7915ED1C320C7400E4B729 /* AddCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */; };
+		DE7F10FF1C3716360041F705 /* BlogsChannelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE7F10FE1C3716360041F705 /* BlogsChannelTableViewController.swift */; };
 		DE8603381C20DCF000C36FEB /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8603371C20DCF000C36FEB /* Color.swift */; };
 		DE8FF3BF1C1FA44C00F6BAA7 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */; };
 		DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */; };
 		DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */; };
-		DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */; };
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
 		DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF46A41C220DE3003FD06E /* AVKit.framework */; };
 		DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */; };
@@ -116,11 +116,11 @@
 		DE76B2591BFA95B6002E6293 /* UserSearchResultTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchResultTableViewController.swift; sourceTree = "<group>"; };
 		DE76B25B1BFA9611002E6293 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCommentTableViewCell.swift; sourceTree = "<group>"; };
+		DE7F10FE1C3716360041F705 /* BlogsChannelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogsChannelTableViewController.swift; sourceTree = "<group>"; };
 		DE8603371C20DCF000C36FEB /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ViBlog/Color.swift; sourceTree = "<group>"; };
 		DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBlogTableViewCell.swift; sourceTree = "<group>"; };
 		DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingProfileTableViewController.swift; sourceTree = "<group>"; };
-		DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogChannelTableViewController.swift; sourceTree = "<group>"; };
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEBF46A41C220DE3003FD06E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
@@ -277,7 +277,7 @@
 		DE76B2541BFA943A002E6293 /* Blogs */ = {
 			isa = PBXGroup;
 			children = (
-				DEB364D61C114C1E001EBDBC /* BlogChannelTableViewController.swift */,
+				DE7F10FE1C3716360041F705 /* BlogsChannelTableViewController.swift */,
 				DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */,
 				DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */,
 				DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */,
@@ -566,7 +566,6 @@
 				DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */,
 				DE76B2491BFA8FD8002E6293 /* SignUpLoginViewController.swift in Sources */,
 				DEF36E1C1C16527C009C2122 /* BlogCommentTableViewCell.swift in Sources */,
-				DEB364D71C114C1E001EBDBC /* BlogChannelTableViewController.swift in Sources */,
 				DE76B2511BFA93E2002E6293 /* FriendsSearchTableViewController.swift in Sources */,
 				DE76B2531BFA942B002E6293 /* AddBlogViewController.swift in Sources */,
 				DE76B23C1BFA8601002E6293 /* Like.swift in Sources */,
@@ -586,6 +585,7 @@
 				DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */,
 				DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */,
 				DE76B2361BFA85D6002E6293 /* User.swift in Sources */,
+				DE7F10FF1C3716360041F705 /* BlogsChannelTableViewController.swift in Sources */,
 				DEC397771C1FF6300001A1B5 /* Array.swift in Sources */,
 				DE76B2381BFA85ED002E6293 /* Blog.swift in Sources */,
 				DE76B25A1BFA95B6002E6293 /* UserSearchResultTableViewController.swift in Sources */,

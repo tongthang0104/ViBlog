@@ -130,8 +130,8 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 if let blog = self.blog {
                     self.updateWithBlog(blog)
                 }
-                
-                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
+           
+                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success) -> Void in
                     if success {
                         self.updateWithBlog(self.blog)
                         //                        self.blog.likeFromUser = like

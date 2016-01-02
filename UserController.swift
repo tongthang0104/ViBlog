@@ -115,6 +115,7 @@ class UserController {
             
             follow.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if success {
+                    
                     completion(success: true, error: nil)
                 } else {
                     completion(success: false, error: error)
@@ -145,7 +146,21 @@ class UserController {
             }
         }
     }
-
+    
+    //Count followed
+    static func countFollowed(user: User, completion: (followed: [PFObject]) -> Void) {
+        let query = PFQuery(className: ParseHelper.kFollowActivity)
+        query.whereKey(ParseHelper.kFollowFromUser, equalTo: user.objectId!)
+        query.includeKey("toUser")
+        query.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let object = object {
+                completion(followed: object)
+            } else {
+                print(error?.localizedDescription)
+            }
+        }
+    }
+    
     // User follow User
     
     static func userFollowUser(user: PFUser, followee: PFUser, completion: (follows: Bool) -> Void) {

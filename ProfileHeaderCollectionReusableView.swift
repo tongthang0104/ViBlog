@@ -68,14 +68,16 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             avatarImage.image = ImageController.defaultImage
         }
         
-        
+      UserController.countFollowed(user) { (followed) -> Void in
+        self.followingLabel.text = "\(followed.count) Followings"
+        }
 //                self.followingLabel.text = "\()"
         //         set followersLabel = "\(followers.count) followers"
         
         if user == UserController.shareController.current {
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.followButton.setTitle(user.username, forState: .Normal)
-                self.followButton.tintColor = UIColor.blueColor()
+                self.followButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
                 self.followButton.enabled = false
             })
         } else {

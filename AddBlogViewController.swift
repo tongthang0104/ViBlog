@@ -62,13 +62,12 @@ class AddBlogViewController: UITableViewController {
                     guard let currentUser = UserController.shareController.current else {return}
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
-                            self.presentAlert("Yo! Upload Completed", message: "")
+                            self.presentAlert("Upload Completed", message: "")
 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                     guard let thumbnail = self.thumbnail else {return}
                                     ImageController.createThumbnails(thumbnail, blog: blog!, completion: { (success, error) -> Void in
                                             if success {
-//                                                self.presentAlert("Yo! Upload Completed", message: "")
                                                 print("successfully save")
                                             } else {
                                                 print(error?.localizedDescription)
@@ -77,7 +76,7 @@ class AddBlogViewController: UITableViewController {
                                 })
                             self.cleanWall()
                             self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)
-                            self.tableView.reloadData()
+//                            self.tableView.reloadData()
 
                         } else {
                             let failedAlert = UIAlertController(title: "Failed!", message: "Image failed to post. Please try again.", preferredStyle: .Alert)
@@ -159,10 +158,8 @@ class AddBlogViewController: UITableViewController {
     func playBackgroundMovie(url: NSURL){
         
         self.recordButton.setBackgroundImage(nil, forState: .Normal)
-        
-        
+
         avPlayer = AVPlayer(URL: url)
-        
         let moviePlayer = AVPlayerViewController()
         self.addChildViewController(moviePlayer)
         
@@ -195,7 +192,7 @@ class AddBlogViewController: UITableViewController {
     }
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
@@ -213,18 +210,16 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
             if let path = (info[UIImagePickerControllerMediaURL] as! NSURL).path {
                 if UIVideoAtPathIsCompatibleWithSavedPhotosAlbum(path) {
                     
-                    
                     // Save to Library
-                    UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
+//                    UISaveVideoAtPathToSavedPhotosAlbum(path, self, "video:didFinishSavingWithError:contextInfo:", nil)
                     
                     if let urlOfVideo = info[UIImagePickerControllerMediaURL] as? NSURL {
 
                         self.videoOfUrl = urlOfVideo
-                        
+            
                         // Play Video
                         self.playBackgroundMovie(urlOfVideo)
                         let thumbnails: UIImage =  VideoController.takeSnapshot(urlOfVideo)
-                       
                         self.thumbnail = thumbnails
                         self.tableView.reloadData()
                     }

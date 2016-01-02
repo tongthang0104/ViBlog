@@ -67,17 +67,17 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
         } else {
             avatarImage.image = ImageController.defaultImage
         }
-        //         set followingLabel = "\(followering.count) followings"
+        
+        
+//                self.followingLabel.text = "\()"
         //         set followersLabel = "\(followers.count) followers"
         
         if user == UserController.shareController.current {
-            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.followButton.setTitle(user.username, forState: .Normal)
+                self.followButton.tintColor = UIColor.blueColor()
                 self.followButton.enabled = false
-                self.followButton.backgroundColor = UIColor.myRedColor()
             })
-        
         } else {
             guard let currentUser = UserController.shareController.current else {return}
             if let user = self.user {
@@ -87,7 +87,6 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
                         })
-                        
                     } else {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.followButton.setBackgroundImage(UIImage(named: "unfollowButton"), forState: .Normal)

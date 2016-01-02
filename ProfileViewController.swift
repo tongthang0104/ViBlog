@@ -28,23 +28,16 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var avatarImage: UIImage?
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var logoutButton: UIBarButtonItem!
-    
+       
     //MARK: UpdateWithUser
     
     func updateWithUser(user: User) {
         //        self.user = user
         self.title = user.username
         
-        // let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor.myWhiteColor()]
-        
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.myWhiteColor()]
         
         if user != UserController.shareController.current {
-            
-            // as of writing there is no system way to remove a bar button item
-            // disables and hides the button
-            
             self.navigationItem.rightBarButtonItem?.enabled = false
             self.navigationItem.rightBarButtonItem?.tintColor = UIColor.clearColor()
         }
@@ -58,6 +51,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     }
     
     //MARK: ViewController Cycle
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         
@@ -65,15 +59,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
             
             self.updateWithUser(user)
             self.collectionView.reloadData()
-            //            UserController.userForIdentifier(user.objectId!) { (user) -> Void in
-            //                if let user = user {
-            //                    self.user = user
-            //                    self.updateWithUser(user)
-            //                    dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            //                        self.collectionView.reloadData()
-            //                    })
-            //                }
-            //            }
         }
     }
     
@@ -133,23 +118,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         view.updateWithUsers(user)
         return view
     }
-    
-    //    func followButtonTapped(sender: UIButton) {
-    //
-    //
-    //
-    //        //        UserController.userFollowUser(UserController.shareController.currentUser, followee: user) { (follows) -> Void in
-    //        //            if follows {
-    //        //                UserController.unfollowUser(user, completion: { (success) -> Void in
-    //        //                    self.updateWithUser(user)
-    //        //                })
-    //        //            } else {
-    //        //                UserController.followUser(user, completion: { (success) -> Void in
-    //        //                    self.updateWithUser(user)
-    //        //                })
-    //        //            }
-    //        //        }
-    //    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

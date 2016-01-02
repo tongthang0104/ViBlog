@@ -110,6 +110,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let item = collectionView.dequeueReusableCellWithReuseIdentifier("videoCell", forIndexPath: indexPath) as! VideoCollectionViewCell
         let blogs = userBlogs[indexPath.item]
         item.updateWithBlogs(blogs)
+        item.backgroundView = UIImageView(image: UIImage(named: "photoFrame2"))
+        
         return item
     }
     
@@ -118,6 +120,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
         
         view.updateWithUsers(user)
+     
         return view
     }
     

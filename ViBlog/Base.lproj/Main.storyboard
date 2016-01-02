@@ -124,7 +124,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="sTk-dn-Tlt">
-                            <rect key="frame" x="0.0" y="64" width="600" height="375"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oFl-my-ilT">
@@ -259,7 +259,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addComment" rowHeight="44" id="1YP-eN-o6V" customClass="AddCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="467" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="403" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YP-eN-o6V" id="ipO-40-DPe">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
@@ -300,7 +300,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="115" id="A1b-cE-wbV" customClass="BlogCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="511" width="600" height="115"/>
+                                <rect key="frame" x="0.0" y="447" width="600" height="115"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A1b-cE-wbV" id="xTz-D5-rn5">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
@@ -1024,56 +1024,43 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="91Y-Qh-KvL">
-                            <size key="itemSize" width="130" height="154"/>
+                            <size key="itemSize" width="147" height="157"/>
                             <size key="headerReferenceSize" width="50" height="208"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="272" width="130" height="154"/>
+                                <rect key="frame" x="0.0" y="208" width="147" height="157"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="130" height="154"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="147" height="157"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5y-sh-JW5">
-                                            <rect key="frame" x="0.0" y="0.0" width="130" height="154"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-d5-5Zj">
-                                                    <rect key="frame" x="-1" y="132" width="131" height="22"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="22" id="6T4-jN-6bm"/>
-                                                        <constraint firstAttribute="width" constant="131" id="9iw-LI-fsm"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VAK-BU-Wa9">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130" height="129"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="130" id="7hR-yu-nSI"/>
-                                                        <constraint firstAttribute="height" constant="129" id="Qlt-nx-MDc"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-d5-5Zj">
+                                            <rect key="frame" x="8" y="127" width="131" height="22"/>
                                             <constraints>
-                                                <constraint firstItem="VAK-BU-Wa9" firstAttribute="leading" secondItem="v5y-sh-JW5" secondAttribute="leading" id="8Pv-6R-0B6"/>
-                                                <constraint firstItem="VAK-BU-Wa9" firstAttribute="top" secondItem="v5y-sh-JW5" secondAttribute="top" id="ZTG-YN-ljn"/>
-                                                <constraint firstAttribute="bottom" secondItem="VAK-BU-Wa9" secondAttribute="bottom" constant="25" id="f6b-F4-r5a"/>
-                                                <constraint firstItem="rO6-d5-5Zj" firstAttribute="top" secondItem="VAK-BU-Wa9" secondAttribute="bottom" constant="3" id="jxQ-iH-uOV"/>
-                                                <constraint firstAttribute="trailing" secondItem="rO6-d5-5Zj" secondAttribute="trailing" id="q9V-U6-bgs"/>
-                                                <constraint firstAttribute="trailing" secondItem="VAK-BU-Wa9" secondAttribute="trailing" id="yrN-fi-N3j"/>
+                                                <constraint firstAttribute="height" constant="22" id="6T4-jN-6bm"/>
+                                                <constraint firstAttribute="width" constant="131" id="9iw-LI-fsm"/>
                                             </constraints>
-                                        </view>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VAK-BU-Wa9">
+                                            <rect key="frame" x="16" y="13" width="115" height="111"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
-                                    <constraint firstItem="v5y-sh-JW5" firstAttribute="top" secondItem="hAe-a9-LuT" secondAttribute="top" id="ID1-Bo-kRt"/>
-                                    <constraint firstItem="v5y-sh-JW5" firstAttribute="leading" secondItem="hAe-a9-LuT" secondAttribute="leading" id="cqu-Me-UVc"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="rO6-d5-5Zj" secondAttribute="trailing" id="3VH-Tg-7aR"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="rO6-d5-5Zj" secondAttribute="bottom" id="4W3-6v-awA"/>
+                                    <constraint firstItem="VAK-BU-Wa9" firstAttribute="top" secondItem="hAe-a9-LuT" secondAttribute="topMargin" constant="5" id="F6A-rg-xsc"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="VAK-BU-Wa9" secondAttribute="trailing" constant="8" id="ORP-3s-aJF"/>
+                                    <constraint firstItem="rO6-d5-5Zj" firstAttribute="top" secondItem="VAK-BU-Wa9" secondAttribute="bottom" constant="3" id="Pv3-yo-TrX"/>
+                                    <constraint firstAttribute="leadingMargin" secondItem="rO6-d5-5Zj" secondAttribute="leading" id="aUO-0L-JRC"/>
+                                    <constraint firstItem="VAK-BU-Wa9" firstAttribute="leading" secondItem="hAe-a9-LuT" secondAttribute="leadingMargin" constant="8" id="bnD-OH-kmP"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="captionLabel" destination="rO6-d5-5Zj" id="ts0-sd-doS"/>
@@ -1083,7 +1070,7 @@
                             </collectionViewCell>
                         </cells>
                         <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="64" width="600" height="208"/>
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="208"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="23" translatesAutoresizingMaskIntoConstraints="NO" id="IDF-TO-6Lw">
@@ -1107,7 +1094,7 @@
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amC-yP-G2g">
                                                     <rect key="frame" x="0.0" y="0.0" width="400" height="17"/>
-                                                    <color key="backgroundColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="backgroundColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="17" id="4yn-mR-o6O"/>
                                                         <constraint firstAttribute="width" constant="400" id="Rv2-Mk-id3"/>
@@ -1117,6 +1104,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="17" id="Fn9-Ex-xiU"/>
                                                 <constraint firstAttribute="width" constant="400" id="wmZ-eL-HMi"/>
@@ -1124,7 +1112,7 @@
                                         </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dOW-yv-Joa">
                                             <rect key="frame" x="247" y="143" width="90" height="49"/>
-                                            <color key="backgroundColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="PgR-p6-Rxi"/>
                                                 <constraint firstAttribute="width" constant="118" id="enZ-eX-xMb"/>
@@ -1133,7 +1121,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <state key="normal" title="UnFollow">
-                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" red="0.0" green="0.55263157890000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1156,7 +1144,7 @@
                                     </constraints>
                                 </stackView>
                             </subviews>
-                            <color key="backgroundColor" red="0.80000000000000004" green="0.34901960780000002" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="leadingMargin" secondItem="IDF-TO-6Lw" secondAttribute="leading" id="Wir-XL-pBY"/>
                                 <constraint firstItem="IDF-TO-6Lw" firstAttribute="centerY" secondItem="Pg7-Sq-QKE" secondAttribute="centerY" id="pOQ-Kf-uoy"/>

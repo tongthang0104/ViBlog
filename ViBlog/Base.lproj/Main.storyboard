@@ -1105,24 +1105,19 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="mHl-AY-klN">
                                             <rect key="frame" x="92" y="103" width="400" height="17"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JGm-jF-goj">
-                                                    <rect key="frame" x="0.0" y="0.0" width="175" height="17"/>
-                                                    <color key="backgroundColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Following" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amC-yP-G2g">
-                                                    <rect key="frame" x="225" y="0.0" width="175" height="17"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="400" height="17"/>
                                                     <color key="backgroundColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="17" id="4yn-mR-o6O"/>
+                                                        <constraint firstAttribute="width" constant="400" id="Rv2-Mk-id3"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="amC-yP-G2g" firstAttribute="width" secondItem="JGm-jF-goj" secondAttribute="width" id="8nu-mo-xvV"/>
                                                 <constraint firstAttribute="height" constant="17" id="Fn9-Ex-xiU"/>
                                                 <constraint firstAttribute="width" constant="400" id="wmZ-eL-HMi"/>
                                             </constraints>
@@ -1137,7 +1132,9 @@
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                             <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <state key="normal" title="UnFollow"/>
+                                            <state key="normal" title="UnFollow">
+                                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                     <integer key="value" value="10"/>
@@ -1169,7 +1166,6 @@
                             <connections>
                                 <outlet property="avatarImage" destination="WVb-lK-4vB" id="iOZ-pk-Gyo"/>
                                 <outlet property="followButton" destination="dOW-yv-Joa" id="YaD-E9-sYz"/>
-                                <outlet property="followerLabel" destination="JGm-jF-goj" id="eVx-U4-PPS"/>
                                 <outlet property="followingLabel" destination="amC-yP-G2g" id="W6M-vE-7kX"/>
                             </connections>
                         </collectionReusableView>

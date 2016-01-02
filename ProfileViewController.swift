@@ -73,6 +73,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         self.canDisplayBannerAds = true
+        
+        
     }
     
     override func viewDidAppear(animated: Bool) {

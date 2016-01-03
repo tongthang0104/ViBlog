@@ -26,6 +26,7 @@
 		DE086B7F1C178A2B0091E34F /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */; };
 		DE0DF0631C346427002AF9B0 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0DF0621C346427002AF9B0 /* iAd.framework */; };
 		DE0FE2E61BF99C040010A8DB /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */; };
+		DE1D94BF1C38D0B900D6E844 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1D94BE1C38D0B900D6E844 /* SnapshotHelper.swift */; };
 		DE56915D1C09181C0029819A /* VideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */; };
 		DE76B2361BFA85D6002E6293 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2351BFA85D6002E6293 /* User.swift */; };
 		DE76B2381BFA85ED002E6293 /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76B2371BFA85ED002E6293 /* Blog.swift */; };
@@ -101,6 +102,7 @@
 		DE086B801C179B160091E34F /* ViBlog-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ViBlog-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		DE0DF0621C346427002AF9B0 /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
 		DE0FE2E51BF99C040010A8DB /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		DE1D94BE1C38D0B900D6E844 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		DE56915C1C09181C0029819A /* VideoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE76B2351BFA85D6002E6293 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		DE76B2371BFA85ED002E6293 /* Blog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
@@ -199,18 +201,11 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		9445FEE50E55A3EBCD42D15E /* Frameworks */ = {
+		DE086B5F1C1789820091E34F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				DE0DF0621C346427002AF9B0 /* iAd.framework */,
 				ADA76725CCA4F0FAB2194F2D /* Pods.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		DE086B5F1C1789820091E34F /* Framework */ = {
-			isa = PBXGroup;
-			children = (
 				DE086B801C179B160091E34F /* ViBlog-Bridging-Header.h */,
 				DE086B7E1C178A2B0091E34F /* libsqlite3.tbd */,
 				DE086B7C1C178A1A0091E34F /* libz.tbd */,
@@ -231,7 +226,7 @@
 				DE086B641C1789930091E34F /* ParseTwitterUtils.framework */,
 				DE086B651C1789930091E34F /* ParseUI.framework */,
 			);
-			name = Framework;
+			name = Frameworks;
 			path = ViBlog;
 			sourceTree = "<group>";
 		};
@@ -332,12 +327,11 @@
 			isa = PBXGroup;
 			children = (
 				DEE6A1501BF9838B00009122 /* ViBlog */,
-				DE086B5F1C1789820091E34F /* Framework */,
+				DE086B5F1C1789820091E34F /* Frameworks */,
 				DEE6A1651BF9838C00009122 /* ViBlogTests */,
 				DEE6A1701BF9838C00009122 /* ViBlogUITests */,
 				DEE6A14F1BF9838B00009122 /* Products */,
 				8423F5CA0ABD20CEA4D0CF9D /* Pods */,
-				9445FEE50E55A3EBCD42D15E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -377,6 +371,7 @@
 		DEE6A1701BF9838C00009122 /* ViBlogUITests */ = {
 			isa = PBXGroup;
 			children = (
+				DE1D94BE1C38D0B900D6E844 /* SnapshotHelper.swift */,
 				DEE6A1711BF9838C00009122 /* ViBlogUITests.swift */,
 				DEE6A1731BF9838C00009122 /* Info.plist */,
 			);
@@ -610,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEE6A1721BF9838C00009122 /* ViBlogUITests.swift in Sources */,
+				DE1D94BF1C38D0B900D6E844 /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

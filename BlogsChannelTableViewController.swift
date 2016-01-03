@@ -38,7 +38,6 @@ class BlogsChannelTableViewController: UITableViewController {
         
         // Check if there is User, if there is no user, go to SignUpLoginPickerView
         if let currentUser = UserController.shareController.current {
-    
                  loadBlogChannels(currentUser)
         } else {
             tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
@@ -50,7 +49,7 @@ class BlogsChannelTableViewController: UITableViewController {
         
         interstitialPresentationPolicy = .Manual
         UIViewController.prepareInterstitialAds()
-        let timer = NSTimer(fireDate: NSDate(timeIntervalSinceNow: 10), interval: 0, target: self, selector: "displayAds", userInfo: nil, repeats: false)
+        let timer = NSTimer(fireDate: NSDate(timeIntervalSinceNow: 30), interval: 0, target: self, selector: "displayAds", userInfo: nil, repeats: false)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     

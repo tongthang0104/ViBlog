@@ -463,6 +463,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <state key="normal" title="Forgot password?"/>
+                                <connections>
+                                    <segue destination="RjK-BZ-AxZ" kind="show" id="WgN-jG-QrC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -519,7 +522,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W0-TU-R2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2066" y="-2448"/>
+            <point key="canvasLocation" x="-1802" y="-2552"/>
         </scene>
         <!--Sign Up Login View Controller-->
         <scene sceneID="kqN-IX-Hiq">
@@ -670,7 +673,89 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqw-8N-Uub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1379" y="-2448"/>
+            <point key="canvasLocation" x="-1143" y="-2552"/>
+        </scene>
+        <!--Forget Password View Controller-->
+        <scene sceneID="e9e-qI-Tb5">
+            <objects>
+                <viewController id="RjK-BZ-AxZ" customClass="ForgetPasswordViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ICM-JE-Hgr"/>
+                        <viewControllerLayoutGuide type="bottom" id="nlw-Mj-fOe"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kVb-PL-yrj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViBlog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-dj-P2r">
+                                <rect key="frame" x="20" y="20" width="560" height="189"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="72l-Re-i0M"/>
+                                    <constraint firstAttribute="height" constant="189" id="Uuj-Yb-rIp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="70"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email address here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aV0-pB-oCQ">
+                                <rect key="frame" x="20" y="279" width="560" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="560" id="982-8U-LHp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="982-8U-LHp"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm your email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVz-8v-zoL">
+                                <rect key="frame" x="20" y="251" width="560" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-GV-NBb">
+                                <rect key="frame" x="232" y="341" width="137" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="137" id="bh0-ln-DqH"/>
+                                </constraints>
+                                <state key="normal" title="Reset Password"/>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="RjK-BZ-AxZ" eventType="touchUpInside" id="DwV-3K-4mK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="zVz-8v-zoL" secondAttribute="leading" id="0Yt-jN-FDc"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="d4G-GV-NBb" secondAttribute="trailing" constant="235" id="18s-8R-R0p"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="aV0-pB-oCQ" secondAttribute="leading" id="6Sv-hd-STD"/>
+                            <constraint firstItem="zVz-8v-zoL" firstAttribute="top" secondItem="8hT-dj-P2r" secondAttribute="bottom" constant="42" id="DzC-QP-LIY"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aV0-pB-oCQ" secondAttribute="trailing" id="IBS-12-xgW"/>
+                            <constraint firstItem="8hT-dj-P2r" firstAttribute="top" secondItem="ICM-JE-Hgr" secondAttribute="bottom" id="N7i-gd-TJS"/>
+                            <constraint firstItem="d4G-GV-NBb" firstAttribute="centerX" secondItem="aV0-pB-oCQ" secondAttribute="centerX" id="OCG-er-df2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8hT-dj-P2r" secondAttribute="trailing" id="Rvn-j5-33m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zVz-8v-zoL" secondAttribute="trailing" id="VmK-jw-VQb"/>
+                            <constraint firstItem="d4G-GV-NBb" firstAttribute="top" secondItem="aV0-pB-oCQ" secondAttribute="bottom" constant="32" id="agV-To-HvL"/>
+                            <constraint firstItem="aV0-pB-oCQ" firstAttribute="top" secondItem="zVz-8v-zoL" secondAttribute="bottom" constant="8" id="dVS-bK-QoC"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="8hT-dj-P2r" secondAttribute="leading" id="eCi-Fg-Gdh"/>
+                            <constraint firstItem="zVz-8v-zoL" firstAttribute="centerX" secondItem="8hT-dj-P2r" secondAttribute="centerX" id="prK-7Y-Fh6"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="18s-8R-R0p"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="aV0-pB-oCQ" id="1FL-Go-Le0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wg3-WA-eES" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-501" y="-2552"/>
         </scene>
         <!--Blogs Channel Table View Controller-->
         <scene sceneID="Bp5-b3-viK">
@@ -1013,7 +1098,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EhY-Ll-O9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2766" y="-2472"/>
+            <point key="canvasLocation" x="-2466" y="-2540"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="a3m-KY-uqd">
@@ -1419,8 +1504,8 @@
         <image name="thumbup" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="WIs-oF-pkc"/>
-        <segue reference="MtC-EW-5dm"/>
         <segue reference="Jko-Fw-MiY"/>
+        <segue reference="MtC-EW-5dm"/>
+        <segue reference="WIs-oF-pkc"/>
     </inferredMetricsTieBreakers>
 </document>

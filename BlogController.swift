@@ -33,6 +33,7 @@ class BlogController {
     static func createBlog(video: PFFile, user: PFUser, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
         
         let blog = Blog(video: video, user: user, caption: caption)
+        blog.ACL = PFACL(user: UserController.shareController.current!)
         blog.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
                 

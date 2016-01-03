@@ -38,10 +38,8 @@ class BlogsChannelTableViewController: UITableViewController {
         
         // Check if there is User, if there is no user, go to SignUpLoginPickerView
         if let currentUser = UserController.shareController.current {
-            if blogs.count > 0 {
-                print(currentUser)
-//                 loadBlogChannels(currentUser)
-            }
+    
+                 loadBlogChannels(currentUser)
         } else {
             tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
         }

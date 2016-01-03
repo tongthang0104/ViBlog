@@ -48,6 +48,7 @@
 		DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */; };
 		DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */; };
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
+		DEBDA34D1C3869A300974901 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBDA34C1C3869A300974901 /* ForgetPasswordViewController.swift */; };
 		DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF46A41C220DE3003FD06E /* AVKit.framework */; };
 		DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */; };
 		DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B031C03FD36001DEAD7 /* ImageController.swift */; };
@@ -122,6 +123,7 @@
 		DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBlogTableViewCell.swift; sourceTree = "<group>"; };
 		DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingProfileTableViewController.swift; sourceTree = "<group>"; };
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		DEBDA34C1C3869A300974901 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		DEBF46A41C220DE3003FD06E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
 		DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		DEC22B031C03FD36001DEAD7 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 			children = (
 				DE76B2461BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift */,
 				DE76B2481BFA8FD8002E6293 /* SignUpLoginViewController.swift */,
+				DEBDA34C1C3869A300974901 /* ForgetPasswordViewController.swift */,
 			);
 			name = SignUpLogin;
 			sourceTree = "<group>";
@@ -581,6 +584,7 @@
 				DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */,
 				DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */,
 				DE8603381C20DCF000C36FEB /* Color.swift in Sources */,
+				DEBDA34D1C3869A300974901 /* ForgetPasswordViewController.swift in Sources */,
 				DE76B2471BFA8FBD002E6293 /* SignUpLoginPickerViewController.swift in Sources */,
 				DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */,
 				DE76B23E1BFA8614002E6293 /* UserController.swift in Sources */,
@@ -736,7 +740,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",
@@ -760,7 +764,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/ViBlog",

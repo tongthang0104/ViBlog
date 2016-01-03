@@ -58,13 +58,13 @@ class SignUpLoginViewController: UITableViewController {
         super.viewDidLoad()
         
         self.updateWithMode(mode)
-//        Color.blurEffect(self.tableView.backgroundView, image: UIImage(named: "lens")!)
+        //        Color.blurEffect(self.tableView.backgroundView, image: UIImage(named: "lens")!)
         
         
     }
     
     //MARK: Action
-  
+    
     @IBAction func loginSignupButtonTapped(sender: UIButton) {
         
         //Activity Indicator View
@@ -96,6 +96,8 @@ class SignUpLoginViewController: UITableViewController {
                         UserController.shareController.current = PFUser.currentUser()
                         self.dismissViewControllerAnimated(true, completion: nil)
                         
+                        
+                        
                     } else {
                         self.alertNotification("Invalid Information", message: "Please check your information and try again")
                     }
@@ -105,7 +107,7 @@ class SignUpLoginViewController: UITableViewController {
                 
             case .Signup:
                 
-                UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success) -> Void in
+                UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success, error) -> Void in
                     
                     self.activityIndicator.stopAnimating()
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
@@ -118,14 +120,13 @@ class SignUpLoginViewController: UITableViewController {
                     } else if (self.passwordTextField.text?.characters.count <= 5){
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
                     } else {
-                        self.alertNotification("Invalid Information", message: "Please check your information and try again")
+                        self.alertNotification("\(error!.localizedDescription)", message: "Please try again")
                     }
                 })
             }
         } else {
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.alertNotification("Missing Information", message: "Please check your information and try again")
-            })
+            
+            self.alertNotification("Missing Information", message: "Please check your information and try again")
             
         }
     }
@@ -149,7 +150,7 @@ class SignUpLoginViewController: UITableViewController {
                 return 1
             }
         default:
-           return 1
+            return 1
         }
     }
     

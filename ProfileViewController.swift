@@ -45,7 +45,7 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         BlogController.blogsForUser(user) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
-                self.collectionView.reloadData()
+//                self.collectionView.reloadData()
             }
         }
     }
@@ -56,7 +56,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         super.viewWillAppear(false)
         
         if let user = user{
-            
             self.updateWithUser(user)
             self.collectionView.reloadData()
         }

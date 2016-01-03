@@ -14,8 +14,6 @@ class User: PFUser {
 
     //MARK: Initializer
     
-
-    
     override init() {
         super.init()
     }

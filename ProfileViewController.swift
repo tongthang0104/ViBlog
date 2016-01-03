@@ -57,7 +57,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if let user = user{
             self.updateWithUser(user)
-            self.collectionView.reloadData()
+            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                self.collectionView.reloadData()
+            })
         }
     }
     

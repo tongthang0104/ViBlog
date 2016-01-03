@@ -34,42 +34,8 @@ class ViBlogUITests: XCTestCase {
     
     func testExample() {
         // Use recording to get started writing UI tests.
+  
         
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        
-        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
-        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
-        
-        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
-        
-        let app = XCUIApplication()
-        let tablesQuery = app.tables
-        tablesQuery.staticTexts["new"].tap()
-        tablesQuery.buttons["thumbupFilled"].tap()
-        tablesQuery.buttons["thumbup"].tap()
-        tablesQuery.buttons["PlayButton"].tap()
-        tablesQuery.textFields["add your comment here..."].tap()
-        tablesQuery.childrenMatchingType(.Cell).elementBoundByIndex(0).childrenMatchingType(.TextField).element.typeText("dddds")
-        app.toolbars.buttons["Done"].tap()
-        app.navigationBars["ViBlog.BlogsDetailTableView"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
-        
-        let tabBarsQuery = app.tabBars
-        tabBarsQuery.buttons["Friends"].tap()
-        app.navigationBars["ViBlog.FriendsSearchTableView"].buttons["All Channels"].tap()
-        tablesQuery.cells.containingType(.StaticText, identifier:"smut").buttons["Follow"].tap()
-        tablesQuery.staticTexts["bemap"].tap()
-        
-        let collectionViewsQuery = app.collectionViews
-        collectionViewsQuery.buttons["Follow"].tap()
-        collectionViewsQuery.buttons["is following"].tap()
-        app.navigationBars["bemap"].childrenMatchingType(.Button).matchingIdentifier("Back").elementBoundByIndex(0).tap()
-        tabBarsQuery.buttons["Channels"].tap()
-        app.navigationBars["thang"].buttons["buttonImageSettings"].tap()
-        app.sheets["Select your option"].collectionViews.buttons["Edit Profile"].tap()
-        
-        
-        
-        // Failed to find matching element please file bug (bugreport.apple.com) and provide output from Console.app
         
 
         

@@ -79,6 +79,7 @@ class VideoBlogTableViewCell: UITableViewCell {
         if let caption = blog.caption {
             if self.caption == caption {
                 self.captionLabel.text = self.caption
+
             }
         } else {
             self.captionLabel.text = " "
@@ -111,7 +112,7 @@ class VideoBlogTableViewCell: UITableViewCell {
 //            }
 //        }
         
-        self.likeLabel.text = "\(blog.likeFromUser.count) likes"
+        self.likeLabel.text = "\(blog.likeFromUser.count)"
         
         if let thumbnails = blog["thumbnails"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: thumbnails.url!)!, completion: { (image) -> () in

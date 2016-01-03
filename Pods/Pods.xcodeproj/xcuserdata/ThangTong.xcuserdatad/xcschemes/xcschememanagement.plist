@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Bond.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,12 +17,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>075E0785BCDCBF1CFB86A49626AB314D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>80076C510C29F960587E43C0597ECBD5</key>
+		<key>46C7ECFB6B905972CC109D12275EC179</key>
 		<dict>
 			<key>primary</key>
 			<true/>

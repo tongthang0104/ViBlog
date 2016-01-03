@@ -411,7 +411,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viblog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0v-h4-26o">
                                 <rect key="frame" x="20" y="72" width="560" height="180"/>
                                 <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="94"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Don't have account yet? " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxZ-aw-KZz">
@@ -687,18 +687,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8cU-OG-PM4">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViBlog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-dj-P2r">
-                                <rect key="frame" x="20" y="20" width="560" height="189"/>
+                                <rect key="frame" x="20" y="64" width="560" height="223"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="72l-Re-i0M"/>
-                                    <constraint firstAttribute="height" constant="189" id="Uuj-Yb-rIp"/>
+                                    <constraint firstAttribute="height" constant="223" id="Uuj-Yb-rIp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="70"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="82"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter your email address here" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aV0-pB-oCQ">
-                                <rect key="frame" x="20" y="279" width="560" height="30"/>
+                                <rect key="frame" x="20" y="341" width="560" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="982-8U-LHp"/>
                                 </constraints>
@@ -711,13 +714,14 @@
                                 </variation>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm your email address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zVz-8v-zoL">
-                                <rect key="frame" x="20" y="251" width="560" height="20.5"/>
+                                <rect key="frame" x="20" y="312" width="560" height="20.5"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4G-GV-NBb">
-                                <rect key="frame" x="232" y="341" width="137" height="30"/>
+                                <rect key="frame" x="232" y="385" width="137" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="137" id="bh0-ln-DqH"/>
                                 </constraints>
@@ -731,17 +735,21 @@
                         <constraints>
                             <constraint firstAttribute="leadingMargin" secondItem="zVz-8v-zoL" secondAttribute="leading" id="0Yt-jN-FDc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="d4G-GV-NBb" secondAttribute="trailing" constant="235" id="18s-8R-R0p"/>
+                            <constraint firstItem="nlw-Mj-fOe" firstAttribute="top" secondItem="8cU-OG-PM4" secondAttribute="bottom" id="5wp-r0-wZ7"/>
                             <constraint firstAttribute="leadingMargin" secondItem="aV0-pB-oCQ" secondAttribute="leading" id="6Sv-hd-STD"/>
-                            <constraint firstItem="zVz-8v-zoL" firstAttribute="top" secondItem="8hT-dj-P2r" secondAttribute="bottom" constant="42" id="DzC-QP-LIY"/>
+                            <constraint firstItem="zVz-8v-zoL" firstAttribute="top" secondItem="8hT-dj-P2r" secondAttribute="bottom" constant="25" id="DzC-QP-LIY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="aV0-pB-oCQ" secondAttribute="trailing" id="IBS-12-xgW"/>
                             <constraint firstItem="8hT-dj-P2r" firstAttribute="top" secondItem="ICM-JE-Hgr" secondAttribute="bottom" id="N7i-gd-TJS"/>
                             <constraint firstItem="d4G-GV-NBb" firstAttribute="centerX" secondItem="aV0-pB-oCQ" secondAttribute="centerX" id="OCG-er-df2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="8cU-OG-PM4" secondAttribute="trailing" constant="-20" id="OJg-tM-R4V"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8hT-dj-P2r" secondAttribute="trailing" id="Rvn-j5-33m"/>
                             <constraint firstAttribute="trailingMargin" secondItem="zVz-8v-zoL" secondAttribute="trailing" id="VmK-jw-VQb"/>
-                            <constraint firstItem="d4G-GV-NBb" firstAttribute="top" secondItem="aV0-pB-oCQ" secondAttribute="bottom" constant="32" id="agV-To-HvL"/>
-                            <constraint firstItem="aV0-pB-oCQ" firstAttribute="top" secondItem="zVz-8v-zoL" secondAttribute="bottom" constant="8" id="dVS-bK-QoC"/>
+                            <constraint firstItem="d4G-GV-NBb" firstAttribute="top" secondItem="aV0-pB-oCQ" secondAttribute="bottom" constant="14" id="agV-To-HvL"/>
+                            <constraint firstItem="aV0-pB-oCQ" firstAttribute="top" secondItem="zVz-8v-zoL" secondAttribute="bottom" constant="8.5" id="dVS-bK-QoC"/>
                             <constraint firstAttribute="leadingMargin" secondItem="8hT-dj-P2r" secondAttribute="leading" id="eCi-Fg-Gdh"/>
+                            <constraint firstItem="8cU-OG-PM4" firstAttribute="top" secondItem="ICM-JE-Hgr" secondAttribute="bottom" id="gPQ-rg-QaI"/>
                             <constraint firstItem="zVz-8v-zoL" firstAttribute="centerX" secondItem="8hT-dj-P2r" secondAttribute="centerX" id="prK-7Y-Fh6"/>
+                            <constraint firstItem="8cU-OG-PM4" firstAttribute="leading" secondItem="kVb-PL-yrj" secondAttribute="leadingMargin" constant="-20" id="xl8-PE-z0T"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -750,12 +758,13 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="8cU-OG-PM4" id="o0n-vZ-vXV"/>
                         <outlet property="emailTextField" destination="aV0-pB-oCQ" id="1FL-Go-Le0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wg3-WA-eES" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-501" y="-2552"/>
+            <point key="canvasLocation" x="-528" y="-2552"/>
         </scene>
         <!--Blogs Channel Table View Controller-->
         <scene sceneID="Bp5-b3-viK">
@@ -1490,7 +1499,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="buttonImageSettings" width="14" height="15"/>
+        <image name="buttonImageSettings" width="15" height="16"/>
         <image name="camera" width="25" height="25"/>
         <image name="cameraButton" width="106" height="49"/>
         <image name="channel" width="25" height="25"/>
@@ -1501,7 +1510,7 @@
         <image name="profile" width="25" height="25"/>
         <image name="submitButton" width="320" height="145"/>
         <image name="textField" width="237" height="35"/>
-        <image name="thumbup" width="50" height="50"/>
+        <image name="thumbup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jko-Fw-MiY"/>

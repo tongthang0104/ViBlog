@@ -11,10 +11,12 @@ import UIKit
 class ForgetPasswordViewController: UIViewController {
 
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        view.tintColor = UIColor.myBlueColor()
+        Color.blurEffect(self.backgroundImage, image: UIImage(named: "lens")!)
     }
 
     @IBAction func resetButtonTapped(sender: UIButton) {

@@ -25,7 +25,7 @@
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="52p-ST-CC4">
                                     <rect key="frame" x="8" y="8" width="584" height="369"/>
-                                    <state key="normal" backgroundImage="cameraButton"/>
+                                    <state key="normal" backgroundImage="recordButtonNew"/>
                                     <connections>
                                         <action selector="recordButtonTapped:" destination="oIG-on-GqE" eventType="touchUpInside" id="k9w-BK-VuT"/>
                                     </connections>
@@ -325,6 +325,10 @@
                                             <attributedString key="attributedText"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVH-3z-5dn">
+                                            <rect key="frame" x="8" y="5" width="34" height="34"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="67.5" id="31u-zJ-m7b"/>
@@ -1329,7 +1333,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UyZ-Mq-M1p">
-                            <rect key="frame" x="0.0" y="381" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="317" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="15"/>
                             <state key="normal" title="Submit" backgroundImage="doneButton">
@@ -1343,7 +1347,7 @@
                             <tableViewSection headerTitle="My avatar" id="hOH-1t-1dq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="Su4-E9-t1Z">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="137"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Su4-E9-t1Z" id="Vmr-Du-BBf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="136.5"/>
@@ -1381,7 +1385,7 @@
                             <tableViewSection headerTitle="My information" id="RoB-e8-dKL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="mCz-Op-8kG">
-                                        <rect key="frame" x="0.0" y="257" width="600" height="124"/>
+                                        <rect key="frame" x="0.0" y="193" width="600" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mCz-Op-8kG" id="opY-3s-M2A">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
@@ -1550,7 +1554,6 @@
     <resources>
         <image name="buttonImageSettings" width="15" height="16"/>
         <image name="camera" width="25" height="25"/>
-        <image name="cameraButton" width="106" height="49"/>
         <image name="channel" width="25" height="25"/>
         <image name="defaultPhoto" width="540" height="540"/>
         <image name="doneButton" width="305" height="39"/>
@@ -1559,6 +1562,7 @@
         <image name="loginButtonNew" width="256" height="256"/>
         <image name="photoButton" width="81" height="81"/>
         <image name="profile" width="25" height="25"/>
+        <image name="recordButtonNew" width="256" height="256"/>
         <image name="signUpButton" width="256" height="256"/>
         <image name="submitButton" width="320" height="145"/>
         <image name="textField" width="237" height="35"/>
@@ -1566,7 +1570,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jko-Fw-MiY"/>
-        <segue reference="5oy-7L-d6B"/>
         <segue reference="WIs-oF-pkc"/>
+        <segue reference="MtC-EW-5dm"/>
     </inferredMetricsTieBreakers>
 </document>

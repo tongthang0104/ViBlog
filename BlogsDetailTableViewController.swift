@@ -45,9 +45,8 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
         VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-                 self.videoOfUrl = video
+                 
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
-           
                 self.playBackgroundMovie(video)
             })
         })
@@ -116,6 +115,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             self.tableView.reloadData()
         })
     }
+    
     
     //MARK: - Action
     

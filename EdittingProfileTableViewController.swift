@@ -17,6 +17,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var companyTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
     
     var avatarImage: UIImage?
     
@@ -47,9 +48,23 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     }
     @IBAction func submitButtonTapped(sender: UIButton) {
         
+        
+        self.activityIndicator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        self.activityIndicator.center = self.view.center
+        self.activityIndicator.hidesWhenStopped = true
+        self.activityIndicator.activityIndicatorViewStyle = .WhiteLarge
+        self.view.addSubview(self.activityIndicator)
+
         // Avatar Picker
         self.view.window?.endEditing(true)
+        
+        self.activityIndicator.startAnimating()
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        
         if let avatarImage = avatarImage {
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
             
             UserController.addAvatar(avatarImage, completion: { (success) -> Void in
                 if success {
@@ -58,19 +73,15 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
                     self.presentAlert("Failed to upload image", message: "Press OK to dismiss")
                 }
             })
-            //            UserController.addAvatar(avatarImage, completion: { (user, success) -> Void in
-            //                if success {
-            //                    self.dismissViewControllerAnimated(true, completion: nil)
-            //                } else {
-            //                    self.presentAlert("Failed to upload image", message: "Press OK to dismiss")
-            //                }
-            //            })
         }
         
         // Edit Profile Information
         
         if let usernameTextField = self.usernameTextField.text {
             guard let emailTextField = self.emailTextField.text else {return}
+            
+            self.activityIndicator.stopAnimating()
+            UIApplication.sharedApplication().endIgnoringInteractionEvents()
             
             UserController.updateUser(UserController.shareController.current! as! User, newUsername: usernameTextField, newEmail: emailTextField  ,completion: { (success, error) -> Void in
                 if success {

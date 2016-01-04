@@ -306,13 +306,16 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="7u0-rH-rt4">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVH-3z-5dn">
                                             <rect key="frame" x="8" y="5" width="34" height="34"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="34" id="Qyf-vF-yzN"/>
-                                                <constraint firstAttribute="height" constant="34" id="lFY-o3-ix9"/>
+                                                <constraint firstAttribute="height" constant="34" id="1zG-Ko-3p2"/>
+                                                <constraint firstAttribute="width" constant="34" id="wc1-Wy-4LN"/>
                                             </constraints>
-                                        </imageView>
+                                            <connections>
+                                                <segue destination="ZhL-0u-Wrd" kind="show" identifier="toProfileView2" id="Ilj-Rd-kMH"/>
+                                            </connections>
+                                        </button>
                                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v60-9r-c8t">
                                             <rect key="frame" x="50" y="5" width="542" height="189"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -325,31 +328,19 @@
                                             <attributedString key="attributedText"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVH-3z-5dn">
-                                            <rect key="frame" x="8" y="5" width="34" height="34"/>
-                                            <state key="normal" title="Button"/>
-                                        </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="67.5" id="31u-zJ-m7b"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="7u0-rH-rt4" secondAttribute="leading" id="7PA-hx-VzQ"/>
+                                        <constraint firstItem="tVH-3z-5dn" firstAttribute="top" secondItem="xTz-D5-rn5" secondAttribute="topMargin" constant="-3" id="DeB-HT-qea"/>
                                         <constraint firstItem="v60-9r-c8t" firstAttribute="top" secondItem="xTz-D5-rn5" secondAttribute="topMargin" constant="-3" id="GtS-1f-xok"/>
-                                        <constraint firstItem="v60-9r-c8t" firstAttribute="leading" secondItem="7u0-rH-rt4" secondAttribute="trailing" constant="8" id="MXX-Yu-Q7h"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="v60-9r-c8t" secondAttribute="trailing" id="Owm-1A-ZZL"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="-3.5" id="PXJ-tC-zRt"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="tVH-3z-5dn" secondAttribute="bottom" constant="67.5" id="RS8-pg-4uU"/>
+                                        <constraint firstItem="v60-9r-c8t" firstAttribute="leading" secondItem="tVH-3z-5dn" secondAttribute="trailing" constant="8" id="Sko-WB-KUU"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="v60-9r-c8t" secondAttribute="bottom" constant="-87.5" id="XeW-xc-adb"/>
-                                        <constraint firstItem="7u0-rH-rt4" firstAttribute="top" secondItem="xTz-D5-rn5" secondAttribute="topMargin" constant="-3" id="gkT-Lr-wkf"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="7u0-rH-rt4" secondAttribute="bottom" constant="67.5" id="xD6-lF-59G"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="tVH-3z-5dn" secondAttribute="leading" id="sVL-X6-s1i"/>
                                     </constraints>
-                                    <variation key="default">
-                                        <mask key="constraints">
-                                            <exclude reference="31u-zJ-m7b"/>
-                                            <exclude reference="PXJ-tC-zRt"/>
-                                        </mask>
-                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatarImage" destination="7u0-rH-rt4" id="fr1-FU-WxN"/>
+                                    <outlet property="avatarButton" destination="tVH-3z-5dn" id="tD7-l8-b7p"/>
                                     <outlet property="commentTextView" destination="v60-9r-c8t" id="6Dd-kh-84T"/>
                                 </connections>
                             </tableViewCell>
@@ -1570,7 +1561,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jko-Fw-MiY"/>
-        <segue reference="WIs-oF-pkc"/>
+        <segue reference="Ilj-Rd-kMH"/>
         <segue reference="MtC-EW-5dm"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,7 +20,8 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     var isAdsDisplayed = false
     var videoOfUrl: NSURL?
     var delegate: BlogsDetailTableViewControllerDelegate?
-
+    var comment: Comment?
+    
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var captionLabel: UILabel!
@@ -45,7 +46,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
         VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-                 
+            
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
                 self.playBackgroundMovie(video)
             })
@@ -53,18 +54,18 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         
         // Like update
         guard let currentUser = UserController.shareController.current else {return}
-                BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-                    if liked {
-                        self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
-                    } else {
-                        self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
-                    }
-                }
+        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+            if liked {
+                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
+            } else {
+                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
+            }
+        }
         
         self.likeCountLabel.text =  "\(blog.likeFromUser.count)  likes"
     }
     
-   
+    
     //MARK: - AV Player
     
     var avPlayer = AVPlayer()
@@ -99,13 +100,13 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         self.canDisplayBannerAds = true
         adBannerView.delegate = self
-       
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
         
-//        self.likeDelegate = self
+        //        self.likeDelegate = self
         
         
     }
@@ -132,7 +133,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 if let blog = self.blog {
                     self.updateWithBlog(blog)
                 }
-           
+                
                 BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success) -> Void in
                     if success {
                         self.updateWithBlog(self.blog)
@@ -151,7 +152,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             }
         }
     }
-
+    
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -179,17 +180,18 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             })
             self.nameLabel.text = self.blog.user.username
             self.delegate = cell
-           
-
-       cell.backgroundView = UIView(frame: cell.bounds)
+            
+            
+            cell.backgroundView = UIView(frame: cell.bounds)
             return cell
             
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
             
             let comment = blog.comment[indexPath.row]
+            self.comment = comment
             cell.updateWithComment(comment)
-         
+            
             cell.backgroundView = UIView(frame: cell.bounds)
             return cell
         }
@@ -204,7 +206,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         }
     }
     
-
+    
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
         isAdsDisplayed = false
     }
@@ -212,33 +214,38 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let destinationController = segue.destinationViewController as? ProfileViewController {
+            _ = destinationController.view
+            if segue.identifier == "toProfileView" {
+                destinationController.user = self.blog.user as! User
+            } else if segue.identifier == "toProfileView2" {
+                destinationController.user = self.comment?.fromUser
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
     }
 }
 
 protocol BlogsDetailTableViewControllerDelegate {
     func addComment()
     func addDoneButtonOnKeyboard()
-    
 }
-
 
 extension BlogsDetailTableViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         self.delegate?.addDoneButtonOnKeyboard()
     }
-   
+    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
+    
+    
 }
 
 

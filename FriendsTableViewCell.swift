@@ -79,7 +79,7 @@ class FriendsTableViewCell: UITableViewCell {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
                     })
-                    self.followButton.setTitle("Is following", forState: .Normal)
+                    self.followButton.setTitle("Following", forState: .Normal)
                     
                 } else {
                     

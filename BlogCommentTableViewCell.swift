@@ -13,6 +13,7 @@ class BlogCommentTableViewCell: UITableViewCell {
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
     
+    @IBOutlet weak var avatarButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -35,7 +36,7 @@ class BlogCommentTableViewCell: UITableViewCell {
                     ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!) { (image) -> () in
                         //dispatch main queue to load image in main thread for faster speed
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                            self.avatarImage.image = image
+                            self.avatarButton.setBackgroundImage(image, forState: .Normal)
                         })
                     }
                 }

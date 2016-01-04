@@ -98,7 +98,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             if let user = self.user {
                 UserController.userFollowUser(currentUser, followee: user, completion: { (follows) -> Void in
                     if follows {
-                        self.followButton.setTitle("is following", forState: .Normal)
+                        self.followButton.setTitle("Following", forState: .Normal)
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.followButton.setBackgroundImage(UIImage(named: "buttonFollowing"), forState: .Normal)
                         })

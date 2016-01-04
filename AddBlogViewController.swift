@@ -75,7 +75,7 @@ class AddBlogViewController: UITableViewController {
                                         })
                                 })
                             self.cleanWall()
-                            self.recordButton.setBackgroundImage(UIImage(named: "cameraButton"), forState: .Normal)
+                            self.recordButton.setBackgroundImage(UIImage(named: "recordButtonNew"), forState: .Normal)
 //                            self.tableView.reloadData()
 
                         } else {

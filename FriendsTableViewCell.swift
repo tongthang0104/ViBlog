@@ -22,6 +22,7 @@ class FriendsTableViewCell: UITableViewCell {
     //MARK: Action
     
     @IBAction func followButtonTapped(sender: UIButton) {
+      
         guard let currentUser = UserController.shareController.current else {return}
         
         if let user = user {
@@ -38,6 +39,7 @@ class FriendsTableViewCell: UITableViewCell {
                         dispatch_async(dispatch_get_main_queue(), { () -> Void in
                             self.updateWithUsers(user)
                         })
+                       
                     })
                 } else {
                     UserController.followUser(user, completion: { (success, error) -> Void in
@@ -47,7 +49,6 @@ class FriendsTableViewCell: UITableViewCell {
                                 followingUser.append(user)
                             }
                             self.updateWithUsers(user)
-                            
                         } else {
                             print(error?.localizedDescription)
                         }

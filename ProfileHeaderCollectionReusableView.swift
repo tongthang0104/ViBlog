@@ -12,12 +12,12 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     
     // MARK: - Properties
     
-    @IBOutlet weak var nameLabel: UILabel!
+    
     @IBOutlet weak var followingLabel: UILabel!
     @IBOutlet weak var followerLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
-    @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var avatarImage: UIImageView!
+    @IBOutlet weak var postCountLabel: UILabel!
     
     var user: User?
     
@@ -68,10 +68,23 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
             avatarImage.image = ImageController.defaultImage
         }
         
-      UserController.countFollowed(user) { (followed) -> Void in
-        self.followingLabel.text = "\(followed.count) Followings"
+        UserController.countFollowed(user) { (followed) -> Void in
+            if followed.count <= 1 {
+                self.followingLabel.text = "\(followed.count) Following"
+            } else {
+                self.followingLabel.text = "\(followed.count) Followings"
+            }
+            
         }
-//                self.followingLabel.text = "\()"
+        BlogController.countBlog(user) { (blog) -> Void in
+            if blog <= 1 {
+                self.postCountLabel.text = "\(blog) Blog"
+            } else {
+                self.postCountLabel.text = "\(blog) Blogs"
+            }
+        }
+        //        self.postCountLabel.text = "\()"
+        //                self.followingLabel.text = "\()"
         //         set followersLabel = "\(followers.count) followers"
         
         if user == UserController.shareController.current {

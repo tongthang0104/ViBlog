@@ -18,7 +18,7 @@ class UserController {
     var following: [PFUser] = []
     var current = PFUser.currentUser()
     var currentUser: User! = nil
-    static let user: User = User()
+//    static let user: User = User()
     
     // User For Identifier
     
@@ -39,7 +39,7 @@ class UserController {
         
         PFUser.logInWithUsernameInBackground(username, password: password) { (user, error) -> Void in
             if user != nil {
-                completion(user: self.user, success: true)
+                completion(user: user as? User, success: true)
             } else {
                 print(error?.localizedDescription)
                 completion(user: nil, success: false)
@@ -64,7 +64,7 @@ class UserController {
     // Create User
     
     static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool, error: NSError?) -> Void) {
-        
+        let user = PFUser()
         user.username = username
         user.password = password
         user.email = email
@@ -75,7 +75,7 @@ class UserController {
                 print(errorString)
                 completion(user: nil, success: false, error: error)
             } else {
-                completion(user: user, success: true, error: nil)
+                completion(user: user as? User, success: true, error: nil)
             }
         })
     }
@@ -201,7 +201,7 @@ class UserController {
         if let currentUser = UserController.shareController.current {
             let follow = PFObject(className: ParseHelper.kFollowActivity)
             follow.setObject(currentUser.objectId!, forKey: ParseHelper.kFollowFromUser)
-            follow.setObject(user, forKey: ParseHelper.kFollowToUser)
+            follow.setObject(user, forKey: ParseHelper.kFollowToUser)            
             follow.setObject(user.username!, forKey: ParseHelper.kUsername)
             follow.fetchIfNeededInBackground()
             

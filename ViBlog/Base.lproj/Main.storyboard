@@ -1153,9 +1153,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="115" height="130"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VAK-BU-Wa9">
-                                            <rect key="frame" x="16" y="13" width="83" height="84"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rO6-d5-5Zj">
                                             <rect key="frame" x="8" y="100" width="99" height="22"/>
                                             <constraints>
@@ -1165,6 +1162,9 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VAK-BU-Wa9">
+                                            <rect key="frame" x="16" y="13" width="83" height="84"/>
+                                        </imageView>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
@@ -1296,6 +1296,7 @@
                                 <outlet property="avatarImage" destination="WVb-lK-4vB" id="iOZ-pk-Gyo"/>
                                 <outlet property="followButton" destination="dOW-yv-Joa" id="YaD-E9-sYz"/>
                                 <outlet property="followingLabel" destination="amC-yP-G2g" id="W6M-vE-7kX"/>
+                                <outlet property="postCountLabel" destination="qQ8-jF-Brm" id="Fda-uJ-RxY"/>
                             </connections>
                         </collectionReusableView>
                         <connections>
@@ -1564,8 +1565,8 @@
         <image name="thumbup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="baw-w6-etn"/>
         <segue reference="Jko-Fw-MiY"/>
-        <segue reference="MtC-EW-5dm"/>
+        <segue reference="5oy-7L-d6B"/>
+        <segue reference="WIs-oF-pkc"/>
     </inferredMetricsTieBreakers>
 </document>

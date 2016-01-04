@@ -30,13 +30,13 @@ class BlogController {
     }
     
     // create Blog
-    static func createBlog(video: PFFile, user: PFUser, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
+    static func createBlog(video: PFFile, user: User, caption: String?, completion: (blog: Blog?, success: Bool) -> Void){
         
         let blog = Blog(video: video, user: user, caption: caption)
-        blog.ACL = PFACL(user: UserController.shareController.current!)
+//        blog.ACL = PFACL(user: UserController.shareController.current!)
+       
         blog.saveInBackgroundWithBlock { (success, error) -> Void in
             if success {
-                
                 completion(blog: blog, success: true)
             } else {
                 print(error?.localizedDescription)
@@ -45,6 +45,14 @@ class BlogController {
         }
     }
     
+    //Countblog
+    static func countBlog(user: User, completion: (blog: Int32) -> Void) {
+        let blogQuery = Blog.query()
+        blogQuery?.whereKey("user", equalTo: user)
+        blogQuery?.countObjectsInBackgroundWithBlock({ (number, error) -> Void in
+            completion(blog: number)
+        })
+    }
     // Blog From Identifier
     static func blogFromIdentifier(identifier: String, completion: (blog: Blog?) -> Void) {
         let blogQuery = Blog.query()

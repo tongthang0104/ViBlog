@@ -16,6 +16,7 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
     var searchController: UISearchController!
     //    var user: User?
     var userDataSource: [User] = []
+      var oldIndexPath: NSIndexPath? = nil
     
     @IBOutlet weak var segmentControl: UISegmentedControl!
     
@@ -86,13 +87,16 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         self.canDisplayBannerAds = true
         updateBaseOnMode(mode)
         setUpSearchController()
-        self.tableView.reloadData()
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
-        self.tableView.reloadData()
+        if let indexPath = oldIndexPath as NSIndexPath! {
+            self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+        }
     }
+    
+   
     
     @IBAction func selectIndexChanged(sender: UISegmentedControl) {
         updateBaseOnMode(mode)
@@ -144,12 +148,15 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
                 // IndexPath is from UserSearchResultTableVC
                 
                 if let filterUsers = (searchController.searchResultsController as? UserSearchResultTableViewController)?.filterUsers {
+                     self.oldIndexPath = indexPath
                     selectedUser = filterUsers[indexPath.row]
+                    
                 }
             } else {
                 
                 // IndexPath from friendSearchTableViewController
                 if let indexPath = tableView.indexPathForCell(cell) {
+                     self.oldIndexPath = indexPath
                     selectedUser = self.userDataSource[indexPath.row]
                 }
             }

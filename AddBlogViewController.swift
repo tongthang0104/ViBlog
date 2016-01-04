@@ -59,7 +59,7 @@ class AddBlogViewController: UITableViewController {
                 UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
                 if success {
-                    guard let currentUser = UserController.shareController.current else {return}
+                    guard let currentUser = UserController.shareController.current as? User else {return}
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
                             self.presentAlert("Upload Completed", message: "")

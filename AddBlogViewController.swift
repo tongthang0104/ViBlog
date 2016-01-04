@@ -218,7 +218,10 @@ extension AddBlogViewController: UIImagePickerControllerDelegate, UINavigationCo
                         self.videoOfUrl = urlOfVideo
             
                         // Play Video
-                        self.playBackgroundMovie(urlOfVideo)
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            self.playBackgroundMovie(urlOfVideo)
+                        })
+                        
                         let thumbnails: UIImage =  VideoController.takeSnapshot(urlOfVideo)
                         self.thumbnail = thumbnails
                         self.tableView.reloadData()

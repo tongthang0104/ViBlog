@@ -21,6 +21,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     var videoOfUrl: NSURL?
     var delegate: BlogsDetailTableViewControllerDelegate?
     var comment: Comment?
+    var avPlayer = AVPlayer()
     
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
@@ -68,7 +69,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
     //MARK: - AV Player
     
-    var avPlayer = AVPlayer()
+    
     
     func playBackgroundMovie(url: NSURL){
         

@@ -28,13 +28,12 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     var avatarImage: UIImage?
     
     @IBOutlet weak var collectionView: UICollectionView!
-       
+    
     //MARK: UpdateWithUser
     
     func updateWithUser(user: User) {
-        //        self.user = user
+   
         self.title = user.username
-        
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.myWhiteColor()]
         
         if user != UserController.shareController.current {
@@ -45,7 +44,9 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         BlogController.blogsForUser(user) { (blogs) -> Void in
             if let blogs = blogs {
                 self.userBlogs = blogs
-//                self.collectionView.reloadData()
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    self.collectionView.reloadData()
+                })
             }
         }
     }
@@ -57,9 +58,6 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         
         if let user = user{
             self.updateWithUser(user)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-                self.collectionView.reloadData()
-            })
         }
     }
     
@@ -74,13 +72,13 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }
         
         self.canDisplayBannerAds = true
-        
-        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-        self.collectionView.reloadData()
+//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+//            self.collectionView.reloadData()
+//        })
     }
     
     //MARK: - Action:
@@ -119,10 +117,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
         
         let view = collectionView.dequeueReusableSupplementaryViewOfKind(UICollectionElementKindSectionHeader, withReuseIdentifier: "profileHeaderView", forIndexPath: indexPath) as! ProfileHeaderCollectionReusableView
-
+        
         view.updateWithUsers(user)
-    
-     
+        
+        
         return view
     }
     

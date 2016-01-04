@@ -119,7 +119,10 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
     }
     
     if self.usernameTextField.text == "" || self.emailTextField.text == "" {
-    presentAlert("Missing Information", message: "Please enter a valid information and retry")
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+             self.presentAlert("Missing Information", message: "Please enter a valid information and retry")
+        })
+   
     }
 }
 

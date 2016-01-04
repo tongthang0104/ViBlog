@@ -13,21 +13,7 @@ class User: PFUser {
  
 
     //MARK: Initializer
-    @NSManaged var blog: [Blog]
-    
-   
-//    override class func query() -> PFQuery? {
-//        let query = User.query()
-//        query?.includeKey("Blog")
-//
-//        //        query.includeKey("comment")
-//        ////        query.includeKey("like")
-//        return query
-//    }
-    init(blog: [Blog] = []) {
-        super.init()
-        self.blog = blog
-    }
+
     override init() {
         super.init()
     }

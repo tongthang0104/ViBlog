@@ -417,8 +417,8 @@
                                     <constraint firstAttribute="height" constant="23" id="gKd-af-qTf"/>
                                     <constraint firstAttribute="width" constant="560" id="lIX-H7-1Li"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
-                                <color key="textColor" red="1" green="0.44488074020000001" blue="0.4707874937" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                <color key="textColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MMy-c5-ll0">
@@ -448,9 +448,9 @@
                                     <constraint firstAttribute="width" constant="560" id="ZUb-ot-OFj"/>
                                     <constraint firstAttribute="height" constant="20" id="rau-mF-vSQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                 <state key="normal" title="Forgot password?">
-                                    <color key="titleColor" red="1" green="0.44488074020000001" blue="0.4707874937" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" red="1" green="0.97947600180000005" blue="0.76223359030000004" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
                                     <segue destination="RjK-BZ-AxZ" kind="show" id="WgN-jG-QrC"/>

@@ -18,6 +18,7 @@ class BlogsChannelTableViewController: UITableViewController {
     var blog: Blog!
     var oldIndexPath: NSIndexPath? = nil
 
+  
     //MARK: - Action
 
     @IBAction func userRefreshTableView(sender: UIRefreshControl) {

@@ -64,7 +64,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             }
         }
         
-        self.likeCountLabel.text =  "\(blog.likeFromUser.count)  likes"
+        self.likeCountLabel.text =  "\(blog.likeFromUser.count)"
     }
     
     
@@ -212,7 +212,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         case 0:
             return "Add your comments"
         default:
-            return "Comments"
+            return "\(blog.comment.count) Comments"
         }
     }
     

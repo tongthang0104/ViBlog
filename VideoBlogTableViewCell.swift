@@ -25,13 +25,14 @@ class VideoBlogTableViewCell: UITableViewCell {
     var like: Like?
     var likeArray: [Like] = []
     var caption: String?
-    var blog: Blog! 
+    var blog: Blog!
     var videoOfUrl: NSURL?
-
+    
+    @IBOutlet weak var blogCommentCount: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var captionLabel: UILabel!
-    @IBOutlet weak var videoView: UIView!
+    //    @IBOutlet weak var videoView: UIView!
     @IBOutlet weak var likeLabel: UILabel!
     
     //MARK: Action
@@ -39,35 +40,35 @@ class VideoBlogTableViewCell: UITableViewCell {
     @IBAction func avatarButtonTapped(sender: AnyObject) {
         
     }
-   
-//    func likeButtonTapped(sender: UIButton) {
-//        
-//        guard let currentUser = UserController.shareController.current else {return}
-//        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-//            if liked {
-//                print("already liked")
-//                if let blog = self.blog {
-//                    self.updateWithBlogs(blog)
-//                }
-//                
-//                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
-//                    if success {
-//                        self.updateWithBlogs(self.blog)
-////                        self.blog.likeFromUser = like
-//                    } else {
-//                        print("failed to unlike")
-//                    }
-//                })
-//            } else {
-//                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
-//                    if let blog = blog {
-//                        self.updateWithBlogs(blog)
-////                        blog.likeFromUser = like
-//                    }
-//                })
-//            }
-//        } 
-//    }
+    
+    //    func likeButtonTapped(sender: UIButton) {
+    //
+    //        guard let currentUser = UserController.shareController.current else {return}
+    //        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+    //            if liked {
+    //                print("already liked")
+    //                if let blog = self.blog {
+    //                    self.updateWithBlogs(blog)
+    //                }
+    //
+    //                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
+    //                    if success {
+    //                        self.updateWithBlogs(self.blog)
+    ////                        self.blog.likeFromUser = like
+    //                    } else {
+    //                        print("failed to unlike")
+    //                    }
+    //                })
+    //            } else {
+    //                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
+    //                    if let blog = blog {
+    //                        self.updateWithBlogs(blog)
+    ////                        blog.likeFromUser = like
+    //                    }
+    //                })
+    //            }
+    //        }
+    //    }
     
     //MARK: - Update Blog
     
@@ -79,7 +80,7 @@ class VideoBlogTableViewCell: UITableViewCell {
         if let caption = blog.caption {
             if self.caption == caption {
                 self.captionLabel.text = self.caption
-
+                
             }
         } else {
             self.captionLabel.text = " "
@@ -94,23 +95,26 @@ class VideoBlogTableViewCell: UITableViewCell {
         } else {
             self.avatarButton.setBackgroundImage(ImageController.defaultImage, forState: .Normal)
         }
-//        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
-//           
-//            self.videoOfUrl = video
-//            dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//                self.playBackgroundMovie(self.videoOfUrl!)
-//            })
-//            
-//        })
+        //        VideoController.fetchImageAtURL(NSURL(string: blog.video.url!)!, completion: { (video) -> () in
+        //
+        //            self.videoOfUrl = video
+        //            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //                self.playBackgroundMovie(self.videoOfUrl!)
+        //            })
+        //
+        //        })
         
-//        guard let currentUser = UserController.shareController.current else {return}
-//        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-//            if liked {
-//                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
-//            } else {
-//                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
-//            }
-//        }
+        //        guard let currentUser = UserController.shareController.current else {return}
+        //        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+        //            if liked {
+        //                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
+        //            } else {
+        //                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
+        //            }
+        //        }
+        
+        self.blogCommentCount.text = "\(blog.comment.count)"
+        
         
         self.likeLabel.text = "\(blog.likeFromUser.count)"
         
@@ -128,40 +132,40 @@ class VideoBlogTableViewCell: UITableViewCell {
         //            BlogChannelTableViewController.shareController.like = []
         //        }
         
-//        BlogController.likeForBlog(blog) { (like) -> Void in
-//            self.likeArray = like
-//        }
+        //        BlogController.likeForBlog(blog) { (like) -> Void in
+        //            self.likeArray = like
+        //        }
     }
     
     //MARK: - AV Player
-    
-    var avPlayer = AVPlayer()
-    func playBackgroundMovie(url: NSURL){
-        
-        avPlayer = AVPlayer(URL: url)
-        
-        let moviePlayer = AVPlayerViewController()
-        //self.addChildViewController(moviePlayer)
-        moviePlayer.player = avPlayer
-        moviePlayer.view.bounds = self.videoView.bounds
-        moviePlayer.view.center = self.videoView.center
-        moviePlayer.view.frame = CGRectMake(0, 0, self.videoView.frame.size.width, self.videoView.frame.size.height)
-        moviePlayer.view.sizeToFit()
-        moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
-        moviePlayer.showsPlaybackControls = true
-        
-        videoView.addSubview(moviePlayer.view)
-        
-        NSNotificationCenter.defaultCenter().addObserver(self,
-            selector: "playerReachedEnd",
-            name: AVPlayerItemDidPlayToEndTimeNotification,
-            object: nil)
-    }
-    
-    func playerReachedEnd() {
-        avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
-        avPlayer.pause()
-    }
+    //
+    //    var avPlayer = AVPlayer()
+    //    func playBackgroundMovie(url: NSURL){
+    //
+    //        avPlayer = AVPlayer(URL: url)
+    //
+    //        let moviePlayer = AVPlayerViewController()
+    //        //self.addChildViewController(moviePlayer)
+    //        moviePlayer.player = avPlayer
+    //        moviePlayer.view.bounds = self.videoView.bounds
+    //        moviePlayer.view.center = self.videoView.center
+    //        moviePlayer.view.frame = CGRectMake(0, 0, self.videoView.frame.size.width, self.videoView.frame.size.height)
+    //        moviePlayer.view.sizeToFit()
+    //        moviePlayer.videoGravity = AVLayerVideoGravityResizeAspect
+    //        moviePlayer.showsPlaybackControls = true
+    //
+    //        videoView.addSubview(moviePlayer.view)
+    //
+    //        NSNotificationCenter.defaultCenter().addObserver(self,
+    //            selector: "playerReachedEnd",
+    //            name: AVPlayerItemDidPlayToEndTimeNotification,
+    //            object: nil)
+    //    }
+    //
+    //    func playerReachedEnd() {
+    //        avPlayer.seekToTime(CMTimeMakeWithSeconds(0, 1))
+    //        avPlayer.pause()
+    //    }
     
     override func awakeFromNib() {
         super.awakeFromNib()

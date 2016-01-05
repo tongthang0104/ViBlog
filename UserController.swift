@@ -18,7 +18,7 @@ class UserController {
     var following: [PFUser] = []
     var current = PFUser.currentUser()
     var currentUser: User! = nil
-//    static let user: User = User()
+    //    static let user: User = User()
     
     // User For Identifier
     
@@ -101,98 +101,24 @@ class UserController {
     
     static func updateUser(user: User, newUsername: String, newEmail: String, completion: (success: Bool, error: NSError?) -> Void) {
         
-//        func checkIsUserExists(username: String, completion: ((isUser: Bool?) -> Void)!) {
+        let oldUsernameValue = user.username
+        let oldEmailValue = user.email
         
-            var isPresent: Bool = false;
-            
-            let query = User.query()
-         
-            query?.whereKey("username", equalTo: user.username!)
-        
-        query?.findObjectsInBackgroundWithBlock({ (object, error) -> Void in
+        user.email = newEmail
+        user.username = newUsername
+        user.saveInBackgroundWithBlock { (success, error) -> Void in
             if error == nil {
-                if (object?.count > 0) {
-                    isPresent = true
-                    completion(success: false, error: error)
-                } else {
-                    user.username = newUsername
-                    completion(success: true, error: nil)
-                }
+                user.username = newUsername
+                user.email = newEmail
+                user.saveInBackground()
+                completion(success: true, error: nil)
             } else {
-                print(error?.localizedDescription)
+                user.username = oldUsernameValue
+                user.email = oldEmailValue
+                user.saveInBackground()
+                completion(success: false, error: error)
             }
-            completion(success: isPresent, error: error)
-        })
-//            query.findObjectsInBackgroundWithBlock {
-//                (objects: [AnyObject]?, error: NSError?) -> Void in
-//                
-//                if error == nil {
-//                    if (objects!.count > 0) {
-//                        isPresent = true;
-//                    }
-//                    
-//                } else {
-//                    // Log details of the failure
-//                    println("Error: \(error) \(error!.userInfo!)")
-//                }
-//                
-//                completion(isUser: isPresent);
-//            }
-        
-        
-        
-//        if user.authenticated == true {
-//        user.username = newUsername
-////        user.setValue(newEmail, forKey: "email")x
-//        user.saveInBackgroundWithBlock { (success, error) -> Void in
-//            if error == nil {
-//                completion(success: true, error: nil)
-//            } else {
-//                user.username = user.username
-//                completion(success: false, error: error)
-//            }
-//        }
-//        }
-//        user.setValue(newEmail, forKey: "Email")
-//        user.saveInBackgroundWithBlock {
-//            (succeeded: Bool!, error: NSError!) -> Void in
-//            if error == nil {
-//                println "Profile Updated."
-//            } else {
-//                println "Failed"
-//                //present alert to user to let them know that it failed
-//                //ask them to try a new email address
-//            }
-//        }
-
-        
-        
-//        do {
-//          let user = try PFUser.logInWithUsername(username, password: password)
-//            user.username = newUsername
-//            user.saveInBackground()
-//            completion(success: true)
-//        } catch {
-//            
-//        }
-////
-      
-
-//        
-//        User.logInWithUsernameInBackground(user.username!, password: user.password!) { (user, error) -> Void in
-//            if let user = user as? User {
-//                user.username = username
-//                user.saveInBackground()
-//                completion(user: user, success: true)
-//            }
-//        }
-        
-//        let user = PFUser.logInWithUsername(user.username!, password: user.password!)
-        
-//        PFUser.logInWithUsername("my_username", password:"my_password")
-//        user.username = username // attempt to change username
-//        user.save()
-        
+        }
     }
     
     // follow User

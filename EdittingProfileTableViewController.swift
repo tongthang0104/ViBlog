@@ -88,7 +88,7 @@ class EdittingProfileTableViewController: UITableViewController, UIImagePickerCo
                     self.dismissViewControllerAnimated(true, completion: nil)
                 } else {
                     print(error?.localizedDescription)
-//                    self.presentAlert("\(error!.localizedDescription)", message: "")
+                    self.presentAlert("\(error!.localizedDescription)", message: "")
                     
                     
                 }

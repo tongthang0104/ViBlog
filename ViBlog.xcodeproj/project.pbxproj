@@ -131,7 +131,7 @@
 		DEC22B031C03FD36001DEAD7 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		DEC397761C1FF6300001A1B5 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		DED2248A1C1B6D0D007826BF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		DEE6A14E1BF9838B00009122 /* ViBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEE6A14E1BF9838B00009122 /* ViSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEE6A1561BF9838B00009122 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEE6A1581BF9838C00009122 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -338,7 +338,7 @@
 		DEE6A14F1BF9838B00009122 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DEE6A14E1BF9838B00009122 /* ViBlog.app */,
+				DEE6A14E1BF9838B00009122 /* ViSnap.app */,
 				DEE6A1621BF9838C00009122 /* ViBlogTests.xctest */,
 				DEE6A16D1BF9838C00009122 /* ViBlogUITests.xctest */,
 			);
@@ -381,9 +381,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		DEE6A14D1BF9838B00009122 /* ViBlog */ = {
+		DEE6A14D1BF9838B00009122 /* ViSnap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DEE6A1761BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViBlog" */;
+			buildConfigurationList = DEE6A1761BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViSnap" */;
 			buildPhases = (
 				0A3EC80E1B44E7207C080536 /* Check Pods Manifest.lock */,
 				DEE6A14A1BF9838B00009122 /* Sources */,
@@ -396,9 +396,9 @@
 			);
 			dependencies = (
 			);
-			name = ViBlog;
+			name = ViSnap;
 			productName = ViBlog;
-			productReference = DEE6A14E1BF9838B00009122 /* ViBlog.app */;
+			productReference = DEE6A14E1BF9838B00009122 /* ViSnap.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DEE6A1611BF9838C00009122 /* ViBlogTests */ = {
@@ -474,7 +474,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DEE6A14D1BF9838B00009122 /* ViBlog */,
+				DEE6A14D1BF9838B00009122 /* ViSnap */,
 				DEE6A1611BF9838C00009122 /* ViBlogTests */,
 				DEE6A16C1BF9838C00009122 /* ViBlogUITests */,
 			);
@@ -614,12 +614,12 @@
 /* Begin PBXTargetDependency section */
 		DEE6A1641BF9838C00009122 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DEE6A14D1BF9838B00009122 /* ViBlog */;
+			target = DEE6A14D1BF9838B00009122 /* ViSnap */;
 			targetProxy = DEE6A1631BF9838C00009122 /* PBXContainerItemProxy */;
 		};
 		DEE6A16F1BF9838C00009122 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DEE6A14D1BF9838B00009122 /* ViBlog */;
+			target = DEE6A14D1BF9838B00009122 /* ViSnap */;
 			targetProxy = DEE6A16E1BF9838C00009122 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -835,7 +835,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DEE6A1761BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViBlog" */ = {
+		DEE6A1761BF9838C00009122 /* Build configuration list for PBXNativeTarget "ViSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DEE6A1771BF9838C00009122 /* Debug */,

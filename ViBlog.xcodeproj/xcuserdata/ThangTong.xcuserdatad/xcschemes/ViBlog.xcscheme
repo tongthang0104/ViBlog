@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DEE6A14D1BF9838B00009122"
-               BuildableName = "ViBlog.app"
-               BlueprintName = "ViBlog"
+               BuildableName = "ViSnap.app"
+               BlueprintName = "ViSnap"
                ReferencedContainer = "container:ViBlog.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -53,8 +53,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DEE6A14D1BF9838B00009122"
-            BuildableName = "ViBlog.app"
-            BlueprintName = "ViBlog"
+            BuildableName = "ViSnap.app"
+            BlueprintName = "ViSnap"
             ReferencedContainer = "container:ViBlog.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -76,8 +76,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DEE6A14D1BF9838B00009122"
-            BuildableName = "ViBlog.app"
-            BlueprintName = "ViBlog"
+            BuildableName = "ViSnap.app"
+            BlueprintName = "ViSnap"
             ReferencedContainer = "container:ViBlog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -95,8 +95,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DEE6A14D1BF9838B00009122"
-            BuildableName = "ViBlog.app"
-            BlueprintName = "ViBlog"
+            BuildableName = "ViSnap.app"
+            BlueprintName = "ViSnap"
             ReferencedContainer = "container:ViBlog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

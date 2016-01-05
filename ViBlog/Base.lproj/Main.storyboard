@@ -928,11 +928,11 @@
             </objects>
             <point key="canvasLocation" x="-2172" y="-1560"/>
         </scene>
-        <!--Camera-->
+        <!--Navigation Controller-->
         <scene sceneID="gcS-sL-ZG9">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="HWR-r5-dNI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Camera" image="camera" id="xbh-8f-6mE"/>
+                    <tabBarItem key="tabBarItem" title="" image="camera" id="xbh-8f-6mE"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qI7-FI-hiN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1122,11 +1122,11 @@
             </objects>
             <point key="canvasLocation" x="-2795" y="1769"/>
         </scene>
-        <!--Friends-->
+        <!--Navigation Controller-->
         <scene sceneID="OdT-IH-eHU">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xs4-18-aON" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Friends" image="follow" id="kud-eL-Vdd"/>
+                    <tabBarItem key="tabBarItem" title="" image="follow" id="kud-eL-Vdd"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="BI4-H2-EZo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1518,11 +1518,11 @@
             </objects>
             <point key="canvasLocation" x="-2089" y="1769"/>
         </scene>
-        <!--Channels-->
+        <!--Navigation Controller-->
         <scene sceneID="McJ-EA-IVQ">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Xk4-7P-lu8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Channels" image="profile" id="mYs-Ne-IlR"/>
+                    <tabBarItem key="tabBarItem" title="" image="profile" id="mYs-Ne-IlR"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="bdd-Gc-Rab">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1537,11 +1537,11 @@
             </objects>
             <point key="canvasLocation" x="-2830" y="206"/>
         </scene>
-        <!--ViBlogging-->
+        <!--Navigation Controller-->
         <scene sceneID="mX7-xf-faD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Hex-XH-YhF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="ViBlogging" image="channel" id="AWi-Qa-wmw"/>
+                    <tabBarItem key="tabBarItem" title="" image="channel" id="AWi-Qa-wmw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="3dN-q8-hso">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1594,8 +1594,8 @@
         <image name="thumbup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="0Jr-Hq-HvG"/>
         <segue reference="Jko-Fw-MiY"/>
-        <segue reference="baw-w6-etn"/>
         <segue reference="MtC-EW-5dm"/>
     </inferredMetricsTieBreakers>
 </document>

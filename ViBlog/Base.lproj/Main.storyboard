@@ -415,9 +415,9 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c2k-On-8O9">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Viblog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0v-h4-26o">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViSnap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0v-h4-26o">
                                 <rect key="frame" x="20" y="72" width="560" height="195"/>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="80"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="78"/>
                                 <color key="textColor" red="1" green="0.44488074020000001" blue="0.4707874937" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="1" green="0.91368652809999995" blue="0.59775990609999996" alpha="1" colorSpace="calibratedRGB"/>
@@ -551,9 +551,9 @@
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="koD-La-nsA">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="537"/>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViBlog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFU-ZC-dkG">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViSnap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFU-ZC-dkG">
                                     <rect key="frame" x="8" y="8" width="584" height="190"/>
-                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="80"/>
+                                    <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="78"/>
                                     <color key="textColor" red="1" green="0.91368652809999995" blue="0.59775990609999996" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -704,13 +704,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8cU-OG-PM4">
                                 <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViBlog" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-dj-P2r">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ViSnap" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8hT-dj-P2r">
                                 <rect key="frame" x="20" y="64" width="560" height="223"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="560" id="72l-Re-i0M"/>
                                     <constraint firstAttribute="height" constant="223" id="Uuj-Yb-rIp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="82"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="78"/>
                                 <color key="textColor" red="1" green="0.44488074020000001" blue="0.4707874937" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="1" green="0.91368652809999995" blue="0.59775990609999996" alpha="1" colorSpace="calibratedRGB"/>

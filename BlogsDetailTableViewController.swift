@@ -22,6 +22,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     var delegate: BlogsDetailTableViewControllerDelegate?
     var comment: Comment?
     var avPlayer = AVPlayer()
+    let session = AVAudioSession.sharedInstance()
     
     var blog: Blog!
     @IBOutlet weak var videoView: UIView!
@@ -74,6 +75,14 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     func playBackgroundMovie(url: NSURL){
         
         self.avPlayer = AVPlayer(URL: url)
+        
+        do {
+            try session.setCategory(AVAudioSessionCategoryPlayback)
+            try session.setActive(true)
+        }
+        catch {
+            print("Audio session setCategory failed")
+        }
         
         let moviePlayer = AVPlayerViewController()
         self.addChildViewController(moviePlayer)

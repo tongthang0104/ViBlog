@@ -1092,37 +1092,37 @@
         <scene sceneID="NLT-2d-0NZ">
             <objects>
                 <tableViewController storyboardIdentifier="userSearchResult" id="OIf-Xz-haA" customClass="UserSearchResultTableViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="P3H-QX-Gd1">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="P3H-QX-Gd1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSearchCell" id="p68-gW-e6K" customClass="FriendsTableViewCell" customModule="ViSnap" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSearchCell" rowHeight="59" id="p68-gW-e6K" customClass="FriendsTableViewCell" customModule="ViSnap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="600" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p68-gW-e6K" id="yuv-PL-k3J">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="58.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vH0-VL-qaB">
-                                            <rect key="frame" x="64" y="8" width="453" height="28"/>
+                                            <rect key="frame" x="65" y="18" width="453" height="20.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="453" id="Tjc-c8-uAK"/>
-                                                <constraint firstAttribute="height" constant="28" id="wwY-Ez-YQU"/>
+                                                <constraint firstAttribute="height" constant="20.5" id="wwY-Ez-YQU"/>
                                             </constraints>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5xn-OW-bir">
-                                            <rect key="frame" x="8" y="-1" width="49" height="44"/>
+                                            <rect key="frame" x="8" y="8" width="49" height="44"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="49" id="Mls-dN-cCv"/>
                                                 <constraint firstAttribute="height" constant="44" id="SjB-1v-Zpj"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mmu-AL-cOA">
-                                            <rect key="frame" x="525" y="6" width="68" height="29.5"/>
+                                            <rect key="frame" x="524" y="13" width="68" height="29.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="68" id="aKL-3j-oog"/>
                                             </constraints>
@@ -1135,19 +1135,19 @@
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="vH0-VL-qaB" firstAttribute="leading" secondItem="5xn-OW-bir" secondAttribute="trailing" constant="7" id="Esz-UV-0Gz"/>
-                                        <constraint firstItem="mmu-AL-cOA" firstAttribute="leading" secondItem="vH0-VL-qaB" secondAttribute="trailing" constant="8" id="O1L-ka-9zN"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="mmu-AL-cOA" secondAttribute="trailing" constant="-1" id="gwf-HB-FiS"/>
+                                        <constraint firstItem="vH0-VL-qaB" firstAttribute="leading" secondItem="5xn-OW-bir" secondAttribute="trailing" constant="8" id="Esz-UV-0Gz"/>
+                                        <constraint firstItem="mmu-AL-cOA" firstAttribute="leading" secondItem="vH0-VL-qaB" secondAttribute="trailing" constant="6" id="O1L-ka-9zN"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="mmu-AL-cOA" secondAttribute="trailing" id="gwf-HB-FiS"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstItem="5xn-OW-bir" firstAttribute="leading" secondItem="p68-gW-e6K" secondAttribute="leading" constant="8" id="Bgu-c4-PQG"/>
-                                    <constraint firstAttribute="bottom" secondItem="mmu-AL-cOA" secondAttribute="bottom" constant="8.5" id="C8W-fs-TsU"/>
-                                    <constraint firstItem="mmu-AL-cOA" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="6" id="Eqa-TQ-goh"/>
-                                    <constraint firstItem="5xn-OW-bir" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="-1" id="dl2-Ft-aQ0"/>
-                                    <constraint firstAttribute="bottom" secondItem="vH0-VL-qaB" secondAttribute="bottom" constant="8" id="gOb-D8-VlO"/>
-                                    <constraint firstItem="vH0-VL-qaB" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="8" id="hyS-qM-4Pi"/>
-                                    <constraint firstAttribute="bottom" secondItem="5xn-OW-bir" secondAttribute="bottom" constant="1" id="uuc-jT-pqb"/>
+                                    <constraint firstAttribute="bottom" secondItem="mmu-AL-cOA" secondAttribute="bottom" constant="16.5" id="C8W-fs-TsU"/>
+                                    <constraint firstItem="mmu-AL-cOA" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="13" id="Eqa-TQ-goh"/>
+                                    <constraint firstItem="5xn-OW-bir" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="8" id="dl2-Ft-aQ0"/>
+                                    <constraint firstAttribute="bottom" secondItem="vH0-VL-qaB" secondAttribute="bottom" constant="20.5" id="gOb-D8-VlO"/>
+                                    <constraint firstItem="vH0-VL-qaB" firstAttribute="top" secondItem="p68-gW-e6K" secondAttribute="top" constant="18" id="hyS-qM-4Pi"/>
+                                    <constraint firstAttribute="bottom" secondItem="5xn-OW-bir" secondAttribute="bottom" constant="7" id="uuc-jT-pqb"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="followButton" destination="mmu-AL-cOA" id="1yG-I7-cHg"/>
@@ -1401,7 +1401,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UyZ-Mq-M1p">
-                            <rect key="frame" x="0.0" y="317" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="381" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="15"/>
                             <state key="normal" title="Submit" backgroundImage="doneButton">
@@ -1415,7 +1415,7 @@
                             <tableViewSection headerTitle="My avatar" id="hOH-1t-1dq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="Su4-E9-t1Z">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="137"/>
+                                        <rect key="frame" x="0.0" y="92" width="600" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Su4-E9-t1Z" id="Vmr-Du-BBf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="136.5"/>
@@ -1453,7 +1453,7 @@
                             <tableViewSection headerTitle="My information" id="RoB-e8-dKL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="mCz-Op-8kG">
-                                        <rect key="frame" x="0.0" y="193" width="600" height="124"/>
+                                        <rect key="frame" x="0.0" y="257" width="600" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mCz-Op-8kG" id="opY-3s-M2A">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
@@ -1639,7 +1639,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Jko-Fw-MiY"/>
+        <segue reference="baw-w6-etn"/>
         <segue reference="MtC-EW-5dm"/>
-        <segue reference="XzH-0m-7vn"/>
     </inferredMetricsTieBreakers>
 </document>

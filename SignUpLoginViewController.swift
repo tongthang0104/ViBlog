@@ -108,26 +108,35 @@ class SignUpLoginViewController: UITableViewController {
                 
             case .Signup:
                 
-                UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success, error) -> Void in
-                    
+//                UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success, error) -> Void in
+                
                     self.activityIndicator.stopAnimating()
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
-                    
-                    if success {
-                        
-                        UserController.shareController.current = PFUser.currentUser()
-                        self.dismissViewControllerAnimated(true, completion: nil)
-                        
-                    } else if (self.passwordTextField.text?.characters.count <= 5){
+//                    
+//                    if success {
+//                        
+//                        UserController.shareController.current = PFUser.currentUser()
+//                        self.dismissViewControllerAnimated(true, completion: nil)
+                
+//                    } else
+            if (self.passwordTextField.text?.characters.count <= 5){
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
                     } else if self.confirmPasswordTextField.text != self.passwordTextField.text {
                         self.alertNotification("Password must match", message: "Please try again")
                         
                     } else {
-                        self.alertNotification("\(error!.localizedDescription)", message: "Please try again")
-                    }
-                })
+                        UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text!, completion: { (user, success, error) -> Void in
+                            if success {
+                                UserController.shareController.current = PFUser.currentUser()
+                                 self.dismissViewControllerAnimated(true, completion: nil)
+                            } else {
+                                self.alertNotification("\(error?.localizedDescription)", message: "Please try again")
+                            }
+                        })
+                }
+//                })
             }
+            
         } else {
             
             self.alertNotification("Missing Information", message: "Please check your information and try again")

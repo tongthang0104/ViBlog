@@ -156,7 +156,6 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
                     if let blog = blog {
                         self.updateWithBlog(blog)
-                        //                        blog.likeFromUser = like
                     }
                 })
             }
@@ -208,10 +207,8 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
             
             let comment = blog.comment[indexPath.row]
-//            self.comment = comment
             cell.updateWithComment(comment)
-        
-            
+           
             cell.backgroundView = UIView(frame: cell.bounds)
             return cell
         }
@@ -245,8 +242,6 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 let comment = blog.comment[indexPath.row]
                       destinationController.user = comment.fromUser
                 }
-
-             
             }
         }
     }

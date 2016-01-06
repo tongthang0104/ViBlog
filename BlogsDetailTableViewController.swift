@@ -20,7 +20,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     var isAdsDisplayed = false
     var videoOfUrl: NSURL?
     var delegate: BlogsDetailTableViewControllerDelegate?
-    var comment: Comment?
+    var user: User?
     var avPlayer = AVPlayer()
     let session = AVAudioSession.sharedInstance()
     
@@ -178,6 +178,15 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             return blog.comment.count
         }
     }
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == 1 {
+            tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 180.0
+            return tableView.rowHeight
+        } else {
+            return 44
+        }
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
@@ -199,8 +208,9 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             let cell = tableView.dequeueReusableCellWithIdentifier("commentCell", forIndexPath: indexPath) as! BlogCommentTableViewCell
             
             let comment = blog.comment[indexPath.row]
-            self.comment = comment
+//            self.comment = comment
             cell.updateWithComment(comment)
+        
             
             cell.backgroundView = UIView(frame: cell.bounds)
             return cell
@@ -217,6 +227,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     }
     
     
+    
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
         isAdsDisplayed = false
     }
@@ -229,7 +240,13 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             if segue.identifier == "toProfileView" {
                 destinationController.user = self.blog.user as! User
             } else if segue.identifier == "toProfileView2" {
-                destinationController.user = self.comment?.fromUser
+//                guard let cell = sender as? UITableViewCell else {return}
+                if let indexPath = tableView.indexPathForSelectedRow {
+                let comment = blog.comment[indexPath.row]
+                      destinationController.user = comment.fromUser
+                }
+
+             
             }
         }
     }

@@ -19,6 +19,7 @@ class SignUpLoginViewController: UITableViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loginSignUpButton: UIButton!
@@ -38,7 +39,7 @@ class SignUpLoginViewController: UITableViewController {
             case .Login:
                 return !((usernameTextField.text == "") || (passwordTextField.text == ""))
             case .Signup:
-                return !((usernameTextField.text == "") || (passwordTextField.text == "") || (emailTextField.text == ""))
+                return !((usernameTextField.text == "") || (passwordTextField.text == "") || (confirmPasswordTextField.text == "") || (emailTextField.text == ""))
             }
         }
     }
@@ -119,6 +120,9 @@ class SignUpLoginViewController: UITableViewController {
                         
                     } else if (self.passwordTextField.text?.characters.count <= 5){
                         self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
+                    } else if self.confirmPasswordTextField.text != self.passwordTextField.text {
+                        self.alertNotification("Password must match", message: "Please try again")
+                        
                     } else {
                         self.alertNotification("\(error!.localizedDescription)", message: "Please try again")
                     }
@@ -145,12 +149,16 @@ class SignUpLoginViewController: UITableViewController {
             return 1
         case 1:
             if mode == .Login {
-                return 0
+                return 1
             } else {
                 return 1
             }
         default:
-            return 1
+            if mode == .Login {
+                return 0
+            } else {
+                return 1
+            }
         }
     }
     

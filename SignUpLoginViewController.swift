@@ -130,7 +130,7 @@ class SignUpLoginViewController: UITableViewController {
                                 UserController.shareController.current = PFUser.currentUser()
                                  self.dismissViewControllerAnimated(true, completion: nil)
                             } else {
-                                self.alertNotification("\(error?.localizedDescription)", message: "Please try again")
+                                self.alertNotification("\(error!.localizedDescription)", message: "Please try again")
                             }
                         })
                 }

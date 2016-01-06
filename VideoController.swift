@@ -37,8 +37,6 @@ class VideoController {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             if let _ = data {
                 let video = NSURL(string: "\(url)")
-//                let videoFile = NSBundle.mainBundle().pathForResource("\(video)", ofType: "mov")
-//                NSURL(fileURLWithPath: url)
                 completion(video: video!)
             } else {
                 completion(video: url)

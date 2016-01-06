@@ -24,12 +24,15 @@ class AddCommentTableViewCell: UITableViewCell, BlogsDetailTableViewControllerDe
     // MARK: - Add Comment Function
     
     func addComment() {
-        if let text = self.commentTextField.text {
-            
-            BlogController.addComment(self.blog, text: text) { (success, comment) -> Void in
+        
+        if self.commentTextField.text == "" {
+   
+        } else {
+            BlogController.addComment(self.blog, text: self.commentTextField.text!) { (success, comment) -> Void in
                 if success {
                     NSNotificationCenter.defaultCenter().postNotificationName("updateComment", object: comment)
                     self.blog.comment = comment
+                    self.commentTextField.text = ""
                 } else {
                     print("failed to upload")
                 }
@@ -45,7 +48,7 @@ class AddCommentTableViewCell: UITableViewCell, BlogsDetailTableViewControllerDe
         doneToolbar.barStyle = .Default
         
         let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: nil, action: nil)
-        let done: UIBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
+        let done: UIBarButtonItem = UIBarButtonItem(title: "ADD", style: UIBarButtonItemStyle.Done, target: self, action: Selector("doneButtonAction"))
     
         var items: [UIBarButtonItem] = []
         items.append(flexSpace)

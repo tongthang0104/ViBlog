@@ -132,6 +132,8 @@ class FriendsSearchTableViewController: UITableViewController, UISearchResultsUp
         }
     }
     
+    
+    
     // MARK: - Navigation
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

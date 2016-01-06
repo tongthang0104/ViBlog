@@ -34,6 +34,15 @@ class UserSearchResultTableViewController: UITableViewController {
         return cell
     }
   
+    
+    override func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if cell.backgroundView == nil {
+            let cellBackgroundView = UIImageView()
+            cellBackgroundView.image = UIImage(named: "friendBackground")
+            cell.backgroundView = cellBackgroundView
+        }
+    }
+    
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let sender = tableView.cellForRowAtIndexPath(indexPath)
         self.presentingViewController?.performSegueWithIdentifier("toProfileView", sender: sender)

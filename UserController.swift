@@ -18,7 +18,7 @@ class UserController {
     var following: [PFUser] = []
     var current = PFUser.currentUser()
     var currentUser: User! = nil
-    //    static let user: User = User()
+        static let user: User = User()
     
     // User For Identifier
     
@@ -64,7 +64,7 @@ class UserController {
     // Create User
     
     static func createUser(username: String, password: String, email: String?, completion: (user: User?, success: Bool, error: NSError?) -> Void) {
-        let user = PFUser()
+//        let user = PFUser()
         user.username = username
         user.password = password
         user.email = email
@@ -73,9 +73,17 @@ class UserController {
             if let error = error {
                 let errorString = error.userInfo["error"] as? NSString
                 print(errorString)
+                
+               
                 completion(user: nil, success: false, error: error)
             } else {
-                completion(user: user as? User, success: true, error: nil)
+//                UserController.authenticateUsers(username, password: password, completion: { (user, success) -> Void in
+//                    if success {
+//                        UserController.shareController.current = user
+//                        completion(user: user, success: true, error: nil)
+//                    }
+//                })
+                completion(user: user, success: true, error: nil)
             }
         })
     }
@@ -222,9 +230,16 @@ class UserController {
     
     // logout User
     
-    static func logoutCurrentUser() {
-        PFUser.logOut()
-        UserController.shareController.current = PFUser.currentUser()
+    static func logoutCurrentUser(completion:(success: Bool) -> Void) {
+        PFUser.logOutInBackgroundWithBlock { (error) -> Void in
+            if error == nil {
+                completion(success: true)
+                UserController.shareController.current = nil
+            } else {
+                completion(success: false)
+            }
+        }
+        
     }
     
     // Reset Password

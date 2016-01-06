@@ -32,7 +32,8 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     //MARK: UpdateWithUser
     
     func updateWithUser(user: User) {
-   
+        
+        self.user = user
         self.title = user.username
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.myWhiteColor()]
         
@@ -56,17 +57,22 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(false)
         
-        if let user = user{
+        if user == nil {
+            user = UserController.shareController.current as? User
+             self.updateWithUser(user)
+        } else {
             self.updateWithUser(user)
         }
+       
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if user == nil {
-            user = UserController.shareController.current as? User
-        }
+//        
+//        if user == nil {
+//            user = UserController.shareController.current as? User
+//        }
         UserController.followedByUser(UserController.shareController.current!) { (followed) -> Void in
             self.following = followed
         }
@@ -76,9 +82,10 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(true)
-//        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-//            self.collectionView.reloadData()
-//        })
+        //        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+        //            self.collectionView.reloadData()
+        //        })
+        
     }
     
     //MARK: - Action:
@@ -90,8 +97,15 @@ class ProfileViewController: UIViewController, UICollectionViewDataSource, UICol
         }))
         
         moreOptionAlert.addAction(UIAlertAction(title: "Logout", style: .Default, handler: { (_) -> Void in
-            UserController.logoutCurrentUser()
-            self.tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
+            UserController.logoutCurrentUser({ (success) -> Void in
+                if success {
+                    self.user = nil
+                    self.tabBarController?.performSegueWithIdentifier("noCurrentUserSegue", sender: nil)
+                } else {
+                    print("error")
+                }
+            })
+            
         }))
         
         moreOptionAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))

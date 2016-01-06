@@ -9,7 +9,7 @@
         <!--Add Blog View Controller-->
         <scene sceneID="yQv-Ql-CXD">
             <objects>
-                <tableViewController id="oIG-on-GqE" customClass="AddBlogViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oIG-on-GqE" customClass="AddBlogViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="k8p-go-0qX">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -118,7 +118,7 @@
         <!--Blogs Detail Table View Controller-->
         <scene sceneID="AbE-7u-9fO">
             <objects>
-                <viewController id="mog-dS-73A" customClass="BlogsDetailTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mog-dS-73A" customClass="BlogsDetailTableViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="pTL-Ns-Xxa">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -269,7 +269,7 @@
                             </variation>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addComment" rowHeight="44" id="1YP-eN-o6V" customClass="AddCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addComment" rowHeight="44" id="1YP-eN-o6V" customClass="AddCommentTableViewCell" customModule="ViSnap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="467" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1YP-eN-o6V" id="ipO-40-DPe">
@@ -310,50 +310,63 @@
                                     <outlet property="commentTextField" destination="BI1-UH-eL8" id="4V1-6u-zZh"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="115" id="A1b-cE-wbV" customClass="BlogCommentTableViewCell" customModule="ViBlog" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="511" width="600" height="115"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="commentCell" rowHeight="89" id="KaS-IO-X7O" customClass="BlogCommentTableViewCell" customModule="ViSnap" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="511" width="600" height="89"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="A1b-cE-wbV" id="xTz-D5-rn5">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="114.5"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KaS-IO-X7O" id="UL1-rC-fQr">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="88.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tVH-3z-5dn">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Z9K-Iv-WUX">
                                             <rect key="frame" x="8" y="5" width="34" height="34"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="34" id="1zG-Ko-3p2"/>
-                                                <constraint firstAttribute="width" constant="34" id="wc1-Wy-4LN"/>
+                                                <constraint firstAttribute="height" constant="34" id="HQR-r1-FSI"/>
+                                                <constraint firstAttribute="width" constant="34" id="mNk-l0-uel"/>
                                             </constraints>
-                                            <state key="normal" backgroundImage="defaultPhoto"/>
-                                            <connections>
-                                                <segue destination="ZhL-0u-Wrd" kind="show" identifier="toProfileView2" id="Ilj-Rd-kMH"/>
-                                            </connections>
-                                        </button>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v60-9r-c8t">
-                                            <rect key="frame" x="50" y="5" width="542" height="189"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <accessibility key="accessibilityConfiguration">
-                                                <accessibilityTraits key="traits" notEnabled="YES"/>
-                                            </accessibility>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hbx-AF-gT6">
+                                            <rect key="frame" x="50" y="5" width="542" height="21"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="542" id="tl1-Vk-Z59"/>
+                                                <constraint firstAttribute="height" constant="21" id="UPr-J3-mv6"/>
+                                                <constraint firstAttribute="width" constant="542" id="Zma-xg-Nqc"/>
                                             </constraints>
-                                            <attributedString key="attributedText"/>
+                                            <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="12"/>
+                                            <color key="textColor" red="1" green="0.29356495069999999" blue="0.27341907259999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Or-kI-7jq">
+                                            <rect key="frame" x="50" y="34" width="542" height="46.5"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         </textView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="tVH-3z-5dn" firstAttribute="top" secondItem="xTz-D5-rn5" secondAttribute="topMargin" constant="-3" id="DeB-HT-qea"/>
-                                        <constraint firstItem="v60-9r-c8t" firstAttribute="top" secondItem="xTz-D5-rn5" secondAttribute="topMargin" constant="-3" id="GtS-1f-xok"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="v60-9r-c8t" secondAttribute="trailing" id="Owm-1A-ZZL"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="tVH-3z-5dn" secondAttribute="bottom" constant="67.5" id="RS8-pg-4uU"/>
-                                        <constraint firstItem="v60-9r-c8t" firstAttribute="leading" secondItem="tVH-3z-5dn" secondAttribute="trailing" constant="8" id="Sko-WB-KUU"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="v60-9r-c8t" secondAttribute="bottom" constant="-87.5" id="XeW-xc-adb"/>
-                                        <constraint firstAttribute="leadingMargin" secondItem="tVH-3z-5dn" secondAttribute="leading" id="sVL-X6-s1i"/>
+                                        <constraint firstItem="4Or-kI-7jq" firstAttribute="trailing" secondItem="UL1-rC-fQr" secondAttribute="trailingMargin" id="4S3-Jf-i83"/>
+                                        <constraint firstItem="hbx-AF-gT6" firstAttribute="leading" secondItem="Z9K-Iv-WUX" secondAttribute="trailing" constant="8" id="5eM-8a-LiC"/>
+                                        <constraint firstItem="Z9K-Iv-WUX" firstAttribute="top" secondItem="UL1-rC-fQr" secondAttribute="topMargin" constant="-3" id="6m9-7d-e5g"/>
+                                        <constraint firstItem="hbx-AF-gT6" firstAttribute="trailing" secondItem="UL1-rC-fQr" secondAttribute="trailingMargin" id="B3z-cb-e65"/>
+                                        <constraint firstItem="Z9K-Iv-WUX" firstAttribute="top" secondItem="UL1-rC-fQr" secondAttribute="topMargin" constant="-3" id="Gz1-7X-lKK"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Z9K-Iv-WUX" secondAttribute="bottom" constant="-3.5" id="JaG-gJ-5xC"/>
+                                        <constraint firstItem="Z9K-Iv-WUX" firstAttribute="leading" secondItem="UL1-rC-fQr" secondAttribute="leadingMargin" id="KPs-9D-FDw"/>
+                                        <constraint firstItem="4Or-kI-7jq" firstAttribute="bottom" secondItem="UL1-rC-fQr" secondAttribute="bottomMargin" id="Uf0-99-Lkc"/>
+                                        <constraint firstItem="4Or-kI-7jq" firstAttribute="leading" secondItem="Z9K-Iv-WUX" secondAttribute="trailing" constant="8" id="Uhw-6Y-VpF"/>
+                                        <constraint firstItem="4Or-kI-7jq" firstAttribute="top" secondItem="hbx-AF-gT6" secondAttribute="bottom" constant="8" id="aQh-0e-Ikc"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Z9K-Iv-WUX" secondAttribute="bottom" constant="41.5" id="u4W-e4-6Aw"/>
+                                        <constraint firstItem="hbx-AF-gT6" firstAttribute="top" secondItem="UL1-rC-fQr" secondAttribute="topMargin" constant="-3" id="yUc-V0-qij"/>
+                                        <constraint firstAttribute="leadingMargin" secondItem="Z9K-Iv-WUX" secondAttribute="leading" id="zLn-io-o24"/>
                                     </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="JaG-gJ-5xC"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="avatarButton" destination="tVH-3z-5dn" id="tD7-l8-b7p"/>
-                                    <outlet property="commentTextView" destination="v60-9r-c8t" id="6Dd-kh-84T"/>
+                                    <outlet property="avatarImage" destination="Z9K-Iv-WUX" id="4ki-NF-owN"/>
+                                    <outlet property="commentTextView" destination="4Or-kI-7jq" id="hlU-tW-t6t"/>
+                                    <outlet property="usernameLabel" destination="hbx-AF-gT6" id="xcf-aP-b0e"/>
+                                    <segue destination="ZhL-0u-Wrd" kind="show" identifier="toProfileView2" id="XzH-0m-7vn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -403,7 +416,7 @@
         <!--Sign Up Login Picker View Controller-->
         <scene sceneID="LH1-Xp-EPn">
             <objects>
-                <viewController id="doq-Yw-bVp" customClass="SignUpLoginPickerViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="doq-Yw-bVp" customClass="SignUpLoginPickerViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ne6-pz-05O"/>
                         <viewControllerLayoutGuide type="bottom" id="xKM-G4-eFS"/>
@@ -534,12 +547,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4W0-TU-R2P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1802" y="-2552"/>
+            <point key="canvasLocation" x="-2322" y="-2796"/>
         </scene>
         <!--Sign Up Login View Controller-->
         <scene sceneID="kqN-IX-Hiq">
             <objects>
-                <tableViewController id="UT5-yp-J7i" customClass="SignUpLoginViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="UT5-yp-J7i" customClass="SignUpLoginViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="omG-Of-l2n">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -570,7 +583,7 @@
                             </constraints>
                         </view>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="26A-9C-0h1">
-                            <rect key="frame" x="0.0" y="405" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="450" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="23"/>
                             <state key="normal" title="Button">
@@ -590,11 +603,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-Xa-Pg0">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username (require)" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="F5Y-Xa-Pg0">
                                                     <rect key="frame" x="43" y="6" width="513" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="UT5-yp-J7i" id="dha-NB-Vae"/>
                                                     </connections>
@@ -620,11 +633,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-If-0fg">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password (require)" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="2xj-If-0fg">
                                                     <rect key="frame" x="44" y="8" width="512" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                                     <connections>
                                                         <outlet property="delegate" destination="UT5-yp-J7i" id="Kt0-HL-xVT"/>
                                                     </connections>
@@ -650,7 +663,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-Gp-JUt">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirm Password (require)" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="fcC-Gp-JUt">
                                                     <rect key="frame" x="44" y="8" width="513" height="30"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
@@ -671,6 +684,36 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection id="I9y-0e-lny">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" rowHeight="45" id="W9j-Zr-KfY">
+                                        <rect key="frame" x="0.0" y="405" width="600" height="45"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="W9j-Zr-KfY" id="ZaN-xI-bXA">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Address (require)" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="uOr-8s-aZd">
+                                                    <rect key="frame" x="44" y="8" width="513" height="30"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="UT5-yp-J7i" id="vx5-sS-peV"/>
+                                                    </connections>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="uOr-8s-aZd" secondAttribute="bottom" constant="-1.5" id="0OF-95-HiK"/>
+                                                <constraint firstAttribute="topMargin" secondItem="uOr-8s-aZd" secondAttribute="top" id="SId-FT-3px"/>
+                                                <constraint firstItem="uOr-8s-aZd" firstAttribute="leading" secondItem="ZaN-xI-bXA" secondAttribute="leadingMargin" constant="36" id="acT-6g-Bhf"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="uOr-8s-aZd" secondAttribute="trailing" constant="35" id="lXb-X6-viM"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.44488074020000001" blue="0.4707874937" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="UT5-yp-J7i" id="GFO-7b-lWq"/>
@@ -679,20 +722,21 @@
                     </tableView>
                     <connections>
                         <outlet property="backgroundImageView" destination="koD-La-nsA" id="XkX-4a-iGJ"/>
-                        <outlet property="emailTextField" destination="2xj-If-0fg" id="y0r-zz-rPL"/>
+                        <outlet property="confirmPasswordTextField" destination="fcC-Gp-JUt" id="3JC-lJ-dJ6"/>
+                        <outlet property="emailTextField" destination="uOr-8s-aZd" id="MTQ-F1-dzo"/>
                         <outlet property="loginSignUpButton" destination="26A-9C-0h1" id="Uwh-zt-64o"/>
-                        <outlet property="passwordTextField" destination="fcC-Gp-JUt" id="tAa-Lw-rUf"/>
+                        <outlet property="passwordTextField" destination="2xj-If-0fg" id="qnF-tw-5MW"/>
                         <outlet property="usernameTextField" destination="F5Y-Xa-Pg0" id="xA5-JI-Scm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Hqw-8N-Uub" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1143" y="-2552"/>
+            <point key="canvasLocation" x="-1635" y="-2796"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="e9e-qI-Tb5">
             <objects>
-                <viewController id="RjK-BZ-AxZ" customClass="ForgetPasswordViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="RjK-BZ-AxZ" customClass="ForgetPasswordViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ICM-JE-Hgr"/>
                         <viewControllerLayoutGuide type="bottom" id="nlw-Mj-fOe"/>
@@ -741,7 +785,7 @@
                                     <constraint firstAttribute="width" constant="560" id="982-8U-LHp"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="982-8U-LHp"/>
@@ -782,18 +826,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wg3-WA-eES" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-528" y="-2552"/>
+            <point key="canvasLocation" x="-876" y="-2764"/>
         </scene>
         <!--Blogs Channel Table View Controller-->
         <scene sceneID="Bp5-b3-viK">
             <objects>
-                <tableViewController id="9Bg-nO-JKr" customClass="BlogsChannelTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9Bg-nO-JKr" customClass="BlogsChannelTableViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="460" sectionHeaderHeight="28" sectionFooterHeight="28" id="Win-pi-Yes">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="videoBlogCell" rowHeight="460" id="HCk-Ud-scX" customClass="VideoBlogTableViewCell" customModule="ViBlog" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="videoBlogCell" rowHeight="460" id="HCk-Ud-scX" customClass="VideoBlogTableViewCell" customModule="ViSnap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="460"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HCk-Ud-scX" id="rdB-iT-X59">
@@ -950,13 +994,13 @@
         <!--Friends Search Table View Controller-->
         <scene sceneID="nsr-qK-j0b">
             <objects>
-                <viewController id="bSE-5i-U3u" customClass="FriendsSearchTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bSE-5i-U3u" customClass="FriendsSearchTableViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="59" sectionHeaderHeight="28" sectionFooterHeight="28" id="oUh-Za-O2o">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendsCell" rowHeight="59" id="Jv0-42-HGO" customClass="FriendsTableViewCell" customModule="ViBlog" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="friendsCell" rowHeight="59" id="Jv0-42-HGO" customClass="FriendsTableViewCell" customModule="ViSnap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="600" height="59"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jv0-42-HGO" id="kea-A1-fsq">
@@ -1047,13 +1091,13 @@
         <!--User Search Result Table View Controller-->
         <scene sceneID="NLT-2d-0NZ">
             <objects>
-                <tableViewController storyboardIdentifier="userSearchResult" id="OIf-Xz-haA" customClass="UserSearchResultTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="userSearchResult" id="OIf-Xz-haA" customClass="UserSearchResultTableViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="P3H-QX-Gd1">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSearchCell" id="p68-gW-e6K" customClass="FriendsTableViewCell" customModule="ViBlog" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="userSearchCell" id="p68-gW-e6K" customClass="FriendsTableViewCell" customModule="ViSnap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="p68-gW-e6K" id="yuv-PL-k3J">
@@ -1157,12 +1201,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EhY-Ll-O9v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2466" y="-2540"/>
+            <point key="canvasLocation" x="-3010" y="-2796"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="a3m-KY-uqd">
             <objects>
-                <viewController id="ZhL-0u-Wrd" customClass="ProfileViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZhL-0u-Wrd" customClass="ProfileViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3vw-J3-lqw">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1174,7 +1218,7 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViBlog" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="videoCell" id="hAe-a9-LuT" customClass="VideoCollectionViewCell" customModule="ViSnap" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="193" width="115" height="130"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -1218,7 +1262,7 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViBlog" customModuleProvider="target">
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="profileHeaderView" id="Pg7-Sq-QKE" customClass="ProfileHeaderCollectionReusableView" customModule="ViSnap" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="64" width="600" height="129"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
@@ -1351,13 +1395,13 @@
         <!--Editting-->
         <scene sceneID="kqZ-Ra-XFW">
             <objects>
-                <tableViewController id="7jK-Sx-zuN" customClass="EdittingProfileTableViewController" customModule="ViBlog" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7jK-Sx-zuN" customClass="EdittingProfileTableViewController" customModule="ViSnap" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Izc-Ya-29e">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UyZ-Mq-M1p">
-                            <rect key="frame" x="0.0" y="381" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="317" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="15"/>
                             <state key="normal" title="Submit" backgroundImage="doneButton">
@@ -1371,7 +1415,7 @@
                             <tableViewSection headerTitle="My avatar" id="hOH-1t-1dq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="Su4-E9-t1Z">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="137"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Su4-E9-t1Z" id="Vmr-Du-BBf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="136.5"/>
@@ -1409,7 +1453,7 @@
                             <tableViewSection headerTitle="My information" id="RoB-e8-dKL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="mCz-Op-8kG">
-                                        <rect key="frame" x="0.0" y="257" width="600" height="124"/>
+                                        <rect key="frame" x="0.0" y="193" width="600" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mCz-Op-8kG" id="opY-3s-M2A">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
@@ -1594,8 +1638,8 @@
         <image name="thumbup" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="0Jr-Hq-HvG"/>
         <segue reference="Jko-Fw-MiY"/>
         <segue reference="MtC-EW-5dm"/>
+        <segue reference="XzH-0m-7vn"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -10,8 +10,12 @@ import UIKit
 
 class BlogCommentTableViewCell: UITableViewCell {
     
+    var user: User?
     @IBOutlet weak var avatarImage: UIImageView!
     @IBOutlet weak var commentTextView: UITextView!
+    
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var commentLabel: UILabel!
     
     @IBOutlet weak var avatarButton: UIButton!
     override func awakeFromNib() {
@@ -32,6 +36,7 @@ class BlogCommentTableViewCell: UITableViewCell {
         query?.getObjectInBackgroundWithId(comment.objectId!, block: { (object, error) -> Void in
             if let comment = object as? Comment {
                 self.commentTextView.text = comment.text
+                self.usernameLabel.text = comment.fromUser.username
                 if let avatar = comment.fromUser["avatar"] as? PFFile {
                     ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!) { (image) -> () in
                         //dispatch main queue to load image in main thread for faster speed
@@ -40,9 +45,11 @@ class BlogCommentTableViewCell: UITableViewCell {
                         })
                     }
                 }
-             
+                self.user = comment.fromUser
             }
         })
+        
+        
         //                    //
         
         
@@ -50,6 +57,8 @@ class BlogCommentTableViewCell: UITableViewCell {
         
         
     }
+    
+    
     //    func updateWithComment(comment: Comment) {
     //
     //    }

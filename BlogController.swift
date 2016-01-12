@@ -187,4 +187,29 @@ class BlogController {
             }
         }
     }
+    
+    
+    // Report Blog
+    
+    static func reportBlog (user: User,blog: Blog, text: String, completion: (success: Bool) -> Void) {
+        
+        if let currentUser = UserController.shareController.current {
+            let report = PFObject(className: "Report")
+            report.setObject(currentUser, forKey: ParseHelper.kActivityFromUser)
+            report.setObject(blog, forKey: "To Blog")
+            report.setObject(text, forKey: "Content")
+            
+            report.saveInBackgroundWithBlock({ (success, error) -> Void in
+                if success {
+                    completion(success: true)
+                } else {
+                    completion(success: false)
+                }
+            })
+            
+            
+        }
+        
+    
+    }
 }

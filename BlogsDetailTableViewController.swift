@@ -130,6 +130,17 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
     //MARK: - Action
     
+    @IBAction func moreOptionButtonTapped(sender: UIButton) {
+        
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .ActionSheet)
+        alert.addAction(UIAlertAction(title: "Report", style: .Default, handler: { (_) -> Void in
+            self.performSegueWithIdentifier("toReportBlog", sender: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+    }
+
     @IBAction func avatarButtonTapped(sender: UIButton) {
     }
     
@@ -237,11 +248,16 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             if segue.identifier == "toProfileView" {
                 destinationController.user = self.blog.user as! User
             } else if segue.identifier == "toProfileView2" {
-//                guard let cell = sender as? UITableViewCell else {return}
+                
                 if let indexPath = tableView.indexPathForSelectedRow {
                 let comment = blog.comment[indexPath.row]
                       destinationController.user = comment.fromUser
                 }
+            }
+        } else if let destinationController = segue.destinationViewController as? ReportTableViewController {
+            _ = destinationController.view
+            if segue.identifier == "toReportBlog" {
+                destinationController.blog = self.blog
             }
         }
     }

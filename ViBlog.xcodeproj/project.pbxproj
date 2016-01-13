@@ -54,7 +54,6 @@
 		DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */; };
 		DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC22B031C03FD36001DEAD7 /* ImageController.swift */; };
 		DEC397771C1FF6300001A1B5 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC397761C1FF6300001A1B5 /* Array.swift */; };
-		DEC8630F1C4595A500FA4B1B /* ReportTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8630E1C4595A500FA4B1B /* ReportTableViewController.swift */; };
 		DEE6A1521BF9838B00009122 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1511BF9838B00009122 /* AppDelegate.swift */; };
 		DEE6A1571BF9838B00009122 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1551BF9838B00009122 /* Main.storyboard */; };
 		DEE6A1591BF9838C00009122 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A1581BF9838C00009122 /* Assets.xcassets */; };
@@ -131,7 +130,6 @@
 		DEC22B011C03DC3E001DEAD7 /* FriendsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewCell.swift; sourceTree = "<group>"; };
 		DEC22B031C03FD36001DEAD7 /* ImageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		DEC397761C1FF6300001A1B5 /* Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
-		DEC8630E1C4595A500FA4B1B /* ReportTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReportTableViewController.swift; sourceTree = "<group>"; };
 		DED2248A1C1B6D0D007826BF /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		DEE6A14E1BF9838B00009122 /* ViSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1511BF9838B00009122 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -281,7 +279,6 @@
 				DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */,
 				DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */,
 				DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */,
-				DEC8630E1C4595A500FA4B1B /* ReportTableViewController.swift */,
 			);
 			name = Blogs;
 			sourceTree = "<group>";
@@ -573,7 +570,6 @@
 				DE7915ED1C320C7400E4B729 /* AddCommentTableViewCell.swift in Sources */,
 				DE76B2421BFA8626002E6293 /* VideoController.swift in Sources */,
 				DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */,
-				DEC8630F1C4595A500FA4B1B /* ReportTableViewController.swift in Sources */,
 				DE76B2401BFA861D002E6293 /* BlogController.swift in Sources */,
 				DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */,
 				DE76B24F1BFA93B5002E6293 /* BlogsDetailTableViewController.swift in Sources */,

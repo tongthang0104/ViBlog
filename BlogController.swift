@@ -191,25 +191,45 @@ class BlogController {
     
     // Report Blog
     
-    static func reportBlog (user: User,blog: Blog, text: String, completion: (success: Bool) -> Void) {
+    static func reportBlog (user: User,blog: Blog, text: String, var isReported: Bool, completion: (success: Bool) -> Void) {
         
         if let currentUser = UserController.shareController.current {
             let report = PFObject(className: "Report")
             report.setObject(currentUser, forKey: ParseHelper.kActivityFromUser)
-            report.setObject(blog, forKey: "To Blog")
-            report.setObject(text, forKey: "Content")
+            report.setObject(isReported, forKey: "IsReported")
+            report.setObject(blog, forKey: "ToBlog")
+            report.setObject(text, forKey: "Reason")
             
             report.saveInBackgroundWithBlock({ (success, error) -> Void in
                 if success {
+                    isReported = true
+                    report.setObject(isReported, forKey: "IsReported")
+                    report.saveInBackground()
                     completion(success: true)
                 } else {
                     completion(success: false)
                 }
             })
-            
-            
         }
-        
-    
     }
+    
+    static func checkReport(blog: Blog, completion: (isReported: Bool) -> Void)  {
+        
+        let reportQuery = PFQuery(className: "Report")
+        reportQuery.whereKey("fromUser", equalTo: UserController.shareController.current!)
+        reportQuery.whereKey("IsReported", equalTo: true)
+        reportQuery.whereKey("ToBlog", equalTo: blog)
+        reportQuery.findObjectsInBackgroundWithBlock { (object, error) -> Void in
+            if let object = object {
+                if object.count > 0 {
+                    completion(isReported: true)
+                } else {
+                    completion(isReported: false)
+                }
+            }
+        }
+    }
+    
+    
+ 
 }

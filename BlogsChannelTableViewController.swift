@@ -110,7 +110,9 @@ class BlogsChannelTableViewController: UITableViewController {
                 if let indexPath = tableView.indexPathForSelectedRow {
                     self.oldIndexPath = indexPath
                     let blog = self.blogs[indexPath.row]
+               
                     videoDetailViewDestination.updateWithBlog(blog)
+           
                 }
             }
         }

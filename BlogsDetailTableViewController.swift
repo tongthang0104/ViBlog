@@ -29,9 +29,11 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
     
+    @IBOutlet weak var reportButton: UIBarButtonItem!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
+    
     //MARK: - Update With Blog
     
     func updateWithBlog(blog: Blog){
@@ -56,21 +58,29 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         
         // Like update
         guard let currentUser = UserController.shareController.current else {return}
-        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-            if liked {
-                self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
+        
+        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
+                if liked {
+                    self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
+                } else {
+                    self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
+                }
+            }
+        })
+        
+        BlogController.checkReport(blog) { (isReported) -> Void in
+            if isReported {
+                self.reportButton.enabled = false
             } else {
-                self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
+                self.reportButton.enabled = true
             }
         }
-        
         self.likeCountLabel.text =  "\(blog.likeFromUser.count)"
     }
     
     
     //MARK: - AV Player
-    
-    
     
     func playBackgroundMovie(url: NSURL){
         
@@ -116,10 +126,11 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
         
-        //        self.likeDelegate = self
-        
         
     }
+    
+    
+    var isReported: Bool = false
     
     func reloadCommentTableView () {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -130,17 +141,56 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
     //MARK: - Action
     
-    @IBAction func moreOptionButtonTapped(sender: UIButton) {
+    @IBAction func reportButtonTapped(sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "", message: "", preferredStyle: .ActionSheet)
         alert.addAction(UIAlertAction(title: "Report", style: .Default, handler: { (_) -> Void in
-            self.performSegueWithIdentifier("toReportBlog", sender: nil)
+            self.reportAlert("Why are you reporting this video" , message: "")
         }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
         self.presentViewController(alert, animated: true, completion: nil)
         
     }
-
+    
+    
+    var textField: UITextField = UITextField()
+    
+    func reportAlert(title: String, message: String) {
+        let reportAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        reportAlert.addTextFieldWithConfigurationHandler { (textField) -> Void in
+            self.textField = textField
+            self.textField.placeholder = "Please enter your reason here"
+        }
+        
+        reportAlert.addAction(UIAlertAction(title: "Submit", style: .Default, handler: { (_) -> Void in
+            
+            BlogController.reportBlog(UserController.shareController.current! as! User, blog: self.blog!, text: self.textField.text!, isReported: self.isReported, completion: { (success) -> Void in
+                if success {
+                    
+                    self.isReported = true
+                    
+                    self.reportButton.enabled = false
+                    
+                    self.noticeAlert("Report succeed", message: "")
+                } else {
+                    self.noticeAlert("Report Unsuccessful", message: "Please try again")
+                }
+            })
+        }))
+        
+        reportAlert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+        self.presentViewController(reportAlert, animated: true, completion: nil)
+    }
+    
+    
+    func noticeAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (_) -> Void in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        }))
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func avatarButtonTapped(sender: UIButton) {
     }
     
@@ -219,7 +269,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             
             let comment = blog.comment[indexPath.row]
             cell.updateWithComment(comment)
-           
+            
             cell.backgroundView = UIView(frame: cell.bounds)
             return cell
         }
@@ -250,14 +300,9 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             } else if segue.identifier == "toProfileView2" {
                 
                 if let indexPath = tableView.indexPathForSelectedRow {
-                let comment = blog.comment[indexPath.row]
-                      destinationController.user = comment.fromUser
+                    let comment = blog.comment[indexPath.row]
+                    destinationController.user = comment.fromUser
                 }
-            }
-        } else if let destinationController = segue.destinationViewController as? ReportTableViewController {
-            _ = destinationController.view
-            if segue.identifier == "toReportBlog" {
-                destinationController.blog = self.blog
             }
         }
     }

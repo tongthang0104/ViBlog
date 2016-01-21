@@ -40,42 +40,17 @@ class VideoBlogTableViewCell: UITableViewCell {
     @IBAction func avatarButtonTapped(sender: AnyObject) {
         
     }
-    
-    //    func likeButtonTapped(sender: UIButton) {
-    //
-    //        guard let currentUser = UserController.shareController.current else {return}
-    //        BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-    //            if liked {
-    //                print("already liked")
-    //                if let blog = self.blog {
-    //                    self.updateWithBlogs(blog)
-    //                }
-    //
-    //                BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success, like) -> Void in
-    //                    if success {
-    //                        self.updateWithBlogs(self.blog)
-    ////                        self.blog.likeFromUser = like
-    //                    } else {
-    //                        print("failed to unlike")
-    //                    }
-    //                })
-    //            } else {
-    //                BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
-    //                    if let blog = blog {
-    //                        self.updateWithBlogs(blog)
-    ////                        blog.likeFromUser = like
-    //                    }
-    //                })
-    //            }
-    //        }
-    //    }
-    
     //MARK: - Update Blog
+  
     
     func updateWithBlogs(blog: Blog) {
         self.blog = blog
         
+        self.addCustomSeperator(UIColor.grayColor())
         self.nameLabel.text = blog.user.username
+        self.captionLabel.layer.borderColor = UIColor.blackColor().CGColor
+        self.captionLabel.clipsToBounds = true
+        
         
         if let caption = blog.caption {
             if self.caption == caption {
@@ -125,17 +100,8 @@ class VideoBlogTableViewCell: UITableViewCell {
                 })
             })
         }
-        
-        //        if let  like = BlogChannelTableViewController.shareController.like {
-        //        self.likeLabel.text = "\(like.count) likes"
-        //        } else {
-        //            BlogChannelTableViewController.shareController.like = []
-        //        }
-        
-        //        BlogController.likeForBlog(blog) { (like) -> Void in
-        //            self.likeArray = like
-        //        }
     }
+    
     
     //MARK: - AV Player
     //

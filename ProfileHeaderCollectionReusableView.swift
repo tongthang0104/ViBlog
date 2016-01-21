@@ -57,6 +57,7 @@ class ProfileHeaderCollectionReusableView: UICollectionReusableView{
     func updateWithUsers(user: User) {
         
         self.user = user
+        self.addCustomeSeparator(UIColor.myGray())
         
         if let avatar = user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in

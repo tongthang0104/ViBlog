@@ -67,12 +67,15 @@ class AddCommentTableViewCell: UITableViewCell, BlogsDetailTableViewControllerDe
     //MARK: - Update With User
     
     func updateWithUser(blog: Blog, user: User) {
+        self.addCustomSeperator(UIColor.grayColor())
+
         self.blog = blog
         if let avatar = user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!) { (image) -> () in
                 //dispatch main queue to load image in main thread for faster speed
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     self.avatarImage.image = image
+                                        
                 })
             }
         }

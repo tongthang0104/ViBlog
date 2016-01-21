@@ -48,6 +48,7 @@
 		DE8FF3BF1C1FA44C00F6BAA7 /* ParseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */; };
 		DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */; };
 		DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */; };
+		DEB33F7B1C4EE0E00046C2B9 /* UITableviewCellExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB33F7A1C4EE0E00046C2B9 /* UITableviewCellExtension.swift */; };
 		DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */; };
 		DEBDA34D1C3869A300974901 /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBDA34C1C3869A300974901 /* ForgetPasswordViewController.swift */; };
 		DEBF46A51C220DE3003FD06E /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEBF46A41C220DE3003FD06E /* AVKit.framework */; };
@@ -124,6 +125,7 @@
 		DE8FF3BE1C1FA44C00F6BAA7 /* ParseHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseHelper.swift; sourceTree = "<group>"; };
 		DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBlogTableViewCell.swift; sourceTree = "<group>"; };
 		DEADDB421C123E99005FA77B /* EdittingProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingProfileTableViewController.swift; sourceTree = "<group>"; };
+		DEB33F7A1C4EE0E00046C2B9 /* UITableviewCellExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableviewCellExtension.swift; sourceTree = "<group>"; };
 		DEB630B91C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
 		DEBDA34C1C3869A300974901 /* ForgetPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetPasswordViewController.swift; sourceTree = "<group>"; };
 		DEBF46A41C220DE3003FD06E /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
@@ -251,6 +253,7 @@
 				DEC22B031C03FD36001DEAD7 /* ImageController.swift */,
 				DE76B23F1BFA861D002E6293 /* BlogController.swift */,
 				DE76B2411BFA8626002E6293 /* VideoController.swift */,
+				DEB33F7A1C4EE0E00046C2B9 /* UITableviewCellExtension.swift */,
 			);
 			name = Controllers;
 			path = ..;
@@ -569,6 +572,7 @@
 				DE76B23C1BFA8601002E6293 /* Like.swift in Sources */,
 				DE7915ED1C320C7400E4B729 /* AddCommentTableViewCell.swift in Sources */,
 				DE76B2421BFA8626002E6293 /* VideoController.swift in Sources */,
+				DEB33F7B1C4EE0E00046C2B9 /* UITableviewCellExtension.swift in Sources */,
 				DE76B25C1BFA9611002E6293 /* ProfileViewController.swift in Sources */,
 				DE76B2401BFA861D002E6293 /* BlogController.swift in Sources */,
 				DEC22B021C03DC3E001DEAD7 /* FriendsTableViewCell.swift in Sources */,

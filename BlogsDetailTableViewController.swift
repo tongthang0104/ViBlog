@@ -29,6 +29,8 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var avatarButton: UIButton!
     
+    @IBOutlet weak var commentCountLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var reportButton: UIBarButtonItem!
     @IBOutlet weak var likeCountLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
@@ -39,6 +41,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     func updateWithBlog(blog: Blog){
         
         self.blog = blog
+        self.addCustomSeperator(UIColor.grayColor())
         self.captionLabel.text = blog.caption
         if let avatar = blog.user["avatar"] as? PFFile {
             ImageController.fetchImageAtURL(NSURL(string: avatar.url!)!, completion: { (image) -> () in
@@ -55,6 +58,9 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 self.playBackgroundMovie(video)
             })
         })
+        
+       
+        
         
         // Like update
         guard let currentUser = UserController.shareController.current else {return}
@@ -77,6 +83,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             }
         }
         self.likeCountLabel.text =  "\(blog.likeFromUser.count)"
+        self.commentCountLabel.text = "\(blog.comment.count)"
     }
     
     
@@ -124,6 +131,13 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         self.canDisplayBannerAds = true
         adBannerView.delegate = self
         
+        //round Button
+        
+        self.avatarButton.layer.cornerRadius = 15
+        self.avatarButton.layer.borderWidth = 1
+        self.avatarButton.layer.borderColor = UIColor.blackColor().CGColor
+        self.avatarButton.clipsToBounds = true
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadCommentTableView", name: "updateComment", object: nil)
         
         
@@ -168,7 +182,6 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 if success {
                     
                     self.isReported = true
-                    
                     self.reportButton.enabled = false
                     
                     self.noticeAlert("Report succeed", message: "")
@@ -260,7 +273,6 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             self.nameLabel.text = self.blog.user.username
             self.delegate = cell
             
-            
             cell.backgroundView = UIView(frame: cell.bounds)
             return cell
             
@@ -275,15 +287,20 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         }
     }
     
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return "Add your comments"
-        default:
-            return "\(blog.comment.count) Comments"
-        }
-    }
+//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        switch section {
+//        case 0:
+//            return "Add your comments"
+//        default:
+//            return "\(blog.comment.count) Comments"
+//        }
+//    }
     
+    func addCustomSeperator(lineColor: UIColor) {
+        let seperatorView = UIView(frame: CGRect(x: 0, y: self.headerView.frame.height - 1, width: self.headerView.frame.width, height: 1))
+        seperatorView.backgroundColor = lineColor
+        self.headerView.addSubview(seperatorView)
+    }
     
     
     func bannerView(banner: ADBannerView!, didFailToReceiveAdWithError error: NSError!) {
@@ -320,6 +337,7 @@ protocol BlogsDetailTableViewControllerDelegate {
 extension BlogsDetailTableViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
+        self.tableView.scrollToRowAtIndexPath(NSIndexPath(forRow: 0, inSection: 0), atScrollPosition: .Top, animated: true)
         self.delegate?.addDoneButtonOnKeyboard()
     }
     

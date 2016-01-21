@@ -27,6 +27,7 @@ class BlogCommentTableViewCell: UITableViewCell {
     }
     
     func updateWithComment(comment: Comment) {
+        self.addCustomSeperator(UIColor.grayColor())
         let query = Comment.query()
         query?.includeKey("fromUser")
       

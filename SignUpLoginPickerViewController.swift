@@ -15,7 +15,7 @@ class SignUpLoginPickerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.tintColor = UIColor.myBlueColor()
+        view.tintColor = UIColor.myRedColor()
         Color.blurEffect(self.backgroundImage, image: UIImage(named: "lens")!)
 //        UINavigationBar.appearance().hidden = true
     }

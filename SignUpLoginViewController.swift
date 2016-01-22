@@ -9,21 +9,22 @@
 import UIKit
 import Parse
 
-class SignUpLoginViewController: UITableViewController {
+class SignUpLoginViewController: UIViewController {
     
     //MARK: Properties
     
     var user: PFUser?
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView ()
     
+    @IBOutlet var scrollView: UIScrollView!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPasswordTextField: UITextField!
-    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loginSignUpButton: UIButton!
-    @IBOutlet weak var loginButton: UIBarButtonItem!
+
+    @IBOutlet weak var agreementLabel: UILabel!
     
     //MARK: - ViewMode
     
@@ -48,6 +49,8 @@ class SignUpLoginViewController: UITableViewController {
         switch mode {
         case .Login:
             emailTextField.removeFromSuperview()
+            confirmPasswordTextField.removeFromSuperview()
+            self.agreementLabel.text = "By Signing in, you agree to the"
             loginSignUpButton.setTitle("Login", forState: .Normal)
             
         case .Signup:
@@ -58,6 +61,18 @@ class SignUpLoginViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.tintColor = UIColor.myBlueColor()
+        Color.blurEffect(self.backgroundImageView, image: UIImage(named: "lens")!)
+        
+        self.usernameTextField.delegate = self
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.confirmPasswordTextField.delegate = self
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name: UIKeyboardWillHideNotification, object: nil)
+        
+        
         self.updateWithMode(mode)
         //        Color.blurEffect(self.tableView.backgroundView, image: UIImage(named: "lens")!)
         
@@ -65,6 +80,11 @@ class SignUpLoginViewController: UITableViewController {
     }
     
     //MARK: Action
+    
+    @IBAction func termOfServiceTapped(sender: UIButton) {
+    }
+    @IBAction func privacyPolicyTapped(sender: UIButton) {
+    }
     
     @IBAction func loginSignupButtonTapped(sender: UIButton) {
         
@@ -134,7 +154,6 @@ class SignUpLoginViewController: UITableViewController {
                             }
                         })
                 }
-//                })
             }
             
         } else {
@@ -150,27 +169,6 @@ class SignUpLoginViewController: UITableViewController {
         presentViewController(failedAlert, animated: true, completion: nil)
     }
     
-    // MARK: - TableViewDataSource
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            if mode == .Login {
-                return 1
-            } else {
-                return 1
-            }
-        default:
-            if mode == .Login {
-                return 0
-            } else {
-                return 1
-            }
-        }
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -184,5 +182,17 @@ extension SignUpLoginViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
         
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        let yCoordinate = self.view.frame.origin.y + 160
+        let scrollDestination = CGPointMake(0.0, yCoordinate)
+        scrollView.setContentOffset(scrollDestination, animated: true)
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        let yNewCoordinate = self.view.frame.origin.y
+        let scrollNewDestination = CGPointMake(0.0, yNewCoordinate)
+        scrollView.setContentOffset(scrollNewDestination, animated: true)
     }
 }

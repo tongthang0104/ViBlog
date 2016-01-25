@@ -61,6 +61,7 @@
 		DEE6A15C1BF9838C00009122 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE6A15A1BF9838C00009122 /* LaunchScreen.storyboard */; };
 		DEE6A1671BF9838C00009122 /* ViBlogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1661BF9838C00009122 /* ViBlogTests.swift */; };
 		DEE6A1721BF9838C00009122 /* ViBlogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE6A1711BF9838C00009122 /* ViBlogUITests.swift */; };
+		DEE810B11C55CB4E00E8D1C3 /* LikeCommentShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE810B01C55CB4E00E8D1C3 /* LikeCommentShowTableViewCell.swift */; };
 		DEF36E1C1C16527C009C2122 /* BlogCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -145,6 +146,7 @@
 		DEE6A16D1BF9838C00009122 /* ViBlogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViBlogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEE6A1711BF9838C00009122 /* ViBlogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViBlogUITests.swift; sourceTree = "<group>"; };
 		DEE6A1731BF9838C00009122 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEE810B01C55CB4E00E8D1C3 /* LikeCommentShowTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LikeCommentShowTableViewCell.swift; sourceTree = "<group>"; };
 		DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlogCommentTableViewCell.swift; sourceTree = "<group>"; };
 		FEB7829BF06C7DEA394DC420 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -280,6 +282,7 @@
 				DE7F10FE1C3716360041F705 /* BlogsChannelTableViewController.swift */,
 				DEA3C8C51C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift */,
 				DE76B24E1BFA93B5002E6293 /* BlogsDetailTableViewController.swift */,
+				DEE810B01C55CB4E00E8D1C3 /* LikeCommentShowTableViewCell.swift */,
 				DEF36E1B1C16527C009C2122 /* BlogCommentTableViewCell.swift */,
 				DE7915EC1C320C7400E4B729 /* AddCommentTableViewCell.swift */,
 			);
@@ -581,6 +584,7 @@
 				DEB630BA1C0692AA005C65F8 /* ProfileHeaderCollectionReusableView.swift in Sources */,
 				DEA3C8C61C0ABC0E0034DA5F /* VideoBlogTableViewCell.swift in Sources */,
 				DEC22B041C03FD36001DEAD7 /* ImageController.swift in Sources */,
+				DEE810B11C55CB4E00E8D1C3 /* LikeCommentShowTableViewCell.swift in Sources */,
 				DEADDB431C123E99005FA77B /* EdittingProfileTableViewController.swift in Sources */,
 				DE8603381C20DCF000C36FEB /* Color.swift in Sources */,
 				DEBDA34D1C3869A300974901 /* ForgetPasswordViewController.swift in Sources */,

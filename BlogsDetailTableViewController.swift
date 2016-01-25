@@ -12,7 +12,7 @@ import AVFoundation
 import iAd
 
 
-class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegate {
+class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegate, LikeCommentShowTableViewCellDelegate {
     
     //MARK: - Properties
     
@@ -59,21 +59,11 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             })
         })
         
-       
+        
         
         
         // Like update
-        guard let currentUser = UserController.shareController.current else {return}
         
-        dispatch_async(dispatch_get_main_queue(), { () -> Void in
-            BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
-                if liked {
-                    self.likeButton.setBackgroundImage(UIImage(named: "thumbupFilled"), forState: .Normal)
-                } else {
-                    self.likeButton.setBackgroundImage(UIImage(named: "thumbup"), forState: .Normal)
-                }
-            }
-        })
         
         BlogController.checkReport(blog) { (isReported) -> Void in
             if isReported {
@@ -82,8 +72,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
                 self.reportButton.enabled = true
             }
         }
-        self.likeCountLabel.text =  "\(blog.likeFromUser.count)"
-        self.commentCountLabel.text = "\(blog.comment.count)"
+        
     }
     
     
@@ -143,8 +132,12 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        self.avPlayer.pause()
+    }
     
-    var isReported: Bool = false
+    
+  
     
     func reloadCommentTableView () {
         dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -154,6 +147,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
     
     //MARK: - Action
+    
     
     @IBAction func reportButtonTapped(sender: UIBarButtonItem) {
         
@@ -166,8 +160,10 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         
     }
     
+    //MARK: - Report Function
     
     var textField: UITextField = UITextField()
+    var isReported: Bool = false
     
     func reportAlert(title: String, message: String) {
         let reportAlert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
@@ -209,27 +205,22 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     
     // Like Button
     
-    @IBAction func likeButtonTapped(sender: AnyObject) {
+    func likeButtonTapped(sender: UITableViewCell) {
         guard let currentUser = UserController.shareController.current else {return}
         BlogController.userLikeBlog(currentUser, blog: self.blog) { (liked) -> Void in
             if liked {
                 print("already liked")
-                if let blog = self.blog {
-                    self.updateWithBlog(blog)
-                }
-                
                 BlogController.unlikeBlog(currentUser, blog: self.blog, completion: { (success) -> Void in
                     if success {
-                        self.updateWithBlog(self.blog)
-                        //                        self.blog.likeFromUser = like
+                        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
                     } else {
                         print("failed to unlike")
                     }
                 })
             } else {
                 BlogController.likeBlogs(self.blog, completion: { (success, blog, like) -> Void in
-                    if let blog = blog {
-                        self.updateWithBlog(blog)
+                    if let _ = blog {
+                        self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .None)
                     }
                 })
             }
@@ -239,7 +230,7 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -247,12 +238,14 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         switch section {
         case 0:
             return 1
+        case 1:
+            return 1
         default:
             return blog.comment.count
         }
     }
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             tableView.rowHeight = UITableViewAutomaticDimension
             tableView.estimatedRowHeight = 180.0
             return tableView.rowHeight
@@ -261,9 +254,19 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
         }
     }
     
+    var oldIndexPath: NSIndexPath? = nil
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("likeCommentCell", forIndexPath: indexPath) as! LikeCommentShowTableViewCell
+            
+            self.oldIndexPath = indexPath
+            cell.updateLikeWithBlog(self.blog)
+            cell.delegate = self
+            
+            return cell
+            
+        } else if indexPath.section == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("addComment", forIndexPath: indexPath) as! AddCommentTableViewCell
             let user = UserController.shareController.current! as! User
             dispatch_async(dispatch_get_main_queue(), { () -> Void in
@@ -285,16 +288,9 @@ class BlogsDetailTableViewController: UITableViewController, ADBannerViewDelegat
             cell.backgroundView = UIView(frame: cell.bounds)
             return cell
         }
+        
+        
     }
-    
-//    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        switch section {
-//        case 0:
-//            return "Add your comments"
-//        default:
-//            return "\(blog.comment.count) Comments"
-//        }
-//    }
     
     func addCustomSeperator(lineColor: UIColor) {
         let seperatorView = UIView(frame: CGRect(x: 0, y: self.headerView.frame.height - 1, width: self.headerView.frame.width, height: 1))

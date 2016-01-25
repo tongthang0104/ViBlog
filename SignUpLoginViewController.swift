@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import SafariServices
 
 class SignUpLoginViewController: UIViewController {
     
@@ -51,10 +52,13 @@ class SignUpLoginViewController: UIViewController {
             emailTextField.removeFromSuperview()
             confirmPasswordTextField.removeFromSuperview()
             self.agreementLabel.text = "By Signing in, you agree to the"
-            loginSignUpButton.setTitle("Login", forState: .Normal)
+            loginSignUpButton.setTitle("", forState: .Normal)
+            loginSignUpButton.setBackgroundImage(UIImage(named: "loginButton"), forState: .Normal)
+
             
         case .Signup:
-            loginSignUpButton.setTitle("Signup", forState: .Normal)
+            loginSignUpButton.setTitle("", forState: .Normal)
+            loginSignUpButton.setBackgroundImage(UIImage(named: "signup"), forState: .Normal)
         }
     }
     
@@ -82,8 +86,12 @@ class SignUpLoginViewController: UIViewController {
     //MARK: Action
     
     @IBAction func termOfServiceTapped(sender: UIButton) {
+        let termOfServiceVC = SFSafariViewController(URL: NSURL(string: "http://visnap.co/2016/01/21/terms-of-service/")!)
+        presentViewController(termOfServiceVC, animated: true, completion: nil)
     }
     @IBAction func privacyPolicyTapped(sender: UIButton) {
+        let privacyPolicyVC = SFSafariViewController(URL: NSURL(string: "http://visnap.co/category/privacy-policy/")!)
+        presentViewController(privacyPolicyVC, animated: true, completion: nil)
     }
     
     @IBAction func loginSignupButtonTapped(sender: UIButton) {

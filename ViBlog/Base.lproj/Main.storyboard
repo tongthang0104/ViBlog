@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="r4M-Wp-8fL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pLl-b5-cHx">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -127,6 +127,10 @@
                             <rect key="frame" x="0.0" y="64" width="600" height="439"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g2-JI-Q0A">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
+                                    <color key="backgroundColor" white="0.80000000000000004" alpha="0.35003167229999999" colorSpace="deviceWhite"/>
+                                </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kK0-3S-zTW">
                                     <rect key="frame" x="8" y="8" width="30" height="30"/>
                                     <constraints>
@@ -245,10 +249,6 @@
                                         </mask>
                                     </variation>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3g2-JI-Q0A">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="42"/>
-                                    <color key="backgroundColor" white="0.80000000000000004" alpha="0.35003167229999999" colorSpace="deviceWhite"/>
-                                </view>
                                 <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="84L-QL-hLT">
                                     <rect key="frame" x="0.0" y="101" width="600" height="302"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -654,7 +654,7 @@
                                                     <constraint firstAttribute="height" constant="30" id="709-Za-Xoh"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username (require)" textAlignment="natural" minimumFontSize="17" background="textField" translatesAutoresizingMaskIntoConstraints="NO" id="gMD-bc-im1">
                                                 <rect key="frame" x="8" y="198" width="584" height="30"/>
@@ -674,10 +674,10 @@
                                                     <constraint firstAttribute="height" constant="30" id="y13-G0-f0g"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="14"/>
-                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="done"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES"/>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="By signing up, you agree to the" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aVv-N4-faR">
-                                                <rect key="frame" x="212" y="394" width="175.5" height="14.5"/>
+                                                <rect key="frame" x="212" y="394" width="176" height="15"/>
                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -723,9 +723,22 @@
                                                     <constraint firstItem="vI3-NU-Nqi" firstAttribute="leading" secondItem="efb-ps-e0l" secondAttribute="trailing" id="ztC-1l-UAx"/>
                                                 </constraints>
                                             </stackView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visnapIcon" translatesAutoresizingMaskIntoConstraints="NO" id="pHR-hk-CAN">
+                                                <rect key="frame" x="266" y="103" width="68" height="68"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="68" id="Apo-tO-IBE"/>
+                                                    <constraint firstAttribute="width" constant="68" id="BPp-O7-aZu"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="34"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="pHR-hk-CAN" firstAttribute="centerX" secondItem="gMD-bc-im1" secondAttribute="centerX" id="167-WY-iig"/>
                                             <constraint firstItem="9Fc-QL-GLM" firstAttribute="top" secondItem="4Gs-8T-JTx" secondAttribute="bottom" constant="8" id="2fx-k5-biB"/>
                                             <constraint firstItem="j7A-8V-z2b" firstAttribute="top" secondItem="F6d-1N-gib" secondAttribute="bottom" constant="90" id="2hj-1H-Eyu"/>
                                             <constraint firstItem="p4i-ei-h46" firstAttribute="centerX" secondItem="F6d-1N-gib" secondAttribute="centerX" id="3ec-2l-Ums"/>
@@ -748,6 +761,7 @@
                                             <constraint firstAttribute="trailing" secondItem="F6d-1N-gib" secondAttribute="trailing" constant="8" id="WoW-ND-Ac5"/>
                                             <constraint firstItem="9Fc-QL-GLM" firstAttribute="top" secondItem="4Gs-8T-JTx" secondAttribute="bottom" constant="8" id="ZX1-8N-iba"/>
                                             <constraint firstItem="4Gs-8T-JTx" firstAttribute="top" secondItem="F6d-1N-gib" secondAttribute="bottom" constant="8" id="Zkv-B9-1L5"/>
+                                            <constraint firstItem="gMD-bc-im1" firstAttribute="top" secondItem="pHR-hk-CAN" secondAttribute="bottom" constant="27" id="bMq-gA-y3V"/>
                                             <constraint firstItem="4Gs-8T-JTx" firstAttribute="top" secondItem="F6d-1N-gib" secondAttribute="bottom" constant="8" id="lIu-Fy-6T9"/>
                                             <constraint firstItem="F6d-1N-gib" firstAttribute="top" secondItem="gMD-bc-im1" secondAttribute="bottom" constant="8" id="msm-IG-nmT"/>
                                             <constraint firstItem="p4i-ei-h46" firstAttribute="top" secondItem="aVv-N4-faR" secondAttribute="bottom" constant="7.5" id="p43-Gi-XXX"/>
@@ -787,30 +801,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49M-Y1-XP7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1824" y="-2787"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="TCz-33-99U">
-            <objects>
-                <viewController id="r4M-Wp-8fL" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="NNO-Xs-A4E"/>
-                        <viewControllerLayoutGuide type="bottom" id="CsO-Tf-7fa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="pev-hi-GRk">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LQJ-LP-r5u">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KWI-9F-seb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1691" y="-3468"/>
         </scene>
         <!--Forget Password View Controller-->
         <scene sceneID="e9e-qI-Tb5">
@@ -1506,7 +1496,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <button key="tableFooterView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="UyZ-Mq-M1p">
-                            <rect key="frame" x="0.0" y="381" width="600" height="44"/>
+                            <rect key="frame" x="0.0" y="317" width="600" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="TrebuchetMS-Bold" family="Trebuchet MS" pointSize="15"/>
                             <state key="normal" title="Submit" backgroundImage="doneButton">
@@ -1520,7 +1510,7 @@
                             <tableViewSection headerTitle="My avatar" id="hOH-1t-1dq">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="137" id="Su4-E9-t1Z">
-                                        <rect key="frame" x="0.0" y="92" width="600" height="137"/>
+                                        <rect key="frame" x="0.0" y="28" width="600" height="137"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Su4-E9-t1Z" id="Vmr-Du-BBf">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="136.5"/>
@@ -1558,7 +1548,7 @@
                             <tableViewSection headerTitle="My information" id="RoB-e8-dKL">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="124" id="mCz-Op-8kG">
-                                        <rect key="frame" x="0.0" y="257" width="600" height="124"/>
+                                        <rect key="frame" x="0.0" y="193" width="600" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mCz-Op-8kG" id="opY-3s-M2A">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="123.5"/>
@@ -1743,10 +1733,11 @@
         <image name="submitButton" width="320" height="145"/>
         <image name="textField" width="237" height="35"/>
         <image name="thumbup" width="25" height="25"/>
+        <image name="visnapIcon" width="35" height="35"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="baw-w6-etn"/>
         <segue reference="ZyF-DK-ffN"/>
+        <segue reference="XzH-0m-7vn"/>
         <segue reference="MtC-EW-5dm"/>
     </inferredMetricsTieBreakers>
 </document>

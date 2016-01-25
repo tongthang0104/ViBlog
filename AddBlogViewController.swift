@@ -63,6 +63,7 @@ class AddBlogViewController: UITableViewController {
                     BlogController.createBlog(file!, user: currentUser, caption: self.captionTextField.text, completion: { (blog, success) -> Void in
                         if blog != nil {
                             self.presentAlert("Upload Completed", message: "")
+                            self.captionTextField.text = ""
 
                                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                                     guard let thumbnail = self.thumbnail else {return}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pLl-b5-cHx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pLl-b5-cHx">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -747,6 +747,15 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2qc-Ma-Hvu">
+                                                <rect key="frame" x="279" y="451" width="43" height="27"/>
+                                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                                <state key="normal" title="&amp; EULA"/>
+                                                <connections>
+                                                    <action selector="eulaTapped:" destination="Zbc-n2-WUy" eventType="touchUpInside" id="K0h-iO-Ofg"/>
+                                                    <action selector="privacyPolicyTapped:" destination="Zbc-n2-WUy" eventType="touchUpInside" id="FUS-8K-v2y"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
@@ -760,6 +769,7 @@
                                             <constraint firstItem="PGl-ri-6g2" firstAttribute="top" secondItem="mCk-KW-wJm" secondAttribute="top" id="7x3-V1-PJv"/>
                                             <constraint firstItem="9Fc-QL-GLM" firstAttribute="leading" secondItem="mCk-KW-wJm" secondAttribute="leading" constant="8" id="7xK-uj-MrT"/>
                                             <constraint firstAttribute="trailing" secondItem="4Gs-8T-JTx" secondAttribute="trailing" constant="8" id="Ie8-6g-j0h"/>
+                                            <constraint firstItem="2qc-Ma-Hvu" firstAttribute="centerX" secondItem="j7A-8V-z2b" secondAttribute="centerX" id="JrC-Bi-RJ0"/>
                                             <constraint firstItem="F6d-1N-gib" firstAttribute="leading" secondItem="mCk-KW-wJm" secondAttribute="leading" constant="8" id="KfK-rN-UPj"/>
                                             <constraint firstItem="aVv-N4-faR" firstAttribute="top" secondItem="j7A-8V-z2b" secondAttribute="bottom" constant="8" id="LnD-15-EUP"/>
                                             <constraint firstAttribute="bottom" secondItem="PGl-ri-6g2" secondAttribute="bottom" constant="63" id="P1q-4M-wUv"/>
@@ -770,6 +780,7 @@
                                             <constraint firstItem="gMD-bc-im1" firstAttribute="top" secondItem="mCk-KW-wJm" secondAttribute="top" constant="198" id="Tbd-M7-Esc"/>
                                             <constraint firstAttribute="trailing" secondItem="gMD-bc-im1" secondAttribute="trailing" constant="8" id="TpH-hf-FQU"/>
                                             <constraint firstItem="PGl-ri-6g2" firstAttribute="leading" secondItem="mCk-KW-wJm" secondAttribute="leading" id="W5g-Xm-Y0l"/>
+                                            <constraint firstItem="2qc-Ma-Hvu" firstAttribute="top" secondItem="efb-ps-e0l" secondAttribute="bottom" constant="8" id="WZp-kd-Y76"/>
                                             <constraint firstAttribute="trailing" secondItem="F6d-1N-gib" secondAttribute="trailing" constant="8" id="WoW-ND-Ac5"/>
                                             <constraint firstItem="9Fc-QL-GLM" firstAttribute="top" secondItem="4Gs-8T-JTx" secondAttribute="bottom" constant="8" id="ZX1-8N-iba"/>
                                             <constraint firstItem="4Gs-8T-JTx" firstAttribute="top" secondItem="F6d-1N-gib" secondAttribute="bottom" constant="8" id="Zkv-B9-1L5"/>

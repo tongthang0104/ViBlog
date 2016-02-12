@@ -24,7 +24,7 @@ class SignUpLoginViewController: UIViewController {
     @IBOutlet weak var confirmPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loginSignUpButton: UIButton!
-
+    
     @IBOutlet weak var agreementLabel: UILabel!
     
     //MARK: - ViewMode
@@ -54,7 +54,7 @@ class SignUpLoginViewController: UIViewController {
             self.agreementLabel.text = "By Signing in, you agree to the"
             loginSignUpButton.setTitle("", forState: .Normal)
             loginSignUpButton.setBackgroundImage(UIImage(named: "loginButton"), forState: .Normal)
-
+            
             
         case .Signup:
             loginSignUpButton.setTitle("", forState: .Normal)
@@ -83,15 +83,21 @@ class SignUpLoginViewController: UIViewController {
         
     }
     
+    func termPolicy(url: NSURL) {
+        let termOfServiceVC = SFSafariViewController(URL: url)
+        presentViewController(termOfServiceVC, animated: true, completion: nil)
+
+    }
     //MARK: Action
     
+    @IBAction func eulaTapped(sender: UIButton) {
+        termPolicy(NSURL(string: "http://visnap.co/category/eula/")!)
+    }
     @IBAction func termOfServiceTapped(sender: UIButton) {
-        let termOfServiceVC = SFSafariViewController(URL: NSURL(string: "http://visnap.co/2016/01/21/terms-of-service/")!)
-        presentViewController(termOfServiceVC, animated: true, completion: nil)
+       termPolicy(NSURL(string: "http://visnap.co/2016/01/21/terms-of-service/")!)
     }
     @IBAction func privacyPolicyTapped(sender: UIButton) {
-        let privacyPolicyVC = SFSafariViewController(URL: NSURL(string: "http://visnap.co/category/privacy-policy/")!)
-        presentViewController(privacyPolicyVC, animated: true, completion: nil)
+        termPolicy(NSURL(string: "http://visnap.co/category/privacy-policy/")!)
     }
     
     @IBAction func loginSignupButtonTapped(sender: UIButton) {
@@ -136,31 +142,24 @@ class SignUpLoginViewController: UIViewController {
                 
             case .Signup:
                 
-//                UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text, completion: { (user, success, error) -> Void in
                 
-                    self.activityIndicator.stopAnimating()
-                    UIApplication.sharedApplication().endIgnoringInteractionEvents()
-//                    
-//                    if success {
-//                        
-//                        UserController.shareController.current = PFUser.currentUser()
-//                        self.dismissViewControllerAnimated(true, completion: nil)
+                self.activityIndicator.stopAnimating()
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
                 
-//                    } else
-            if (self.passwordTextField.text?.characters.count <= 5){
-                        self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
-                    } else if self.confirmPasswordTextField.text != self.passwordTextField.text {
-                        self.alertNotification("Password must match", message: "Please try again")
-                        
-                    } else {
-                        UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text!, completion: { (user, success, error) -> Void in
-                            if success {
-                                UserController.shareController.current = PFUser.currentUser()
-                                 self.dismissViewControllerAnimated(true, completion: nil)
-                            } else {
-                                self.alertNotification("\(error!.localizedDescription)", message: "Please try again")
-                            }
-                        })
+                if (self.passwordTextField.text?.characters.count <= 5){
+                    self.alertNotification("Password too short", message: "Please enter a password that has more than 5 characters")
+                } else if self.confirmPasswordTextField.text != self.passwordTextField.text {
+                    self.alertNotification("Password must match", message: "Please try again")
+                    
+                } else {
+                    UserController.createUser(usernameTextField.text!, password: passwordTextField.text!, email: emailTextField.text!, completion: { (user, success, error) -> Void in
+                        if success {
+                            UserController.shareController.current = PFUser.currentUser()
+                            self.dismissViewControllerAnimated(true, completion: nil)
+                        } else {
+                            self.alertNotification("\(error!.localizedDescription)", message: "Please try again")
+                        }
+                    })
                 }
             }
             
